@@ -163,13 +163,13 @@ class UniRigExtractSkeleton:
             # Step 2: Run skeleton inference
             print(f"[UniRigExtractSkeleton] Step 2: Running skeleton inference...")
             run_cmd = [
-                "conda", "run", "-n", "unirig", "--no-capture-output",
-                "python", os.path.join(UNIRIG_PATH, "run.py"),
+                sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
                 "--task", os.path.join(UNIRIG_PATH, "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml"),
                 "--seed", str(seed),
                 "--input", input_path,
                 "--output", output_path,
                 "--npz_dir", tmpdir,
+                "--blender_exe", BLENDER_EXE,
             ]
 
             try:
@@ -340,7 +340,6 @@ class UniRigExtractRig:
             # Step 1: Generate skeleton
             print(f"[UniRigExtractRig] Step 1: Generating skeleton...")
             subprocess.run([
-                "conda", "run", "-n", "unirig", "--no-capture-output",
                 "bash",
                 os.path.join(UNIRIG_PATH, "launch", "inference", "generate_skeleton.sh"),
                 "--input", input_path,
@@ -354,7 +353,6 @@ class UniRigExtractRig:
             # Step 2: Generate skinning
             print(f"[UniRigExtractRig] Step 2: Generating skinning weights...")
             subprocess.run([
-                "conda", "run", "-n", "unirig", "--no-capture-output",
                 "bash",
                 os.path.join(UNIRIG_PATH, "launch", "inference", "generate_skin.sh"),
                 "--input", skeleton_path,

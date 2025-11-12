@@ -3,25 +3,21 @@ trimesh
 numpy
 scipy
 
-# UniRig inference dependencies (CPU-installable)
-transformers>=4.51.0
+# UniRig dependencies
+transformers==4.51.3
 python-box
 einops
 omegaconf
-pytorch-lightning
+pytorch_lightning
 lightning
 addict
 timm
-huggingface-hub
+huggingface_hub
 wandb
+fast-simplification
+bpy==4.2
+flash_attn
 
 # Mesh processing
 open3d
 pyrender
-
-# Note: CUDA-specific dependencies should be installed separately if not already present:
-# - torch >= 2.3.1 (with CUDA)
-# - spconv-cu120 or spconv-cu118 (depending on CUDA version)
-# - torch_scatter, torch_cluster (from PyG)
-# - flash_attn (optional but recommended)
-# These are typically already installed in the conda environment
