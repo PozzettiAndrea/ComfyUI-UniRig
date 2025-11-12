@@ -73,7 +73,7 @@ class UniRigExtractSkeleton:
         return {
             "required": {
                 "trimesh": ("TRIMESH",),
-                "seed": ("INT", {"default": 42, "min": 0, "max": 0xffffffffffffffff,
+                "seed": ("INT", {"default": 42, "min": 0, "max": 4294967295,  # numpy's max seed (2^32-1)
                                "tooltip": "Random seed for skeleton generation variation"}),
             },
             "optional": {
@@ -110,6 +110,8 @@ class UniRigExtractSkeleton:
         with tempfile.TemporaryDirectory() as tmpdir:
             input_path = os.path.join(tmpdir, "input.glb")
             # UniRig expects NPZ at: {npz_dir}/{basename}/raw_data.npz
+            # Since input is "input.glb", basename is "input", so we need npz_dir to be tmpdir
+            # and the NPZ will be at {tmpdir}/input/raw_data.npz
             npz_dir = os.path.join(tmpdir, "input")
             npz_path = os.path.join(npz_dir, "raw_data.npz")
             output_path = os.path.join(tmpdir, "skeleton.fbx")
@@ -168,9 +170,11 @@ class UniRigExtractSkeleton:
                 "--seed", str(seed),
                 "--input", input_path,
                 "--output", output_path,
-                "--npz_dir", tmpdir,
+                "--npz_dir", tmpdir,  # This should match where NPZ is: tmpdir/input/raw_data.npz
                 "--blender_exe", BLENDER_EXE,
             ]
+
+            print(f"[UniRigExtractSkeleton] Running: {' '.join(run_cmd)}")
 
             try:
                 result = subprocess.run(

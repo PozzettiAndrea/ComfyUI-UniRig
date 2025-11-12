@@ -1,0 +1,63 @@
+[project]
+name = "comfyui-unirig"
+description = "Automatic skeleton extraction for ComfyUI using UniRig (SIGGRAPH 2025). Self-contained with bundled Blender."
+version = "1.0.0"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+
+# Core dependencies for ComfyUI-UniRig
+dependencies = [
+    # PyTorch (ComfyUI compatible)
+    "torch>=2.0.0",
+    "torchvision",
+
+    # Core 3D processing
+    "trimesh",
+    "numpy",
+    "scipy",
+    "open3d",
+    "pyrender",
+
+    # UniRig ML dependencies
+    "transformers==4.51.3",
+    "pytorch-lightning",
+    "lightning",
+    "timm",
+    "einops",
+    "addict",
+
+    # Configuration
+    "omegaconf",
+    "python-box",
+
+    # HuggingFace
+    "huggingface-hub",
+
+    # Mesh processing
+    "fast-simplification",
+
+    # Optional: wandb for training (not needed for inference)
+    # "wandb",
+
+    # Note: torch-cluster, torch-scatter, and spconv are installed via lib/unirig/install.py
+    # Note: Blender is bundled and auto-installs on first use
+]
+
+[project.urls]
+Repository = "https://github.com/PozzettiAndrea/ComfyUI-UniRig"
+Documentation = "https://github.com/PozzettiAndrea/ComfyUI-UniRig#readme"
+"Bug Tracker" = "https://github.com/PozzettiAndrea/ComfyUI-UniRig/issues"
+
+# Comfy Registry configuration
+[tool.comfy]
+PublisherId = "pznodes"
+DisplayName = "ComfyUI-UniRig"
+Icon = ""
+
+[project.optional-dependencies]
+# Development dependencies
+dev = [
+    "pytest",
+    "black",
+    "flake8",
+]

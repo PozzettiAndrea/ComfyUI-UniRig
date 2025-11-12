@@ -15,9 +15,11 @@ timm
 huggingface_hub
 wandb
 fast-simplification
-bpy==4.2
-flash_attn
 
 # Mesh processing
 open3d
 pyrender
+
+# Note: bpy is no longer needed - we use bundled Blender instead
+# Note: torch-cluster, torch-scatter, and spconv are installed via lib/unirig/install.py
+# Note: flash_attn is optional and installed via lib/unirig/install.py if available

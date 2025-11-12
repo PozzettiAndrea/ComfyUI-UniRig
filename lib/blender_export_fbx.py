@@ -1,12 +1,13 @@
 """
 Blender script to export skeleton data to FBX file.
-This script takes skeleton data from NPZ and creates a Blender armature, then exports to FBX.
-Usage: blender --background --python blender_export_fbx.py -- <input_npz> <output_fbx> [options]
+This script takes skeleton data from pickle and creates a Blender armature, then exports to FBX.
+Usage: blender --background --python blender_export_fbx.py -- <input_pkl> <output_fbx> [options]
 """
 
 import bpy
 import sys
 import os
+import pickle
 import numpy as np
 from mathutils import Vector
 from collections import defaultdict
@@ -16,10 +17,10 @@ argv = sys.argv
 argv = argv[argv.index("--") + 1:] if "--" in argv else []
 
 if len(argv) < 2:
-    print("Usage: blender --background --python blender_export_fbx.py -- <input_npz> <output_fbx> [options]")
+    print("Usage: blender --background --python blender_export_fbx.py -- <input_pkl> <output_fbx> [options]")
     sys.exit(1)
 
-input_npz = argv[0]
+input_pkl = argv[0]
 output_fbx = argv[1]
 
 # Parse optional parameters
@@ -41,27 +42,32 @@ for arg in argv[2:]:
     elif arg == "--no_extrude_from_parent":
         extrude_from_parent = False
 
-print(f"[Blender FBX Export] Input: {input_npz}")
+print(f"[Blender FBX Export] Input: {input_pkl}")
 print(f"[Blender FBX Export] Output: {output_fbx}")
 
-# Load skeleton data from NPZ
+# Load skeleton data from pickle
 try:
-    data = np.load(input_npz, allow_pickle=True)
-    joints = data['joints']
-    parents = data['parents'].tolist()  # List[Union[int, None]]
-    names = data['names'].tolist()  # List[str]
+    with open(input_pkl, 'rb') as f:
+        data = pickle.load(f)  # No numpy imports needed - only plain Python types!
 
-    # Optional data
-    vertices = data['vertices'] if 'vertices' in data else None
-    faces = data['faces'] if 'faces' in data else None
-    skin = data['skin'] if 'skin' in data else None
-    tails = data['tails'] if 'tails' in data else None
+    # Now convert plain Python lists to numpy arrays using Blender's own numpy
+    joints = np.array(data['joints'], dtype=np.float32)
+    parents = data['parents']  # Plain list, keep as-is
+    names = data['names']  # Plain list, keep as-is
+
+    # Optional data - convert to numpy if present
+    vertices = np.array(data['vertices'], dtype=np.float32) if 'vertices' in data else None
+    faces = np.array(data['faces'], dtype=np.int32) if 'faces' in data else None
+    skin = np.array(data['skin'], dtype=np.float32) if 'skin' in data else None
+    tails = np.array(data['tails'], dtype=np.float32) if 'tails' in data else None
 
     print(f"[Blender FBX Export] Loaded skeleton with {len(joints)} joints")
     if vertices is not None:
         print(f"[Blender FBX Export] Found mesh with {len(vertices)} vertices")
 except Exception as e:
-    print(f"[Blender FBX Export] Failed to load NPZ: {e}")
+    print(f"[Blender FBX Export] Failed to load pickle: {e}")
+    import traceback
+    traceback.print_exc()
     sys.exit(1)
 
 # Clean default scene
