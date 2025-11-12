@@ -1,0 +1,192 @@
+{
+  "id": "15f6c038-9249-494a-9d33-9030831736fb",
+  "revision": 0,
+  "last_node_id": 6,
+  "last_link_id": 8,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "GeomPackPreviewMeshVTK",
+      "pos": [
+        978.046810723379,
+        -58.46966369969556
+      ],
+      "size": [
+        512,
+        678
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "trimesh",
+          "type": "TRIMESH",
+          "link": 4
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "e0d26b95c8e0b72fccc40f27912c41f31f4c2d5d",
+        "Node name for S&R": "GeomPackPreviewMeshVTK"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "GeomPackLoadMesh",
+      "pos": [
+        85.80556245841086,
+        -49.04716888072248
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "mesh",
+          "type": "TRIMESH",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "e0d26b95c8e0b72fccc40f27912c41f31f4c2d5d",
+        "Node name for S&R": "GeomPackLoadMesh"
+      },
+      "widgets_values": [
+        "Stanford_Bunny.stl"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "SkeletonToMesh",
+      "pos": [
+        685.2683814751543,
+        -52.73678150011937
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "skeleton",
+          "type": "SKELETON",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "trimesh",
+          "type": "TRIMESH",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "e0d26b95c8e0b72fccc40f27912c41f31f4c2d5d",
+        "Node name for S&R": "SkeletonToMesh"
+      },
+      "widgets_values": [
+        0.02,
+        0.01
+      ]
+    },
+    {
+      "id": 6,
+      "type": "UniRigExtractSkeleton",
+      "pos": [
+        386.50899093925216,
+        -52.362407603530144
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "trimesh",
+          "type": "TRIMESH",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "skeleton",
+          "type": "SKELETON",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "PozzettiAndrea/ComfyUI-UniRig",
+        "ver": "e4f4051d237687af5f3e0d6668bc440f61be3757",
+        "Node name for S&R": "UniRigExtractSkeleton"
+      },
+      "widgets_values": [
+        815727495609622,
+        "randomize",
+        "VAST-AI/UniRig"
+      ]
+    }
+  ],
+  "links": [
+    [
+      4,
+      5,
+      0,
+      3,
+      0,
+      "TRIMESH"
+    ],
+    [
+      7,
+      2,
+      0,
+      6,
+      0,
+      "TRIMESH"
+    ],
+    [
+      8,
+      6,
+      0,
+      5,
+      0,
+      "SKELETON"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8660292636689776,
+      "offset": [
+        129.4413859648604,
+        369.1323399355835
+      ]
+    },
+    "frontendVersion": "1.28.8"
+  },
+  "version": 0.4
+}
