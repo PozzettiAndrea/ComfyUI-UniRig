@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Temp files
+*.tmp
+*.bak
+*.log
+
+# Blender installation (auto-downloaded)
+lib/blender/
+
+# UniRig code (should be cloned separately, not committed)
+lib/unirig/
+
+# Model checkpoints and cache
+*.ckpt
+*.pth
+*.safetensors
+.cache/
+checkpoints/
+
+# Test and data files
+*.npz
+*.fbx
+*.glb
+*.obj
+*.stl
+test_*.py
+/tmp/
