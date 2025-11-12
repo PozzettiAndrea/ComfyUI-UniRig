@@ -1,3 +1,5 @@
+WORK IN PROGRESS
+
 # ComfyUI-UniRig
 
 Automatic skeleton extraction for ComfyUI using UniRig (SIGGRAPH 2025). Self-contained with bundled Blender.
