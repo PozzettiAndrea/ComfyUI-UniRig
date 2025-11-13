@@ -11,6 +11,7 @@ import subprocess
 import tempfile
 import numpy as np
 import trimesh
+from trimesh import Trimesh
 from pathlib import Path
 import folder_paths
 import time
@@ -126,8 +127,8 @@ class UniRigExtractSkeleton:
             }
         }
 
-    RETURN_TYPES = ("SKELETON",)
-    RETURN_NAMES = ("skeleton",)
+    RETURN_TYPES = ("SKELETON", "TRIMESH")
+    RETURN_NAMES = ("skeleton", "normalized_mesh")
     FUNCTION = "extract"
     CATEGORY = "UniRig"
 
@@ -229,6 +230,8 @@ class UniRigExtractSkeleton:
             # Set up environment with Blender path for internal FBX export
             env = os.environ.copy()
             env['BLENDER_EXE'] = BLENDER_EXE
+            # Set PyOpenGL to use OSMesa for headless rendering (no EGL/X11 needed)
+            env['PYOPENGL_PLATFORM'] = 'osmesa'
             # Ensure HuggingFace cache is set for subprocess
             if UNIRIG_MODELS_DIR:
                 env['HF_HOME'] = str(UNIRIG_MODELS_DIR)
@@ -243,7 +246,7 @@ class UniRigExtractSkeleton:
                     env=env,
                     capture_output=True,
                     text=True,
-                    timeout=180
+                    timeout=600  # 10 minutes
                 )
                 if result.stdout:
                     print(f"[UniRigExtractSkeleton] Inference stdout:\n{result.stdout}")
@@ -258,7 +261,7 @@ class UniRigExtractSkeleton:
                 print(f"[UniRigExtractSkeleton] ⏱️  Inference completed in {inference_time:.2f}s")
 
             except subprocess.TimeoutExpired:
-                raise RuntimeError("Inference timed out (>3 minutes)")
+                raise RuntimeError("Inference timed out (>10 minutes)")
             except Exception as e:
                 print(f"[UniRigExtractSkeleton] Inference error: {e}")
                 raise
@@ -324,34 +327,142 @@ class UniRigExtractSkeleton:
             print(f"[UniRigExtractSkeleton] Loading skeleton data from NPZ...")
             skeleton_data = np.load(skeleton_npz, allow_pickle=True)
             print(f"[UniRigExtractSkeleton] NPZ contains keys: {list(skeleton_data.keys())}")
-            vertices = skeleton_data['vertices']
+            all_joints = skeleton_data['vertices']  # All joint positions (for visualization)
             edges = skeleton_data['edges']
 
-            print(f"[UniRigExtractSkeleton] Extracted {len(vertices)} joints, {len(edges)} bones")
+            print(f"[UniRigExtractSkeleton] Extracted {len(all_joints)} joints, {len(edges)} bones")
 
-            # Normalize to [-1, 1]
-            vertices = normalize_skeleton(vertices)
-            print(f"[UniRigExtractSkeleton] Normalized to range [{vertices.min():.3f}, {vertices.max():.3f}]")
+            # Normalize all joints to [-1, 1]
+            all_joints = normalize_skeleton(all_joints)
+            print(f"[UniRigExtractSkeleton] Normalized to range [{all_joints.min():.3f}, {all_joints.max():.3f}]")
 
-            # Build skeleton dict with basic data
+            # Transform skeleton data to RawData format for skinning compatibility
+            # Load the preprocessing data which contains mesh vertices/faces/normals
+            preprocess_npz = os.path.join(tmpdir, "input", "raw_data.npz")
+            if os.path.exists(preprocess_npz):
+                preprocess_data = np.load(preprocess_npz, allow_pickle=True)
+                mesh_vertices = preprocess_data['vertices']
+                mesh_faces = preprocess_data['faces']
+                vertex_normals = preprocess_data.get('vertex_normals', None)
+                face_normals = preprocess_data.get('face_normals', None)
+            else:
+                # Fallback: use trimesh data
+                mesh_vertices = np.array(trimesh.vertices, dtype=np.float32)
+                mesh_faces = np.array(trimesh.faces, dtype=np.int32)
+                vertex_normals = np.array(trimesh.vertex_normals, dtype=np.float32) if hasattr(trimesh, 'vertex_normals') else None
+                face_normals = np.array(trimesh.face_normals, dtype=np.float32) if hasattr(trimesh, 'face_normals') else None
+
+            # Create trimesh object from normalized mesh data
+            # This is the preprocessed/decimated mesh that was used for skeleton extraction
+            normalized_mesh = Trimesh(
+                vertices=mesh_vertices,
+                faces=mesh_faces,
+                process=True
+            )
+            print(f"[UniRigExtractSkeleton] Created normalized mesh: {len(mesh_vertices)} vertices, {len(mesh_faces)} faces")
+
+            # Build parents list from bone_parents (convert -1 to None)
+            if 'bone_parents' in skeleton_data:
+                bone_parents = skeleton_data['bone_parents']
+                num_bones = len(bone_parents)
+                parents_list = [None if p == -1 else int(p) for p in bone_parents]
+
+                # Get bone names
+                bone_names = skeleton_data.get('bone_names', None)
+                if bone_names is not None:
+                    names_list = [str(n) for n in bone_names]
+                else:
+                    names_list = [f"bone_{i}" for i in range(num_bones)]
+
+                # Map bones to their head joint positions
+                # bone_to_head_vertex tells us which vertex is the head of each bone
+                if 'bone_to_head_vertex' in skeleton_data:
+                    bone_to_head = skeleton_data['bone_to_head_vertex']
+                    # Extract joint positions for each bone's head from all joints
+                    bone_joints = np.array([all_joints[bone_to_head[i]] for i in range(num_bones)])
+                else:
+                    # Fallback: use first num_bones joints
+                    bone_joints = all_joints[:num_bones]
+
+                # Compute tails (end points of bones)
+                tails = np.zeros((num_bones, 3))
+                for i in range(num_bones):
+                    # Find children bones
+                    children = [j for j, p in enumerate(parents_list) if p == i]
+                    if children:
+                        # Tail is average of children bone head positions
+                        tails[i] = np.mean([bone_joints[c] for c in children], axis=0)
+                    else:
+                        # Leaf bone: extend tail along parent direction
+                        if parents_list[i] is not None:
+                            direction = bone_joints[i] - bone_joints[parents_list[i]]
+                            tails[i] = bone_joints[i] + direction * 0.3
+                        else:
+                            # Root bone with no children: extend upward
+                            tails[i] = bone_joints[i] + np.array([0, 0.1, 0])
+
+            else:
+                # No hierarchy - create simple chain using all joints
+                num_bones = len(all_joints)
+                bone_joints = all_joints
+                parents_list = [None] + list(range(num_bones-1))
+                names_list = [f"bone_{i}" for i in range(num_bones)]
+
+                # Compute tails for simple chain
+                tails = np.zeros_like(bone_joints)
+                for i in range(num_bones):
+                    children = [j for j, p in enumerate(parents_list) if p == i]
+                    if children:
+                        tails[i] = np.mean([bone_joints[c] for c in children], axis=0)
+                    else:
+                        if parents_list[i] is not None:
+                            direction = bone_joints[i] - bone_joints[parents_list[i]]
+                            tails[i] = bone_joints[i] + direction * 0.3
+                        else:
+                            tails[i] = bone_joints[i] + np.array([0, 0.1, 0])
+
+            # Save as RawData NPZ for skinning phase (using bone joints, not all joints)
+            persistent_npz = os.path.join(folder_paths.get_temp_directory(), f"skeleton_{seed}.npz")
+            np.savez(
+                persistent_npz,
+                vertices=mesh_vertices,
+                vertex_normals=vertex_normals,
+                faces=mesh_faces,
+                face_normals=face_normals,
+                joints=bone_joints,  # Only bone head positions (11 joints) for skinning
+                tails=tails,
+                parents=np.array(parents_list, dtype=object),  # Use object dtype to allow None values
+                names=np.array(names_list, dtype=object),
+                skin=None,
+                no_skin=None,
+                matrix_local=None,
+                path=None,
+                cls=None
+            )
+            print(f"[UniRigExtractSkeleton] Saved skeleton NPZ to: {persistent_npz}")
+            print(f"[UniRigExtractSkeleton] Bone data: {len(bone_joints)} joints, {len(tails)} tails")
+
+            # Build skeleton dict with basic data (using ALL joints for visualization)
             skeleton = {
-                "vertices": vertices,
-                "edges": edges,
+                "vertices": all_joints,  # All joint positions (19) for visualization
+                "edges": edges,  # Edges reference all_joints indices
+                "npz_path": persistent_npz,  # Include NPZ path for skinning
             }
 
             # Add hierarchy data if available (for animation-ready export)
             if 'bone_names' in skeleton_data:
-                skeleton['bone_names'] = skeleton_data['bone_names'].tolist()
-                skeleton['bone_parents'] = skeleton_data['bone_parents'].tolist()
-                skeleton['bone_to_head_vertex'] = skeleton_data['bone_to_head_vertex'].tolist()
-                print(f"[UniRigExtractSkeleton] Included hierarchy: {len(skeleton['bone_names'])} bones with parent relationships")
+                skeleton['bone_names'] = names_list
+                skeleton['bone_parents'] = parents_list
+                if 'bone_to_head_vertex' in skeleton_data:
+                    skeleton['bone_to_head_vertex'] = skeleton_data['bone_to_head_vertex'].tolist()
+                print(f"[UniRigExtractSkeleton] Included hierarchy: {len(names_list)} bones with parent relationships")
             else:
                 print(f"[UniRigExtractSkeleton] No hierarchy data in skeleton (edges-only mode)")
 
             total_time = time.time() - total_start
             print(f"[UniRigExtractSkeleton] ✓✓✓ Skeleton extraction complete! ✓✓✓")
             print(f"[UniRigExtractSkeleton] ⏱️  TOTAL TIME: {total_time:.2f}s")
-            return (skeleton,)
+            return (skeleton, normalized_mesh)
 
     def _extract_bones_from_fbx(self, fbx_mesh):
         """
@@ -498,6 +609,8 @@ class UniRigExtractRig:
 
             env = os.environ.copy()
             env['BLENDER_EXE'] = BLENDER_EXE
+            # Set PyOpenGL to use OSMesa for headless rendering (no EGL/X11 needed)
+            env['PYOPENGL_PLATFORM'] = 'osmesa'
             # Ensure HuggingFace cache is set for subprocess
             if UNIRIG_MODELS_DIR:
                 env['HF_HOME'] = str(UNIRIG_MODELS_DIR)
@@ -505,7 +618,7 @@ class UniRigExtractRig:
                 env['HF_HUB_CACHE'] = str(UNIRIG_MODELS_DIR / "hub")
 
             try:
-                result = subprocess.run(skeleton_cmd, cwd=UNIRIG_PATH, env=env, capture_output=True, text=True, timeout=180)
+                result = subprocess.run(skeleton_cmd, cwd=UNIRIG_PATH, env=env, capture_output=True, text=True, timeout=600)  # 10 minutes
                 if result.stdout:
                     print(f"[UniRigExtractRig] Skeleton stdout:\n{result.stdout}")
                 if result.stderr:
@@ -552,7 +665,7 @@ class UniRigExtractRig:
                 print(f"[UniRigExtractRig] ⏱️  Skeleton generated in {skeleton_time:.2f}s")
 
             except subprocess.TimeoutExpired:
-                raise RuntimeError("Skeleton generation timed out (>3 minutes)")
+                raise RuntimeError("Skeleton generation timed out (>10 minutes)")
             except Exception as e:
                 print(f"[UniRigExtractRig] Skeleton error: {e}")
                 raise
@@ -569,7 +682,7 @@ class UniRigExtractRig:
             ]
 
             try:
-                result = subprocess.run(skin_cmd, cwd=UNIRIG_PATH, env=env, capture_output=True, text=True, timeout=180)
+                result = subprocess.run(skin_cmd, cwd=UNIRIG_PATH, env=env, capture_output=True, text=True, timeout=600)  # 10 minutes
                 if result.stdout:
                     print(f"[UniRigExtractRig] Skinning stdout:\n{result.stdout}")
                 if result.stderr:
@@ -596,7 +709,7 @@ class UniRigExtractRig:
                 print(f"[UniRigExtractRig] ⏱️  Skinning generated in {skinning_time:.2f}s")
 
             except subprocess.TimeoutExpired:
-                raise RuntimeError("Skinning generation timed out (>3 minutes)")
+                raise RuntimeError("Skinning generation timed out (>10 minutes)")
             except Exception as e:
                 print(f"[UniRigExtractRig] Skinning error: {e}")
                 raise
@@ -621,6 +734,173 @@ class UniRigExtractRig:
             total_time = time.time() - total_start
             print(f"[UniRigExtractRig] ✓✓✓ Rig extraction complete! ✓✓✓")
             print(f"[UniRigExtractRig] ⏱️  TOTAL TIME: {total_time:.2f}s")
+
+            return (rigged_mesh,)
+
+
+class UniRigApplySkinning:
+    """
+    Apply skinning weights to a mesh using an extracted skeleton.
+
+    This node takes a skeleton (from UniRigExtractSkeleton) and applies
+    skinning weights to create a rigged mesh ready for animation.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "trimesh": ("TRIMESH",),
+                "skeleton": ("SKELETON",),
+            }
+        }
+
+    RETURN_TYPES = ("RIGGED_MESH",)
+    RETURN_NAMES = ("rigged_mesh",)
+    FUNCTION = "apply_skinning"
+    CATEGORY = "UniRig"
+
+    def apply_skinning(self, trimesh, skeleton):
+        """Apply skinning weights to mesh using skeleton."""
+        total_start = time.time()
+        print(f"[UniRigApplySkinning] ⏱️  Starting skinning application...")
+
+        # Check if Blender is available
+        if not BLENDER_EXE or not os.path.exists(BLENDER_EXE):
+            raise RuntimeError(f"Blender not found. Please run install_blender.py or install manually.")
+
+        if not os.path.exists(UNIRIG_PATH):
+            raise RuntimeError(f"UniRig not found at {UNIRIG_PATH}")
+
+        # Get skeleton NPZ path
+        skeleton_npz_path = skeleton.get("npz_path")
+        if not skeleton_npz_path or not os.path.exists(skeleton_npz_path):
+            raise RuntimeError(f"Skeleton NPZ not found: {skeleton_npz_path}. Make sure skeleton was extracted with UniRigExtractSkeleton.")
+
+        print(f"[UniRigApplySkinning] Using skeleton NPZ: {skeleton_npz_path}")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            input_path = os.path.join(tmpdir, "input.glb")
+            output_path = os.path.join(tmpdir, "result_fbx.fbx")
+
+            # Export mesh to GLB
+            step_start = time.time()
+            print(f"[UniRigApplySkinning] Exporting mesh: {len(trimesh.vertices)} vertices, {len(trimesh.faces)} faces")
+            trimesh.export(input_path)
+            export_time = time.time() - step_start
+            print(f"[UniRigApplySkinning] ⏱️  Mesh exported in {export_time:.2f}s")
+
+            # Copy skeleton NPZ to expected location
+            # Skinning expects predict_skeleton.npz in npz_dir/input/ subdirectory
+            # (where "input" matches the input filename without extension)
+            input_subdir = os.path.join(tmpdir, "input")
+            os.makedirs(input_subdir, exist_ok=True)
+            predict_skeleton_path = os.path.join(input_subdir, "predict_skeleton.npz")
+            import shutil
+            shutil.copy(skeleton_npz_path, predict_skeleton_path)
+            print(f"[UniRigApplySkinning] Copied skeleton NPZ to: {predict_skeleton_path}")
+
+            # Run skinning inference
+            step_start = time.time()
+            print(f"[UniRigApplySkinning] Applying skinning weights...")
+            skin_cmd = [
+                sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
+                "--task", os.path.join(UNIRIG_PATH, "configs/task/quick_inference_unirig_skin.yaml"),
+                "--input", input_path,
+                "--output", output_path,
+                "--npz_dir", tmpdir,
+            ]
+
+            env = os.environ.copy()
+            env['BLENDER_EXE'] = BLENDER_EXE
+            # Set PyOpenGL to use OSMesa for headless rendering (no EGL/X11 needed)
+            env['PYOPENGL_PLATFORM'] = 'osmesa'
+            # Ensure HuggingFace cache is set for subprocess
+            if UNIRIG_MODELS_DIR:
+                env['HF_HOME'] = str(UNIRIG_MODELS_DIR)
+                env['TRANSFORMERS_CACHE'] = str(UNIRIG_MODELS_DIR / "transformers")
+                env['HF_HUB_CACHE'] = str(UNIRIG_MODELS_DIR / "hub")
+
+            try:
+                result = subprocess.run(skin_cmd, cwd=UNIRIG_PATH, env=env, capture_output=True, text=True, timeout=600)  # 10 minutes
+                if result.stdout:
+                    print(f"[UniRigApplySkinning] Skinning stdout:\n{result.stdout}")
+                if result.stderr:
+                    print(f"[UniRigApplySkinning] Skinning stderr:\n{result.stderr}")
+
+                if result.returncode != 0:
+                    print(f"[UniRigApplySkinning] ✗ Skinning failed with return code: {result.returncode}")
+                    raise RuntimeError(f"Skinning generation failed with exit code {result.returncode}")
+
+                print(f"[UniRigApplySkinning] ✓ Skinning inference completed successfully")
+
+                # Look for the output FBX in results directory or tmpdir
+                print(f"[UniRigApplySkinning] Looking for FBX output at: {output_path}")
+                if not os.path.exists(output_path):
+                    print(f"[UniRigApplySkinning] FBX not found at primary location")
+                    print(f"[UniRigApplySkinning] Searching alternative paths...")
+
+                    # List all files in tmpdir for debugging
+                    print(f"[UniRigApplySkinning] Contents of {tmpdir}:")
+                    for root, dirs, files in os.walk(tmpdir):
+                        level = root.replace(tmpdir, '').count(os.sep)
+                        indent = ' ' * 2 * level
+                        print(f"{indent}{os.path.basename(root)}/")
+                        subindent = ' ' * 2 * (level + 1)
+                        for file in files:
+                            file_path = os.path.join(root, file)
+                            file_size = os.path.getsize(file_path)
+                            print(f"{subindent}{file} ({file_size} bytes)")
+
+                    alt_paths = [
+                        os.path.join(tmpdir, "results", "result_fbx.fbx"),
+                        os.path.join(tmpdir, "input", "result_fbx.fbx"),
+                        os.path.join(tmpdir, "results", "input", "result_fbx.fbx"),
+                    ]
+
+                    found = False
+                    for alt_path in alt_paths:
+                        print(f"[UniRigApplySkinning] Checking: {alt_path}")
+                        if os.path.exists(alt_path):
+                            print(f"[UniRigApplySkinning] ✓ Found FBX at: {alt_path}")
+                            shutil.copy(alt_path, output_path)
+                            found = True
+                            break
+
+                    if not found:
+                        print(f"[UniRigApplySkinning] ✗ FBX not found in any expected location")
+                        raise RuntimeError(f"Skinned FBX not found: {output_path}")
+                else:
+                    print(f"[UniRigApplySkinning] ✓ Found FBX at primary location: {output_path}")
+
+                skinning_time = time.time() - step_start
+                print(f"[UniRigApplySkinning] ⏱️  Skinning applied in {skinning_time:.2f}s")
+
+            except subprocess.TimeoutExpired:
+                raise RuntimeError("Skinning generation timed out (>10 minutes)")
+            except Exception as e:
+                print(f"[UniRigApplySkinning] Skinning error: {e}")
+                raise
+
+            # Load the rigged mesh (FBX with skeleton and skinning)
+            print(f"[UniRigApplySkinning] Loading rigged mesh from {output_path}...")
+
+            # Return as a rigged mesh dict containing the FBX path and the original mesh
+            rigged_mesh = {
+                "mesh": trimesh,
+                "fbx_path": output_path,
+                "has_skinning": True,
+                "has_skeleton": True,
+            }
+
+            # Copy to a persistent location in the temp directory so it doesn't get deleted
+            persistent_fbx = os.path.join(folder_paths.get_temp_directory(), f"rigged_mesh_skinning_{int(time.time())}.fbx")
+            shutil.copy(output_path, persistent_fbx)
+            rigged_mesh["fbx_path"] = persistent_fbx
+
+            total_time = time.time() - total_start
+            print(f"[UniRigApplySkinning] ✓✓✓ Skinning application complete! ✓✓✓")
+            print(f"[UniRigApplySkinning] ⏱️  TOTAL TIME: {total_time:.2f}s")
 
             return (rigged_mesh,)
 
@@ -865,6 +1145,7 @@ class UniRigSaveRiggedMesh:
 
 NODE_CLASS_MAPPINGS = {
     "UniRigExtractSkeleton": UniRigExtractSkeleton,
+    "UniRigApplySkinning": UniRigApplySkinning,
     "UniRigExtractRig": UniRigExtractRig,
     "UniRigSaveSkeleton": UniRigSaveSkeleton,
     "UniRigSaveRiggedMesh": UniRigSaveRiggedMesh,
@@ -872,7 +1153,8 @@ NODE_CLASS_MAPPINGS = {
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "UniRigExtractSkeleton": "UniRig: Extract Skeleton",
-    "UniRigExtractRig": "UniRig: Extract Full Rig",
+    "UniRigApplySkinning": "UniRig: Apply Skinning",
+    "UniRigExtractRig": "UniRig: Extract Full Rig (All-in-One)",
     "UniRigSaveSkeleton": "UniRig: Save Skeleton",
     "UniRigSaveRiggedMesh": "UniRig: Save Rigged Mesh",
 }

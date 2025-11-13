@@ -251,23 +251,46 @@ class Exporter():
                 "Make sure lib/blender_export_fbx.py exists."
             )
 
-        # Prepare data - convert numpy arrays to plain Python types to avoid numpy version conflicts
+        # Prepare data - convert ALL numpy types to plain Python types to avoid version conflicts
+        # This is critical because Blender's bundled numpy may be older/incompatible
+        def convert_to_python(obj):
+            """Recursively convert numpy types to Python native types"""
+            if obj is None:
+                return None
+            elif isinstance(obj, np.ndarray):
+                return obj.tolist()
+            elif isinstance(obj, (np.integer, np.floating)):
+                return obj.item()  # Convert numpy scalar to Python int/float
+            elif isinstance(obj, list):
+                return [convert_to_python(item) for item in obj]
+            elif isinstance(obj, dict):
+                return {key: convert_to_python(value) for key, value in obj.items()}
+            else:
+                return obj
+
         data = {
-            'joints': joints.tolist() if joints is not None else None,
-            'parents': parents,
-            'names': names,
-            'vertices': vertices.tolist() if vertices is not None else None,
-            'faces': faces.tolist() if faces is not None else None,
-            'skin': skin.tolist() if skin is not None else None,
-            'tails': tails.tolist() if tails is not None else None,
-            'group_per_vertex': group_per_vertex,
-            'do_not_normalize': do_not_normalize,
+            'joints': convert_to_python(joints),
+            'parents': convert_to_python(parents),
+            'names': convert_to_python(names),
+            'vertices': convert_to_python(vertices),
+            'faces': convert_to_python(faces),
+            'skin': convert_to_python(skin),
+            'tails': convert_to_python(tails),
+            'group_per_vertex': int(group_per_vertex) if isinstance(group_per_vertex, (np.integer, np.floating)) else group_per_vertex,
+            'do_not_normalize': bool(do_not_normalize),
         }
+
+        print(f"[Exporter] Prepared FBX export data (all numpy types converted to Python native types)")
+        print(f"[Exporter] Data summary: joints={len(data['joints']) if data['joints'] else 0}, "
+              f"vertices={len(data['vertices']) if data['vertices'] else 0}, "
+              f"faces={len(data['faces']) if data['faces'] else 0}")
 
         # Save to temporary pickle file
         with tempfile.NamedTemporaryFile(mode='wb', suffix='.pkl', delete=False) as f:
             pickle_path = f.name
             pickle.dump(data, f)
+
+        print(f"[Exporter] Saved pickle data to: {pickle_path}")
 
         try:
             # Build command
@@ -313,10 +336,14 @@ class Exporter():
                 print(f"[Exporter] Pickle input was: {pickle_path}")
                 print(f"[Exporter] Wrapper script: {wrapper_script}")
                 raise RuntimeError(f"FBX export completed but output file not found: {path}")
+            else:
+                file_size = os.path.getsize(path)
+                print(f"[Exporter] ✓ FBX export successful: {path} ({file_size} bytes)")
 
         finally:
             # Clean up pickle file
             if os.path.exists(pickle_path):
+                print(f"[Exporter] Cleaning up temporary pickle file: {pickle_path}")
                 os.unlink(pickle_path)
     
     def _export_render(

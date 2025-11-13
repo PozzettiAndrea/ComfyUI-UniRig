@@ -59,7 +59,67 @@ class SkinSystem(L.LightningModule):
         if loss_config is not None:
             assert 'loss_sum' not in loss_config, 'loss cannot be named `loss_sum`'
             assert 'val_loss_sum' not in loss_config, 'loss cannot be named `val_loss_sum`'
-    
+
+    def on_load_checkpoint(self, checkpoint):
+        """
+        Remap checkpoint keys to handle flash_attn vs non-flash_attn compatibility.
+
+        The checkpoint was saved with flash_attn which creates an extra .attn layer:
+        - Checkpoint: model.bone_encoder.attn.0.attention.attn.Wq.weight
+        - Expected:   model.bone_encoder.attn.0.attention.Wq.weight
+
+        This method automatically detects mismatches and remaps keys accordingly.
+        - If checkpoint has flash_attn but model doesn't: removes .attn layer
+        - If checkpoint matches model structure: no remapping needed
+        """
+        state_dict = checkpoint.get('state_dict', {})
+
+        # Check if checkpoint uses flash_attn structure
+        checkpoint_has_flash_attn = any('.attention.attn.Wq' in key for key in state_dict.keys())
+
+        # Check if current model uses flash_attn structure
+        model_state_dict = self.model.state_dict()
+        model_has_flash_attn = any('.attention.attn.Wq' in key for key in model_state_dict.keys())
+
+        # Only remap if there's a mismatch
+        if checkpoint_has_flash_attn and not model_has_flash_attn:
+            print("[SkinSystem] Checkpoint uses flash_attn but model doesn't - remapping keys...")
+            new_state_dict = {}
+
+            for key, value in state_dict.items():
+                # Remap attention layer keys by removing the extra .attn level
+                if '.attention.attn.' in key:
+                    new_key = key.replace('.attention.attn.', '.attention.')
+                    new_state_dict[new_key] = value
+                else:
+                    new_state_dict[key] = value
+
+            checkpoint['state_dict'] = new_state_dict
+            remapped_count = len([k for k in state_dict.keys() if '.attention.attn.' in k])
+            print(f"[SkinSystem] Remapped {remapped_count} keys to match non-flash_attn model structure")
+
+        elif not checkpoint_has_flash_attn and model_has_flash_attn:
+            print("[SkinSystem] Checkpoint doesn't use flash_attn but model does - remapping keys...")
+            new_state_dict = {}
+
+            for key, value in state_dict.items():
+                # Add .attn layer for attention modules
+                if '.attention.Wq' in key or '.attention.Wkv' in key or '.attention.out_proj' in key:
+                    new_key = key.replace('.attention.', '.attention.attn.')
+                    new_state_dict[new_key] = value
+                else:
+                    new_state_dict[key] = value
+
+            checkpoint['state_dict'] = new_state_dict
+            remapped_count = len([k for k in state_dict.keys() if '.attention.Wq' in k or '.attention.Wkv' in k or '.attention.out_proj' in k])
+            print(f"[SkinSystem] Remapped {remapped_count} keys to match flash_attn model structure")
+
+        else:
+            if checkpoint_has_flash_attn and model_has_flash_attn:
+                print("[SkinSystem] Both checkpoint and model use flash_attn - no remapping needed")
+            else:
+                print("[SkinSystem] Both checkpoint and model use standard attention - no remapping needed")
+
     def on_validation_batch_start(self, batch, batch_idx: int, dataloader_idx: int = 0):
         if self.record_res:
             os.makedirs(self.output_path, exist_ok=True)
