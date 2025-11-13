@@ -1,40 +1,9 @@
 {
   "id": "15f6c038-9249-494a-9d33-9030831736fb",
   "revision": 0,
-  "last_node_id": 6,
-  "last_link_id": 8,
+  "last_node_id": 8,
+  "last_link_id": 10,
   "nodes": [
-    {
-      "id": 3,
-      "type": "GeomPackPreviewMeshVTK",
-      "pos": [
-        978.046810723379,
-        -58.46966369969556
-      ],
-      "size": [
-        512,
-        678
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "trimesh",
-          "type": "TRIMESH",
-          "link": 4
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfyui-geometrypack",
-        "ver": "e0d26b95c8e0b72fccc40f27912c41f31f4c2d5d",
-        "Node name for S&R": "GeomPackPreviewMeshVTK"
-      },
-      "widgets_values": [
-        ""
-      ]
-    },
     {
       "id": 2,
       "type": "GeomPackLoadMesh",
@@ -55,7 +24,8 @@
           "name": "mesh",
           "type": "TRIMESH",
           "links": [
-            7
+            7,
+            9
           ]
         }
       ],
@@ -72,15 +42,15 @@
       "id": 5,
       "type": "SkeletonToMesh",
       "pos": [
-        685.2683814751543,
-        -52.73678150011937
+        685.9224081619667,
+        114.27908166739365
       ],
       "size": [
         270,
         82
       ],
       "flags": {},
-      "order": 2,
+      "order": 3,
       "mode": 0,
       "inputs": [
         {
@@ -109,11 +79,114 @@
       ]
     },
     {
+      "id": 3,
+      "type": "GeomPackPreviewMeshVTK",
+      "pos": [
+        979.7337485224676,
+        67.41468666062961
+      ],
+      "size": [
+        512,
+        678
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "trimesh",
+          "type": "TRIMESH",
+          "link": 4
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfyui-geometrypack",
+        "ver": "e0d26b95c8e0b72fccc40f27912c41f31f4c2d5d",
+        "Node name for S&R": "GeomPackPreviewMeshVTK"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 8,
+      "type": "UniRigSaveRiggedMesh",
+      "pos": [
+        842.9790235744331,
+        -146.09119761705819
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "rigged_mesh",
+          "type": "RIGGED_MESH",
+          "link": 10
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "PozzettiAndrea/ComfyUI-UniRig",
+        "ver": "b42cabbe8d1e4e95eb97aa9d8ff349ad49f63f1f",
+        "Node name for S&R": "UniRigSaveRiggedMesh"
+      },
+      "widgets_values": [
+        "rigged_mesh.fbx",
+        "fbx"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "UniRigExtractRig",
+      "pos": [
+        411.08686277677435,
+        -136.0778235155168
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "trimesh",
+          "type": "TRIMESH",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "rigged_mesh",
+          "type": "RIGGED_MESH",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "PozzettiAndrea/ComfyUI-UniRig",
+        "ver": "b42cabbe8d1e4e95eb97aa9d8ff349ad49f63f1f",
+        "Node name for S&R": "UniRigExtractRig"
+      },
+      "widgets_values": [
+        3615692971,
+        "randomize"
+      ]
+    },
+    {
       "id": 6,
       "type": "UniRigExtractSkeleton",
       "pos": [
         386.50899093925216,
-        -52.362407603530144
+        62.110304704137356
       ],
       "size": [
         270,
@@ -144,7 +217,7 @@
         "Node name for S&R": "UniRigExtractSkeleton"
       },
       "widgets_values": [
-        815727495609622,
+        3719751761,
         "randomize",
         "VAST-AI/UniRig"
       ]
@@ -174,6 +247,22 @@
       5,
       0,
       "SKELETON"
+    ],
+    [
+      9,
+      2,
+      0,
+      7,
+      0,
+      "TRIMESH"
+    ],
+    [
+      10,
+      7,
+      0,
+      8,
+      0,
+      "RIGGED_MESH"
     ]
   ],
   "groups": [],
@@ -182,8 +271,8 @@
     "ds": {
       "scale": 0.8660292636689776,
       "offset": [
-        129.4413859648604,
-        369.1323399355835
+        226.07946710248507,
+        334.7981941423699
       ]
     },
     "frontendVersion": "1.28.8"

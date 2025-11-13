@@ -4,6 +4,9 @@ llm:
   n_positions: 3076
   max_position_embeddings: 3076
   hidden_size: 1024
+  num_attention_heads: 16
+  num_hidden_layers: 24
+  ffn_dim: 4096
   word_embed_proj_dim: 1024
   do_layer_norm_before: True
   _attn_implementation: flash_attention_2
