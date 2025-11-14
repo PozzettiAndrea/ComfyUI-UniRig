@@ -8,6 +8,31 @@ dependencies that require special handling (torch-cluster, torch-scatter, spconv
 import subprocess
 import sys
 import os
+from pathlib import Path
+
+def install_requirements():
+    """Install basic requirements from requirements.txt."""
+    requirements_file = Path(__file__).parent / "requirements.txt"
+
+    if not requirements_file.exists():
+        print(f"[UniRig Install] Warning: requirements.txt not found at {requirements_file}")
+        return True
+
+    print(f"[UniRig Install] Installing basic dependencies from requirements.txt...")
+
+    cmd = [
+        sys.executable, "-m", "pip", "install",
+        "-r", str(requirements_file)
+    ]
+
+    try:
+        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+        print("[UniRig Install] ✓ Basic dependencies installed successfully")
+        return True
+    except subprocess.CalledProcessError as e:
+        print("[UniRig Install] ✗ Failed to install basic dependencies")
+        print(f"[UniRig Install] Error: {e.stderr}")
+        return False
 
 def get_torch_info():
     """Get PyTorch and CUDA versions."""
@@ -164,8 +189,15 @@ def install_flash_attn():
 def main():
     """Main installation routine."""
     print("=" * 60)
-    print("ComfyUI-UniRig: Installing special dependencies")
+    print("ComfyUI-UniRig: Installing dependencies")
     print("=" * 60)
+
+    # Install basic requirements first (trimesh, numpy, etc.)
+    if not install_requirements():
+        print("[UniRig Install] Failed to install basic requirements")
+        print("[UniRig Install] You may need to install manually:")
+        print("[UniRig Install]   pip install -r requirements.txt")
+        sys.exit(1)
 
     # Get PyTorch info
     torch_version, cuda_suffix = get_torch_info()

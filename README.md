@@ -2,6 +2,7 @@
 
 Automatic skeleton extraction for ComfyUI using UniRig (SIGGRAPH 2025). Self-contained with bundled Blender and UniRig code.
 
+![Skeleton](docs/skeleton.png)
 ## Installation
 
 ### Via ComfyUI Manager (Recommended)
