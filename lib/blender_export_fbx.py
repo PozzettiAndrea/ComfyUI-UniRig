@@ -68,6 +68,22 @@ try:
         print(f"[Blender FBX Export] Found mesh with {len(vertices)} vertices")
     if skin is not None:
         print(f"[Blender FBX Export] Skin weights shape: {skin.shape}")
+
+    # DEBUG: Show bounds of what Blender is receiving
+    print(f"[Blender FBX Export] DEBUG - Joints bounds: {joints.min(axis=0)} to {joints.max(axis=0)}")
+    if tails is not None:
+        print(f"[Blender FBX Export] DEBUG - Tails bounds: {tails.min(axis=0)} to {tails.max(axis=0)}")
+    if vertices is not None:
+        print(f"[Blender FBX Export] DEBUG - Mesh vertices bounds: {vertices.min(axis=0)} to {vertices.max(axis=0)}")
+
+        # Debug: Y position of vertex with highest Z value
+        max_z_idx = vertices[:, 2].argmax()
+        max_z_vertex = vertices[max_z_idx]
+        print(f"[Blender FBX Export] DEBUG - Mesh vertex with max Z: position={max_z_vertex}, Z={max_z_vertex[2]:.6f}, Y={max_z_vertex[1]:.6f}")
+
+    max_z_joint_idx = joints[:, 2].argmax()
+    max_z_joint = joints[max_z_joint_idx]
+    print(f"[Blender FBX Export] DEBUG - Skeleton joint with max Z: position={max_z_joint}, Z={max_z_joint[2]:.6f}, Y={max_z_joint[1]:.6f}")
 except Exception as e:
     print(f"[Blender FBX Export] Failed to load pickle: {e}")
     import traceback

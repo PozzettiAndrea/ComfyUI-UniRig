@@ -147,8 +147,8 @@ class UniRigExtractSkeleton:
             }
         }
 
-    RETURN_TYPES = ("SKELETON", "TRIMESH")
-    RETURN_NAMES = ("skeleton", "normalized_mesh")
+    RETURN_TYPES = ("TRIMESH", "SKELETON")
+    RETURN_NAMES = ("normalized_mesh", "skeleton")
     FUNCTION = "extract"
     CATEGORY = "UniRig"
 
@@ -347,50 +347,52 @@ class UniRigExtractSkeleton:
             print(f"[UniRigExtractSkeleton] Loading skeleton data from NPZ...")
             skeleton_data = np.load(skeleton_npz, allow_pickle=True)
             print(f"[UniRigExtractSkeleton] NPZ contains keys: {list(skeleton_data.keys())}")
-            all_joints = skeleton_data['vertices']  # All joint positions (for visualization)
+            all_joints = skeleton_data['vertices']  # All joint positions (already normalized by UniRig)
             edges = skeleton_data['edges']
 
             print(f"[UniRigExtractSkeleton] Extracted {len(all_joints)} joints, {len(edges)} bones")
-
-            # Normalize all joints to [-1, 1] and save normalization params
-            all_joints, skeleton_norm_params = normalize_skeleton(all_joints)
-            print(f"[UniRigExtractSkeleton] Normalized to range [{all_joints.min():.3f}, {all_joints.max():.3f}]")
-            print(f"[UniRigExtractSkeleton] Normalization scale: {skeleton_norm_params['scale']:.4f}, center: {skeleton_norm_params['center']}")
+            print(f"[UniRigExtractSkeleton] Skeleton already normalized by UniRig to range [{all_joints.min():.3f}, {all_joints.max():.3f}]")
 
             # Transform skeleton data to RawData format for skinning compatibility
             # Load the preprocessing data which contains mesh vertices/faces/normals
             preprocess_npz = os.path.join(tmpdir, "input", "raw_data.npz")
             if os.path.exists(preprocess_npz):
                 preprocess_data = np.load(preprocess_npz, allow_pickle=True)
-                mesh_vertices = preprocess_data['vertices']
+                mesh_vertices_original = preprocess_data['vertices']
                 mesh_faces = preprocess_data['faces']
                 vertex_normals = preprocess_data.get('vertex_normals', None)
                 face_normals = preprocess_data.get('face_normals', None)
             else:
                 # Fallback: use trimesh data
-                mesh_vertices = np.array(trimesh.vertices, dtype=np.float32)
+                mesh_vertices_original = np.array(trimesh.vertices, dtype=np.float32)
                 mesh_faces = np.array(trimesh.faces, dtype=np.int32)
                 vertex_normals = np.array(trimesh.vertex_normals, dtype=np.float32) if hasattr(trimesh, 'vertex_normals') else None
                 face_normals = np.array(trimesh.face_normals, dtype=np.float32) if hasattr(trimesh, 'face_normals') else None
 
-            # Calculate mesh bounds for denormalization
-            mesh_bounds_min = mesh_vertices.min(axis=0)
-            mesh_bounds_max = mesh_vertices.max(axis=0)
+            # Normalize mesh to [-1, 1] using mesh bounds (matching what UniRig did during inference)
+            # The skeleton from UniRig is already normalized using this same transform
+            # This ensures mesh and skeleton share the same coordinate space
+            mesh_bounds_min = mesh_vertices_original.min(axis=0)
+            mesh_bounds_max = mesh_vertices_original.max(axis=0)
             mesh_center = (mesh_bounds_min + mesh_bounds_max) / 2
             mesh_extents = mesh_bounds_max - mesh_bounds_min
-            mesh_scale = mesh_extents.max() / 2  # Same calculation as normalize_skeleton
+            mesh_scale = mesh_extents.max() / 2  # Max extent over 2 gives [-1, 1] range
 
-            print(f"[UniRigExtractSkeleton] Mesh bounds: min={mesh_bounds_min}, max={mesh_bounds_max}")
+            # Normalize mesh vertices to [-1, 1]
+            mesh_vertices = (mesh_vertices_original - mesh_center) / mesh_scale
+
+            print(f"[UniRigExtractSkeleton] Original mesh bounds: min={mesh_bounds_min}, max={mesh_bounds_max}")
             print(f"[UniRigExtractSkeleton] Mesh scale: {mesh_scale:.4f}, extents: {mesh_extents}")
+            print(f"[UniRigExtractSkeleton] Normalized mesh bounds: min={mesh_vertices.min(axis=0)}, max={mesh_vertices.max(axis=0)}")
 
             # Create trimesh object from normalized mesh data
-            # This is the preprocessed/decimated mesh that was used for skeleton extraction
+            # This is the preprocessed/decimated mesh, normalized to [-1, 1] (matching skeleton space)
             normalized_mesh = Trimesh(
                 vertices=mesh_vertices,
                 faces=mesh_faces,
                 process=True
             )
-            print(f"[UniRigExtractSkeleton] Created normalized mesh: {len(mesh_vertices)} vertices, {len(mesh_faces)} faces")
+            print(f"[UniRigExtractSkeleton] Created normalized mesh (matching skeleton normalization): {len(mesh_vertices)} vertices, {len(mesh_faces)} faces")
 
             # Build parents list from bone_parents (convert -1 to None)
             if 'bone_parents' in skeleton_data:
@@ -478,6 +480,18 @@ class UniRigExtractSkeleton:
             )
             print(f"[UniRigExtractSkeleton] Saved skeleton NPZ to: {persistent_npz}")
             print(f"[UniRigExtractSkeleton] Bone data: {len(bone_joints)} joints, {len(tails)} tails")
+            print(f"[UniRigExtractSkeleton] DEBUG - Mesh vertices (NORMALIZED) bounds: {mesh_vertices.min(axis=0)} to {mesh_vertices.max(axis=0)}")
+            print(f"[UniRigExtractSkeleton] DEBUG - Skeleton joints (NORMALIZED) bounds: {bone_joints.min(axis=0)} to {bone_joints.max(axis=0)}")
+            print(f"[UniRigExtractSkeleton] DEBUG - Skeleton tails (NORMALIZED) bounds: {tails.min(axis=0)} to {tails.max(axis=0)}")
+
+            # Debug: Y position of vertex with highest Z value
+            max_z_idx = mesh_vertices[:, 2].argmax()
+            max_z_vertex = mesh_vertices[max_z_idx]
+            print(f"[UniRigExtractSkeleton] DEBUG - Mesh vertex with max Z: position={max_z_vertex}, Z={max_z_vertex[2]:.6f}, Y={max_z_vertex[1]:.6f}")
+
+            max_z_joint_idx = bone_joints[:, 2].argmax()
+            max_z_joint = bone_joints[max_z_joint_idx]
+            print(f"[UniRigExtractSkeleton] DEBUG - Skeleton joint with max Z: position={max_z_joint}, Z={max_z_joint[2]:.6f}, Y={max_z_joint[1]:.6f}")
 
             # Build skeleton dict with ALL data (no need to load NPZ later)
             skeleton = {
@@ -519,7 +533,7 @@ class UniRigExtractSkeleton:
             total_time = time.time() - total_start
             print(f"[UniRigExtractSkeleton] ✓✓✓ Skeleton extraction complete! ✓✓✓")
             print(f"[UniRigExtractSkeleton] ⏱️  TOTAL TIME: {total_time:.2f}s")
-            return (skeleton, normalized_mesh)
+            return (normalized_mesh, skeleton)
 
     def _extract_bones_from_fbx(self, fbx_mesh):
         """
@@ -1610,6 +1624,13 @@ class UniRigDenormalizeSkeleton:
         print(f"  Mesh scale: {mesh_scale}")
         print(f"  Joint extents before: {joints_normalized.min(axis=0)} to {joints_normalized.max(axis=0)}")
         print(f"  Joint extents after: {joints_denormalized.min(axis=0)} to {joints_denormalized.max(axis=0)}")
+        print(f"  Tail extents before: {tails_normalized.min(axis=0)} to {tails_normalized.max(axis=0)}")
+        print(f"  Tail extents after: {tails_denormalized.min(axis=0)} to {tails_denormalized.max(axis=0)}")
+
+        # DEBUG: Check mesh vertices if present
+        if 'mesh_vertices' in skeleton and skeleton['mesh_vertices'] is not None:
+            mesh_verts = np.array(skeleton['mesh_vertices'])
+            print(f"  DEBUG - Mesh vertices in skeleton (NORMALIZED, should match skeleton normalization): {mesh_verts.min(axis=0)} to {mesh_verts.max(axis=0)}")
 
         # Create denormalized skeleton dict (update existing dict)
         denormalized_skeleton = {
@@ -1781,7 +1802,7 @@ class UniRigApplySkinningML:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "mesh": ("TRIMESH",),
+                "normalized_mesh": ("TRIMESH",),
                 "skeleton": ("SKELETON",),
             }
         }
@@ -1790,7 +1811,7 @@ class UniRigApplySkinningML:
     FUNCTION = "apply_skinning"
     CATEGORY = "UniRig"
 
-    def apply_skinning(self, mesh, skeleton):
+    def apply_skinning(self, normalized_mesh, skeleton):
         print(f"[UniRigApplySkinningML] ⏱️  Starting ML skinning...")
 
         # Create temporary directory
@@ -1828,11 +1849,18 @@ class UniRigApplySkinningML:
         np.savez(predict_skeleton_path, **save_data)
         print(f"[UniRigApplySkinningML] Prepared skeleton NPZ: {predict_skeleton_path}")
 
+        # DEBUG: Show what we're sending to ML
+        print(f"[UniRigApplySkinningML] DEBUG - NPZ joints bounds: {save_data['joints'].min(axis=0)} to {save_data['joints'].max(axis=0)}")
+        print(f"[UniRigApplySkinningML] DEBUG - NPZ tails bounds: {save_data['tails'].min(axis=0)} to {save_data['tails'].max(axis=0)}")
+        if 'vertices' in save_data and save_data['vertices'] is not None:
+            print(f"[UniRigApplySkinningML] DEBUG - NPZ mesh vertices bounds: {np.array(save_data['vertices']).min(axis=0)} to {np.array(save_data['vertices']).max(axis=0)}")
+
         # Export mesh to GLB
         input_glb = os.path.join(temp_dir, "input.glb")
 
-        mesh.export(input_glb)
-        print(f"[UniRigApplySkinningML] Exported mesh: {mesh.vertices.shape[0]} vertices, {mesh.faces.shape[0]} faces")
+        normalized_mesh.export(input_glb)
+        print(f"[UniRigApplySkinningML] Exported mesh: {normalized_mesh.vertices.shape[0]} vertices, {normalized_mesh.faces.shape[0]} faces")
+        print(f"[UniRigApplySkinningML] DEBUG - GLB mesh bounds: {normalized_mesh.vertices.min(axis=0)} to {normalized_mesh.vertices.max(axis=0)}")
 
         # Run skinning inference
         print(f"[UniRigApplySkinningML] Running skinning inference...")

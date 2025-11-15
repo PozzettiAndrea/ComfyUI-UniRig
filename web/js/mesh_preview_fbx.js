@@ -23,10 +23,10 @@ app.registerExtension({
                 // Create iframe for FBX viewer
                 const iframe = document.createElement("iframe");
                 iframe.style.width = "100%";
-                iframe.style.height = "100%";
+                iframe.style.flex = "1 1 0";
+                iframe.style.minHeight = "0";
                 iframe.style.border = "none";
                 iframe.style.backgroundColor = "#2a2a2a";
-                iframe.style.aspectRatio = "1";
 
                 // Point to our FBX viewer HTML (with cache buster)
                 iframe.src = "/extensions/ComfyUI-UniRig/viewer_fbx.html?v=" + Date.now();
@@ -39,10 +39,11 @@ app.registerExtension({
 
                 console.log("[UniRig] Widget created:", widget);
 
-                // Set widget size
+                // Set widget size - allow flexible height
                 widget.computeSize = function(width) {
-                    const size = [width || 512, width || 512];
-                    return size;
+                    const w = width || 512;
+                    const h = w * 1.25;  // Taller than wide to accommodate controls
+                    return [w, h];
                 };
 
                 widget.element = iframe;
@@ -50,8 +51,8 @@ app.registerExtension({
                 // Store iframe reference
                 this.fbxViewerIframe = iframe;
 
-                // Set initial node size to be square
-                this.setSize([512, 512]);
+                // Set initial node size (taller to accommodate controls)
+                this.setSize([512, 640]);
 
                 // Handle execution
                 const onExecuted = this.onExecuted;

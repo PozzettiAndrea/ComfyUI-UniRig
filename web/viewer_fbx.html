@@ -5,10 +5,18 @@
     <title>UniRig FBX Viewer</title>
     <style>
         body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
             margin: 0;
             overflow: hidden;
             background: #2a2a2a;
             font-family: monospace;
+        }
+        #viewerContainer {
+            flex: 1;
+            position: relative;
+            min-height: 0;
         }
         #canvas {
             width: 100%;
@@ -25,27 +33,25 @@
             text-align: center;
         }
         #controls {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            border-radius: 5px;
+            background: #1a1a1a;
+            border-top: 1px solid #444;
+            padding: 12px;
             color: white;
             font-size: 12px;
-            max-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
         #controls button {
             background: #4a4a4a;
             color: white;
             border: none;
             padding: 8px 12px;
-            margin: 5px 0;
             border-radius: 3px;
             cursor: pointer;
-            width: 100%;
             font-family: monospace;
             font-size: 12px;
+            white-space: nowrap;
         }
         #controls button:hover {
             background: #5a5a5a;
@@ -54,12 +60,10 @@
             background: #3a3a3a;
         }
         .control-group {
-            margin: 10px 0;
-            padding: 8px 0;
-            border-top: 1px solid #444;
-        }
-        .control-group:first-child {
-            border-top: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
         }
         .checkbox-label {
             display: flex;
@@ -79,8 +83,11 @@
     </style>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-    <div id="loading">Ready to load rigged mesh</div>
+    <div id="viewerContainer">
+        <canvas id="canvas"></canvas>
+        <div id="loading">Ready to load rigged mesh</div>
+    </div>
+
     <div id="controls">
         <div><strong>UniRig FBX Viewer</strong></div>
 
@@ -104,14 +111,34 @@
             <button id="resetCamera">Reset Camera</button>
         </div>
 
+        <div class="control-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="showGrid" checked>
+                <span>Show Grid</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="showAxes" checked>
+                <span>Show Axes</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="wireframeMode">
+                <span>Wireframe Mode</span>
+            </label>
+        </div>
+
+        <div class="control-group">
+            <button id="takeScreenshot">Take Screenshot</button>
+            <button id="exportGLB">Export GLB (Current Pose)</button>
+        </div>
+
         <div id="status">No mesh loaded</div>
     </div>
 
     <script type="importmap">
     {
         "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            "three": "/extensions/ComfyUI-UniRig/lib/three/three.module.js",
+            "three/addons/": "/extensions/ComfyUI-UniRig/lib/three/examples/jsm/"
         }
     }
     </script>
@@ -121,6 +148,7 @@
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
         import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
         import { TransformControls } from 'three/addons/controls/TransformControls.js';
+        import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
 
         console.log('[UniRig FBX Viewer] Initializing...');
 
@@ -145,6 +173,9 @@
         const controls = new OrbitControls(camera, canvas);
         controls.enableDamping = true;
         controls.dampingFactor = 0.05;
+        controls.zoomSpeed = 3.0;          // 3x faster zoom
+        controls.minDistance = 0.1;        // Allow close zoom
+        controls.zoomToCursor = true;      // Zoom towards cursor position
 
         // Transform controls for bone manipulation
         const transformControls = new TransformControls(camera, canvas);
@@ -383,7 +414,7 @@
                                     depthTest: document.getElementById('xraySkeleton').checked ? false : true
                                 });
 
-                                scene.add(skeletonHelper);
+                                currentModel.add(skeletonHelper);
 
                                 // Store bones for manipulation
                                 bones = child.skeleton.bones;
@@ -431,6 +462,9 @@
                     camera.lookAt(0, 0, 0);
                     controls.target.set(0, 0, 0);
                     controls.update();
+
+                    // Set maxDistance dynamically based on model size (allow zooming out well beyond initial position)
+                    controls.maxDistance = maxDim * 10;
 
                     console.log('[UniRig FBX Viewer] Mesh size:', maxDim.toFixed(2), 'Grid size:', gridSize, 'Camera distance:', distance.toFixed(2));
 
@@ -555,6 +589,126 @@
 
         document.getElementById('resetPose').addEventListener('click', resetToRestPose);
         document.getElementById('resetCamera').addEventListener('click', resetCamera);
+
+        // Grid toggle
+        document.getElementById('showGrid').addEventListener('change', (e) => {
+            if (grid) {
+                grid.visible = e.target.checked;
+            }
+        });
+
+        // Axes toggle
+        document.getElementById('showAxes').addEventListener('change', (e) => {
+            if (axes) {
+                axes.visible = e.target.checked;
+            }
+        });
+
+        // Wireframe mode toggle
+        document.getElementById('wireframeMode').addEventListener('change', (e) => {
+            if (currentModel) {
+                currentModel.traverse((child) => {
+                    if (child.isMesh) {
+                        if (Array.isArray(child.material)) {
+                            child.material.forEach(mat => mat.wireframe = e.target.checked);
+                        } else {
+                            child.material.wireframe = e.target.checked;
+                        }
+                    }
+                });
+            }
+        });
+
+        // Screenshot button
+        document.getElementById('takeScreenshot').addEventListener('click', async () => {
+            try {
+                statusEl.textContent = 'Taking screenshot...';
+
+                // Capture canvas
+                const dataURL = canvas.toDataURL('image/png');
+                const blob = await (await fetch(dataURL)).blob();
+
+                // Create filename with timestamp
+                const filename = `fbx_screenshot_${Date.now()}.png`;
+
+                // Upload to ComfyUI output directory
+                const formData = new FormData();
+                formData.append('image', blob, filename);
+                formData.append('type', 'output');
+                formData.append('subfolder', '');
+
+                const response = await fetch('/upload/image', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    statusEl.textContent = `Screenshot saved: ${filename}`;
+                    console.log('[UniRig FBX Viewer] Screenshot saved:', filename);
+                } else {
+                    statusEl.textContent = 'Screenshot failed';
+                    console.error('[UniRig FBX Viewer] Screenshot upload failed');
+                }
+            } catch (error) {
+                statusEl.textContent = 'Screenshot error';
+                console.error('[UniRig FBX Viewer] Screenshot error:', error);
+            }
+        });
+
+        // Export GLB button
+        document.getElementById('exportGLB').addEventListener('click', async () => {
+            try {
+                statusEl.textContent = 'Exporting GLB...';
+
+                if (!currentModel) {
+                    statusEl.textContent = 'No model to export';
+                    return;
+                }
+
+                // Create GLTFExporter instance
+                const exporter = new GLTFExporter();
+
+                // Export the current model with current bone positions
+                exporter.parse(
+                    currentModel,  // The scene/object to export
+                    async (gltf) => {
+                        // Convert to blob
+                        const blob = new Blob([gltf], { type: 'application/octet-stream' });
+
+                        // Create filename with timestamp
+                        const filename = `fbx_export_${Date.now()}.glb`;
+
+                        // Upload to ComfyUI output directory
+                        const formData = new FormData();
+                        formData.append('image', blob, filename);
+                        formData.append('type', 'output');
+                        formData.append('subfolder', '');
+
+                        const response = await fetch('/upload/image', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        if (response.ok) {
+                            statusEl.textContent = `GLB saved: ${filename}`;
+                            console.log('[UniRig FBX Viewer] GLB exported:', filename);
+                        } else {
+                            statusEl.textContent = 'GLB export failed';
+                            console.error('[UniRig FBX Viewer] GLB export upload failed');
+                        }
+                    },
+                    (error) => {
+                        console.error('[UniRig FBX Viewer] GLB export error:', error);
+                        statusEl.textContent = 'GLB export error';
+                    },
+                    { binary: true }  // Export as binary GLB format
+                );
+
+            } catch (error) {
+                statusEl.textContent = 'GLB export error';
+                console.error('[UniRig FBX Viewer] GLB export error:', error);
+            }
+        });
 
         // Listen for messages from parent window
         window.addEventListener('message', (event) => {
