@@ -40,10 +40,5 @@ lib/blender/
 checkpoints/
 
 # Test and data files
-*.npz
-*.fbx
-*.glb
-*.obj
-*.stl
 test_*.py
 /tmp/

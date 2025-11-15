@@ -15,6 +15,8 @@ from trimesh import Trimesh
 from pathlib import Path
 import folder_paths
 import time
+import shutil
+import glob
 
 
 # Get paths relative to this file
@@ -23,6 +25,7 @@ LIB_DIR = NODE_DIR / "lib"
 UNIRIG_PATH = str(LIB_DIR / "unirig")
 BLENDER_SCRIPT = str(LIB_DIR / "blender_extract.py")
 BLENDER_PARSE_SKELETON = str(LIB_DIR / "blender_parse_skeleton.py")
+BLENDER_EXTRACT_MESH_INFO = str(LIB_DIR / "blender_extract_mesh_info.py")
 
 # Set up UniRig models directory in ComfyUI's models folder
 # IMPORTANT: This must happen BEFORE any HuggingFace imports
@@ -91,16 +94,33 @@ if UNIRIG_PATH not in sys.path:
     sys.path.insert(0, UNIRIG_PATH)
 
 
-def normalize_skeleton(vertices: np.ndarray) -> np.ndarray:
-    """Normalize skeleton vertices to [-1, 1] range."""
+def normalize_skeleton(vertices: np.ndarray) -> tuple:
+    """
+    Normalize skeleton vertices to [-1, 1] range.
+
+    Returns:
+        tuple: (normalized_vertices, normalization_params)
+            normalization_params contains 'center' and 'scale' for denormalization
+    """
     min_coords = vertices.min(axis=0)
     max_coords = vertices.max(axis=0)
     center = (min_coords + max_coords) / 2
-    vertices = vertices - center
+    vertices_centered = vertices - center
     scale = (max_coords - min_coords).max() / 2
+
     if scale > 0:
-        vertices = vertices / scale
-    return vertices
+        vertices_normalized = vertices_centered / scale
+    else:
+        vertices_normalized = vertices_centered
+
+    normalization_params = {
+        'center': center,
+        'scale': scale,
+        'min_coords': min_coords,
+        'max_coords': max_coords
+    }
+
+    return vertices_normalized, normalization_params
 
 
 class UniRigExtractSkeleton:
@@ -332,9 +352,10 @@ class UniRigExtractSkeleton:
 
             print(f"[UniRigExtractSkeleton] Extracted {len(all_joints)} joints, {len(edges)} bones")
 
-            # Normalize all joints to [-1, 1]
-            all_joints = normalize_skeleton(all_joints)
+            # Normalize all joints to [-1, 1] and save normalization params
+            all_joints, skeleton_norm_params = normalize_skeleton(all_joints)
             print(f"[UniRigExtractSkeleton] Normalized to range [{all_joints.min():.3f}, {all_joints.max():.3f}]")
+            print(f"[UniRigExtractSkeleton] Normalization scale: {skeleton_norm_params['scale']:.4f}, center: {skeleton_norm_params['center']}")
 
             # Transform skeleton data to RawData format for skinning compatibility
             # Load the preprocessing data which contains mesh vertices/faces/normals
@@ -351,6 +372,16 @@ class UniRigExtractSkeleton:
                 mesh_faces = np.array(trimesh.faces, dtype=np.int32)
                 vertex_normals = np.array(trimesh.vertex_normals, dtype=np.float32) if hasattr(trimesh, 'vertex_normals') else None
                 face_normals = np.array(trimesh.face_normals, dtype=np.float32) if hasattr(trimesh, 'face_normals') else None
+
+            # Calculate mesh bounds for denormalization
+            mesh_bounds_min = mesh_vertices.min(axis=0)
+            mesh_bounds_max = mesh_vertices.max(axis=0)
+            mesh_center = (mesh_bounds_min + mesh_bounds_max) / 2
+            mesh_extents = mesh_bounds_max - mesh_bounds_min
+            mesh_scale = mesh_extents.max() / 2  # Same calculation as normalize_skeleton
+
+            print(f"[UniRigExtractSkeleton] Mesh bounds: min={mesh_bounds_min}, max={mesh_bounds_max}")
+            print(f"[UniRigExtractSkeleton] Mesh scale: {mesh_scale:.4f}, extents: {mesh_extents}")
 
             # Create trimesh object from normalized mesh data
             # This is the preprocessed/decimated mesh that was used for skeleton extraction
@@ -429,10 +460,16 @@ class UniRigExtractSkeleton:
                 vertex_normals=vertex_normals,
                 faces=mesh_faces,
                 face_normals=face_normals,
-                joints=bone_joints,  # Only bone head positions (11 joints) for skinning
+                joints=bone_joints,  # Only bone head positions (normalized) for skinning
                 tails=tails,
                 parents=np.array(parents_list, dtype=object),  # Use object dtype to allow None values
                 names=np.array(names_list, dtype=object),
+                # Mesh bounds for denormalization
+                mesh_bounds_min=mesh_bounds_min,
+                mesh_bounds_max=mesh_bounds_max,
+                mesh_center=mesh_center,
+                mesh_scale=mesh_scale,
+                # Legacy fields (for compatibility)
                 skin=None,
                 no_skin=None,
                 matrix_local=None,
@@ -447,6 +484,10 @@ class UniRigExtractSkeleton:
                 "vertices": all_joints,  # All joint positions (19) for visualization
                 "edges": edges,  # Edges reference all_joints indices
                 "npz_path": persistent_npz,  # Include NPZ path for skinning
+                "mesh_bounds_min": mesh_bounds_min,  # For denormalization
+                "mesh_bounds_max": mesh_bounds_max,  # For denormalization
+                "mesh_center": mesh_center,  # For denormalization
+                "mesh_scale": mesh_scale,  # For denormalization
             }
 
             # Add hierarchy data if available (for animation-ready export)
@@ -790,15 +831,59 @@ class UniRigApplySkinning:
             export_time = time.time() - step_start
             print(f"[UniRigApplySkinning] ⏱️  Mesh exported in {export_time:.2f}s")
 
-            # Copy skeleton NPZ to expected location
+            # Denormalize skeleton and save to expected location
             # Skinning expects predict_skeleton.npz in npz_dir/input/ subdirectory
             # (where "input" matches the input filename without extension)
             input_subdir = os.path.join(tmpdir, "input")
             os.makedirs(input_subdir, exist_ok=True)
             predict_skeleton_path = os.path.join(input_subdir, "predict_skeleton.npz")
-            import shutil
-            shutil.copy(skeleton_npz_path, predict_skeleton_path)
-            print(f"[UniRigApplySkinning] Copied skeleton NPZ to: {predict_skeleton_path}")
+
+            # Load normalized skeleton
+            print(f"[UniRigApplySkinning] Loading and denormalizing skeleton...")
+            skeleton_data = np.load(skeleton_npz_path, allow_pickle=True)
+
+            # Get mesh bounds for denormalization
+            mesh_center = skeleton.get("mesh_center")
+            mesh_scale = skeleton.get("mesh_scale")
+
+            if mesh_center is None or mesh_scale is None:
+                print(f"[UniRigApplySkinning] WARNING: Missing mesh bounds in skeleton, using normalized coordinates")
+                import shutil
+                shutil.copy(skeleton_npz_path, predict_skeleton_path)
+            else:
+                # Denormalize joint positions
+                joints_normalized = skeleton_data['bone_to_head_vertex']
+                joints_denormalized = joints_normalized * mesh_scale + mesh_center
+
+                # Denormalize tail positions
+                tails_normalized = skeleton_data['tails']
+                tails_denormalized = tails_normalized * mesh_scale + mesh_center
+
+                print(f"[UniRigApplySkinning] Denormalization:")
+                print(f"  Mesh center: {mesh_center}")
+                print(f"  Mesh scale: {mesh_scale}")
+                print(f"  Joint extents before: {joints_normalized.min(axis=0)} to {joints_normalized.max(axis=0)}")
+                print(f"  Joint extents after: {joints_denormalized.min(axis=0)} to {joints_denormalized.max(axis=0)}")
+
+                # Save denormalized skeleton
+                save_data = {
+                    'bone_names': skeleton_data['bone_names'],
+                    'bone_parents': skeleton_data['bone_parents'],
+                    'bone_to_head_vertex': joints_denormalized,
+                    'tails': tails_denormalized,
+                }
+
+                # Copy optional fields
+                if 'matrix_local' in skeleton_data:
+                    save_data['matrix_local'] = skeleton_data['matrix_local']
+                if 'path' in skeleton_data:
+                    save_data['path'] = skeleton_data['path']
+                if 'cls' in skeleton_data:
+                    save_data['cls'] = skeleton_data['cls']
+
+                np.savez(predict_skeleton_path, **save_data)
+
+            print(f"[UniRigApplySkinning] Saved denormalized skeleton to: {predict_skeleton_path}")
 
             # Run skinning inference
             step_start = time.time()
@@ -990,8 +1075,20 @@ class UniRigSaveSkeleton:
         bone_to_head_vertex = skeleton['bone_to_head_vertex']
 
         # Denormalize vertices (they're in [-1, 1] range)
-        # Scale up to reasonable size (e.g., 1 meter = 1 unit)
-        vertices_denorm = vertices.copy()
+        # Use mesh bounds from skeleton to restore original scale
+        mesh_center = skeleton.get('mesh_center')
+        mesh_scale = skeleton.get('mesh_scale')
+
+        if mesh_center is not None and mesh_scale is not None:
+            vertices_denorm = vertices * mesh_scale + mesh_center
+            print(f"[UniRigSaveSkeleton] Denormalizing skeleton:")
+            print(f"  Mesh center: {mesh_center}")
+            print(f"  Mesh scale: {mesh_scale}")
+            print(f"  Vertices before: {vertices.min(axis=0)} to {vertices.max(axis=0)}")
+            print(f"  Vertices after: {vertices_denorm.min(axis=0)} to {vertices_denorm.max(axis=0)}")
+        else:
+            print(f"[UniRigSaveSkeleton] WARNING: Missing mesh bounds, skeleton may be incorrectly scaled")
+            vertices_denorm = vertices.copy()
 
         # Reconstruct joint positions for each bone
         # bone_to_head_vertex maps bone index to the vertex index of its head
@@ -1143,12 +1240,320 @@ class UniRigSaveRiggedMesh:
         return {}
 
 
+class UniRigLoadRiggedMesh:
+    """
+    Load a rigged FBX file from disk.
+
+    Loads existing FBX files with rigging/skeleton data, allowing you to
+    preview and work with pre-rigged models.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        # Get list of FBX files from input directory
+        input_dir = folder_paths.get_input_directory()
+        fbx_files = []
+
+        # Search for FBX files in input directory and subdirectories
+        for root, dirs, files in os.walk(input_dir):
+            for file in files:
+                if file.lower().endswith('.fbx'):
+                    # Get relative path from input directory
+                    rel_path = os.path.relpath(os.path.join(root, file), input_dir)
+                    fbx_files.append(rel_path)
+
+        # Sort alphabetically
+        fbx_files.sort()
+
+        if not fbx_files:
+            fbx_files = ["No FBX files found in input directory"]
+
+        return {
+            "required": {
+                "fbx_file": (fbx_files,),
+            },
+        }
+
+    RETURN_TYPES = ("RIGGED_MESH", "STRING")
+    RETURN_NAMES = ("rigged_mesh", "info")
+    FUNCTION = "load"
+    CATEGORY = "unirig"
+
+    def load(self, fbx_file):
+        """
+        Load an FBX file and return it as a RIGGED_MESH.
+
+        Args:
+            fbx_file: Filename of FBX file in input directory
+
+        Returns:
+            tuple: (rigged_mesh, info_string)
+        """
+        print(f"[UniRigLoadRiggedMesh] Loading FBX file: {fbx_file}")
+
+        # Handle case where no FBX files exist
+        if fbx_file == "No FBX files found in input directory":
+            raise RuntimeError("No FBX files found in ComfyUI/input directory. Please add an FBX file first.")
+
+        # Get full path
+        input_dir = folder_paths.get_input_directory()
+        fbx_path = os.path.join(input_dir, fbx_file)
+
+        if not os.path.exists(fbx_path):
+            raise RuntimeError(f"FBX file not found: {fbx_path}")
+
+        # Copy to temp directory with unique name to avoid conflicts
+        temp_dir = folder_paths.get_temp_directory()
+        temp_fbx = os.path.join(temp_dir, f"loaded_rigged_{int(time.time())}_{os.path.basename(fbx_file)}")
+        shutil.copy(fbx_path, temp_fbx)
+
+        print(f"[UniRigLoadRiggedMesh] Copied to temp: {temp_fbx}")
+
+        # Use Blender to extract mesh info (trimesh doesn't support FBX)
+        mesh_info = {}
+        try:
+            # Use the global BLENDER_EXE variable or environment variable
+            blender_exe = os.environ.get('UNIRIG_BLENDER_EXECUTABLE')
+            if not blender_exe:
+                blender_exe = BLENDER_EXE
+
+            if blender_exe and os.path.exists(blender_exe):
+                # Create temp output for mesh data
+                mesh_npz = os.path.join(temp_dir, f"mesh_info_{int(time.time())}.npz")
+
+                cmd = [
+                    blender_exe,
+                    "--background",
+                    "--python", BLENDER_EXTRACT_MESH_INFO,
+                    "--",
+                    fbx_path,
+                    mesh_npz
+                ]
+
+                print(f"[UniRigLoadRiggedMesh] Extracting mesh info with Blender...")
+                result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+
+                if os.path.exists(mesh_npz):
+                    data = np.load(mesh_npz, allow_pickle=True)
+
+                    total_vertices = int(data.get('total_vertices', 0))
+                    total_faces = int(data.get('total_faces', 0))
+                    mesh_count = int(data.get('mesh_count', 0))
+                    bbox_min = data.get('bbox_min', np.array([0, 0, 0]))
+                    bbox_max = data.get('bbox_max', np.array([0, 0, 0]))
+                    extents = data.get('extents', np.array([0, 0, 0]))
+
+                    mesh_info = {
+                        "type": "Scene" if mesh_count > 1 else "Mesh",
+                        "mesh_count": mesh_count,
+                        "total_vertices": total_vertices,
+                        "total_faces": total_faces,
+                        "bbox_min": bbox_min.tolist(),
+                        "bbox_max": bbox_max.tolist(),
+                        "extents": extents.tolist()
+                    }
+
+                    # Clean up temp file
+                    os.remove(mesh_npz)
+
+                    print(f"[UniRigLoadRiggedMesh] Mesh: {mesh_count} objects, {total_vertices} verts, {total_faces} faces")
+                    print(f"[UniRigLoadRiggedMesh] Extents: {extents.tolist()}")
+                else:
+                    print(f"[UniRigLoadRiggedMesh] Mesh info extraction failed")
+                    mesh_info = {"type": "Unknown", "note": "Extraction failed"}
+            else:
+                print(f"[UniRigLoadRiggedMesh] Blender not available for mesh info")
+                mesh_info = {"type": "Unknown", "note": "Blender not available"}
+
+        except Exception as e:
+            print(f"[UniRigLoadRiggedMesh] Could not parse mesh geometry: {e}")
+            mesh_info = {"type": "Unknown", "error": str(e)}
+
+        # Parse FBX with Blender to get skeleton info (if available)
+        skeleton_info = {}
+        try:
+            # Use the global BLENDER_EXE variable or environment variable
+            blender_exe = os.environ.get('UNIRIG_BLENDER_EXECUTABLE')
+            if not blender_exe:
+                blender_exe = BLENDER_EXE
+
+            if blender_exe and os.path.exists(blender_exe):
+                # Create temp output for skeleton data
+                skeleton_npz = os.path.join(temp_dir, f"skeleton_info_{int(time.time())}.npz")
+
+                cmd = [
+                    blender_exe,
+                    "--background",
+                    "--python", BLENDER_PARSE_SKELETON,
+                    "--",
+                    fbx_path,
+                    skeleton_npz
+                ]
+
+                print(f"[UniRigLoadRiggedMesh] Parsing skeleton with Blender...")
+                result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+
+                if os.path.exists(skeleton_npz):
+                    data = np.load(skeleton_npz, allow_pickle=True)
+
+                    # Get bone data (key is 'bone_names' not 'names')
+                    num_bones = len(data.get('bone_names', []))
+                    bone_names = [str(name) for name in data.get('bone_names', [])]
+
+                    # Get vertices for skeleton extents
+                    vertices = data.get('vertices', np.array([]))
+                    skeleton_extents = None
+                    if len(vertices) > 0:
+                        min_coords = vertices.min(axis=0)
+                        max_coords = vertices.max(axis=0)
+                        skeleton_extents = (max_coords - min_coords).tolist()
+
+                    skeleton_info = {
+                        "num_bones": num_bones,
+                        "bone_names": bone_names[:10],  # First 10 bones
+                        "has_skeleton": num_bones > 0,
+                        "skeleton_extents": skeleton_extents
+                    }
+
+                    # Clean up temp file
+                    os.remove(skeleton_npz)
+
+                    print(f"[UniRigLoadRiggedMesh] Found {num_bones} bones")
+                    if skeleton_extents:
+                        print(f"[UniRigLoadRiggedMesh] Skeleton extents: {skeleton_extents}")
+                else:
+                    skeleton_info = {"has_skeleton": False, "note": "No armature found"}
+                    print(f"[UniRigLoadRiggedMesh] No skeleton data found")
+            else:
+                skeleton_info = {"has_skeleton": "unknown", "note": "Blender not available"}
+
+        except Exception as e:
+            print(f"[UniRigLoadRiggedMesh] Could not parse skeleton: {e}")
+            skeleton_info = {"has_skeleton": "unknown", "error": str(e)}
+
+        # Create rigged mesh structure
+        rigged_mesh = {
+            "mesh": None,  # Mesh data not needed (viewer loads FBX directly)
+            "fbx_path": temp_fbx,
+            "has_skinning": skeleton_info.get("has_skeleton", False),
+            "has_skeleton": skeleton_info.get("has_skeleton", False),
+        }
+
+        # Create info string
+        file_size = os.path.getsize(fbx_path)
+        info_lines = [
+            f"File: {os.path.basename(fbx_file)}",
+            f"Size: {file_size / 1024:.1f} KB",
+            "",
+            "Mesh Info:",
+            f"  Type: {mesh_info.get('type', 'Unknown')}",
+            f"  Meshes: {mesh_info.get('mesh_count', 'Unknown')}",
+            f"  Vertices: {mesh_info.get('total_vertices', 'Unknown'):,}" if isinstance(mesh_info.get('total_vertices'), int) else f"  Vertices: Unknown",
+            f"  Faces: {mesh_info.get('total_faces', 'Unknown'):,}" if isinstance(mesh_info.get('total_faces'), int) else f"  Faces: Unknown",
+        ]
+
+        # Add bounding box and extents if available
+        if 'extents' in mesh_info and mesh_info['extents']:
+            extents = mesh_info['extents']
+            info_lines.append(f"  Mesh Size: [{extents[0]:.3f}, {extents[1]:.3f}, {extents[2]:.3f}]")
+
+        if 'bbox_min' in mesh_info and 'bbox_max' in mesh_info:
+            bbox_min = mesh_info['bbox_min']
+            bbox_max = mesh_info['bbox_max']
+            info_lines.append(f"  Bounding Box:")
+            info_lines.append(f"    Min: [{bbox_min[0]:.3f}, {bbox_min[1]:.3f}, {bbox_min[2]:.3f}]")
+            info_lines.append(f"    Max: [{bbox_max[0]:.3f}, {bbox_max[1]:.3f}, {bbox_max[2]:.3f}]")
+
+        info_lines.append("")
+        info_lines.append("Skeleton Info:")
+
+        if skeleton_info.get("has_skeleton"):
+            info_lines.append(f"  Bones: {skeleton_info.get('num_bones', 0)}")
+            if skeleton_info.get("skeleton_extents"):
+                extents = skeleton_info['skeleton_extents']
+                info_lines.append(f"  Skeleton Size: [{extents[0]:.3f}, {extents[1]:.3f}, {extents[2]:.3f}]")
+            if skeleton_info.get("bone_names"):
+                sample_bones = skeleton_info['bone_names'][:5]
+                info_lines.append(f"  Sample bones: {', '.join(sample_bones)}")
+        else:
+            info_lines.append(f"  Status: {skeleton_info.get('note', 'No skeleton detected')}")
+
+        info_string = "\n".join(info_lines)
+
+        print(f"[UniRigLoadRiggedMesh] ✓ Loaded successfully")
+        print(info_string)
+
+        return (rigged_mesh, info_string)
+
+
+class UniRigPreviewRiggedMesh:
+    """
+    Preview rigged mesh with interactive FBX viewer.
+
+    Displays the rigged FBX in a Three.js viewer with skeleton visualization
+    and interactive bone manipulation controls.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "rigged_mesh": ("RIGGED_MESH",),
+            },
+        }
+
+    RETURN_TYPES = ()
+    OUTPUT_NODE = True
+    FUNCTION = "preview"
+    CATEGORY = "unirig"
+
+    def preview(self, rigged_mesh):
+        """
+        Preview the rigged mesh in an interactive FBX viewer.
+
+        Args:
+            rigged_mesh: RIGGED_MESH dictionary with fbx_path
+
+        Returns:
+            dict: UI data for frontend widget
+        """
+        print(f"[UniRigPreviewRiggedMesh] Preparing preview...")
+
+        # Get the FBX file path
+        fbx_path = rigged_mesh.get("fbx_path")
+        if not fbx_path or not os.path.exists(fbx_path):
+            raise RuntimeError(f"Rigged mesh FBX not found: {fbx_path}")
+
+        print(f"[UniRigPreviewRiggedMesh] FBX path: {fbx_path}")
+
+        # Get just the filename (viewer will load from temp directory)
+        filename = os.path.basename(fbx_path)
+
+        # Get mesh info if available
+        has_skinning = rigged_mesh.get("has_skinning", False)
+        has_skeleton = rigged_mesh.get("has_skeleton", False)
+
+        print(f"[UniRigPreviewRiggedMesh] Has skinning: {has_skinning}")
+        print(f"[UniRigPreviewRiggedMesh] Has skeleton: {has_skeleton}")
+
+        # Return UI data only (no pass-through output)
+        return {
+            "ui": {
+                "fbx_file": [filename],
+                "has_skinning": [bool(has_skinning)],
+                "has_skeleton": [bool(has_skeleton)],
+            }
+        }
+
+
 NODE_CLASS_MAPPINGS = {
     "UniRigExtractSkeleton": UniRigExtractSkeleton,
     "UniRigApplySkinning": UniRigApplySkinning,
     "UniRigExtractRig": UniRigExtractRig,
     "UniRigSaveSkeleton": UniRigSaveSkeleton,
     "UniRigSaveRiggedMesh": UniRigSaveRiggedMesh,
+    "UniRigLoadRiggedMesh": UniRigLoadRiggedMesh,
+    "UniRigPreviewRiggedMesh": UniRigPreviewRiggedMesh,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -1157,4 +1562,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "UniRigExtractRig": "UniRig: Extract Full Rig (All-in-One)",
     "UniRigSaveSkeleton": "UniRig: Save Skeleton",
     "UniRigSaveRiggedMesh": "UniRig: Save Rigged Mesh",
+    "UniRigLoadRiggedMesh": "UniRig: Load Rigged Mesh",
+    "UniRigPreviewRiggedMesh": "UniRig: Preview Rigged Mesh",
 }

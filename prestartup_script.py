@@ -26,23 +26,25 @@ USER_WORKFLOWS_DIR = COMFYUI_DIR / "user" / "default" / "workflows"
 
 
 def copy_asset_files():
-    """Copy necessary asset files to input/3d/ directory"""
+    """Copy all asset files to input/3d/ directory"""
     try:
         # Create target directory
         INPUT_3D_DIR.mkdir(parents=True, exist_ok=True)
 
-        # Copy FinalBaseMesh.obj if it doesn't exist
-        mesh_source = ASSETS_DIR / "FinalBaseMesh.obj"
-        mesh_target = INPUT_3D_DIR / "FinalBaseMesh.obj"
+        if not ASSETS_DIR.exists():
+            print(f"[UniRig] Warning: Assets directory not found at {ASSETS_DIR}")
+            return
 
-        if mesh_source.exists():
-            if not mesh_target.exists():
-                shutil.copy2(str(mesh_source), str(mesh_target))
-                print(f"[UniRig] Copied base mesh to {mesh_target}")
-            else:
-                print(f"[UniRig] Base mesh already exists at {mesh_target}")
-        else:
-            print(f"[UniRig] Warning: Source mesh not found at {mesh_source}")
+        # Copy all files from assets directory
+        for asset_file in ASSETS_DIR.iterdir():
+            if asset_file.is_file():
+                target_file = INPUT_3D_DIR / asset_file.name
+                
+                if not target_file.exists():
+                    shutil.copy2(str(asset_file), str(target_file))
+                    print(f"[UniRig] Copied {asset_file.name} to {target_file}")
+                else:
+                    print(f"[UniRig] {asset_file.name} already exists at {target_file}")
 
     except Exception as e:
         print(f"[UniRig] Error copying asset files: {e}")

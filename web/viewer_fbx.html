@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>UniRig FBX Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #2a2a2a;
+            font-family: monospace;
+        }
+        #canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            text-align: center;
+        }
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            font-size: 12px;
+            max-width: 250px;
+        }
+        #controls button {
+            background: #4a4a4a;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        #controls button:hover {
+            background: #5a5a5a;
+        }
+        #controls button:active {
+            background: #3a3a3a;
+        }
+        .control-group {
+            margin: 10px 0;
+            padding: 8px 0;
+            border-top: 1px solid #444;
+        }
+        .control-group:first-child {
+            border-top: none;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+        .checkbox-label input[type="checkbox"] {
+            cursor: pointer;
+        }
+        #status {
+            color: #888;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="loading">Ready to load rigged mesh</div>
+    <div id="controls">
+        <div><strong>UniRig FBX Viewer</strong></div>
+
+        <div class="control-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="showSkeleton" checked>
+                <span>Show Skeleton</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="showMesh" checked>
+                <span>Show Mesh</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="xraySkeleton" checked>
+                <span>X-Ray Skeleton</span>
+            </label>
+        </div>
+
+        <div class="control-group">
+            <button id="resetPose">Reset to Rest Pose</button>
+            <button id="resetCamera">Reset Camera</button>
+        </div>
+
+        <div id="status">No mesh loaded</div>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
+        import { TransformControls } from 'three/addons/controls/TransformControls.js';
+
+        console.log('[UniRig FBX Viewer] Initializing...');
+
+        const canvas = document.getElementById('canvas');
+        const loading = document.getElementById('loading');
+        const statusEl = document.getElementById('status');
+
+        // Scene
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x2a2a2a);
+
+        // Camera
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(2, 2, 2);
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // Controls
+        const controls = new OrbitControls(camera, canvas);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+
+        // Transform controls for bone manipulation
+        const transformControls = new TransformControls(camera, canvas);
+        transformControls.setMode('rotate');
+        transformControls.setSpace('local');
+        transformControls.addEventListener('dragging-changed', (event) => {
+            controls.enabled = !event.value;
+        });
+        scene.add(transformControls);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight1.position.set(5, 10, 7);
+        scene.add(dirLight1);
+
+        const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+        dirLight2.position.set(-5, -5, -7);
+        scene.add(dirLight2);
+
+        // Grid (will be resized based on mesh)
+        let grid = new THREE.GridHelper(10, 10, 0x444444, 0x222222);
+        scene.add(grid);
+
+        // Axes (will be resized based on mesh)
+        let axes = new THREE.AxesHelper(1);
+        scene.add(axes);
+
+        // State
+        let currentModel = null;
+        let skeletonHelper = null;
+        let bones = [];
+        let boneGizmos = [];
+        let selectedBone = null;
+        let restPoseData = [];
+        let defaultCameraPosition = new THREE.Vector3(2, 2, 2);
+        let meshBounds = null;
+        let boneGizmoSize = 0.03;
+
+        // Raycaster for bone picking
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Create bone gizmos (clickable spheres at joints)
+        function createBoneGizmos() {
+            console.log('[UniRig FBX Viewer] Creating bone gizmos for', bones.length, 'bones');
+
+            // Clear existing gizmos
+            boneGizmos.forEach(gizmo => scene.remove(gizmo));
+            boneGizmos = [];
+
+            // Calculate appropriate gizmo size based on mesh bounds
+            if (meshBounds) {
+                const size = meshBounds.getSize(new THREE.Vector3());
+                const maxDim = Math.max(size.x, size.y, size.z);
+                boneGizmoSize = maxDim * 0.02; // 2% of largest dimension
+                console.log('[UniRig FBX Viewer] Bone gizmo size:', boneGizmoSize);
+            }
+
+            bones.forEach((bone, index) => {
+                // Create sphere at bone position
+                const geometry = new THREE.SphereGeometry(boneGizmoSize, 16, 16);
+                const material = new THREE.MeshBasicMaterial({
+                    color: 0xffaa00,
+                    depthTest: document.getElementById('xraySkeleton').checked ? false : true,
+                    transparent: true,
+                    opacity: 0.9
+                });
+                const sphere = new THREE.Mesh(geometry, material);
+
+                // Position at bone world position
+                const worldPos = new THREE.Vector3();
+                bone.getWorldPosition(worldPos);
+                sphere.position.copy(worldPos);
+
+                // Store reference to bone
+                sphere.userData.boneIndex = index;
+                sphere.userData.bone = bone;
+
+                scene.add(sphere);
+                boneGizmos.push(sphere);
+            });
+
+            console.log('[UniRig FBX Viewer] Created', boneGizmos.length, 'bone gizmos');
+        }
+
+        // Update bone gizmo positions
+        function updateBoneGizmos() {
+            boneGizmos.forEach((gizmo, index) => {
+                const bone = bones[index];
+                const worldPos = new THREE.Vector3();
+                bone.getWorldPosition(worldPos);
+                gizmo.position.copy(worldPos);
+
+                // Update x-ray mode
+                const xray = document.getElementById('xraySkeleton').checked;
+                gizmo.material.depthTest = !xray;
+            });
+        }
+
+        // Save rest pose
+        function saveRestPose() {
+            console.log('[UniRig FBX Viewer] Saving rest pose for', bones.length, 'bones');
+            restPoseData = bones.map(bone => ({
+                position: bone.position.clone(),
+                quaternion: bone.quaternion.clone(),
+                scale: bone.scale.clone()
+            }));
+        }
+
+        // Reset to rest pose
+        function resetToRestPose() {
+            console.log('[UniRig FBX Viewer] Resetting to rest pose');
+
+            if (restPoseData.length === 0) {
+                console.warn('[UniRig FBX Viewer] No rest pose saved');
+                return;
+            }
+
+            bones.forEach((bone, index) => {
+                if (restPoseData[index]) {
+                    bone.position.copy(restPoseData[index].position);
+                    bone.quaternion.copy(restPoseData[index].quaternion);
+                    bone.scale.copy(restPoseData[index].scale);
+                }
+            });
+
+            // Deselect bone
+            if (selectedBone) {
+                transformControls.detach();
+                selectedBone = null;
+            }
+
+            updateBoneGizmos();
+            statusEl.textContent = 'Pose reset';
+        }
+
+        // Reset camera
+        function resetCamera() {
+            camera.position.copy(defaultCameraPosition);
+            camera.lookAt(0, 0, 0);
+            controls.target.set(0, 0, 0);
+            controls.update();
+            statusEl.textContent = 'Camera reset';
+        }
+
+        // Load FBX file
+        function loadFBX(filepath) {
+            console.log('[UniRig FBX Viewer] Loading:', filepath);
+            console.log('[UniRig FBX Viewer] Full URL will be:', window.location.origin + filepath);
+            loading.textContent = 'Loading rigged mesh...';
+            loading.style.display = 'block';
+            loading.style.color = 'white';
+
+            // Remove old model
+            if (currentModel) {
+                scene.remove(currentModel);
+                currentModel = null;
+            }
+            if (skeletonHelper) {
+                scene.remove(skeletonHelper);
+                skeletonHelper = null;
+            }
+            boneGizmos.forEach(gizmo => scene.remove(gizmo));
+            boneGizmos = [];
+            bones = [];
+            restPoseData = [];
+            transformControls.detach();
+            selectedBone = null;
+
+            const loader = new FBXLoader();
+            loader.load(
+                filepath,
+                (fbx) => {
+                    console.log('[UniRig FBX Viewer] FBX loaded successfully');
+                    currentModel = fbx;
+
+                    // Center model
+                    const box = new THREE.Box3().setFromObject(currentModel);
+                    const center = box.getCenter(new THREE.Vector3());
+                    currentModel.position.sub(center);
+
+                    // Store bounds for later use
+                    meshBounds = box;
+
+                    // Find skeleton
+                    let foundSkeleton = false;
+                    currentModel.traverse((child) => {
+                        if (child.isSkinnedMesh) {
+                            console.log('[UniRig FBX Viewer] Found SkinnedMesh:', child.name);
+
+                            // Ensure material is visible
+                            if (!child.material) {
+                                child.material = new THREE.MeshStandardMaterial({
+                                    color: 0x88aacc,
+                                    metalness: 0.3,
+                                    roughness: 0.7,
+                                    skinning: true
+                                });
+                            } else if (Array.isArray(child.material)) {
+                                child.material.forEach(mat => mat.skinning = true);
+                            } else {
+                                child.material.skinning = true;
+                            }
+
+                            // Create skeleton helper
+                            if (child.skeleton) {
+                                foundSkeleton = true;
+                                skeletonHelper = new THREE.SkeletonHelper(child);
+
+                                // Custom material for x-ray effect with bright color
+                                skeletonHelper.material = new THREE.LineBasicMaterial({
+                                    color: 0x00ff00,
+                                    linewidth: 3,
+                                    depthTest: document.getElementById('xraySkeleton').checked ? false : true
+                                });
+
+                                scene.add(skeletonHelper);
+
+                                // Store bones for manipulation
+                                bones = child.skeleton.bones;
+                                console.log('[UniRig FBX Viewer] Found', bones.length, 'bones');
+
+                                // Debug: check skeleton bounds
+                                const skeletonBox = new THREE.Box3().setFromObject(skeletonHelper);
+                                const skeletonSize = skeletonBox.getSize(new THREE.Vector3());
+                                const skeletonCenter = skeletonBox.getCenter(new THREE.Vector3());
+                                console.log('[UniRig FBX Viewer] Skeleton bounds:', skeletonBox);
+                                console.log('[UniRig FBX Viewer] Skeleton size:', skeletonSize);
+                                console.log('[UniRig FBX Viewer] Skeleton center:', skeletonCenter);
+                                console.log('[UniRig FBX Viewer] Mesh size:', size);
+                                console.log('[UniRig FBX Viewer] Scale ratio (mesh/skeleton):', maxDim / Math.max(skeletonSize.x, skeletonSize.y, skeletonSize.z));
+
+                                // Save rest pose
+                                saveRestPose();
+
+                                // Create bone gizmos
+                                createBoneGizmos();
+                            }
+                        }
+                    });
+
+                    // Add to scene
+                    scene.add(currentModel);
+
+                    // Adjust camera and grid for mesh size
+                    const size = box.getSize(new THREE.Vector3());
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    const distance = maxDim * 2.5;
+
+                    // Update grid size to match mesh
+                    scene.remove(grid);
+                    scene.remove(axes);
+                    const gridSize = Math.max(10, Math.ceil(maxDim * 1.5));
+                    const gridDivisions = Math.max(10, Math.ceil(gridSize / 10));
+                    grid = new THREE.GridHelper(gridSize, gridDivisions, 0x444444, 0x222222);
+                    scene.add(grid);
+
+                    const axesSize = maxDim * 0.3;
+                    axes = new THREE.AxesHelper(axesSize);
+                    scene.add(axes);
+
+                    defaultCameraPosition.set(distance, distance, distance);
+                    camera.position.copy(defaultCameraPosition);
+                    camera.lookAt(0, 0, 0);
+                    controls.target.set(0, 0, 0);
+                    controls.update();
+
+                    console.log('[UniRig FBX Viewer] Mesh size:', maxDim.toFixed(2), 'Grid size:', gridSize, 'Camera distance:', distance.toFixed(2));
+
+                    loading.style.display = 'none';
+
+                    if (foundSkeleton) {
+                        statusEl.textContent = `Loaded: ${bones.length} bones`;
+                        console.log('[UniRig FBX Viewer] Mesh loaded with skeleton');
+                    } else {
+                        statusEl.textContent = 'Loaded (no skeleton found)';
+                        console.warn('[UniRig FBX Viewer] No skeleton found in FBX');
+                    }
+                },
+                (progress) => {
+                    if (progress.lengthComputable) {
+                        const percent = (progress.loaded / progress.total * 100).toFixed(0);
+                        loading.textContent = `Loading... ${percent}%`;
+                    }
+                },
+                (error) => {
+                    console.error('[UniRig FBX Viewer] Error loading FBX:', error);
+                    console.error('[UniRig FBX Viewer] Error type:', error?.constructor?.name);
+                    console.error('[UniRig FBX Viewer] Error message:', error?.message);
+                    console.error('[UniRig FBX Viewer] Attempted URL:', window.location.origin + filepath);
+
+                    // Show more helpful error message
+                    let errorMsg = 'Error loading FBX';
+                    if (error?.message?.includes('404')) {
+                        errorMsg = 'File not found (404)';
+                    } else if (error?.message?.includes('Failed to fetch')) {
+                        errorMsg = 'Network error - check URL';
+                    }
+
+                    loading.textContent = errorMsg + ' - check console';
+                    loading.style.color = '#ff6666';
+                    statusEl.textContent = 'Load failed: ' + errorMsg;
+                }
+            );
+        }
+
+        // Mouse click for bone selection
+        canvas.addEventListener('click', (event) => {
+            if (bones.length === 0) return;
+
+            // Calculate mouse position in normalized device coordinates
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+            // Raycast against bone gizmos
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(boneGizmos);
+
+            if (intersects.length > 0) {
+                const clickedGizmo = intersects[0].object;
+                const bone = clickedGizmo.userData.bone;
+
+                // Highlight selected gizmo
+                boneGizmos.forEach(g => {
+                    g.material.color.setHex(0xffaa00);
+                    g.material.opacity = 0.8;
+                });
+                clickedGizmo.material.color.setHex(0x00ffff);
+                clickedGizmo.material.opacity = 1.0;
+
+                // Attach transform controls
+                transformControls.attach(bone);
+                selectedBone = bone;
+
+                console.log('[UniRig FBX Viewer] Selected bone:', bone.name || bone.type);
+                statusEl.textContent = `Selected: ${bone.name || 'Bone ' + clickedGizmo.userData.boneIndex}`;
+            } else {
+                // Deselect
+                if (selectedBone) {
+                    transformControls.detach();
+                    selectedBone = null;
+                    boneGizmos.forEach(g => {
+                        g.material.color.setHex(0xffaa00);
+                        g.material.opacity = 0.8;
+                    });
+                    statusEl.textContent = `${bones.length} bones`;
+                }
+            }
+        });
+
+        // Update on transform
+        transformControls.addEventListener('change', () => {
+            updateBoneGizmos();
+        });
+
+        // UI Controls
+        document.getElementById('showSkeleton').addEventListener('change', (e) => {
+            console.log('[UniRig FBX Viewer] Show skeleton:', e.target.checked);
+            if (skeletonHelper) {
+                skeletonHelper.visible = e.target.checked;
+                console.log('[UniRig FBX Viewer] SkeletonHelper visible:', skeletonHelper.visible);
+            }
+            boneGizmos.forEach(gizmo => {
+                gizmo.visible = e.target.checked;
+            });
+            console.log('[UniRig FBX Viewer] Bone gizmos visible:', boneGizmos.length);
+        });
+
+        document.getElementById('showMesh').addEventListener('change', (e) => {
+            if (currentModel) {
+                currentModel.traverse((child) => {
+                    if (child.isMesh) {
+                        child.visible = e.target.checked;
+                    }
+                });
+            }
+        });
+
+        document.getElementById('xraySkeleton').addEventListener('change', (e) => {
+            if (skeletonHelper) {
+                skeletonHelper.material.depthTest = !e.target.checked;
+            }
+            boneGizmos.forEach(gizmo => {
+                gizmo.material.depthTest = !e.target.checked;
+            });
+        });
+
+        document.getElementById('resetPose').addEventListener('click', resetToRestPose);
+        document.getElementById('resetCamera').addEventListener('click', resetCamera);
+
+        // Listen for messages from parent window
+        window.addEventListener('message', (event) => {
+            console.log('[UniRig FBX Viewer] Received postMessage:', event.data);
+
+            if (event.data.type === 'LOAD_FBX') {
+                console.log('[UniRig FBX Viewer] Loading FBX:', event.data.filepath);
+                loadFBX(event.data.filepath);
+            }
+        });
+
+        console.log('[UniRig FBX Viewer] Ready');
+    </script>
+</body>
+</html>
