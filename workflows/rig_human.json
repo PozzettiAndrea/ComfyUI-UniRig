@@ -1,8 +1,8 @@
 {
   "id": "15f6c038-9249-494a-9d33-9030831736fb",
   "revision": 0,
-  "last_node_id": 17,
-  "last_link_id": 29,
+  "last_node_id": 18,
+  "last_link_id": 30,
   "nodes": [
     {
       "id": 6,
@@ -13,7 +13,7 @@
       ],
       "size": [
         270,
-        126
+        146
       ],
       "flags": {},
       "order": 1,
@@ -22,7 +22,12 @@
         {
           "name": "trimesh",
           "type": "TRIMESH",
-          "link": 7
+          "link": 30
+        },
+        {
+          "name": "skeleton_model",
+          "type": "UNIRIG_SKELETON_MODEL",
+          "link": null
         }
       ],
       "outputs": [
@@ -39,6 +44,11 @@
           "links": [
             27
           ]
+        },
+        {
+          "name": "texture_preview",
+          "type": "IMAGE",
+          "links": null
         }
       ],
       "properties": {
@@ -49,8 +59,7 @@
       },
       "widgets_values": [
         42,
-        "fixed",
-        "VAST-AI/UniRig"
+        "fixed"
       ]
     },
     {
@@ -62,7 +71,7 @@
       ],
       "size": [
         247.644140625,
-        46
+        66
       ],
       "flags": {},
       "order": 2,
@@ -77,23 +86,34 @@
           "name": "skeleton",
           "type": "SKELETON",
           "link": 27
+        },
+        {
+          "name": "skinning_model",
+          "type": "UNIRIG_SKINNING_MODEL",
+          "link": null
         }
       ],
       "outputs": [
         {
-          "name": "RIGGED_MESH",
+          "name": "rigged_mesh",
           "type": "RIGGED_MESH",
           "links": [
             28,
             29
           ]
+        },
+        {
+          "name": "texture_preview",
+          "type": "IMAGE",
+          "links": null
         }
       ],
       "properties": {
         "cnr_id": "comfyui-unirig",
         "ver": "b7edf20a7f3b4679489dedb914051a62a6cf28d8",
         "Node name for S&R": "UniRigApplySkinningML"
-      }
+      },
+      "widgets_values": []
     },
     {
       "id": 8,
@@ -132,12 +152,12 @@
       "id": 10,
       "type": "UniRigPreviewRiggedMesh",
       "pos": [
-        612.7756861668839,
-        -518.3901670643264
+        652.6640924168838,
+        -671.9074990955762
       ],
       "size": [
         842.8834804687501,
-        670
+        798
       ],
       "flags": {},
       "order": 4,
@@ -160,15 +180,15 @@
       ]
     },
     {
-      "id": 2,
-      "type": "GeomPackLoadMesh",
+      "id": 18,
+      "type": "UniRigLoadMesh",
       "pos": [
-        -269.4553492678194,
-        -73.57211062771749
+        -290.49368705091416,
+        16.936442297062865
       ],
       "size": [
         270,
-        58
+        82
       ],
       "flags": {},
       "order": 0,
@@ -179,29 +199,22 @@
           "name": "mesh",
           "type": "TRIMESH",
           "links": [
-            7
+            30
           ]
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-geometrypack",
-        "ver": "e0d26b95c8e0b72fccc40f27912c41f31f4c2d5d",
-        "Node name for S&R": "GeomPackLoadMesh"
+        "cnr_id": "comfyui-unirig",
+        "ver": "d135802ee8a1591a8614963ce4e61cd823de61b2",
+        "Node name for S&R": "UniRigLoadMesh"
       },
       "widgets_values": [
+        "input",
         "3d/FinalBaseMesh.obj"
       ]
     }
   ],
   "links": [
-    [
-      7,
-      2,
-      0,
-      6,
-      0,
-      "TRIMESH"
-    ],
     [
       26,
       6,
@@ -233,6 +246,14 @@
       10,
       0,
       "RIGGED_MESH"
+    ],
+    [
+      30,
+      18,
+      0,
+      6,
+      0,
+      "TRIMESH"
     ]
   ],
   "groups": [],
@@ -241,8 +262,8 @@
     "ds": {
       "scale": 0.7513148009015777,
       "offset": [
-        431.428909707164,
-        666.8284131716872
+        908.296054238414,
+        582.2839170779372
       ]
     },
     "frontendVersion": "1.28.8"

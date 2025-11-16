@@ -15,6 +15,7 @@ timm
 huggingface_hub
 wandb
 fast-simplification
+libigl
 
 # Mesh processing
 open3d

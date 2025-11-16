@@ -19,10 +19,35 @@ from .base import (
     BLENDER_SCRIPT,
     BLENDER_PARSE_SKELETON,
     UNIRIG_MODELS_DIR,
+    LIB_DIR,
     setup_subprocess_env,
     decode_texture_to_comfy_image,
     create_placeholder_texture,
 )
+
+
+# Global cache for model_cache module to ensure same instance is used
+_MODEL_CACHE_MODULE = None
+
+
+def _get_model_cache():
+    """Get the in-process model cache module."""
+    global _MODEL_CACHE_MODULE
+    if _MODEL_CACHE_MODULE is None:
+        # Use sys.modules to ensure same instance across all imports
+        if "unirig_model_cache" in sys.modules:
+            _MODEL_CACHE_MODULE = sys.modules["unirig_model_cache"]
+        else:
+            cache_path = os.path.join(LIB_DIR, "model_cache.py")
+            if os.path.exists(cache_path):
+                import importlib.util
+                spec = importlib.util.spec_from_file_location("unirig_model_cache", cache_path)
+                _MODEL_CACHE_MODULE = importlib.util.module_from_spec(spec)
+                sys.modules["unirig_model_cache"] = _MODEL_CACHE_MODULE
+                spec.loader.exec_module(_MODEL_CACHE_MODULE)
+            else:
+                _MODEL_CACHE_MODULE = False
+    return _MODEL_CACHE_MODULE if _MODEL_CACHE_MODULE else None
 
 
 class UniRigExtractSkeleton:
@@ -40,16 +65,10 @@ class UniRigExtractSkeleton:
                 "trimesh": ("TRIMESH",),
                 "seed": ("INT", {"default": 42, "min": 0, "max": 4294967295,
                                "tooltip": "Random seed for skeleton generation variation"}),
-            },
-            "optional": {
                 "skeleton_model": ("UNIRIG_SKELETON_MODEL", {
-                    "tooltip": "Pre-loaded skeleton model (from UniRigLoadSkeletonModel)"
+                    "tooltip": "Pre-loaded skeleton model (from UniRigLoadSkeletonModel). Required for inference."
                 }),
-                "checkpoint": ("STRING", {
-                    "default": "VAST-AI/UniRig",
-                    "tooltip": "HuggingFace model ID or local path (ignored if skeleton_model provided)"
-                }),
-            }
+            },
         }
 
     RETURN_TYPES = ("TRIMESH", "SKELETON", "IMAGE")
@@ -57,19 +76,18 @@ class UniRigExtractSkeleton:
     FUNCTION = "extract"
     CATEGORY = "UniRig"
 
-    def extract(self, trimesh, seed, skeleton_model=None, checkpoint="VAST-AI/UniRig"):
+    def extract(self, trimesh, seed, skeleton_model):
         """Extract skeleton using UniRig."""
         total_start = time.time()
-        print(f"[UniRigExtractSkeleton] Starting skeleton extraction...")
+        print(f"[UniRigExtractSkeleton] Starting ({len(trimesh.vertices)} verts, {len(trimesh.faces)} faces)")
 
-        # Use pre-loaded model if available
-        if skeleton_model is not None:
-            print(f"[UniRigExtractSkeleton] Using pre-loaded model configuration")
-            if skeleton_model.get("cached", False):
-                print(f"[UniRigExtractSkeleton] Model weights already downloaded and cached")
-            task_config_path = skeleton_model.get("task_config_path")
-        else:
-            task_config_path = os.path.join(UNIRIG_PATH, "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml")
+        # Validate skeleton_model
+        if skeleton_model is None:
+            raise ValueError("skeleton_model is required. Use UniRigLoadSkeletonModel to load the model first.")
+
+        task_config_path = skeleton_model.get("task_config_path")
+        if not task_config_path:
+            raise ValueError("skeleton_model missing 'task_config_path'. Model may be corrupted.")
 
         # Check if Blender is available
         if not BLENDER_EXE or not os.path.exists(BLENDER_EXE):
@@ -94,12 +112,7 @@ class UniRigExtractSkeleton:
             os.makedirs(npz_dir, exist_ok=True)
 
             # Export mesh to GLB
-            step_start = time.time()
-            print(f"[UniRigExtractSkeleton] Exporting mesh to {input_path}")
-            print(f"[UniRigExtractSkeleton] Mesh has {len(trimesh.vertices)} vertices, {len(trimesh.faces)} faces")
             trimesh.export(input_path)
-            export_time = time.time() - step_start
-            print(f"[UniRigExtractSkeleton] Mesh exported in {export_time:.2f}s")
 
             # Step 1: Extract/preprocess mesh with Blender
             step_start = time.time()
@@ -121,19 +134,21 @@ class UniRigExtractSkeleton:
                     text=True,
                     timeout=BLENDER_TIMEOUT
                 )
-                if result.stdout:
-                    print(f"[UniRigExtractSkeleton] Blender output:\n{result.stdout}")
+                # Only show errors, not full output
                 if result.stderr:
                     stderr_lines = result.stderr.split('\n')
-                    important_lines = [l for l in stderr_lines if 'error' in l.lower() or 'fail' in l.lower()]
-                    if important_lines:
-                        print(f"[UniRigExtractSkeleton] Blender warnings:\n" + '\n'.join(important_lines))
+                    error_lines = [l for l in stderr_lines if 'error' in l.lower() or 'fail' in l.lower()]
+                    if error_lines:
+                        print(f"[UniRigExtractSkeleton] Blender errors:\n" + '\n'.join(error_lines))
 
                 if not os.path.exists(npz_path):
+                    # Show full output on failure for debugging
+                    if result.stdout:
+                        print(f"[UniRigExtractSkeleton] Blender output:\n{result.stdout}")
                     raise RuntimeError(f"Blender extraction failed: {npz_path} not created")
 
                 blender_time = time.time() - step_start
-                print(f"[UniRigExtractSkeleton] Mesh preprocessed in {blender_time:.2f}s: {npz_path}")
+                print(f"[UniRigExtractSkeleton] Mesh preprocessed in {blender_time:.2f}s")
 
             except subprocess.TimeoutExpired:
                 raise RuntimeError(f"Blender extraction timed out (>{BLENDER_TIMEOUT}s)")
@@ -144,66 +159,104 @@ class UniRigExtractSkeleton:
             # Step 2: Run skeleton inference
             step_start = time.time()
             print(f"[UniRigExtractSkeleton] Step 2: Running skeleton inference...")
-            run_cmd = [
-                sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
-                "--task", task_config_path,
-                "--seed", str(seed),
-                "--input", input_path,
-                "--output", output_path,
-                "--npz_dir", tmpdir,
-            ]
 
-            print(f"[UniRigExtractSkeleton] Running: {' '.join(run_cmd)}")
-            print(f"[UniRigExtractSkeleton] Using Blender: {BLENDER_EXE}")
-            print(f"[UniRigExtractSkeleton] Task config: {task_config_path}")
+            # Check if we can use the in-process cached model
+            model_cache_key = skeleton_model.get("model_cache_key")
+            cache_to_gpu = skeleton_model.get("cache_to_gpu", True)
+            use_cache = False
 
-            env = setup_subprocess_env()
-            print(f"[UniRigExtractSkeleton] Set BLENDER_EXE environment variable for FBX export")
+            if model_cache_key and cache_to_gpu:
+                model_cache = _get_model_cache()
+                if model_cache and model_cache.is_model_loaded(model_cache_key):
+                    use_cache = True
+                    print(f"[UniRigExtractSkeleton] Using cached GPU model for inference")
 
-            try:
-                result = subprocess.run(
-                    run_cmd,
-                    cwd=UNIRIG_PATH,
-                    env=env,
-                    capture_output=True,
-                    text=True,
-                    timeout=INFERENCE_TIMEOUT
-                )
-                if result.stdout:
-                    print(f"[UniRigExtractSkeleton] Inference stdout:\n{result.stdout}")
-                if result.stderr:
-                    print(f"[UniRigExtractSkeleton] Inference stderr:\n{result.stderr}")
+            if use_cache:
+                # Use in-process cached model for inference
+                try:
+                    response = model_cache.run_inference(
+                        cache_key=model_cache_key,
+                        request_data={
+                            "input": input_path,
+                            "output": output_path,
+                            "npz_dir": tmpdir,
+                            "seed": seed,
+                        }
+                    )
 
-                if result.returncode != 0:
-                    print(f"[UniRigExtractSkeleton] Inference failed with exit code {result.returncode}")
-                    raise RuntimeError(f"Inference failed with exit code {result.returncode}")
+                    if response.get("error"):
+                        print(f"[UniRigExtractSkeleton] Cached model inference error: {response.get('error')}")
+                        if response.get("traceback"):
+                            print(response.get("traceback"))
+                        raise RuntimeError(f"Cached model inference failed: {response.get('error')}")
 
-                inference_time = time.time() - step_start
-                print(f"[UniRigExtractSkeleton] Inference completed in {inference_time:.2f}s")
+                    inference_time = time.time() - step_start
+                    print(f"[UniRigExtractSkeleton] Inference completed in {inference_time:.2f}s (cached)")
 
-            except subprocess.TimeoutExpired:
-                raise RuntimeError(f"Inference timed out (>{INFERENCE_TIMEOUT}s)")
-            except Exception as e:
-                print(f"[UniRigExtractSkeleton] Inference error: {e}")
-                raise
+                except Exception as e:
+                    print(f"[UniRigExtractSkeleton] Cached model inference error: {e}")
+                    raise
+            else:
+                # Fallback to subprocess
+                run_cmd = [
+                    sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
+                    "--task", task_config_path,
+                    "--seed", str(seed),
+                    "--input", input_path,
+                    "--output", output_path,
+                    "--npz_dir", tmpdir,
+                ]
+
+                env = setup_subprocess_env()
+
+                # Pass GPU caching preference to subprocess
+                env["UNIRIG_CACHE_TO_GPU"] = "1" if cache_to_gpu else "0"
+
+                try:
+                    result = subprocess.run(
+                        run_cmd,
+                        cwd=UNIRIG_PATH,
+                        env=env,
+                        capture_output=True,
+                        text=True,
+                        timeout=INFERENCE_TIMEOUT
+                    )
+                    # Filter output to reduce noise
+                    if result.returncode != 0:
+                        # Show full output on failure
+                        if result.stdout:
+                            print(f"[UniRigExtractSkeleton] Inference stdout:\n{result.stdout}")
+                        if result.stderr:
+                            print(f"[UniRigExtractSkeleton] Inference stderr:\n{result.stderr}")
+                        raise RuntimeError(f"Inference failed with exit code {result.returncode}")
+                    else:
+                        # On success, only show errors from stderr (filter out warnings)
+                        if result.stderr:
+                            stderr_lines = result.stderr.split('\n')
+                            error_lines = [l for l in stderr_lines if 'error' in l.lower() and 'warning' not in l.lower()]
+                            if error_lines:
+                                print(f"[UniRigExtractSkeleton] Inference warnings:\n" + '\n'.join(error_lines[:5]))
+
+                    inference_time = time.time() - step_start
+                    print(f"[UniRigExtractSkeleton] Inference completed in {inference_time:.2f}s")
+
+                except subprocess.TimeoutExpired:
+                    raise RuntimeError(f"Inference timed out (>{INFERENCE_TIMEOUT}s)")
+                except Exception as e:
+                    print(f"[UniRigExtractSkeleton] Inference error: {e}")
+                    raise
 
             # Load and parse FBX output
             if not os.path.exists(output_path):
                 tmpdir_contents = os.listdir(tmpdir)
-                print(f"[UniRigExtractSkeleton] Output FBX not found: {output_path}")
-                print(f"[UniRigExtractSkeleton] Temp directory contents: {tmpdir_contents}")
                 raise RuntimeError(
                     f"UniRig did not generate output file: {output_path}\n"
                     f"Temp directory contents: {tmpdir_contents}\n"
                     f"Check stdout/stderr above for details"
                 )
 
-            print(f"[UniRigExtractSkeleton] Found output FBX: {output_path}")
-            fbx_size = os.path.getsize(output_path)
-            print(f"[UniRigExtractSkeleton] FBX file size: {fbx_size} bytes")
-
             step_start = time.time()
-            print(f"[UniRigExtractSkeleton] Step 3: Parsing FBX output with Blender...")
+            print(f"[UniRigExtractSkeleton] Step 3: Parsing FBX output...")
             skeleton_npz = os.path.join(tmpdir, "skeleton_data.npz")
 
             # Use Blender to parse skeleton from FBX
@@ -223,16 +276,17 @@ class UniRigExtractSkeleton:
                     text=True,
                     timeout=PARSE_TIMEOUT
                 )
-                if result.stdout:
-                    print(f"[UniRigExtractSkeleton] Blender parse output:\n{result.stdout}")
+                # Only show errors
                 if result.stderr:
                     stderr_lines = result.stderr.split('\n')
-                    important_lines = [l for l in stderr_lines if 'error' in l.lower() or 'fail' in l.lower()]
-                    if important_lines:
-                        print(f"[UniRigExtractSkeleton] Blender parse warnings:\n" + '\n'.join(important_lines))
+                    error_lines = [l for l in stderr_lines if 'error' in l.lower() or 'fail' in l.lower()]
+                    if error_lines:
+                        print(f"[UniRigExtractSkeleton] Blender parse errors:\n" + '\n'.join(error_lines))
 
                 if not os.path.exists(skeleton_npz):
-                    print(f"[UniRigExtractSkeleton] Skeleton NPZ not found: {skeleton_npz}")
+                    # Show full output on failure
+                    if result.stdout:
+                        print(f"[UniRigExtractSkeleton] Blender parse output:\n{result.stdout}")
                     raise RuntimeError(f"Skeleton parsing failed: {skeleton_npz} not created")
 
                 parse_time = time.time() - step_start
@@ -245,14 +299,11 @@ class UniRigExtractSkeleton:
                 raise
 
             # Load skeleton data
-            print(f"[UniRigExtractSkeleton] Loading skeleton data from NPZ...")
             skeleton_data = np.load(skeleton_npz, allow_pickle=True)
-            print(f"[UniRigExtractSkeleton] NPZ contains keys: {list(skeleton_data.keys())}")
             all_joints = skeleton_data['vertices']
             edges = skeleton_data['edges']
 
             print(f"[UniRigExtractSkeleton] Extracted {len(all_joints)} joints, {len(edges)} bones")
-            print(f"[UniRigExtractSkeleton] Skeleton already normalized by UniRig to range [{all_joints.min():.3f}, {all_joints.max():.3f}]")
 
             # Load preprocessing data
             preprocess_npz = os.path.join(tmpdir, "input", "raw_data.npz")
@@ -276,7 +327,6 @@ class UniRigExtractSkeleton:
                 if 'uv_coords' in preprocess_data and len(preprocess_data['uv_coords']) > 0:
                     uv_coords = preprocess_data['uv_coords']
                     uv_faces = preprocess_data.get('uv_faces', None)
-                    print(f"[UniRigExtractSkeleton] Loaded UV coordinates: {len(uv_coords)} UVs")
 
                 if 'material_name' in preprocess_data:
                     material_name = str(preprocess_data['material_name'])
@@ -291,7 +341,6 @@ class UniRigExtractSkeleton:
                         texture_format = str(preprocess_data.get('texture_format', 'PNG'))
                         texture_width = int(preprocess_data.get('texture_width', 0))
                         texture_height = int(preprocess_data.get('texture_height', 0))
-                        print(f"[UniRigExtractSkeleton] Loaded texture: {texture_width}x{texture_height} {texture_format} ({len(texture_data_base64) // 1024}KB base64)")
             else:
                 # Fallback: use trimesh data
                 mesh_vertices_original = np.array(trimesh.vertices, dtype=np.float32)
@@ -309,17 +358,13 @@ class UniRigExtractSkeleton:
             # Normalize mesh vertices to [-1, 1]
             mesh_vertices = (mesh_vertices_original - mesh_center) / mesh_scale
 
-            print(f"[UniRigExtractSkeleton] Original mesh bounds: min={mesh_bounds_min}, max={mesh_bounds_max}")
-            print(f"[UniRigExtractSkeleton] Mesh scale: {mesh_scale:.4f}, extents: {mesh_extents}")
-            print(f"[UniRigExtractSkeleton] Normalized mesh bounds: min={mesh_vertices.min(axis=0)}, max={mesh_vertices.max(axis=0)}")
-
             # Create trimesh object from normalized mesh data
             normalized_mesh = Trimesh(
                 vertices=mesh_vertices,
                 faces=mesh_faces,
                 process=True
             )
-            print(f"[UniRigExtractSkeleton] Created normalized mesh: {len(mesh_vertices)} vertices, {len(mesh_faces)} faces")
+            print(f"[UniRigExtractSkeleton] Normalized mesh: {len(mesh_vertices)} vertices, {len(mesh_faces)} faces")
 
             # Build parents list from bone_parents
             if 'bone_parents' in skeleton_data:
@@ -399,7 +444,6 @@ class UniRigExtractSkeleton:
                 path=None,
                 cls=None
             )
-            print(f"[UniRigExtractSkeleton] Saved skeleton NPZ to: {persistent_npz}")
 
             # Build skeleton dict with ALL data
             skeleton = {
@@ -434,240 +478,14 @@ class UniRigExtractSkeleton:
             if 'bone_to_head_vertex' in skeleton_data:
                 skeleton['bone_to_head_vertex'] = skeleton_data['bone_to_head_vertex'].tolist()
 
-            print(f"[UniRigExtractSkeleton] Included hierarchy: {len(names_list)} bones with parent relationships")
-
             # Create texture preview output
             if texture_data_base64:
                 texture_preview, tex_w, tex_h = decode_texture_to_comfy_image(texture_data_base64)
-                if texture_preview is not None:
-                    print(f"[UniRigExtractSkeleton] Texture preview created: {tex_w}x{tex_h}")
-                else:
-                    print(f"[UniRigExtractSkeleton] Warning: Could not decode texture for preview")
+                if texture_preview is None:
                     texture_preview = create_placeholder_texture()
             else:
-                print(f"[UniRigExtractSkeleton] No texture available for preview")
                 texture_preview = create_placeholder_texture()
 
             total_time = time.time() - total_start
-            print(f"[UniRigExtractSkeleton] Skeleton extraction complete!")
-            print(f"[UniRigExtractSkeleton] TOTAL TIME: {total_time:.2f}s")
+            print(f"[UniRigExtractSkeleton] Complete! {len(names_list)} bones, {total_time:.2f}s total")
             return (normalized_mesh, skeleton, texture_preview)
-
-
-class UniRigExtractRig:
-    """
-    Extract full rig (skeleton + skinning weights) using UniRig.
-
-    This node runs both skeleton and skinning prediction.
-    Output includes skinning weights for animation.
-    """
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "trimesh": ("TRIMESH",),
-                "seed": ("INT", {"default": 42, "min": 0, "max": 4294967295}),
-            },
-            "optional": {
-                "checkpoint": ("STRING", {
-                    "default": "VAST-AI/UniRig",
-                    "tooltip": "HuggingFace model ID or local path"
-                }),
-            }
-        }
-
-    RETURN_TYPES = ("RIGGED_MESH",)
-    RETURN_NAMES = ("rigged_mesh",)
-    FUNCTION = "extract"
-    CATEGORY = "UniRig"
-
-    def extract(self, trimesh, seed, checkpoint="VAST-AI/UniRig"):
-        """Extract full rig with skinning weights."""
-        total_start = time.time()
-        print(f"[UniRigExtractRig] Starting full rig extraction...")
-
-        # Check if Blender is available
-        if not BLENDER_EXE or not os.path.exists(BLENDER_EXE):
-            raise RuntimeError(f"Blender not found. Please run install_blender.py or install manually.")
-
-        if not os.path.exists(UNIRIG_PATH):
-            raise RuntimeError(f"UniRig not found at {UNIRIG_PATH}")
-
-        with tempfile.TemporaryDirectory() as tmpdir:
-            input_path = os.path.join(tmpdir, "input.glb")
-            npz_dir = os.path.join(tmpdir, "input")
-            npz_path = os.path.join(npz_dir, "raw_data.npz")
-            skeleton_npz_path = os.path.join(tmpdir, "predict_skeleton.npz")
-            output_path = os.path.join(tmpdir, "result_fbx.fbx")
-
-            os.makedirs(npz_dir, exist_ok=True)
-
-            # Export mesh to GLB
-            step_start = time.time()
-            print(f"[UniRigExtractRig] Exporting mesh: {len(trimesh.vertices)} vertices, {len(trimesh.faces)} faces")
-            trimesh.export(input_path)
-            export_time = time.time() - step_start
-            print(f"[UniRigExtractRig] Mesh exported in {export_time:.2f}s")
-
-            # Step 1: Preprocess mesh with Blender
-            step_start = time.time()
-            print(f"[UniRigExtractRig] Step 1: Preprocessing mesh with Blender...")
-            blender_cmd = [
-                BLENDER_EXE,
-                "--background",
-                "--python", BLENDER_SCRIPT,
-                "--",
-                input_path,
-                npz_path,
-                str(TARGET_FACE_COUNT)
-            ]
-
-            try:
-                result = subprocess.run(blender_cmd, capture_output=True, text=True, timeout=BLENDER_TIMEOUT)
-                if result.stdout:
-                    print(f"[UniRigExtractRig] Blender output:\n{result.stdout}")
-
-                if not os.path.exists(npz_path):
-                    raise RuntimeError(f"Blender extraction failed: {npz_path} not created")
-
-                blender_time = time.time() - step_start
-                print(f"[UniRigExtractRig] Mesh preprocessed in {blender_time:.2f}s")
-
-            except subprocess.TimeoutExpired:
-                raise RuntimeError(f"Blender extraction timed out (>{BLENDER_TIMEOUT}s)")
-            except Exception as e:
-                print(f"[UniRigExtractRig] Blender error: {e}")
-                raise
-
-            # Step 2: Generate skeleton
-            step_start = time.time()
-            print(f"[UniRigExtractRig] Step 2: Generating skeleton...")
-
-            skeleton_fbx_path = os.path.join(tmpdir, "skeleton.fbx")
-
-            skeleton_cmd = [
-                sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
-                "--task", os.path.join(UNIRIG_PATH, "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml"),
-                "--seed", str(seed),
-                "--input", input_path,
-                "--output", skeleton_fbx_path,
-                "--npz_dir", tmpdir,
-            ]
-
-            env = setup_subprocess_env()
-
-            try:
-                result = subprocess.run(skeleton_cmd, cwd=UNIRIG_PATH, env=env, capture_output=True, text=True, timeout=INFERENCE_TIMEOUT)
-                if result.stdout:
-                    print(f"[UniRigExtractRig] Skeleton stdout:\n{result.stdout}")
-                if result.stderr:
-                    print(f"[UniRigExtractRig] Skeleton stderr:\n{result.stderr}")
-
-                if result.returncode != 0:
-                    raise RuntimeError(f"Skeleton generation failed with exit code {result.returncode}")
-
-                if not os.path.exists(skeleton_fbx_path):
-                    raise RuntimeError(f"Skeleton FBX not created: {skeleton_fbx_path}")
-
-                print(f"[UniRigExtractRig] Skeleton FBX created: {skeleton_fbx_path}")
-
-                # Parse the FBX to create predict_skeleton.npz
-                print(f"[UniRigExtractRig] Creating skeleton NPZ from FBX...")
-                parse_cmd = [
-                    BLENDER_EXE,
-                    "--background",
-                    "--python", BLENDER_PARSE_SKELETON,
-                    "--",
-                    skeleton_fbx_path,
-                    skeleton_npz_path,
-                ]
-
-                try:
-                    result = subprocess.run(parse_cmd, capture_output=True, text=True, timeout=PARSE_TIMEOUT)
-                    if result.stdout:
-                        print(f"[UniRigExtractRig] Blender parse output:\n{result.stdout}")
-
-                    if not os.path.exists(skeleton_npz_path):
-                        raise RuntimeError(f"Failed to create skeleton NPZ: {skeleton_npz_path}")
-
-                    print(f"[UniRigExtractRig] Skeleton NPZ created: {skeleton_npz_path}")
-
-                except subprocess.TimeoutExpired:
-                    raise RuntimeError(f"Skeleton NPZ creation timed out (>{PARSE_TIMEOUT}s)")
-                except Exception as e:
-                    print(f"[UniRigExtractRig] Skeleton NPZ creation error: {e}")
-                    raise
-
-                skeleton_time = time.time() - step_start
-                print(f"[UniRigExtractRig] Skeleton generated in {skeleton_time:.2f}s")
-
-            except subprocess.TimeoutExpired:
-                raise RuntimeError(f"Skeleton generation timed out (>{INFERENCE_TIMEOUT}s)")
-            except Exception as e:
-                print(f"[UniRigExtractRig] Skeleton error: {e}")
-                raise
-
-            # Step 3: Generate skinning weights
-            step_start = time.time()
-            print(f"[UniRigExtractRig] Step 3: Generating skinning weights...")
-            skin_cmd = [
-                sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
-                "--task", os.path.join(UNIRIG_PATH, "configs/task/quick_inference_unirig_skin.yaml"),
-                "--input", input_path,
-                "--output", output_path,
-                "--npz_dir", tmpdir,
-            ]
-
-            try:
-                result = subprocess.run(skin_cmd, cwd=UNIRIG_PATH, env=env, capture_output=True, text=True, timeout=INFERENCE_TIMEOUT)
-                if result.stdout:
-                    print(f"[UniRigExtractRig] Skinning stdout:\n{result.stdout}")
-                if result.stderr:
-                    print(f"[UniRigExtractRig] Skinning stderr:\n{result.stderr}")
-
-                if result.returncode != 0:
-                    raise RuntimeError(f"Skinning generation failed with exit code {result.returncode}")
-
-                # Look for the output FBX
-                if not os.path.exists(output_path):
-                    alt_paths = [
-                        os.path.join(tmpdir, "results", "result_fbx.fbx"),
-                        os.path.join(tmpdir, "input", "result_fbx.fbx"),
-                    ]
-                    for alt_path in alt_paths:
-                        if os.path.exists(alt_path):
-                            shutil.copy(alt_path, output_path)
-                            break
-                    else:
-                        raise RuntimeError(f"Skinned FBX not found: {output_path}")
-
-                skinning_time = time.time() - step_start
-                print(f"[UniRigExtractRig] Skinning generated in {skinning_time:.2f}s")
-
-            except subprocess.TimeoutExpired:
-                raise RuntimeError(f"Skinning generation timed out (>{INFERENCE_TIMEOUT}s)")
-            except Exception as e:
-                print(f"[UniRigExtractRig] Skinning error: {e}")
-                raise
-
-            # Load the rigged mesh
-            print(f"[UniRigExtractRig] Loading rigged mesh from {output_path}...")
-
-            rigged_mesh = {
-                "mesh": trimesh,
-                "fbx_path": output_path,
-                "has_skinning": True,
-                "has_skeleton": True,
-            }
-
-            # Copy to a persistent location
-            persistent_fbx = os.path.join(folder_paths.get_temp_directory(), f"rigged_mesh_{seed}.fbx")
-            shutil.copy(output_path, persistent_fbx)
-            rigged_mesh["fbx_path"] = persistent_fbx
-
-            total_time = time.time() - total_start
-            print(f"[UniRigExtractRig] Rig extraction complete!")
-            print(f"[UniRigExtractRig] TOTAL TIME: {total_time:.2f}s")
-
-            return (rigged_mesh,)
