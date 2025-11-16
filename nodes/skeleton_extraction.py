@@ -42,9 +42,12 @@ class UniRigExtractSkeleton:
                                "tooltip": "Random seed for skeleton generation variation"}),
             },
             "optional": {
+                "skeleton_model": ("UNIRIG_SKELETON_MODEL", {
+                    "tooltip": "Pre-loaded skeleton model (from UniRigLoadSkeletonModel)"
+                }),
                 "checkpoint": ("STRING", {
                     "default": "VAST-AI/UniRig",
-                    "tooltip": "HuggingFace model ID or local path"
+                    "tooltip": "HuggingFace model ID or local path (ignored if skeleton_model provided)"
                 }),
             }
         }
@@ -54,10 +57,19 @@ class UniRigExtractSkeleton:
     FUNCTION = "extract"
     CATEGORY = "UniRig"
 
-    def extract(self, trimesh, seed, checkpoint="VAST-AI/UniRig"):
+    def extract(self, trimesh, seed, skeleton_model=None, checkpoint="VAST-AI/UniRig"):
         """Extract skeleton using UniRig."""
         total_start = time.time()
         print(f"[UniRigExtractSkeleton] Starting skeleton extraction...")
+
+        # Use pre-loaded model if available
+        if skeleton_model is not None:
+            print(f"[UniRigExtractSkeleton] Using pre-loaded model configuration")
+            if skeleton_model.get("cached", False):
+                print(f"[UniRigExtractSkeleton] Model weights already downloaded and cached")
+            task_config_path = skeleton_model.get("task_config_path")
+        else:
+            task_config_path = os.path.join(UNIRIG_PATH, "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml")
 
         # Check if Blender is available
         if not BLENDER_EXE or not os.path.exists(BLENDER_EXE):
@@ -134,7 +146,7 @@ class UniRigExtractSkeleton:
             print(f"[UniRigExtractSkeleton] Step 2: Running skeleton inference...")
             run_cmd = [
                 sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
-                "--task", os.path.join(UNIRIG_PATH, "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml"),
+                "--task", task_config_path,
                 "--seed", str(seed),
                 "--input", input_path,
                 "--output", output_path,
@@ -143,6 +155,7 @@ class UniRigExtractSkeleton:
 
             print(f"[UniRigExtractSkeleton] Running: {' '.join(run_cmd)}")
             print(f"[UniRigExtractSkeleton] Using Blender: {BLENDER_EXE}")
+            print(f"[UniRigExtractSkeleton] Task config: {task_config_path}")
 
             env = setup_subprocess_env()
             print(f"[UniRigExtractSkeleton] Set BLENDER_EXE environment variable for FBX export")

@@ -13,6 +13,7 @@ from .base import (
     BLENDER_EXTRACT_MESH_INFO,
 )
 
+from .model_loaders import UniRigLoadSkeletonModel, UniRigLoadSkinningModel
 from .skeleton_extraction import UniRigExtractSkeleton, UniRigExtractRig
 from .skeleton_io import (
     UniRigSaveSkeleton,
@@ -28,6 +29,8 @@ from .skeleton_processing import (
 from .skinning import UniRigApplySkinning, UniRigApplySkinningML
 
 NODE_CLASS_MAPPINGS = {
+    "UniRigLoadSkeletonModel": UniRigLoadSkeletonModel,
+    "UniRigLoadSkinningModel": UniRigLoadSkinningModel,
     "UniRigExtractSkeleton": UniRigExtractSkeleton,
     "UniRigApplySkinning": UniRigApplySkinning,
     "UniRigExtractRig": UniRigExtractRig,
@@ -42,6 +45,8 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
+    "UniRigLoadSkeletonModel": "UniRig: Load Skeleton Model",
+    "UniRigLoadSkinningModel": "UniRig: Load Skinning Model",
     "UniRigExtractSkeleton": "UniRig: Extract Skeleton",
     "UniRigApplySkinning": "UniRig: Apply Skinning (Legacy)",
     "UniRigExtractRig": "UniRig: Extract Full Rig (All-in-One)",

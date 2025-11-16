@@ -231,6 +231,11 @@ class UniRigApplySkinningML:
             "required": {
                 "normalized_mesh": ("TRIMESH",),
                 "skeleton": ("SKELETON",),
+            },
+            "optional": {
+                "skinning_model": ("UNIRIG_SKINNING_MODEL", {
+                    "tooltip": "Pre-loaded skinning model (from UniRigLoadSkinningModel)"
+                }),
             }
         }
 
@@ -239,8 +244,17 @@ class UniRigApplySkinningML:
     FUNCTION = "apply_skinning"
     CATEGORY = "UniRig"
 
-    def apply_skinning(self, normalized_mesh, skeleton):
+    def apply_skinning(self, normalized_mesh, skeleton, skinning_model=None):
         print(f"[UniRigApplySkinningML] Starting ML skinning...")
+
+        # Use pre-loaded model if available
+        if skinning_model is not None:
+            print(f"[UniRigApplySkinningML] Using pre-loaded model configuration")
+            if skinning_model.get("cached", False):
+                print(f"[UniRigApplySkinningML] Model weights already downloaded and cached")
+            task_config_path = skinning_model.get("task_config_path")
+        else:
+            task_config_path = os.path.join(UNIRIG_PATH, "configs", "task", "quick_inference_unirig_skin.yaml")
 
         # Create temporary directory
         temp_dir = tempfile.mkdtemp(prefix="unirig_skinning_")
@@ -319,17 +333,18 @@ class UniRigApplySkinningML:
 
         python_exe = sys.executable
         run_script = os.path.join(UNIRIG_PATH, "run.py")
-        config_path = os.path.join(UNIRIG_PATH, "configs", "task", "quick_inference_unirig_skin.yaml")
         output_fbx = os.path.join(temp_dir, "rigged.fbx")
 
         cmd = [
             python_exe, run_script,
-            "--task", config_path,
+            "--task", task_config_path,
             "--input", input_glb,
             "--output", output_fbx,
             "--npz_dir", temp_dir,
             "--seed", "123"
         ]
+
+        print(f"[UniRigApplySkinningML] Task config: {task_config_path}")
 
         # Set BLENDER_EXE environment variable for FBX export
         env = os.environ.copy()
