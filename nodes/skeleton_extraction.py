@@ -299,193 +299,193 @@ class UniRigExtractSkeleton:
                 raise
 
             # Load skeleton data
-            skeleton_data = np.load(skeleton_npz, allow_pickle=True)
-            all_joints = skeleton_data['vertices']
-            edges = skeleton_data['edges']
+            with np.load(skeleton_npz, allow_pickle=True) as skeleton_data:
+                all_joints = skeleton_data['vertices']
+                edges = skeleton_data['edges']
 
-            print(f"[UniRigExtractSkeleton] Extracted {len(all_joints)} joints, {len(edges)} bones")
+                print(f"[UniRigExtractSkeleton] Extracted {len(all_joints)} joints, {len(edges)} bones")
 
-            # Load preprocessing data
-            preprocess_npz = os.path.join(tmpdir, "input", "raw_data.npz")
-            uv_coords = None
-            uv_faces = None
-            material_name = None
-            texture_path = None
-            texture_data_base64 = None
-            texture_format = None
-            texture_width = 0
-            texture_height = 0
+                # Load preprocessing data
+                preprocess_npz = os.path.join(tmpdir, "input", "raw_data.npz")
+                uv_coords = None
+                uv_faces = None
+                material_name = None
+                texture_path = None
+                texture_data_base64 = None
+                texture_format = None
+                texture_width = 0
+                texture_height = 0
 
-            if os.path.exists(preprocess_npz):
-                preprocess_data = np.load(preprocess_npz, allow_pickle=True)
-                mesh_vertices_original = preprocess_data['vertices']
-                mesh_faces = preprocess_data['faces']
-                vertex_normals = preprocess_data.get('vertex_normals', None)
-                face_normals = preprocess_data.get('face_normals', None)
+                if os.path.exists(preprocess_npz):
+                    with np.load(preprocess_npz, allow_pickle=True) as preprocess_data:
+                        mesh_vertices_original = preprocess_data['vertices']
+                        mesh_faces = preprocess_data['faces']
+                        vertex_normals = preprocess_data.get('vertex_normals', None)
+                        face_normals = preprocess_data.get('face_normals', None)
 
-                # Load UV coordinates if available
-                if 'uv_coords' in preprocess_data and len(preprocess_data['uv_coords']) > 0:
-                    uv_coords = preprocess_data['uv_coords']
-                    uv_faces = preprocess_data.get('uv_faces', None)
+                        # Load UV coordinates if available
+                        if 'uv_coords' in preprocess_data and len(preprocess_data['uv_coords']) > 0:
+                            uv_coords = preprocess_data['uv_coords']
+                            uv_faces = preprocess_data.get('uv_faces', None)
 
-                if 'material_name' in preprocess_data:
-                    material_name = str(preprocess_data['material_name'])
-                if 'texture_path' in preprocess_data:
-                    texture_path = str(preprocess_data['texture_path'])
+                        if 'material_name' in preprocess_data:
+                            material_name = str(preprocess_data['material_name'])
+                        if 'texture_path' in preprocess_data:
+                            texture_path = str(preprocess_data['texture_path'])
 
-                # Load texture data if available
-                if 'texture_data_base64' in preprocess_data:
-                    tex_data = preprocess_data['texture_data_base64']
-                    if tex_data is not None and len(str(tex_data)) > 0:
-                        texture_data_base64 = str(tex_data)
-                        texture_format = str(preprocess_data.get('texture_format', 'PNG'))
-                        texture_width = int(preprocess_data.get('texture_width', 0))
-                        texture_height = int(preprocess_data.get('texture_height', 0))
-            else:
-                # Fallback: use trimesh data
-                mesh_vertices_original = np.array(trimesh.vertices, dtype=np.float32)
-                mesh_faces = np.array(trimesh.faces, dtype=np.int32)
-                vertex_normals = np.array(trimesh.vertex_normals, dtype=np.float32) if hasattr(trimesh, 'vertex_normals') else None
-                face_normals = np.array(trimesh.face_normals, dtype=np.float32) if hasattr(trimesh, 'face_normals') else None
-
-            # Normalize mesh to [-1, 1]
-            mesh_bounds_min = mesh_vertices_original.min(axis=0)
-            mesh_bounds_max = mesh_vertices_original.max(axis=0)
-            mesh_center = (mesh_bounds_min + mesh_bounds_max) / 2
-            mesh_extents = mesh_bounds_max - mesh_bounds_min
-            mesh_scale = mesh_extents.max() / 2
-
-            # Normalize mesh vertices to [-1, 1]
-            mesh_vertices = (mesh_vertices_original - mesh_center) / mesh_scale
-
-            # Create trimesh object from normalized mesh data
-            normalized_mesh = Trimesh(
-                vertices=mesh_vertices,
-                faces=mesh_faces,
-                process=True
-            )
-            print(f"[UniRigExtractSkeleton] Normalized mesh: {len(mesh_vertices)} vertices, {len(mesh_faces)} faces")
-
-            # Build parents list from bone_parents
-            if 'bone_parents' in skeleton_data:
-                bone_parents = skeleton_data['bone_parents']
-                num_bones = len(bone_parents)
-                parents_list = [None if p == -1 else int(p) for p in bone_parents]
-
-                # Get bone names
-                bone_names = skeleton_data.get('bone_names', None)
-                if bone_names is not None:
-                    names_list = [str(n) for n in bone_names]
+                        # Load texture data if available
+                        if 'texture_data_base64' in preprocess_data:
+                            tex_data = preprocess_data['texture_data_base64']
+                            if tex_data is not None and len(str(tex_data)) > 0:
+                                texture_data_base64 = str(tex_data)
+                                texture_format = str(preprocess_data.get('texture_format', 'PNG'))
+                                texture_width = int(preprocess_data.get('texture_width', 0))
+                                texture_height = int(preprocess_data.get('texture_height', 0))
                 else:
+                    # Fallback: use trimesh data
+                    mesh_vertices_original = np.array(trimesh.vertices, dtype=np.float32)
+                    mesh_faces = np.array(trimesh.faces, dtype=np.int32)
+                    vertex_normals = np.array(trimesh.vertex_normals, dtype=np.float32) if hasattr(trimesh, 'vertex_normals') else None
+                    face_normals = np.array(trimesh.face_normals, dtype=np.float32) if hasattr(trimesh, 'face_normals') else None
+
+                # Normalize mesh to [-1, 1]
+                mesh_bounds_min = mesh_vertices_original.min(axis=0)
+                mesh_bounds_max = mesh_vertices_original.max(axis=0)
+                mesh_center = (mesh_bounds_min + mesh_bounds_max) / 2
+                mesh_extents = mesh_bounds_max - mesh_bounds_min
+                mesh_scale = mesh_extents.max() / 2
+
+                # Normalize mesh vertices to [-1, 1]
+                mesh_vertices = (mesh_vertices_original - mesh_center) / mesh_scale
+
+                # Create trimesh object from normalized mesh data
+                normalized_mesh = Trimesh(
+                    vertices=mesh_vertices,
+                    faces=mesh_faces,
+                    process=True
+                )
+                print(f"[UniRigExtractSkeleton] Normalized mesh: {len(mesh_vertices)} vertices, {len(mesh_faces)} faces")
+
+                # Build parents list from bone_parents
+                if 'bone_parents' in skeleton_data:
+                    bone_parents = skeleton_data['bone_parents']
+                    num_bones = len(bone_parents)
+                    parents_list = [None if p == -1 else int(p) for p in bone_parents]
+
+                    # Get bone names
+                    bone_names = skeleton_data.get('bone_names', None)
+                    if bone_names is not None:
+                        names_list = [str(n) for n in bone_names]
+                    else:
+                        names_list = [f"bone_{i}" for i in range(num_bones)]
+
+                    # Map bones to their head joint positions
+                    if 'bone_to_head_vertex' in skeleton_data:
+                        bone_to_head = skeleton_data['bone_to_head_vertex']
+                        bone_joints = np.array([all_joints[bone_to_head[i]] for i in range(num_bones)])
+                    else:
+                        bone_joints = all_joints[:num_bones]
+
+                    # Compute tails
+                    tails = np.zeros((num_bones, 3))
+                    for i in range(num_bones):
+                        children = [j for j, p in enumerate(parents_list) if p == i]
+                        if children:
+                            tails[i] = np.mean([bone_joints[c] for c in children], axis=0)
+                        else:
+                            if parents_list[i] is not None:
+                                direction = bone_joints[i] - bone_joints[parents_list[i]]
+                                tails[i] = bone_joints[i] + direction * 0.3
+                            else:
+                                tails[i] = bone_joints[i] + np.array([0, 0.1, 0])
+
+                else:
+                    # No hierarchy - create simple chain
+                    num_bones = len(all_joints)
+                    bone_joints = all_joints
+                    parents_list = [None] + list(range(num_bones-1))
                     names_list = [f"bone_{i}" for i in range(num_bones)]
 
-                # Map bones to their head joint positions
+                    tails = np.zeros_like(bone_joints)
+                    for i in range(num_bones):
+                        children = [j for j, p in enumerate(parents_list) if p == i]
+                        if children:
+                            tails[i] = np.mean([bone_joints[c] for c in children], axis=0)
+                        else:
+                            if parents_list[i] is not None:
+                                direction = bone_joints[i] - bone_joints[parents_list[i]]
+                                tails[i] = bone_joints[i] + direction * 0.3
+                            else:
+                                tails[i] = bone_joints[i] + np.array([0, 0.1, 0])
+
+                # Save as RawData NPZ for skinning phase
+                persistent_npz = os.path.join(folder_paths.get_temp_directory(), f"skeleton_{seed}.npz")
+                np.savez(
+                    persistent_npz,
+                    vertices=mesh_vertices,
+                    vertex_normals=vertex_normals,
+                    faces=mesh_faces,
+                    face_normals=face_normals,
+                    joints=bone_joints,
+                    tails=tails,
+                    parents=np.array(parents_list, dtype=object),
+                    names=np.array(names_list, dtype=object),
+                    uv_coords=uv_coords if uv_coords is not None else np.array([], dtype=np.float32),
+                    uv_faces=uv_faces if uv_faces is not None else np.array([], dtype=np.int32),
+                    material_name=material_name if material_name else "",
+                    texture_path=texture_path if texture_path else "",
+                    mesh_bounds_min=mesh_bounds_min,
+                    mesh_bounds_max=mesh_bounds_max,
+                    mesh_center=mesh_center,
+                    mesh_scale=mesh_scale,
+                    skin=None,
+                    no_skin=None,
+                    matrix_local=None,
+                    path=None,
+                    cls=None
+                )
+
+                # Build skeleton dict with ALL data
+                skeleton = {
+                    "vertices": all_joints,
+                    "edges": edges,
+                    "joints": bone_joints,
+                    "tails": tails,
+                    "names": names_list,
+                    "parents": parents_list,
+                    "mesh_vertices": mesh_vertices,
+                    "mesh_faces": mesh_faces,
+                    "mesh_vertex_normals": vertex_normals,
+                    "mesh_face_normals": face_normals,
+                    "uv_coords": uv_coords,
+                    "uv_faces": uv_faces,
+                    "material_name": material_name,
+                    "texture_path": texture_path,
+                    "texture_data_base64": texture_data_base64,
+                    "texture_format": texture_format,
+                    "texture_width": texture_width,
+                    "texture_height": texture_height,
+                    "mesh_bounds_min": mesh_bounds_min,
+                    "mesh_bounds_max": mesh_bounds_max,
+                    "mesh_center": mesh_center,
+                    "mesh_scale": mesh_scale,
+                    "is_normalized": True,
+                    "skeleton_npz_path": persistent_npz,
+                    "bone_names": names_list,
+                    "bone_parents": parents_list,
+                }
+
                 if 'bone_to_head_vertex' in skeleton_data:
-                    bone_to_head = skeleton_data['bone_to_head_vertex']
-                    bone_joints = np.array([all_joints[bone_to_head[i]] for i in range(num_bones)])
+                    skeleton['bone_to_head_vertex'] = skeleton_data['bone_to_head_vertex'].tolist()
+
+                # Create texture preview output
+                if texture_data_base64:
+                    texture_preview, tex_w, tex_h = decode_texture_to_comfy_image(texture_data_base64)
+                    if texture_preview is None:
+                        texture_preview = create_placeholder_texture()
                 else:
-                    bone_joints = all_joints[:num_bones]
-
-                # Compute tails
-                tails = np.zeros((num_bones, 3))
-                for i in range(num_bones):
-                    children = [j for j, p in enumerate(parents_list) if p == i]
-                    if children:
-                        tails[i] = np.mean([bone_joints[c] for c in children], axis=0)
-                    else:
-                        if parents_list[i] is not None:
-                            direction = bone_joints[i] - bone_joints[parents_list[i]]
-                            tails[i] = bone_joints[i] + direction * 0.3
-                        else:
-                            tails[i] = bone_joints[i] + np.array([0, 0.1, 0])
-
-            else:
-                # No hierarchy - create simple chain
-                num_bones = len(all_joints)
-                bone_joints = all_joints
-                parents_list = [None] + list(range(num_bones-1))
-                names_list = [f"bone_{i}" for i in range(num_bones)]
-
-                tails = np.zeros_like(bone_joints)
-                for i in range(num_bones):
-                    children = [j for j, p in enumerate(parents_list) if p == i]
-                    if children:
-                        tails[i] = np.mean([bone_joints[c] for c in children], axis=0)
-                    else:
-                        if parents_list[i] is not None:
-                            direction = bone_joints[i] - bone_joints[parents_list[i]]
-                            tails[i] = bone_joints[i] + direction * 0.3
-                        else:
-                            tails[i] = bone_joints[i] + np.array([0, 0.1, 0])
-
-            # Save as RawData NPZ for skinning phase
-            persistent_npz = os.path.join(folder_paths.get_temp_directory(), f"skeleton_{seed}.npz")
-            np.savez(
-                persistent_npz,
-                vertices=mesh_vertices,
-                vertex_normals=vertex_normals,
-                faces=mesh_faces,
-                face_normals=face_normals,
-                joints=bone_joints,
-                tails=tails,
-                parents=np.array(parents_list, dtype=object),
-                names=np.array(names_list, dtype=object),
-                uv_coords=uv_coords if uv_coords is not None else np.array([], dtype=np.float32),
-                uv_faces=uv_faces if uv_faces is not None else np.array([], dtype=np.int32),
-                material_name=material_name if material_name else "",
-                texture_path=texture_path if texture_path else "",
-                mesh_bounds_min=mesh_bounds_min,
-                mesh_bounds_max=mesh_bounds_max,
-                mesh_center=mesh_center,
-                mesh_scale=mesh_scale,
-                skin=None,
-                no_skin=None,
-                matrix_local=None,
-                path=None,
-                cls=None
-            )
-
-            # Build skeleton dict with ALL data
-            skeleton = {
-                "vertices": all_joints,
-                "edges": edges,
-                "joints": bone_joints,
-                "tails": tails,
-                "names": names_list,
-                "parents": parents_list,
-                "mesh_vertices": mesh_vertices,
-                "mesh_faces": mesh_faces,
-                "mesh_vertex_normals": vertex_normals,
-                "mesh_face_normals": face_normals,
-                "uv_coords": uv_coords,
-                "uv_faces": uv_faces,
-                "material_name": material_name,
-                "texture_path": texture_path,
-                "texture_data_base64": texture_data_base64,
-                "texture_format": texture_format,
-                "texture_width": texture_width,
-                "texture_height": texture_height,
-                "mesh_bounds_min": mesh_bounds_min,
-                "mesh_bounds_max": mesh_bounds_max,
-                "mesh_center": mesh_center,
-                "mesh_scale": mesh_scale,
-                "is_normalized": True,
-                "skeleton_npz_path": persistent_npz,
-                "bone_names": names_list,
-                "bone_parents": parents_list,
-            }
-
-            if 'bone_to_head_vertex' in skeleton_data:
-                skeleton['bone_to_head_vertex'] = skeleton_data['bone_to_head_vertex'].tolist()
-
-            # Create texture preview output
-            if texture_data_base64:
-                texture_preview, tex_w, tex_h = decode_texture_to_comfy_image(texture_data_base64)
-                if texture_preview is None:
                     texture_preview = create_placeholder_texture()
-            else:
-                texture_preview = create_placeholder_texture()
 
-            total_time = time.time() - total_start
-            print(f"[UniRigExtractSkeleton] Complete! {len(names_list)} bones, {total_time:.2f}s total")
-            return (normalized_mesh, skeleton, texture_preview)
+                total_time = time.time() - total_start
+                print(f"[UniRigExtractSkeleton] Complete! {len(names_list)} bones, {total_time:.2f}s total")
+                return (normalized_mesh, skeleton, texture_preview)
