@@ -13,15 +13,30 @@ import glob
 import json
 import folder_paths
 
-from ..constants import BLENDER_TIMEOUT, INFERENCE_TIMEOUT
-from .base import (
-    UNIRIG_PATH,
-    BLENDER_EXE,
-    UNIRIG_MODELS_DIR,
-    setup_subprocess_env,
-    decode_texture_to_comfy_image,
-    create_placeholder_texture,
-)
+# Support both relative imports (ComfyUI) and absolute imports (testing)
+try:
+    from ..constants import BLENDER_TIMEOUT, INFERENCE_TIMEOUT
+except ImportError:
+    from constants import BLENDER_TIMEOUT, INFERENCE_TIMEOUT
+
+try:
+    from .base import (
+        UNIRIG_PATH,
+        BLENDER_EXE,
+        UNIRIG_MODELS_DIR,
+        setup_subprocess_env,
+        decode_texture_to_comfy_image,
+        create_placeholder_texture,
+    )
+except ImportError:
+    from base import (
+        UNIRIG_PATH,
+        BLENDER_EXE,
+        UNIRIG_MODELS_DIR,
+        setup_subprocess_env,
+        decode_texture_to_comfy_image,
+        create_placeholder_texture,
+    )
 
 
 class UniRigApplySkinning:

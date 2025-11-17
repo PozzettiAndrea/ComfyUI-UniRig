@@ -11,13 +11,26 @@ import shutil
 import pickle
 import folder_paths
 
-from ..constants import BLENDER_TIMEOUT, PARSE_TIMEOUT, MESH_INFO_TIMEOUT, DEFAULT_EXTRUDE_SIZE
-from .base import (
-    BLENDER_EXE,
-    BLENDER_PARSE_SKELETON,
-    BLENDER_EXTRACT_MESH_INFO,
-    NODE_DIR,
-)
+# Support both relative imports (ComfyUI) and absolute imports (testing)
+try:
+    from ..constants import BLENDER_TIMEOUT, PARSE_TIMEOUT, MESH_INFO_TIMEOUT, DEFAULT_EXTRUDE_SIZE
+except ImportError:
+    from constants import BLENDER_TIMEOUT, PARSE_TIMEOUT, MESH_INFO_TIMEOUT, DEFAULT_EXTRUDE_SIZE
+
+try:
+    from .base import (
+        BLENDER_EXE,
+        BLENDER_PARSE_SKELETON,
+        BLENDER_EXTRACT_MESH_INFO,
+        NODE_DIR,
+    )
+except ImportError:
+    from base import (
+        BLENDER_EXE,
+        BLENDER_PARSE_SKELETON,
+        BLENDER_EXTRACT_MESH_INFO,
+        NODE_DIR,
+    )
 
 
 class UniRigSaveSkeleton:
