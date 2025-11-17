@@ -25,6 +25,7 @@ try:
         BLENDER_SCRIPT,
         BLENDER_PARSE_SKELETON,
         UNIRIG_MODELS_DIR,
+        LIB_DIR,
         setup_subprocess_env,
         decode_texture_to_comfy_image,
         create_placeholder_texture,
@@ -36,10 +37,35 @@ except ImportError:
         BLENDER_SCRIPT,
         BLENDER_PARSE_SKELETON,
         UNIRIG_MODELS_DIR,
+        LIB_DIR,
         setup_subprocess_env,
         decode_texture_to_comfy_image,
         create_placeholder_texture,
     )
+
+# In-process model cache module
+_MODEL_CACHE_MODULE = None
+
+
+def _get_model_cache():
+    """Get the in-process model cache module."""
+    global _MODEL_CACHE_MODULE
+    if _MODEL_CACHE_MODULE is None:
+        # Use sys.modules to ensure same instance across all imports
+        if "unirig_model_cache" in sys.modules:
+            _MODEL_CACHE_MODULE = sys.modules["unirig_model_cache"]
+        else:
+            cache_path = os.path.join(LIB_DIR, "model_cache.py")
+            if os.path.exists(cache_path):
+                import importlib.util
+                spec = importlib.util.spec_from_file_location("unirig_model_cache", cache_path)
+                _MODEL_CACHE_MODULE = importlib.util.module_from_spec(spec)
+                sys.modules["unirig_model_cache"] = _MODEL_CACHE_MODULE
+                spec.loader.exec_module(_MODEL_CACHE_MODULE)
+            else:
+                print(f"[UniRig] Warning: Model cache module not found at {cache_path}")
+                _MODEL_CACHE_MODULE = False
+    return _MODEL_CACHE_MODULE if _MODEL_CACHE_MODULE else None
 
 
 class UniRigExtractSkeleton:
@@ -170,48 +196,83 @@ class UniRigExtractSkeleton:
             # Step 2: Run skeleton inference
             step_start = time.time()
             print(f"[UniRigExtractSkeleton] Step 2: Running skeleton inference...")
-            run_cmd = [
-                sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
-                "--task", task_config_path,
-                "--seed", str(seed),
-                "--input", input_path,
-                "--output", output_path,
-                "--npz_dir", tmpdir,
-            ]
 
-            print(f"[UniRigExtractSkeleton] Running: {' '.join(run_cmd)}")
-            print(f"[UniRigExtractSkeleton] Using Blender: {BLENDER_EXE}")
-            print(f"[UniRigExtractSkeleton] Task config: {task_config_path}")
+            # Try in-process cached model first
+            used_cache = False
+            if skeleton_model is not None and skeleton_model.get("model_cache_key"):
+                model_cache = _get_model_cache()
+                if model_cache:
+                    cache_key = skeleton_model["model_cache_key"]
+                    print(f"[UniRigExtractSkeleton] Using cached model (in-process inference)...")
 
-            env = setup_subprocess_env()
-            print(f"[UniRigExtractSkeleton] Set BLENDER_EXE environment variable for FBX export")
+                    request_data = {
+                        "seed": seed,
+                        "input": input_path,
+                        "output": output_path,
+                        "npz_dir": tmpdir,
+                        "cls": None,
+                        "data_name": "raw_data.npz",
+                    }
 
-            try:
-                result = subprocess.run(
-                    run_cmd,
-                    cwd=UNIRIG_PATH,
-                    env=env,
-                    capture_output=True,
-                    text=True,
-                    timeout=INFERENCE_TIMEOUT
-                )
-                if result.stdout:
-                    print(f"[UniRigExtractSkeleton] Inference stdout:\n{result.stdout}")
-                if result.stderr:
-                    print(f"[UniRigExtractSkeleton] Inference stderr:\n{result.stderr}")
+                    try:
+                        result = model_cache.run_inference(cache_key, request_data)
+                        if "error" in result:
+                            print(f"[UniRigExtractSkeleton] Cache inference failed: {result['error']}")
+                            if "traceback" in result:
+                                print(f"[UniRigExtractSkeleton] Traceback:\n{result['traceback']}")
+                            print(f"[UniRigExtractSkeleton] Falling back to subprocess inference...")
+                        else:
+                            used_cache = True
+                            inference_time = time.time() - step_start
+                            print(f"[UniRigExtractSkeleton] ✓ In-process inference completed in {inference_time:.2f}s")
+                    except Exception as e:
+                        print(f"[UniRigExtractSkeleton] Cache inference exception: {e}")
+                        print(f"[UniRigExtractSkeleton] Falling back to subprocess inference...")
 
-                if result.returncode != 0:
-                    print(f"[UniRigExtractSkeleton] Inference failed with exit code {result.returncode}")
-                    raise RuntimeError(f"Inference failed with exit code {result.returncode}")
+            # Fall back to subprocess if cache not used or failed
+            if not used_cache:
+                run_cmd = [
+                    sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
+                    "--task", task_config_path,
+                    "--seed", str(seed),
+                    "--input", input_path,
+                    "--output", output_path,
+                    "--npz_dir", tmpdir,
+                ]
 
-                inference_time = time.time() - step_start
-                print(f"[UniRigExtractSkeleton] Inference completed in {inference_time:.2f}s")
+                print(f"[UniRigExtractSkeleton] Running subprocess: {' '.join(run_cmd)}")
+                print(f"[UniRigExtractSkeleton] Using Blender: {BLENDER_EXE}")
+                print(f"[UniRigExtractSkeleton] Task config: {task_config_path}")
 
-            except subprocess.TimeoutExpired:
-                raise RuntimeError(f"Inference timed out (>{INFERENCE_TIMEOUT}s)")
-            except Exception as e:
-                print(f"[UniRigExtractSkeleton] Inference error: {e}")
-                raise
+                env = setup_subprocess_env()
+                print(f"[UniRigExtractSkeleton] Set BLENDER_EXE environment variable for FBX export")
+
+                try:
+                    result = subprocess.run(
+                        run_cmd,
+                        cwd=UNIRIG_PATH,
+                        env=env,
+                        capture_output=True,
+                        text=True,
+                        timeout=INFERENCE_TIMEOUT
+                    )
+                    if result.stdout:
+                        print(f"[UniRigExtractSkeleton] Inference stdout:\n{result.stdout}")
+                    if result.stderr:
+                        print(f"[UniRigExtractSkeleton] Inference stderr:\n{result.stderr}")
+
+                    if result.returncode != 0:
+                        print(f"[UniRigExtractSkeleton] Inference failed with exit code {result.returncode}")
+                        raise RuntimeError(f"Inference failed with exit code {result.returncode}")
+
+                    inference_time = time.time() - step_start
+                    print(f"[UniRigExtractSkeleton] Subprocess inference completed in {inference_time:.2f}s")
+
+                except subprocess.TimeoutExpired:
+                    raise RuntimeError(f"Inference timed out (>{INFERENCE_TIMEOUT}s)")
+                except Exception as e:
+                    print(f"[UniRigExtractSkeleton] Inference error: {e}")
+                    raise
 
             # Load and parse FBX output
             if not os.path.exists(output_path):

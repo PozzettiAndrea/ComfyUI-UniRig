@@ -24,6 +24,7 @@ try:
         UNIRIG_PATH,
         BLENDER_EXE,
         UNIRIG_MODELS_DIR,
+        LIB_DIR,
         setup_subprocess_env,
         decode_texture_to_comfy_image,
         create_placeholder_texture,
@@ -33,10 +34,35 @@ except ImportError:
         UNIRIG_PATH,
         BLENDER_EXE,
         UNIRIG_MODELS_DIR,
+        LIB_DIR,
         setup_subprocess_env,
         decode_texture_to_comfy_image,
         create_placeholder_texture,
     )
+
+# In-process model cache module
+_MODEL_CACHE_MODULE = None
+
+
+def _get_model_cache():
+    """Get the in-process model cache module."""
+    global _MODEL_CACHE_MODULE
+    if _MODEL_CACHE_MODULE is None:
+        # Use sys.modules to ensure same instance across all imports
+        if "unirig_model_cache" in sys.modules:
+            _MODEL_CACHE_MODULE = sys.modules["unirig_model_cache"]
+        else:
+            cache_path = os.path.join(LIB_DIR, "model_cache.py")
+            if os.path.exists(cache_path):
+                import importlib.util
+                spec = importlib.util.spec_from_file_location("unirig_model_cache", cache_path)
+                _MODEL_CACHE_MODULE = importlib.util.module_from_spec(spec)
+                sys.modules["unirig_model_cache"] = _MODEL_CACHE_MODULE
+                spec.loader.exec_module(_MODEL_CACHE_MODULE)
+            else:
+                print(f"[UniRig] Warning: Model cache module not found at {cache_path}")
+                _MODEL_CACHE_MODULE = False
+    return _MODEL_CACHE_MODULE if _MODEL_CACHE_MODULE else None
 
 
 class UniRigApplySkinning:
@@ -375,27 +401,10 @@ class UniRigApplySkinningML:
         print(f"[UniRigApplySkinningML] DEBUG - GLB mesh bounds: {normalized_mesh.vertices.min(axis=0)} to {normalized_mesh.vertices.max(axis=0)}")
 
         # Run skinning inference
+        step_start = time.time()
         print(f"[UniRigApplySkinningML] Running skinning inference...")
 
-        python_exe = sys.executable
-        run_script = os.path.join(UNIRIG_PATH, "run.py")
         output_fbx = os.path.join(temp_dir, "rigged.fbx")
-
-        cmd = [
-            python_exe, run_script,
-            "--task", task_config_path,
-            "--input", input_glb,
-            "--output", output_fbx,
-            "--npz_dir", temp_dir,
-            "--seed", "123"
-        ]
-
-        print(f"[UniRigApplySkinningML] Task config: {task_config_path}")
-
-        # Set BLENDER_EXE environment variable for FBX export
-        env = os.environ.copy()
-        if BLENDER_EXE:
-            env['BLENDER_EXE'] = BLENDER_EXE
 
         # Build config overrides from optional parameters
         config_overrides = {}
@@ -408,28 +417,88 @@ class UniRigApplySkinningML:
         if voxel_mask_power is not None:
             config_overrides['voxel_mask_power'] = voxel_mask_power
 
-        # Pass overrides via environment variable if any were specified
         if config_overrides:
-            env['UNIRIG_CONFIG_OVERRIDES'] = json.dumps(config_overrides)
             print(f"[UniRigApplySkinningML] Config overrides: {config_overrides}")
 
-        result = subprocess.run(
-            cmd,
-            cwd=UNIRIG_PATH,
-            capture_output=True,
-            text=True,
-            timeout=INFERENCE_TIMEOUT,
-            env=env
-        )
+        # Try in-process cached model first
+        used_cache = False
+        if skinning_model is not None and skinning_model.get("model_cache_key"):
+            model_cache = _get_model_cache()
+            if model_cache:
+                cache_key = skinning_model["model_cache_key"]
+                print(f"[UniRigApplySkinningML] Using cached model (in-process inference)...")
 
-        if result.stdout:
-            print(f"[UniRigApplySkinningML] Skinning stdout:\n{result.stdout}")
-        if result.stderr:
-            print(f"[UniRigApplySkinningML] Skinning stderr:\n{result.stderr}")
+                request_data = {
+                    "seed": 123,
+                    "input": input_glb,
+                    "output": output_fbx,
+                    "npz_dir": temp_dir,
+                    "cls": skeleton.get('cls'),
+                    "data_name": "raw_data.npz",
+                    "config_overrides": config_overrides,
+                }
 
-        if result.returncode != 0:
-            print(f"[UniRigApplySkinningML] Skinning failed with return code: {result.returncode}")
-            raise RuntimeError(f"Skinning generation failed with exit code {result.returncode}")
+                try:
+                    result = model_cache.run_inference(cache_key, request_data)
+                    if "error" in result:
+                        print(f"[UniRigApplySkinningML] Cache inference failed: {result['error']}")
+                        if "traceback" in result:
+                            print(f"[UniRigApplySkinningML] Traceback:\n{result['traceback']}")
+                        print(f"[UniRigApplySkinningML] Falling back to subprocess inference...")
+                    else:
+                        used_cache = True
+                        inference_time = time.time() - step_start
+                        print(f"[UniRigApplySkinningML] ✓ In-process inference completed in {inference_time:.2f}s")
+                except Exception as e:
+                    print(f"[UniRigApplySkinningML] Cache inference exception: {e}")
+                    print(f"[UniRigApplySkinningML] Falling back to subprocess inference...")
+
+        # Fall back to subprocess if cache not used or failed
+        if not used_cache:
+            python_exe = sys.executable
+            run_script = os.path.join(UNIRIG_PATH, "run.py")
+
+            cmd = [
+                python_exe, run_script,
+                "--task", task_config_path,
+                "--input", input_glb,
+                "--output", output_fbx,
+                "--npz_dir", temp_dir,
+                "--seed", "123"
+            ]
+
+            print(f"[UniRigApplySkinningML] Running subprocess: {' '.join(cmd)}")
+            print(f"[UniRigApplySkinningML] Task config: {task_config_path}")
+
+            # Set BLENDER_EXE environment variable for FBX export
+            env = os.environ.copy()
+            if BLENDER_EXE:
+                env['BLENDER_EXE'] = BLENDER_EXE
+
+            # Pass overrides via environment variable if any were specified
+            if config_overrides:
+                env['UNIRIG_CONFIG_OVERRIDES'] = json.dumps(config_overrides)
+
+            result = subprocess.run(
+                cmd,
+                cwd=UNIRIG_PATH,
+                capture_output=True,
+                text=True,
+                timeout=INFERENCE_TIMEOUT,
+                env=env
+            )
+
+            if result.stdout:
+                print(f"[UniRigApplySkinningML] Skinning stdout:\n{result.stdout}")
+            if result.stderr:
+                print(f"[UniRigApplySkinningML] Skinning stderr:\n{result.stderr}")
+
+            if result.returncode != 0:
+                print(f"[UniRigApplySkinningML] Skinning failed with return code: {result.returncode}")
+                raise RuntimeError(f"Skinning generation failed with exit code {result.returncode}")
+
+            inference_time = time.time() - step_start
+            print(f"[UniRigApplySkinningML] Subprocess inference completed in {inference_time:.2f}s")
 
         print(f"[UniRigApplySkinningML] Skinning completed")
 

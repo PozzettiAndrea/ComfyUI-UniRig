@@ -2,7 +2,7 @@
 Model loader nodes for UniRig - Pre-load and cache ML models for faster inference.
 
 These nodes download and cache models so subsequent inference runs are faster.
-Models are cached in memory as configuration dicts that can be reused.
+When cache_to_gpu is enabled, models are loaded directly into GPU memory in the main process.
 """
 
 import os
@@ -13,12 +13,36 @@ from box import Box
 
 # Support both relative imports (ComfyUI) and absolute imports (testing)
 try:
-    from .base import UNIRIG_PATH, UNIRIG_MODELS_DIR
+    from .base import UNIRIG_PATH, UNIRIG_MODELS_DIR, LIB_DIR
 except ImportError:
-    from base import UNIRIG_PATH, UNIRIG_MODELS_DIR
+    from base import UNIRIG_PATH, UNIRIG_MODELS_DIR, LIB_DIR
 
-# Global model cache
+# Global model cache (for config dicts)
 _MODEL_CACHE = {}
+
+# In-process model cache module
+_MODEL_CACHE_MODULE = None
+
+
+def _get_model_cache():
+    """Get the in-process model cache module."""
+    global _MODEL_CACHE_MODULE
+    if _MODEL_CACHE_MODULE is None:
+        # Use sys.modules to ensure same instance across all imports
+        if "unirig_model_cache" in sys.modules:
+            _MODEL_CACHE_MODULE = sys.modules["unirig_model_cache"]
+        else:
+            cache_path = os.path.join(LIB_DIR, "model_cache.py")
+            if os.path.exists(cache_path):
+                import importlib.util
+                spec = importlib.util.spec_from_file_location("unirig_model_cache", cache_path)
+                _MODEL_CACHE_MODULE = importlib.util.module_from_spec(spec)
+                sys.modules["unirig_model_cache"] = _MODEL_CACHE_MODULE
+                spec.loader.exec_module(_MODEL_CACHE_MODULE)
+            else:
+                print(f"[UniRig] Warning: Model cache module not found at {cache_path}")
+                _MODEL_CACHE_MODULE = False
+    return _MODEL_CACHE_MODULE if _MODEL_CACHE_MODULE else None
 
 
 def _ensure_unirig_in_path():
@@ -52,6 +76,10 @@ class UniRigLoadSkeletonModel:
                     "default": "VAST-AI/UniRig",
                     "tooltip": "HuggingFace model ID for skeleton model"
                 }),
+                "cache_to_gpu": ("BOOLEAN", {
+                    "default": True,
+                    "tooltip": "Keep model cached on GPU for faster inference. Disable to offload to CPU after inference (saves VRAM)."
+                }),
             },
         }
 
@@ -60,16 +88,20 @@ class UniRigLoadSkeletonModel:
     FUNCTION = "load_model"
     CATEGORY = "UniRig/Models"
 
-    def load_model(self, model_id="VAST-AI/UniRig"):
+    def load_model(self, model_id="VAST-AI/UniRig", cache_to_gpu=True):
         """Load and cache skeleton model configuration."""
         print(f"[UniRigLoadSkeletonModel] Loading skeleton model: {model_id}")
+        print(f"[UniRigLoadSkeletonModel] GPU caching: {'enabled' if cache_to_gpu else 'disabled (will offload to CPU)'}")
 
         cache_key = f"skeleton_{model_id}"
 
         # Check cache
         if cache_key in _MODEL_CACHE:
+            cached_model = _MODEL_CACHE[cache_key]
+            # Update cache_to_gpu setting in case it changed
+            cached_model["cache_to_gpu"] = cache_to_gpu
             print(f"[UniRigLoadSkeletonModel] Using cached model configuration")
-            return (_MODEL_CACHE[cache_key],)
+            return (cached_model,)
 
         _ensure_unirig_in_path()
 
@@ -122,7 +154,28 @@ class UniRigLoadSkeletonModel:
                 "unirig_path": UNIRIG_PATH,
                 "models_dir": str(UNIRIG_MODELS_DIR),
                 "cached": True,
+                "cache_to_gpu": cache_to_gpu,
+                "model_cache_key": None,
             }
+
+            # If cache_to_gpu is enabled, load model into GPU memory
+            if cache_to_gpu:
+                model_cache = _get_model_cache()
+                if model_cache:
+                    print(f"[UniRigLoadSkeletonModel] Loading model into GPU memory...")
+                    try:
+                        model_cache_key = model_cache.load_model_into_memory(
+                            model_type="skeleton",
+                            task_config_path=task_config_path,
+                            cache_to_gpu=True
+                        )
+                        model_wrapper["model_cache_key"] = model_cache_key
+                        print(f"[UniRigLoadSkeletonModel] Model loaded into GPU memory")
+                    except Exception as e:
+                        print(f"[UniRigLoadSkeletonModel] Warning: Failed to load into GPU memory: {e}")
+                        print(f"[UniRigLoadSkeletonModel] Will use subprocess fallback")
+                else:
+                    print(f"[UniRigLoadSkeletonModel] Warning: Model cache not available")
 
             # Cache it
             _MODEL_CACHE[cache_key] = model_wrapper
@@ -169,6 +222,10 @@ class UniRigLoadSkinningModel:
                     "default": "VAST-AI/UniRig",
                     "tooltip": "HuggingFace model ID for skinning model"
                 }),
+                "cache_to_gpu": ("BOOLEAN", {
+                    "default": True,
+                    "tooltip": "Keep model cached on GPU for faster inference. Disable to offload to CPU after inference (saves VRAM)."
+                }),
             },
         }
 
@@ -177,16 +234,20 @@ class UniRigLoadSkinningModel:
     FUNCTION = "load_model"
     CATEGORY = "UniRig/Models"
 
-    def load_model(self, model_id="VAST-AI/UniRig"):
+    def load_model(self, model_id="VAST-AI/UniRig", cache_to_gpu=True):
         """Load and cache skinning model configuration."""
         print(f"[UniRigLoadSkinningModel] Loading skinning model: {model_id}")
+        print(f"[UniRigLoadSkinningModel] GPU caching: {'enabled' if cache_to_gpu else 'disabled (will offload to CPU)'}")
 
         cache_key = f"skinning_{model_id}"
 
         # Check cache
         if cache_key in _MODEL_CACHE:
+            cached_model = _MODEL_CACHE[cache_key]
+            # Update cache_to_gpu setting in case it changed
+            cached_model["cache_to_gpu"] = cache_to_gpu
             print(f"[UniRigLoadSkinningModel] Using cached model configuration")
-            return (_MODEL_CACHE[cache_key],)
+            return (cached_model,)
 
         _ensure_unirig_in_path()
 
@@ -229,7 +290,28 @@ class UniRigLoadSkinningModel:
                 "unirig_path": UNIRIG_PATH,
                 "models_dir": str(UNIRIG_MODELS_DIR),
                 "cached": True,
+                "cache_to_gpu": cache_to_gpu,
+                "model_cache_key": None,
             }
+
+            # If cache_to_gpu is enabled, load model into GPU memory
+            if cache_to_gpu:
+                model_cache = _get_model_cache()
+                if model_cache:
+                    print(f"[UniRigLoadSkinningModel] Loading model into GPU memory...")
+                    try:
+                        model_cache_key = model_cache.load_model_into_memory(
+                            model_type="skinning",
+                            task_config_path=task_config_path,
+                            cache_to_gpu=True
+                        )
+                        model_wrapper["model_cache_key"] = model_cache_key
+                        print(f"[UniRigLoadSkinningModel] Model loaded into GPU memory")
+                    except Exception as e:
+                        print(f"[UniRigLoadSkinningModel] Warning: Failed to load into GPU memory: {e}")
+                        print(f"[UniRigLoadSkinningModel] Will use subprocess fallback")
+                else:
+                    print(f"[UniRigLoadSkinningModel] Warning: Model cache not available")
 
             # Cache it
             _MODEL_CACHE[cache_key] = model_wrapper
