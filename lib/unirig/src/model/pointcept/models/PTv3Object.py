@@ -96,6 +96,7 @@ class SerializedAttention(PointModule):
         if enable_flash and flash_attn is None:
             print("[UniRig] flash_attn not available for PTv3Object, falling back to standard PyTorch attention")
             enable_flash = False
+            self.enable_flash = False
 
         if enable_flash:
             assert (
