@@ -75,9 +75,15 @@ except Exception as e:
 BLENDER_DIR = LIB_DIR / "blender"
 BLENDER_EXE = None
 if BLENDER_DIR.exists():
-    blender_bins = list(BLENDER_DIR.rglob("blender"))
-    if blender_bins:
-        BLENDER_EXE = str(blender_bins[0])
+    # Support both relative imports (ComfyUI) and absolute imports (testing)
+    try:
+        from ..install import find_blender_executable
+    except ImportError:
+        from install import find_blender_executable
+    blender_bin = find_blender_executable(str(BLENDER_DIR))
+    if blender_bin:
+        BLENDER_EXE = str(blender_bin)
+        os.environ['BLENDER_EXE'] = BLENDER_EXE
         print(f"[UniRig] Found Blender: {BLENDER_EXE}")
 
 # Install Blender if not found
@@ -86,7 +92,10 @@ if not BLENDER_EXE:
     try:
         # Import from parent package
         sys.path.insert(0, str(NODE_DIR))
-        from install import install_blender
+        try:
+            from ..install import install_blender
+        except ImportError:
+            from install import install_blender
         BLENDER_EXE = install_blender(target_dir=BLENDER_DIR)
         if BLENDER_EXE:
             print(f"[UniRig] Blender installed: {BLENDER_EXE}")

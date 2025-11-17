@@ -19,6 +19,7 @@ fast-simplification
 # Mesh processing
 open3d
 pyrender
+libigl
 
 # Note: bpy is no longer needed - we use bundled Blender instead
 # Note: torch-cluster, torch-scatter, and spconv are installed via lib/unirig/install.py

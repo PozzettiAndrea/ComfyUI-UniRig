@@ -27,6 +27,7 @@ from .skeleton_processing import (
     UniRigPrepareSkeletonForSkinning,
 )
 from .skinning import UniRigApplySkinning, UniRigApplySkinningML
+from .mesh_io import UniRigLoadMesh, UniRigSaveMesh
 
 NODE_CLASS_MAPPINGS = {
     "UniRigLoadSkeletonModel": UniRigLoadSkeletonModel,
@@ -42,6 +43,8 @@ NODE_CLASS_MAPPINGS = {
     "UniRigValidateSkeleton": UniRigValidateSkeleton,
     "UniRigPrepareSkeletonForSkinning": UniRigPrepareSkeletonForSkinning,
     "UniRigApplySkinningML": UniRigApplySkinningML,
+    "UniRigLoadMesh": UniRigLoadMesh,
+    "UniRigSaveMesh": UniRigSaveMesh,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -58,6 +61,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "UniRigValidateSkeleton": "UniRig: Validate Skeleton",
     "UniRigPrepareSkeletonForSkinning": "UniRig: Prepare Skeleton for Skinning",
     "UniRigApplySkinningML": "UniRig: Apply Skinning (ML Only)",
+    "UniRigLoadMesh": "UniRig: Load Mesh",
+    "UniRigSaveMesh": "UniRig: Save Mesh",
 }
 
 __all__ = [
