@@ -24,6 +24,7 @@ from src.system.parse import get_system, get_writer
 
 from tqdm import tqdm
 import time
+import json
 
 def load(task: str, path: str) -> Box:
     if path.endswith('.yaml'):
@@ -31,6 +32,49 @@ def load(task: str, path: str) -> Box:
     path += '.yaml'
     print(f"\033[92mload {task} config: {path}\033[0m")
     return Box(yaml.safe_load(open(path, 'r')))
+
+def apply_config_overrides(config, overrides: dict):
+    """
+    Apply config overrides to a Box/dict config object.
+
+    Args:
+        config: Box or dict config object
+        overrides: Dictionary of override values
+
+    Returns:
+        Modified config object
+    """
+    if not overrides:
+        return config
+
+    # Apply overrides to transform config (sampler and vertex group)
+    if hasattr(config, 'predict_transform_config') or 'predict_transform_config' in config:
+        ptc = config.get('predict_transform_config', {})
+
+        # Override sampler config
+        if 'sampler_config' in ptc:
+            if 'num_samples' in overrides:
+                ptc['sampler_config']['num_samples'] = overrides['num_samples']
+            if 'vertex_samples' in overrides:
+                ptc['sampler_config']['vertex_samples'] = overrides['vertex_samples']
+
+        # Override vertex group config (voxel_skin)
+        if 'vertex_group_config' in ptc and 'kwargs' in ptc['vertex_group_config']:
+            vg_kwargs = ptc['vertex_group_config']['kwargs']
+            if 'voxel_skin' in vg_kwargs:
+                vs = vg_kwargs['voxel_skin']
+                if 'voxel_grid_size' in overrides:
+                    vs['grid'] = overrides['voxel_grid_size']
+                if 'alpha' in overrides:
+                    vs['alpha'] = overrides['alpha']
+                if 'grid_query' in overrides:
+                    vs['grid_query'] = overrides['grid_query']
+                if 'vertex_query' in overrides:
+                    vs['vertex_query'] = overrides['vertex_query']
+                if 'grid_weight' in overrides:
+                    vs['grid_weight'] = overrides['grid_weight']
+
+    return config
 
 def nullable_string(val):
     if not val:
@@ -86,7 +130,17 @@ if __name__ == "__main__":
     
     data_config = load('data', os.path.join('configs/data', task.components.data))
     transform_config = load('transform', os.path.join('configs/transform', task.components.transform))
-    
+
+    # Check for config overrides from environment variable
+    config_overrides_json = os.environ.get('UNIRIG_CONFIG_OVERRIDES', None)
+    if config_overrides_json:
+        try:
+            config_overrides = json.loads(config_overrides_json)
+            print(f"\033[92mApplying config overrides: {config_overrides}\033[0m")
+            transform_config = apply_config_overrides(transform_config, config_overrides)
+        except json.JSONDecodeError as e:
+            print(f"\033[91mWarning: Failed to parse config overrides: {e}\033[0m")
+
     # get tokenizer
     tokenizer_config = task.components.get('tokenizer', None)
     if tokenizer_config is not None:

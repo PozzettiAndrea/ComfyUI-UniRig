@@ -12,16 +12,34 @@ import shutil
 import glob
 import folder_paths
 
-from ..constants import BLENDER_TIMEOUT, INFERENCE_TIMEOUT
-from .base import (
-    UNIRIG_PATH,
-    BLENDER_EXE,
-    UNIRIG_MODELS_DIR,
-    LIB_DIR,
-    setup_subprocess_env,
-    decode_texture_to_comfy_image,
-    create_placeholder_texture,
-)
+# Support both relative imports (ComfyUI) and absolute imports (testing)
+try:
+    from ..constants import BLENDER_TIMEOUT, INFERENCE_TIMEOUT
+    from ..lib.skinning_config import SkinningConfig
+except ImportError:
+    from constants import BLENDER_TIMEOUT, INFERENCE_TIMEOUT
+    from lib.skinning_config import SkinningConfig
+
+try:
+    from .base import (
+        UNIRIG_PATH,
+        BLENDER_EXE,
+        UNIRIG_MODELS_DIR,
+        LIB_DIR,
+        setup_subprocess_env,
+        decode_texture_to_comfy_image,
+        create_placeholder_texture,
+    )
+except ImportError:
+    from base import (
+        UNIRIG_PATH,
+        BLENDER_EXE,
+        UNIRIG_MODELS_DIR,
+        LIB_DIR,
+        setup_subprocess_env,
+        decode_texture_to_comfy_image,
+        create_placeholder_texture,
+    )
 
 
 # Global cache for model_cache module to ensure same instance is used
@@ -64,16 +82,95 @@ class UniRigApplySkinningML:
                     "tooltip": "Pre-loaded skinning model (from UniRigLoadSkinningModel). Required for inference."
                 }),
             },
+            "optional": {
+                "voxel_grid_size": ("INT", {
+                    "default": 256,
+                    "min": 64,
+                    "max": 512,
+                    "step": 64,
+                    "tooltip": "Voxel grid resolution for spatial weight distribution. Higher = better quality, more VRAM. Default: 256 (was 196)"
+                }),
+                "num_samples": ("INT", {
+                    "default": 32768,
+                    "min": 8192,
+                    "max": 131072,
+                    "step": 8192,
+                    "tooltip": "Number of surface samples for weight calculation. Higher = more accurate, slower. Default: 32768"
+                }),
+                "vertex_samples": ("INT", {
+                    "default": 8192,
+                    "min": 2048,
+                    "max": 32768,
+                    "step": 2048,
+                    "tooltip": "Number of vertex samples. Higher = more accurate vertex processing. Default: 8192"
+                }),
+                "grid_size": ("FLOAT", {
+                    "default": 0.005,
+                    "min": 0.001,
+                    "max": 0.01,
+                    "step": 0.001,
+                    "tooltip": "Grid size for point cloud spatial features. Lower = finer detail, more compute. Default: 0.005"
+                }),
+                "voxel_mask_power": ("FLOAT", {
+                    "default": 3.0,
+                    "min": 1.0,
+                    "max": 5.0,
+                    "step": 0.5,
+                    "tooltip": "Power for voxel mask weight sharpness. Lower = smoother transitions. Default: 3.0"
+                }),
+                "num_train_vertex": ("INT", {
+                    "default": 512,
+                    "min": 256,
+                    "max": 2048,
+                    "step": 256,
+                    "tooltip": "Vertices processed per batch. Higher = faster but more VRAM. Default: 512 (Note: Requires model reload to take effect)"
+                }),
+            },
         }
+
+    @classmethod
+    def IS_CHANGED(cls, **kwargs):
+        # Force re-execution when quality parameters change
+        return float("nan")
 
     RETURN_TYPES = ("RIGGED_MESH", "IMAGE")
     RETURN_NAMES = ("rigged_mesh", "texture_preview")
     FUNCTION = "apply_skinning"
     CATEGORY = "UniRig"
 
-    def apply_skinning(self, normalized_mesh, skeleton, skinning_model):
+    def apply_skinning(self, normalized_mesh, skeleton, skinning_model,
+                        voxel_grid_size=None, num_samples=None, vertex_samples=None,
+                        grid_size=None, voxel_mask_power=None, num_train_vertex=None):
         start_time = time.time()
+
+        # Create skinning config with user overrides
+        config_kwargs = {}
+        if voxel_grid_size is not None:
+            config_kwargs['voxel_grid_size'] = voxel_grid_size
+        if num_samples is not None:
+            config_kwargs['num_samples'] = num_samples
+        if vertex_samples is not None:
+            config_kwargs['vertex_samples'] = vertex_samples
+        if grid_size is not None:
+            config_kwargs['grid_size'] = grid_size
+        if voxel_mask_power is not None:
+            config_kwargs['voxel_mask_power'] = voxel_mask_power
+        if num_train_vertex is not None:
+            config_kwargs['num_train_vertex'] = num_train_vertex
+
+        skinning_config = SkinningConfig(**config_kwargs)
+
         print(f"[UniRigApplySkinningML] Starting ({len(normalized_mesh.vertices)} verts, {len(skeleton['names'])} bones)")
+        print(f"[UniRigApplySkinningML] Config: grid={skinning_config.voxel_grid_size}, samples={skinning_config.num_samples}, vertex_samples={skinning_config.vertex_samples}")
+
+        # Note: grid_size, voxel_mask_power, and num_train_vertex are model-level parameters
+        # that require model reload to take effect (not runtime configurable yet)
+        if grid_size is not None and grid_size != 0.005:
+            print(f"[UniRigApplySkinningML] Note: grid_size={grid_size} is a model-level parameter (requires model reload)")
+        if voxel_mask_power is not None and voxel_mask_power != 3.0:
+            print(f"[UniRigApplySkinningML] Note: voxel_mask_power={voxel_mask_power} is a model-level parameter (requires model reload)")
+        if num_train_vertex is not None and num_train_vertex != 512:
+            print(f"[UniRigApplySkinningML] Note: num_train_vertex={num_train_vertex} is a model-level parameter (requires model reload)")
 
         # Validate skinning_model
         if skinning_model is None:
@@ -167,6 +264,7 @@ class UniRigApplySkinningML:
                         "output": output_fbx,
                         "npz_dir": temp_dir,
                         "seed": 123,
+                        "config_overrides": skinning_config.to_dict(),
                     }
                 )
 
@@ -200,6 +298,10 @@ class UniRigApplySkinningML:
 
             # Pass GPU caching preference to subprocess
             env["UNIRIG_CACHE_TO_GPU"] = "1" if cache_to_gpu else "0"
+
+            # Pass config overrides via environment variable as JSON
+            import json
+            env["UNIRIG_CONFIG_OVERRIDES"] = json.dumps(skinning_config.to_dict())
 
             result = subprocess.run(
                 cmd,

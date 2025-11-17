@@ -168,6 +168,50 @@ def load_model_into_memory(model_type: str, task_config_path: str, cache_to_gpu:
         os.chdir(original_cwd)
 
 
+def apply_config_overrides(config, overrides: dict):
+    """
+    Apply config overrides to a Box/dict config object.
+
+    Args:
+        config: Box or dict config object
+        overrides: Dictionary of override values
+
+    Returns:
+        Modified config object
+    """
+    if not overrides:
+        return config
+
+    # Apply overrides to transform config (sampler and vertex group)
+    if hasattr(config, 'predict_transform_config') or 'predict_transform_config' in config:
+        ptc = config.get('predict_transform_config', {})
+
+        # Override sampler config
+        if 'sampler_config' in ptc:
+            if 'num_samples' in overrides:
+                ptc['sampler_config']['num_samples'] = overrides['num_samples']
+            if 'vertex_samples' in overrides:
+                ptc['sampler_config']['vertex_samples'] = overrides['vertex_samples']
+
+        # Override vertex group config (voxel_skin)
+        if 'vertex_group_config' in ptc and 'kwargs' in ptc['vertex_group_config']:
+            vg_kwargs = ptc['vertex_group_config']['kwargs']
+            if 'voxel_skin' in vg_kwargs:
+                vs = vg_kwargs['voxel_skin']
+                if 'voxel_grid_size' in overrides:
+                    vs['grid'] = overrides['voxel_grid_size']
+                if 'alpha' in overrides:
+                    vs['alpha'] = overrides['alpha']
+                if 'grid_query' in overrides:
+                    vs['grid_query'] = overrides['grid_query']
+                if 'vertex_query' in overrides:
+                    vs['vertex_query'] = overrides['vertex_query']
+                if 'grid_weight' in overrides:
+                    vs['grid_weight'] = overrides['grid_weight']
+
+    return config
+
+
 def run_inference(cache_key: str, request_data: dict) -> dict:
     """
     Run inference using a cached model.
@@ -194,6 +238,7 @@ def run_inference(cache_key: str, request_data: dict) -> dict:
     npz_dir = request_data.get("npz_dir")
     cls = request_data.get("cls")
     data_name = request_data.get("data_name")
+    config_overrides = request_data.get("config_overrides", {})
 
     if not all([input_file, output_file, npz_dir]):
         return {"error": "Missing required parameters: input, output, npz_dir"}
@@ -221,6 +266,11 @@ def run_inference(cache_key: str, request_data: dict) -> dict:
         # Load configs
         data_config = load_yaml_config(os.path.join(str(UNIRIG_PATH), 'configs/data', task.components.data))
         transform_config = load_yaml_config(os.path.join(str(UNIRIG_PATH), 'configs/transform', task.components.transform))
+
+        # Apply config overrides to transform config
+        if config_overrides:
+            print(f"[UniRigCache] Applying config overrides: {config_overrides}")
+            transform_config = apply_config_overrides(transform_config, config_overrides)
 
         # Get data name
         data_name_actual = task.components.get('data_name', 'raw_data.npz')

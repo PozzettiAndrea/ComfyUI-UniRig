@@ -12,18 +12,38 @@ import time
 import shutil
 import folder_paths
 
-from ..constants import BLENDER_TIMEOUT, INFERENCE_TIMEOUT, PARSE_TIMEOUT, TARGET_FACE_COUNT
-from .base import (
-    UNIRIG_PATH,
-    BLENDER_EXE,
-    BLENDER_SCRIPT,
-    BLENDER_PARSE_SKELETON,
-    UNIRIG_MODELS_DIR,
-    LIB_DIR,
-    setup_subprocess_env,
-    decode_texture_to_comfy_image,
-    create_placeholder_texture,
-)
+# Support both relative imports (ComfyUI) and absolute imports (testing)
+try:
+    from ..constants import BLENDER_TIMEOUT, INFERENCE_TIMEOUT, PARSE_TIMEOUT, TARGET_FACE_COUNT
+    from ..lib.skinning_config import SkeletonConfig
+except ImportError:
+    from constants import BLENDER_TIMEOUT, INFERENCE_TIMEOUT, PARSE_TIMEOUT, TARGET_FACE_COUNT
+    from lib.skinning_config import SkeletonConfig
+
+try:
+    from .base import (
+        UNIRIG_PATH,
+        BLENDER_EXE,
+        BLENDER_SCRIPT,
+        BLENDER_PARSE_SKELETON,
+        UNIRIG_MODELS_DIR,
+        LIB_DIR,
+        setup_subprocess_env,
+        decode_texture_to_comfy_image,
+        create_placeholder_texture,
+    )
+except ImportError:
+    from base import (
+        UNIRIG_PATH,
+        BLENDER_EXE,
+        BLENDER_SCRIPT,
+        BLENDER_PARSE_SKELETON,
+        UNIRIG_MODELS_DIR,
+        LIB_DIR,
+        setup_subprocess_env,
+        decode_texture_to_comfy_image,
+        create_placeholder_texture,
+    )
 
 
 # Global cache for model_cache module to ensure same instance is used
@@ -69,6 +89,15 @@ class UniRigExtractSkeleton:
                     "tooltip": "Pre-loaded skeleton model (from UniRigLoadSkeletonModel). Required for inference."
                 }),
             },
+            "optional": {
+                "target_face_count": ("INT", {
+                    "default": 50000,
+                    "min": 10000,
+                    "max": 500000,
+                    "step": 10000,
+                    "tooltip": "Target face count for mesh decimation. Higher values preserve more detail but increase processing time. Default: 50000"
+                }),
+            },
         }
 
     RETURN_TYPES = ("TRIMESH", "SKELETON", "IMAGE")
@@ -76,10 +105,15 @@ class UniRigExtractSkeleton:
     FUNCTION = "extract"
     CATEGORY = "UniRig"
 
-    def extract(self, trimesh, seed, skeleton_model):
+    def extract(self, trimesh, seed, skeleton_model, target_face_count=None):
         """Extract skeleton using UniRig."""
         total_start = time.time()
-        print(f"[UniRigExtractSkeleton] Starting ({len(trimesh.vertices)} verts, {len(trimesh.faces)} faces)")
+
+        # Use provided value or fall back to constant default
+        if target_face_count is None:
+            target_face_count = TARGET_FACE_COUNT
+
+        print(f"[UniRigExtractSkeleton] Starting ({len(trimesh.vertices)} verts, {len(trimesh.faces)} faces, target_faces={target_face_count})")
 
         # Validate skeleton_model
         if skeleton_model is None:
@@ -124,7 +158,7 @@ class UniRigExtractSkeleton:
                 "--",
                 input_path,
                 npz_path,
-                str(TARGET_FACE_COUNT)
+                str(target_face_count)
             ]
 
             try:

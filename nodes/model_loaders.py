@@ -11,7 +11,11 @@ import yaml
 from pathlib import Path
 from box import Box
 
-from .base import UNIRIG_PATH, UNIRIG_MODELS_DIR, LIB_DIR
+# Support both relative imports (ComfyUI) and absolute imports (testing)
+try:
+    from .base import UNIRIG_PATH, UNIRIG_MODELS_DIR, LIB_DIR
+except ImportError:
+    from base import UNIRIG_PATH, UNIRIG_MODELS_DIR, LIB_DIR
 
 # Global model cache (for config dicts)
 _MODEL_CACHE = {}
