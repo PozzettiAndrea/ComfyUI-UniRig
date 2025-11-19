@@ -280,6 +280,19 @@ def run_inference(cache_key: str, request_data: dict) -> dict:
         if data_name is not None:
             data_name_actual = data_name
 
+        # DIAGNOSTIC: Log data loading
+        print(f"[UniRigCache] ===== INFERENCE DIAGNOSTIC =====")
+        print(f"[UniRigCache]   Task config data_name: {task.components.get('data_name', 'raw_data.npz')}")
+        print(f"[UniRigCache]   Request override data_name: {data_name}")
+        print(f"[UniRigCache]   Final data_name: {data_name_actual}")
+        print(f"[UniRigCache]   NPZ directory: {npz_dir}")
+        print(f"[UniRigCache]   Seed: {seed}")
+        print(f"[UniRigCache]   Model type: {cache_key}")
+
+        # Check if model is in training mode
+        print(f"[UniRigCache]   Model training mode: {system.training}")
+        print(f"[UniRigCache]   Model device: {next(system.parameters()).device}")
+
         # Get predict dataset config
         predict_dataset_config = data_config.get('predict_dataset_config', None)
         if predict_dataset_config is not None:
@@ -317,8 +330,41 @@ def run_inference(cache_key: str, request_data: dict) -> dict:
                 writer_config['user_mode'] = True
             callbacks.append(get_writer(**writer_config, order_config=predict_transform_config.order_config))
 
-        # Create trainer with progress bar disabled
+        # DIAGNOSTIC: Log data module info (DON'T setup or consume dataloader!)
+        print(f"[UniRigCache]   Data module created: {type(data).__name__}")
+        print(f"[UniRigCache] ==================================")
+
+        # CRITICAL FIX: Ensure model stays on GPU before inference
+        # Models can drift to CPU between runs, causing quality degradation
+        # because bfloat16 mixed precision doesn't work properly on CPU
+        if system is not None and cached.get("cache_to_gpu", True):
+            current_device = next(system.parameters()).device
+            if current_device.type == 'cpu':
+                print(f"[UniRigCache] WARNING: Model was on CPU, moving back to GPU")
+                if torch.cuda.is_available():
+                    system.cuda()
+                    new_device = next(system.parameters()).device
+                    print(f"[UniRigCache] Model moved to: {new_device}")
+                else:
+                    print(f"[UniRigCache] ERROR: No GPU available, inference will run on CPU (quality may degrade)")
+            else:
+                print(f"[UniRigCache] Model already on GPU: {current_device}")
+
+        # CRITICAL: Ensure model is in eval mode before EVERY inference
+        # Model state might change between runs
+        if system is not None:
+            system.eval()
+            print(f"[UniRigCache] Model set to eval mode (training={system.training})")
+
+        # Create trainer with progress bar disabled and FORCE GPU usage
         trainer_config = task.get('trainer', {})
+
+        # CRITICAL: Force trainer to stay on GPU and not move models
+        if cached.get("cache_to_gpu", True) and torch.cuda.is_available():
+            # Override accelerator and devices to force GPU usage
+            trainer_config['accelerator'] = 'gpu'
+            trainer_config['devices'] = 1
+
         trainer = L.Trainer(
             callbacks=callbacks,
             logger=None,
@@ -326,8 +372,20 @@ def run_inference(cache_key: str, request_data: dict) -> dict:
             **trainer_config,
         )
 
-        # Run prediction
-        trainer.predict(system, datamodule=data, ckpt_path=None, return_predictions=False)
+        # Run prediction with checkpoint path for full state restoration
+        # This ensures Lightning properly restores the model state each time
+        checkpoint_path = cached.get("checkpoint_path")
+        print(f"[UniRigCache] Using checkpoint for state restoration: {checkpoint_path}")
+        trainer.predict(system, datamodule=data, ckpt_path=checkpoint_path, return_predictions=False)
+
+        # CRITICAL: Ensure model stays on GPU after prediction
+        # Lightning may move it to CPU to free memory - we want to keep it cached
+        if system is not None and cached.get("cache_to_gpu", True) and torch.cuda.is_available():
+            if next(system.parameters()).device.type == 'cpu':
+                print(f"[UniRigCache] Model moved to CPU after inference, moving back to GPU")
+                system.cuda()
+            print(f"[UniRigCache] Model after inference: {next(system.parameters()).device}")
+
         return {"success": True, "output": output_file}
 
     except Exception as e:

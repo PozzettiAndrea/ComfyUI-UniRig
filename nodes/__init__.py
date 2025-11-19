@@ -14,7 +14,7 @@ from .base import (
 )
 
 from .model_loaders import UniRigLoadSkeletonModel, UniRigLoadSkinningModel
-from .skeleton_extraction import UniRigExtractSkeleton, UniRigExtractRig
+from .skeleton_extraction import UniRigExtractSkeletonNew
 from .skeleton_io import (
     UniRigSaveSkeleton,
     UniRigSaveRiggedMesh,
@@ -26,15 +26,13 @@ from .skeleton_processing import (
     UniRigValidateSkeleton,
     UniRigPrepareSkeletonForSkinning,
 )
-from .skinning import UniRigApplySkinning, UniRigApplySkinningML
+from .skinning import UniRigApplySkinningMLNew
 from .mesh_io import UniRigLoadMesh, UniRigSaveMesh
 
 NODE_CLASS_MAPPINGS = {
     "UniRigLoadSkeletonModel": UniRigLoadSkeletonModel,
     "UniRigLoadSkinningModel": UniRigLoadSkinningModel,
-    "UniRigExtractSkeleton": UniRigExtractSkeleton,
-    "UniRigApplySkinning": UniRigApplySkinning,
-    "UniRigExtractRig": UniRigExtractRig,
+    "UniRigExtractSkeletonNew": UniRigExtractSkeletonNew,
     "UniRigSaveSkeleton": UniRigSaveSkeleton,
     "UniRigSaveRiggedMesh": UniRigSaveRiggedMesh,
     "UniRigLoadRiggedMesh": UniRigLoadRiggedMesh,
@@ -42,7 +40,7 @@ NODE_CLASS_MAPPINGS = {
     "UniRigDenormalizeSkeleton": UniRigDenormalizeSkeleton,
     "UniRigValidateSkeleton": UniRigValidateSkeleton,
     "UniRigPrepareSkeletonForSkinning": UniRigPrepareSkeletonForSkinning,
-    "UniRigApplySkinningML": UniRigApplySkinningML,
+    "UniRigApplySkinningMLNew": UniRigApplySkinningMLNew,
     "UniRigLoadMesh": UniRigLoadMesh,
     "UniRigSaveMesh": UniRigSaveMesh,
 }
@@ -50,9 +48,7 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     "UniRigLoadSkeletonModel": "UniRig: Load Skeleton Model",
     "UniRigLoadSkinningModel": "UniRig: Load Skinning Model",
-    "UniRigExtractSkeleton": "UniRig: Extract Skeleton",
-    "UniRigApplySkinning": "UniRig: Apply Skinning (Legacy)",
-    "UniRigExtractRig": "UniRig: Extract Full Rig (All-in-One)",
+    "UniRigExtractSkeletonNew": "UniRig: Extract Skeleton",
     "UniRigSaveSkeleton": "UniRig: Save Skeleton",
     "UniRigSaveRiggedMesh": "UniRig: Save Rigged Mesh",
     "UniRigLoadRiggedMesh": "UniRig: Load Rigged Mesh",
@@ -60,7 +56,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "UniRigDenormalizeSkeleton": "UniRig: Denormalize Skeleton",
     "UniRigValidateSkeleton": "UniRig: Validate Skeleton",
     "UniRigPrepareSkeletonForSkinning": "UniRig: Prepare Skeleton for Skinning",
-    "UniRigApplySkinningML": "UniRig: Apply Skinning (ML Only)",
+    "UniRigApplySkinningMLNew": "UniRig: Apply Skinning",
     "UniRigLoadMesh": "UniRig: Load Mesh",
     "UniRigSaveMesh": "UniRig: Save Mesh",
 }
