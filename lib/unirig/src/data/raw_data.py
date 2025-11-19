@@ -195,6 +195,14 @@ class RawData(Exporter):
             use_connect_unique_child=use_connect_unique_child,
             extrude_from_parent=extrude_from_parent,
             tails=self.tails if use_tail else None,
+            # Pass texture/UV data for FBX export
+            uv_coords=self.uv_coords,
+            uv_faces=self.uv_faces,
+            material_name=self.material_name,
+            texture_data_base64=self.texture_data_base64,
+            texture_format=self.texture_format,
+            texture_width=self.texture_width,
+            texture_height=self.texture_height,
         )
     
     def export_render(self, path: str, resolution: Tuple[int, int]=[256, 256]):

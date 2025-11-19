@@ -286,6 +286,7 @@ class UniRigLoadSkinningModel:
                 "model_id": model_id,
                 "task_config_path": task_config_path,
                 "checkpoint_path": local_checkpoint,
+                "checkpoint_name": checkpoint_path,  # Original checkpoint string for subprocess
                 "model_config": model_config.to_dict() if hasattr(model_config, 'to_dict') else dict(model_config),
                 "unirig_path": UNIRIG_PATH,
                 "models_dir": str(UNIRIG_MODELS_DIR),

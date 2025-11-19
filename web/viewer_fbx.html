@@ -133,6 +133,10 @@
                 <input type="checkbox" id="wireframeMode">
                 <span>Wireframe Mode</span>
             </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="showBounds">
+                <span>Show Bounds</span>
+            </label>
         </div>
 
         <div class="control-group">
@@ -141,6 +145,13 @@
         </div>
 
         <div id="status">No mesh loaded</div>
+
+        <div id="boundsInfo" style="margin-top: 10px; padding: 8px; background: rgba(50, 50, 50, 0.9); border-radius: 3px; font-family: monospace; font-size: 10px; display: none;">
+            <div style="font-weight: bold; margin-bottom: 5px;">Bounds Information:</div>
+            <div id="meshBoundsText" style="color: #00ff00; margin-bottom: 3px;"></div>
+            <div id="skeletonBoundsText" style="color: #00ffff; margin-bottom: 3px;"></div>
+            <div id="boundsComparisonText" style="color: #ffaa00;"></div>
+        </div>
     </div>
 
     <script type="importmap">
@@ -249,6 +260,8 @@
         let defaultCameraPosition = new THREE.Vector3(2, 2, 2);
         let meshBounds = null;
         let boneGizmoSize = 0.03;
+        let meshBoundingBox = null;  // Mesh bounding box helper
+        let skeletonBoundingBox = null;  // Skeleton bounding box helper
 
         // Raycaster for bone picking
         const raycaster = new THREE.Raycaster();
@@ -282,6 +295,12 @@
             boneLines.forEach(line => disposeObject(line));
             if (pivotIndicator) {
                 disposeObject(pivotIndicator);
+            }
+            if (meshBoundingBox) {
+                disposeObject(meshBoundingBox);
+            }
+            if (skeletonBoundingBox) {
+                disposeObject(skeletonBoundingBox);
             }
             renderer.dispose();
             controls.dispose();
@@ -356,6 +375,126 @@
             selectedBone.getWorldPosition(worldPos);
             pivotIndicator.position.copy(worldPos);
             pivotIndicator.visible = document.getElementById('showSkeleton').checked;
+        }
+
+        // Create bounding box visualizations
+        function createBoundingBoxes() {
+            console.log('[UniRig FBX Viewer] Creating bounding boxes');
+
+            // Clear existing bounding boxes
+            if (meshBoundingBox) {
+                scene.remove(meshBoundingBox);
+                disposeObject(meshBoundingBox);
+                meshBoundingBox = null;
+            }
+            if (skeletonBoundingBox) {
+                scene.remove(skeletonBoundingBox);
+                disposeObject(skeletonBoundingBox);
+                skeletonBoundingBox = null;
+            }
+
+            if (!currentModel) return;
+
+            // Create mesh bounding box (green)
+            const meshBox = new THREE.Box3();
+            currentModel.traverse((child) => {
+                if (child.isMesh) {
+                    const childBox = new THREE.Box3().setFromObject(child);
+                    meshBox.union(childBox);
+                }
+            });
+
+            let meshSize, meshCenter, meshMin, meshMax;
+            if (!meshBox.isEmpty()) {
+                meshBoundingBox = new THREE.Box3Helper(meshBox, 0x00ff00);
+                meshBoundingBox.visible = document.getElementById('showBounds').checked;
+                scene.add(meshBoundingBox);
+
+                meshSize = meshBox.getSize(new THREE.Vector3());
+                meshCenter = meshBox.getCenter(new THREE.Vector3());
+                meshMin = meshBox.min;
+                meshMax = meshBox.max;
+                console.log('[UniRig FBX Viewer] Mesh bounds:', {
+                    min: meshMin,
+                    max: meshMax,
+                    size: meshSize,
+                    center: meshCenter
+                });
+            }
+
+            // Create skeleton bounding box (cyan)
+            let skeletonSize, skeletonCenter, skeletonMin, skeletonMax;
+            if (bones.length > 0) {
+                const skeletonBox = new THREE.Box3();
+                bones.forEach(bone => {
+                    const pos = new THREE.Vector3();
+                    bone.getWorldPosition(pos);
+                    skeletonBox.expandByPoint(pos);
+                });
+
+                if (!skeletonBox.isEmpty()) {
+                    skeletonBoundingBox = new THREE.Box3Helper(skeletonBox, 0x00ffff);
+                    skeletonBoundingBox.visible = document.getElementById('showBounds').checked;
+                    scene.add(skeletonBoundingBox);
+
+                    skeletonSize = skeletonBox.getSize(new THREE.Vector3());
+                    skeletonCenter = skeletonBox.getCenter(new THREE.Vector3());
+                    skeletonMin = skeletonBox.min;
+                    skeletonMax = skeletonBox.max;
+                    console.log('[UniRig FBX Viewer] Skeleton bounds:', {
+                        min: skeletonMin,
+                        max: skeletonMax,
+                        size: skeletonSize,
+                        center: skeletonCenter
+                    });
+                }
+            }
+
+            // Update bounds info display
+            const boundsInfo = document.getElementById('boundsInfo');
+            const meshBoundsText = document.getElementById('meshBoundsText');
+            const skeletonBoundsText = document.getElementById('skeletonBoundsText');
+            const boundsComparisonText = document.getElementById('boundsComparisonText');
+
+            if (meshSize || skeletonSize) {
+                boundsInfo.style.display = 'block';
+
+                if (meshSize) {
+                    meshBoundsText.innerHTML = `<b>Mesh:</b> min(${meshMin.x.toFixed(2)}, ${meshMin.y.toFixed(2)}, ${meshMin.z.toFixed(2)}) max(${meshMax.x.toFixed(2)}, ${meshMax.y.toFixed(2)}, ${meshMax.z.toFixed(2)})<br>` +
+                        `&nbsp;&nbsp;size(${meshSize.x.toFixed(2)}, ${meshSize.y.toFixed(2)}, ${meshSize.z.toFixed(2)}) center(${meshCenter.x.toFixed(2)}, ${meshCenter.y.toFixed(2)}, ${meshCenter.z.toFixed(2)})`;
+                } else {
+                    meshBoundsText.innerHTML = '<b>Mesh:</b> No mesh found';
+                }
+
+                if (skeletonSize) {
+                    skeletonBoundsText.innerHTML = `<b>Skeleton:</b> min(${skeletonMin.x.toFixed(2)}, ${skeletonMin.y.toFixed(2)}, ${skeletonMin.z.toFixed(2)}) max(${skeletonMax.x.toFixed(2)}, ${skeletonMax.y.toFixed(2)}, ${skeletonMax.z.toFixed(2)})<br>` +
+                        `&nbsp;&nbsp;size(${skeletonSize.x.toFixed(2)}, ${skeletonSize.y.toFixed(2)}, ${skeletonSize.z.toFixed(2)}) center(${skeletonCenter.x.toFixed(2)}, ${skeletonCenter.y.toFixed(2)}, ${skeletonCenter.z.toFixed(2)})`;
+                } else {
+                    skeletonBoundsText.innerHTML = '<b>Skeleton:</b> No skeleton found';
+                }
+
+                // Show comparison if both exist
+                if (meshSize && skeletonSize) {
+                    const sizeRatio = meshSize.length() / skeletonSize.length();
+                    const centerDist = meshCenter.distanceTo(skeletonCenter);
+                    boundsComparisonText.innerHTML = `<b>Comparison:</b> Mesh/Skeleton size ratio: ${sizeRatio.toFixed(3)}, Center distance: ${centerDist.toFixed(4)}`;
+
+                    // Auto-print bounds info to console
+                    console.log('\n========================================');
+                    console.log('BOUNDS INFORMATION:');
+                    console.log('========================================');
+                    console.log(`Mesh: min(${meshMin.x.toFixed(2)}, ${meshMin.y.toFixed(2)}, ${meshMin.z.toFixed(2)}) max(${meshMax.x.toFixed(2)}, ${meshMax.y.toFixed(2)}, ${meshMax.z.toFixed(2)})`);
+                    console.log(`  size(${meshSize.x.toFixed(2)}, ${meshSize.y.toFixed(2)}, ${meshSize.z.toFixed(2)}) center(${meshCenter.x.toFixed(2)}, ${meshCenter.y.toFixed(2)}, ${meshCenter.z.toFixed(2)})`);
+                    console.log(`Skeleton: min(${skeletonMin.x.toFixed(2)}, ${skeletonMin.y.toFixed(2)}, ${skeletonMin.z.toFixed(2)}) max(${skeletonMax.x.toFixed(2)}, ${skeletonMax.y.toFixed(2)}, ${skeletonMax.z.toFixed(2)})`);
+                    console.log(`  size(${skeletonSize.x.toFixed(2)}, ${skeletonSize.y.toFixed(2)}, ${skeletonSize.z.toFixed(2)}) center(${skeletonCenter.x.toFixed(2)}, ${skeletonCenter.y.toFixed(2)}, ${skeletonCenter.z.toFixed(2)})`);
+                    console.log(`Comparison: Mesh/Skeleton size ratio: ${sizeRatio.toFixed(3)}, Center distance: ${centerDist.toFixed(4)}`);
+                    console.log('========================================\n');
+                } else {
+                    boundsComparisonText.innerHTML = '';
+                }
+            } else {
+                boundsInfo.style.display = 'none';
+            }
         }
 
         // Create bone connection lines (thick lines between parent-child)
@@ -605,6 +744,16 @@
                 disposeObject(pivotIndicator);
                 pivotIndicator = null;
             }
+            if (meshBoundingBox) {
+                scene.remove(meshBoundingBox);
+                disposeObject(meshBoundingBox);
+                meshBoundingBox = null;
+            }
+            if (skeletonBoundingBox) {
+                scene.remove(skeletonBoundingBox);
+                disposeObject(skeletonBoundingBox);
+                skeletonBoundingBox = null;
+            }
             bones = [];
             restPoseData = [];
             transformControls.detach();
@@ -710,7 +859,7 @@
 
                                 // Store bones for manipulation
                                 bones = child.skeleton.bones;
-                                console.log('[UniRig FBX Viewer] Found', bones.length, 'bones');
+                                console.log('[UniRig FBX Viewer] Found', bones.length, 'bones in SkinnedMesh');
 
                                 // Debug: check skeleton bounds
                                 const skeletonBox = new THREE.Box3().setFromObject(skeletonHelper);
@@ -730,6 +879,31 @@
                             }
                         }
                     });
+
+                    // If no skeleton found in SkinnedMesh, look for standalone bones
+                    if (!foundSkeleton) {
+                        console.log('[UniRig FBX Viewer] No SkinnedMesh found, searching for standalone bones...');
+                        const standaloneBones = [];
+                        currentModel.traverse((child) => {
+                            if (child.isBone) {
+                                standaloneBones.push(child);
+                            }
+                        });
+
+                        if (standaloneBones.length > 0) {
+                            foundSkeleton = true;
+                            bones = standaloneBones;
+                            console.log('[UniRig FBX Viewer] Found', bones.length, 'standalone bones');
+
+                            // Save rest pose
+                            saveRestPose();
+
+                            // Create bone gizmos and lines (no SkeletonHelper needed)
+                            createBoneGizmos();
+                        } else {
+                            console.log('[UniRig FBX Viewer] No bones found in FBX at all');
+                        }
+                    }
 
                     // Add to scene
                     scene.add(currentModel);
@@ -763,12 +937,22 @@
                     loading.style.display = 'none';
 
                     if (foundSkeleton) {
-                        statusEl.textContent = `Loaded: ${bones.length} bones`;
-                        console.log('[UniRig FBX Viewer] Mesh loaded with skeleton');
+                        if (skeletonHelper) {
+                            // Rigged mesh with skinning
+                            statusEl.textContent = `Loaded: ${bones.length} bones (rigged mesh)`;
+                            console.log('[UniRig FBX Viewer] Rigged mesh loaded with skeleton');
+                        } else {
+                            // Standalone skeleton without mesh
+                            statusEl.textContent = `Loaded: ${bones.length} bones (standalone skeleton)`;
+                            console.log('[UniRig FBX Viewer] Standalone skeleton loaded');
+                        }
                     } else {
                         statusEl.textContent = 'Loaded (no skeleton found)';
                         console.warn('[UniRig FBX Viewer] No skeleton found in FBX');
                     }
+
+                    // Create bounding box visualizations
+                    createBoundingBoxes();
                 },
                 (progress) => {
                     if (progress.lengthComputable) {
@@ -922,6 +1106,16 @@
                         }
                     }
                 });
+            }
+        });
+
+        // Show bounds toggle
+        document.getElementById('showBounds').addEventListener('change', (e) => {
+            if (meshBoundingBox) {
+                meshBoundingBox.visible = e.target.checked;
+            }
+            if (skeletonBoundingBox) {
+                skeletonBoundingBox.visible = e.target.checked;
             }
         });
 

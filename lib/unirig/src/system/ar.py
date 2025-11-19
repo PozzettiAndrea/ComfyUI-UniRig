@@ -324,7 +324,28 @@ class ARWriter(BasePredictionWriter):
             
             num_p = num_points[id]
             num_f = num_faces[id]
-            
+
+            # Load texture/UV data from original raw_data.npz if available
+            texture_data = {}
+            try:
+                # paths[id] is a directory like /tmp/xxx/input, the npz is at /tmp/xxx/input/raw_data.npz
+                base_path = paths[id]
+                if os.path.isdir(base_path):
+                    original_npz_path = os.path.join(base_path, 'raw_data.npz')
+                else:
+                    original_npz_path = base_path
+
+                if os.path.exists(original_npz_path):
+                    original_data = np.load(original_npz_path, allow_pickle=True)
+                    # Extract texture/UV fields if they exist
+                    for key in ['uv_coords', 'uv_faces', 'material_name', 'texture_data_base64',
+                                'texture_format', 'texture_width', 'texture_height']:
+                        if key in original_data:
+                            texture_data[key] = original_data[key][()]
+                    print(f"[ARWriter] Loaded texture data from: {original_npz_path}")
+            except Exception as e:
+                print(f"[ARWriter] Warning: Could not load texture data from {base_path}: {e}")
+
             raw_data = RawData(
                 vertices=origin_vertices[id, :num_p],
                 vertex_normals=origin_vertex_normals[id, :num_p],
@@ -339,6 +360,14 @@ class ARWriter(BasePredictionWriter):
                 matrix_local=None,
                 path=None,
                 cls=detokenize_output.cls,
+                # Add texture/UV data from original npz
+                uv_coords=texture_data.get('uv_coords', None),
+                uv_faces=texture_data.get('uv_faces', None),
+                material_name=texture_data.get('material_name', None),
+                texture_data_base64=texture_data.get('texture_data_base64', None),
+                texture_format=texture_data.get('texture_format', None),
+                texture_width=texture_data.get('texture_width', None),
+                texture_height=texture_data.get('texture_height', None),
             )
             if not self.user_mode and self.export_npz is not None:
                 print(make_path(self.export_npz, 'npz'))

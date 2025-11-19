@@ -325,19 +325,45 @@ try:
         bone.head = Vector((joints[i, 0], joints[i, 1], joints[i, 2]))
         bone.tail = Vector((tails[i, 0], tails[i, 1], tails[i, 2]))
 
+    # Apply identity transforms to prevent FBX coordinate mismatches
+    # This ensures mesh and armature have identical world transforms
+    # Required for both skeleton-only and skinned exports
+    bpy.ops.object.mode_set(mode='OBJECT')
+
+    # Get armature object
+    arm_obj = bpy.data.objects.get('Armature')
+    if arm_obj:
+        arm_obj.location = (0, 0, 0)
+        arm_obj.rotation_euler = (0, 0, 0)
+        arm_obj.scale = (1, 1, 1)
+        print("[Blender FBX Export] Set armature to identity transform")
+
+    # Get mesh object if it exists
+    if vertices is not None:
+        mesh_obj = bpy.data.objects.get('character')
+        if mesh_obj:
+            mesh_obj.location = (0, 0, 0)
+            mesh_obj.rotation_euler = (0, 0, 0)
+            mesh_obj.scale = (1, 1, 1)
+            print("[Blender FBX Export] Set mesh to identity transform")
+
     # Add skinning weights if vertices and skin provided
     if vertices is not None and skin is not None:
         print("[Blender FBX Export] Adding skinning weights...")
-        # Must set to object mode to enable parent_set
-        bpy.ops.object.mode_set(mode='OBJECT')
+        # Already in OBJECT mode from identity transform setup above
         objects = bpy.data.objects
         for o in bpy.context.selected_objects:
             o.select_set(False)
         ob = objects['character']
         arm = bpy.data.objects['Armature']
+
+        # Parent mesh to armature using ARMATURE_NAME method
+        # This creates vertex groups AND establishes proper parent-child hierarchy
+        # Matches original UniRig implementation for correct FBX structure
         ob.select_set(True)
         arm.select_set(True)
         bpy.ops.object.parent_set(type='ARMATURE_NAME')
+        print("[Blender FBX Export] Parented mesh to armature (creates vertex groups)")
 
         vis = []
         for x in ob.vertex_groups:
@@ -379,12 +405,18 @@ os.makedirs(os.path.dirname(output_fbx) if os.path.dirname(output_fbx) else '.',
 
 try:
     # Export with embedded textures
+    # CRITICAL: Disable unit scaling to prevent 100x meter→centimeter conversion
+    # The 15.6 unit misalignment was caused by apply_unit_scale defaulting to True
+    # This converts Blender meters to FBX centimeters (100x scale factor)
     bpy.ops.export_scene.fbx(
         filepath=output_fbx,
         check_existing=False,
         add_leaf_bones=False,
         path_mode='COPY',  # Copy textures alongside FBX
         embed_textures=True,  # Embed textures in FBX file
+        global_scale=1.0,  # Keep 1:1 scale
+        apply_unit_scale=False,  # CRITICAL: Don't convert meters→cm (prevents 100x scale)
+        apply_scale_options='FBX_SCALE_NONE',  # Don't bake scale into transforms
     )
     print(f"[Blender FBX Export] Saved to: {output_fbx}")
     if texture_data_base64 and len(texture_data_base64) > 0:

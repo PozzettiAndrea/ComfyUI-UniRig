@@ -207,7 +207,9 @@ class UniRigSaveRiggedMesh:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "rigged_mesh": ("RIGGED_MESH",),
+                "rigged_fbx_path": ("STRING", {
+                    "tooltip": "Path to rigged FBX file"
+                }),
                 "filename": ("STRING", {"default": "rigged_mesh.fbx"}),
                 "format": (["fbx", "glb"], {"default": "fbx"}),
             }
@@ -218,9 +220,12 @@ class UniRigSaveRiggedMesh:
     OUTPUT_NODE = True
     CATEGORY = "UniRig"
 
-    def save(self, rigged_mesh, filename, format):
+    def save(self, rigged_fbx_path, filename, format):
         """Save rigged mesh to file."""
         print(f"[UniRigSaveRiggedMesh] Saving rigged mesh to {filename} as {format.upper()}...")
+
+        if not rigged_fbx_path or not os.path.exists(rigged_fbx_path):
+            raise RuntimeError(f"Rigged FBX not found: {rigged_fbx_path}")
 
         output_dir = folder_paths.get_output_directory()
         filepath = os.path.join(output_dir, filename)
@@ -228,30 +233,26 @@ class UniRigSaveRiggedMesh:
         if not filepath.endswith(f'.{format}'):
             filepath = os.path.splitext(filepath)[0] + f'.{format}'
 
-        source_fbx = rigged_mesh.get("fbx_path")
-        if not source_fbx or not os.path.exists(source_fbx):
-            raise RuntimeError(f"Rigged mesh FBX not found: {source_fbx}")
-
         if format == "fbx":
-            shutil.copy(source_fbx, filepath)
+            shutil.copy(rigged_fbx_path, filepath)
             print(f"[UniRigSaveRiggedMesh] Saved FBX to: {filepath}")
         elif format == "glb":
             print(f"[UniRigSaveRiggedMesh] Converting FBX to GLB...")
             try:
                 import trimesh
-                scene = trimesh.load(source_fbx)
+                scene = trimesh.load(rigged_fbx_path)
                 scene.export(filepath)
                 print(f"[UniRigSaveRiggedMesh] Saved GLB to: {filepath}")
             except Exception as e:
                 print(f"[UniRigSaveRiggedMesh] Warning: GLB conversion failed, saving as FBX: {e}")
-                shutil.copy(source_fbx, filepath.replace('.glb', '.fbx'))
+                shutil.copy(rigged_fbx_path, filepath.replace('.glb', '.fbx'))
                 filepath = filepath.replace('.glb', '.fbx')
                 print(f"[UniRigSaveRiggedMesh] Saved FBX to: {filepath}")
 
         file_size = os.path.getsize(filepath)
         print(f"[UniRigSaveRiggedMesh] File size: {file_size / 1024:.2f} KB")
-        print(f"[UniRigSaveRiggedMesh] Has skinning: {rigged_mesh.get('has_skinning', False)}")
-        print(f"[UniRigSaveRiggedMesh] Has skeleton: {rigged_mesh.get('has_skeleton', False)}")
+        print(f"[UniRigSaveRiggedMesh] Has skinning: True")
+        print(f"[UniRigSaveRiggedMesh] Has skeleton: True")
 
         return {}
 
@@ -487,7 +488,9 @@ class UniRigPreviewRiggedMesh:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "rigged_mesh": ("RIGGED_MESH",),
+                "rigged_fbx_path": ("STRING", {
+                    "tooltip": "Path to rigged FBX file"
+                }),
             },
         }
 
@@ -496,34 +499,30 @@ class UniRigPreviewRiggedMesh:
     FUNCTION = "preview"
     CATEGORY = "unirig"
 
-    def preview(self, rigged_mesh):
+    def preview(self, rigged_fbx_path):
         """Preview the rigged mesh in an interactive FBX viewer."""
         print(f"[UniRigPreviewRiggedMesh] Preparing preview...")
+        print(f"[UniRigPreviewRiggedMesh] FBX path: {rigged_fbx_path}")
 
-        fbx_path = rigged_mesh.get("fbx_path")
-        if not fbx_path or not os.path.exists(fbx_path):
-            raise RuntimeError(f"Rigged mesh FBX not found: {fbx_path}")
-
-        print(f"[UniRigPreviewRiggedMesh] FBX path: {fbx_path}")
+        if not rigged_fbx_path or not os.path.exists(rigged_fbx_path):
+            raise RuntimeError(f"Rigged FBX not found: {rigged_fbx_path}")
 
         # Copy FBX to output directory
         output_dir = folder_paths.get_output_directory()
         filename = f"rigged_preview_{int(time.time())}.fbx"
         output_fbx_path = os.path.join(output_dir, filename)
 
-        shutil.copy2(fbx_path, output_fbx_path)
+        shutil.copy2(rigged_fbx_path, output_fbx_path)
         print(f"[UniRigPreviewRiggedMesh] Copied FBX to output: {output_fbx_path}")
 
-        has_skinning = rigged_mesh.get("has_skinning", False)
-        has_skeleton = rigged_mesh.get("has_skeleton", False)
-
-        print(f"[UniRigPreviewRiggedMesh] Has skinning: {has_skinning}")
-        print(f"[UniRigPreviewRiggedMesh] Has skeleton: {has_skeleton}")
+        # Rigged FBX always has both skinning and skeleton
+        print(f"[UniRigPreviewRiggedMesh] Has skinning: True")
+        print(f"[UniRigPreviewRiggedMesh] Has skeleton: True")
 
         return {
             "ui": {
                 "fbx_file": [filename],
-                "has_skinning": [bool(has_skinning)],
-                "has_skeleton": [bool(has_skeleton)],
+                "has_skinning": [True],
+                "has_skeleton": [True],
             }
         }

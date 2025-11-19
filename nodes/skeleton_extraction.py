@@ -68,12 +68,14 @@ def _get_model_cache():
     return _MODEL_CACHE_MODULE if _MODEL_CACHE_MODULE else None
 
 
-class UniRigExtractSkeleton:
+class UniRigExtractSkeletonNew:
     """
-    Extract skeleton from mesh using UniRig (SIGGRAPH 2025).
+    Extract skeleton from mesh using UniRig (SIGGRAPH 2025) - New implementation with model caching.
 
-    Uses ML-based approach for high-quality semantic skeleton extraction.
+    Uses ML-based approach for high-quality semantic skeleton extraction with in-process model caching.
     Works on any mesh type: humans, animals, objects, cameras, etc.
+
+    Note: For the original simple subprocess approach, use UniRigExtractSkeleton (without 'New' suffix).
     """
 
     @classmethod
@@ -102,8 +104,8 @@ class UniRigExtractSkeleton:
             }
         }
 
-    RETURN_TYPES = ("TRIMESH", "SKELETON", "IMAGE")
-    RETURN_NAMES = ("normalized_mesh", "skeleton", "texture_preview")
+    RETURN_TYPES = ("STRING", "STRING", "TRIMESH", "SKELETON", "IMAGE")
+    RETURN_NAMES = ("skeleton_fbx_path", "skeleton_npz_path", "normalized_mesh", "skeleton", "texture_preview")
     FUNCTION = "extract"
     CATEGORY = "UniRig"
 
@@ -289,6 +291,11 @@ class UniRigExtractSkeleton:
             fbx_size = os.path.getsize(output_path)
             print(f"[UniRigExtractSkeleton] FBX file size: {fbx_size} bytes")
 
+            # Save skeleton FBX to persistent location
+            persistent_fbx_path = os.path.join(folder_paths.get_temp_directory(), f"skeleton_{seed}.fbx")
+            shutil.copy2(output_path, persistent_fbx_path)
+            print(f"[UniRigExtractSkeleton] Saved persistent FBX: {persistent_fbx_path}")
+
             step_start = time.time()
             print(f"[UniRigExtractSkeleton] Step 3: Parsing FBX output with Blender...")
             skeleton_npz = os.path.join(tmpdir, "skeleton_data.npz")
@@ -341,6 +348,20 @@ class UniRigExtractSkeleton:
             print(f"[UniRigExtractSkeleton] Extracted {len(all_joints)} joints, {len(edges)} bones")
             print(f"[UniRigExtractSkeleton] Skeleton already normalized by UniRig to range [{all_joints.min():.3f}, {all_joints.max():.3f}]")
 
+            # Load FBX mesh data if available (ground truth from ML model)
+            mesh_vertices_fbx = None
+            mesh_faces_fbx = None
+            mesh_vertex_normals_fbx = None
+            mesh_face_normals_fbx = None
+            if 'mesh_vertices_fbx' in skeleton_data:
+                mesh_vertices_fbx = skeleton_data['mesh_vertices_fbx']
+                mesh_faces_fbx = skeleton_data.get('mesh_faces_fbx', None)
+                mesh_vertex_normals_fbx = skeleton_data.get('mesh_vertex_normals_fbx', None)
+                mesh_face_normals_fbx = skeleton_data.get('mesh_face_normals_fbx', None)
+                print(f"[UniRigExtractSkeleton] Found FBX mesh: {len(mesh_vertices_fbx)} vertices, {len(mesh_faces_fbx) if mesh_faces_fbx is not None else 0} faces")
+                if mesh_vertex_normals_fbx is not None:
+                    print(f"[UniRigExtractSkeleton] Found FBX normals: {len(mesh_vertex_normals_fbx)} vertex normals, {len(mesh_face_normals_fbx) if mesh_face_normals_fbx is not None else 0} face normals")
+
             # Load preprocessing data
             preprocess_npz = os.path.join(tmpdir, "input", "raw_data.npz")
             uv_coords = None
@@ -380,33 +401,23 @@ class UniRigExtractSkeleton:
                         texture_height = int(preprocess_data.get('texture_height', 0))
                         print(f"[UniRigExtractSkeleton] Loaded texture: {texture_width}x{texture_height} {texture_format} ({len(texture_data_base64) // 1024}KB base64)")
             else:
-                # Fallback: use trimesh data
-                mesh_vertices_original = np.array(trimesh.vertices, dtype=np.float32)
-                mesh_faces = np.array(trimesh.faces, dtype=np.int32)
-                vertex_normals = np.array(trimesh.vertex_normals, dtype=np.float32) if hasattr(trimesh, 'vertex_normals') else None
-                face_normals = np.array(trimesh.face_normals, dtype=np.float32) if hasattr(trimesh, 'face_normals') else None
+                print("[UniRigExtractSkeleton] Warning: No preprocessing data found - this should not happen in normal workflow")
 
-            # Normalize mesh to [-1, 1]
-            mesh_bounds_min = mesh_vertices_original.min(axis=0)
-            mesh_bounds_max = mesh_vertices_original.max(axis=0)
-            mesh_center = (mesh_bounds_min + mesh_bounds_max) / 2
-            mesh_extents = mesh_bounds_max - mesh_bounds_min
-            mesh_scale = mesh_extents.max() / 2
+            # Use FBX mesh as the single source of truth (already normalized by ML model)
+            if mesh_vertices_fbx is None or mesh_faces_fbx is None:
+                raise RuntimeError("FBX mesh data not found in skeleton.fbx - cannot proceed without ground truth mesh")
 
-            # Normalize mesh vertices to [-1, 1]
-            mesh_vertices = (mesh_vertices_original - mesh_center) / mesh_scale
+            print(f"[UniRigExtractSkeleton] Using FBX mesh as single source of truth")
+            print(f"[UniRigExtractSkeleton] FBX mesh bounds: min={mesh_vertices_fbx.min(axis=0)}, max={mesh_vertices_fbx.max(axis=0)}")
 
-            print(f"[UniRigExtractSkeleton] Original mesh bounds: min={mesh_bounds_min}, max={mesh_bounds_max}")
-            print(f"[UniRigExtractSkeleton] Mesh scale: {mesh_scale:.4f}, extents: {mesh_extents}")
-            print(f"[UniRigExtractSkeleton] Normalized mesh bounds: min={mesh_vertices.min(axis=0)}, max={mesh_vertices.max(axis=0)}")
-
-            # Create trimesh object from normalized mesh data
+            # Create trimesh object from FBX mesh data (already normalized by ML model)
             normalized_mesh = Trimesh(
-                vertices=mesh_vertices,
-                faces=mesh_faces,
-                process=True
+                vertices=mesh_vertices_fbx,
+                faces=mesh_faces_fbx,
+                vertex_normals=mesh_vertex_normals_fbx,
+                process=False  # Don't reprocess - use data as-is from FBX
             )
-            print(f"[UniRigExtractSkeleton] Created normalized mesh: {len(mesh_vertices)} vertices, {len(mesh_faces)} faces")
+            print(f"[UniRigExtractSkeleton] Created normalized mesh from FBX: {len(mesh_vertices_fbx)} vertices, {len(mesh_faces_fbx)} faces")
 
             # Build parents list from bone_parents
             if 'bone_parents' in skeleton_data:
@@ -460,14 +471,14 @@ class UniRigExtractSkeleton:
                         else:
                             tails[i] = bone_joints[i] + np.array([0, 0.1, 0])
 
-            # Save as RawData NPZ for skinning phase
+            # Save as RawData NPZ for skinning phase (using FBX mesh only)
             persistent_npz = os.path.join(folder_paths.get_temp_directory(), f"skeleton_{seed}.npz")
             np.savez(
                 persistent_npz,
-                vertices=mesh_vertices,
-                vertex_normals=vertex_normals,
-                faces=mesh_faces,
-                face_normals=face_normals,
+                vertices=mesh_vertices_fbx,
+                vertex_normals=mesh_vertex_normals_fbx,
+                faces=mesh_faces_fbx,
+                face_normals=mesh_face_normals_fbx,
                 joints=bone_joints,
                 tails=tails,
                 parents=np.array(parents_list, dtype=object),
@@ -476,10 +487,10 @@ class UniRigExtractSkeleton:
                 uv_faces=uv_faces if uv_faces is not None else np.array([], dtype=np.int32),
                 material_name=material_name if material_name else "",
                 texture_path=texture_path if texture_path else "",
-                mesh_bounds_min=mesh_bounds_min,
-                mesh_bounds_max=mesh_bounds_max,
-                mesh_center=mesh_center,
-                mesh_scale=mesh_scale,
+                texture_data_base64=texture_data_base64 if texture_data_base64 else "",
+                texture_format=texture_format if texture_format else "",
+                texture_width=texture_width,
+                texture_height=texture_height,
                 skin=None,
                 no_skin=None,
                 matrix_local=None,
@@ -488,18 +499,23 @@ class UniRigExtractSkeleton:
             )
             print(f"[UniRigExtractSkeleton] Saved skeleton NPZ to: {persistent_npz}")
 
-            # Build skeleton dict with ALL data
+            # Build skeleton dict with FBX mesh only (single source of truth)
             skeleton = {
+                # Skeleton structure
                 "vertices": all_joints,
                 "edges": edges,
                 "joints": bone_joints,
                 "tails": tails,
                 "names": names_list,
                 "parents": parents_list,
-                "mesh_vertices": mesh_vertices,
-                "mesh_faces": mesh_faces,
-                "mesh_vertex_normals": vertex_normals,
-                "mesh_face_normals": face_normals,
+                "bone_names": names_list,
+                "bone_parents": parents_list,
+                # FBX mesh data (ground truth from ML model, already normalized)
+                "mesh_vertices_fbx": mesh_vertices_fbx,
+                "mesh_faces_fbx": mesh_faces_fbx,
+                "mesh_vertex_normals_fbx": mesh_vertex_normals_fbx,
+                "mesh_face_normals_fbx": mesh_face_normals_fbx,
+                # Texture data
                 "uv_coords": uv_coords,
                 "uv_faces": uv_faces,
                 "material_name": material_name,
@@ -508,18 +524,15 @@ class UniRigExtractSkeleton:
                 "texture_format": texture_format,
                 "texture_width": texture_width,
                 "texture_height": texture_height,
-                "mesh_bounds_min": mesh_bounds_min,
-                "mesh_bounds_max": mesh_bounds_max,
-                "mesh_center": mesh_center,
-                "mesh_scale": mesh_scale,
-                "is_normalized": True,
+                # Metadata
                 "skeleton_npz_path": persistent_npz,
-                "bone_names": names_list,
-                "bone_parents": parents_list,
             }
 
             if 'bone_to_head_vertex' in skeleton_data:
                 skeleton['bone_to_head_vertex'] = skeleton_data['bone_to_head_vertex'].tolist()
+
+            print(f"[UniRigExtractSkeleton] Built skeleton dict with FBX mesh: {len(mesh_vertices_fbx)} vertices, {len(mesh_faces_fbx)} faces")
+            print(f"[UniRigExtractSkeleton] FBX mesh includes: {len(mesh_vertex_normals_fbx) if mesh_vertex_normals_fbx is not None else 0} vertex normals, {len(mesh_face_normals_fbx) if mesh_face_normals_fbx is not None else 0} face normals")
 
             print(f"[UniRigExtractSkeleton] Included hierarchy: {len(names_list)} bones with parent relationships")
 
@@ -538,7 +551,7 @@ class UniRigExtractSkeleton:
             total_time = time.time() - total_start
             print(f"[UniRigExtractSkeleton] Skeleton extraction complete!")
             print(f"[UniRigExtractSkeleton] TOTAL TIME: {total_time:.2f}s")
-            return (normalized_mesh, skeleton, texture_preview)
+            return (persistent_fbx_path, persistent_npz, normalized_mesh, skeleton, texture_preview)
 
 
 class UniRigExtractRig:
@@ -758,3 +771,322 @@ class UniRigExtractRig:
             print(f"[UniRigExtractRig] TOTAL TIME: {total_time:.2f}s")
 
             return (rigged_mesh,)
+
+
+class UniRigExtractSkeleton:
+    """
+    Extract skeleton from mesh using UniRig (SIGGRAPH 2025) - Original implementation.
+
+    Simple subprocess-based approach for skeleton extraction.
+    Uses direct calls to run.py for reliable inference.
+    Works on any mesh type: humans, animals, objects, cameras, etc.
+
+    This is the original working implementation that uses subprocess for each inference.
+    For faster inference with model caching, use UniRigExtractSkeletonNew.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "trimesh": ("TRIMESH", {
+                    "tooltip": "Input mesh to extract skeleton from"
+                }),
+                "seed": ("INT", {
+                    "default": 42,
+                    "min": 0,
+                    "max": 4294967295,
+                    "tooltip": "Random seed for skeleton generation variation"
+                }),
+            }
+        }
+
+    RETURN_TYPES = ("TRIMESH", "SKELETON", "IMAGE")
+    RETURN_NAMES = ("normalized_mesh", "skeleton", "texture_preview")
+    FUNCTION = "extract"
+    CATEGORY = "UniRig"
+
+    def extract(self, trimesh, seed):
+        """Extract skeleton using UniRig via subprocess (original implementation)."""
+        total_start = time.time()
+        print(f"[UniRigExtractSkeleton] Starting skeleton extraction (original implementation)...")
+
+        # Check if Blender is available
+        if not BLENDER_EXE or not os.path.exists(BLENDER_EXE):
+            raise RuntimeError(
+                f"Blender not found. Please run install or install manually."
+            )
+
+        # Check if UniRig is available
+        if not os.path.exists(UNIRIG_PATH):
+            raise RuntimeError(
+                f"UniRig code not found at {UNIRIG_PATH}. "
+                "The lib/unirig directory should contain the UniRig source code."
+            )
+
+        # Create temp files
+        with tempfile.TemporaryDirectory() as tmpdir:
+            input_path = os.path.join(tmpdir, "input.glb")
+            npz_dir = os.path.join(tmpdir, "input")
+            npz_path = os.path.join(npz_dir, "raw_data.npz")
+            output_path = os.path.join(tmpdir, "skeleton.fbx")
+
+            os.makedirs(npz_dir, exist_ok=True)
+
+            # Export mesh to GLB
+            step_start = time.time()
+            print(f"[UniRigExtractSkeleton] Exporting mesh to {input_path}")
+            print(f"[UniRigExtractSkeleton] Mesh has {len(trimesh.vertices)} vertices, {len(trimesh.faces)} faces")
+            trimesh.export(input_path)
+            export_time = time.time() - step_start
+            print(f"[UniRigExtractSkeleton] Mesh exported in {export_time:.2f}s")
+
+            # Step 1: Extract/preprocess mesh with Blender
+            step_start = time.time()
+            print(f"[UniRigExtractSkeleton] Step 1: Preprocessing mesh with Blender...")
+            blender_cmd = [
+                BLENDER_EXE,
+                "--background",
+                "--python", BLENDER_SCRIPT,
+                "--",
+                input_path,
+                npz_path,
+                "50000"  # target face count
+            ]
+
+            try:
+                result = subprocess.run(
+                    blender_cmd,
+                    capture_output=True,
+                    text=True,
+                    timeout=BLENDER_TIMEOUT
+                )
+                if result.stdout:
+                    print(f"[UniRigExtractSkeleton] Blender output:\n{result.stdout}")
+                if result.stderr:
+                    # Filter out Blender noise
+                    stderr_lines = result.stderr.split('\n')
+                    important_lines = [l for l in stderr_lines if 'error' in l.lower() or 'fail' in l.lower()]
+                    if important_lines:
+                        print(f"[UniRigExtractSkeleton] Blender warnings:\n" + '\n'.join(important_lines))
+
+                # Check if NPZ was created
+                if not os.path.exists(npz_path):
+                    raise RuntimeError(f"Blender extraction failed: {npz_path} not created")
+
+                blender_time = time.time() - step_start
+                print(f"[UniRigExtractSkeleton] Mesh preprocessed in {blender_time:.2f}s: {npz_path}")
+
+            except subprocess.TimeoutExpired:
+                raise RuntimeError(f"Blender extraction timed out (>{BLENDER_TIMEOUT}s)")
+            except Exception as e:
+                print(f"[UniRigExtractSkeleton] Blender error: {e}")
+                raise
+
+            # Step 2: Run skeleton inference via subprocess
+            step_start = time.time()
+            print(f"[UniRigExtractSkeleton] Step 2: Running skeleton inference via subprocess...")
+            run_cmd = [
+                sys.executable, os.path.join(UNIRIG_PATH, "run.py"),
+                "--task", os.path.join(UNIRIG_PATH, "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml"),
+                "--seed", str(seed),
+                "--input", input_path,
+                "--output", output_path,
+                "--npz_dir", tmpdir,
+            ]
+
+            print(f"[UniRigExtractSkeleton] Running: {' '.join(run_cmd)}")
+
+            # Set up environment
+            env = setup_subprocess_env()
+
+            try:
+                result = subprocess.run(
+                    run_cmd,
+                    cwd=UNIRIG_PATH,
+                    env=env,
+                    capture_output=True,
+                    text=True,
+                    timeout=INFERENCE_TIMEOUT
+                )
+                if result.stdout:
+                    print(f"[UniRigExtractSkeleton] Inference stdout:\n{result.stdout}")
+                if result.stderr:
+                    print(f"[UniRigExtractSkeleton] Inference stderr:\n{result.stderr}")
+
+                if result.returncode != 0:
+                    print(f"[UniRigExtractSkeleton] Inference failed with exit code {result.returncode}")
+                    raise RuntimeError(f"Inference failed with exit code {result.returncode}")
+
+                inference_time = time.time() - step_start
+                print(f"[UniRigExtractSkeleton] Inference completed in {inference_time:.2f}s")
+
+            except subprocess.TimeoutExpired:
+                raise RuntimeError(f"Inference timed out (>{INFERENCE_TIMEOUT}s)")
+            except Exception as e:
+                print(f"[UniRigExtractSkeleton] Inference error: {e}")
+                raise
+
+            # Check output exists
+            if not os.path.exists(output_path):
+                tmpdir_contents = os.listdir(tmpdir)
+                print(f"[UniRigExtractSkeleton] Output FBX not found: {output_path}")
+                print(f"[UniRigExtractSkeleton] Temp directory contents: {tmpdir_contents}")
+                raise RuntimeError(
+                    f"UniRig did not generate output file: {output_path}\n"
+                    f"Temp directory contents: {tmpdir_contents}\n"
+                    f"Check stdout/stderr above for details"
+                )
+
+            print(f"[UniRigExtractSkeleton] Found output FBX: {output_path}")
+            fbx_size = os.path.getsize(output_path)
+            print(f"[UniRigExtractSkeleton] FBX file size: {fbx_size} bytes")
+
+            # Save persistent copy
+            persistent_fbx = os.path.join(folder_paths.get_temp_directory(), f"skeleton_{seed}.fbx")
+            shutil.copy(output_path, persistent_fbx)
+            print(f"[UniRigExtractSkeleton] Saved persistent FBX: {persistent_fbx}")
+
+            # Step 3: Parse FBX output with Blender
+            step_start = time.time()
+            print(f"[UniRigExtractSkeleton] Step 3: Parsing FBX output with Blender...")
+
+            skeleton_npz_path = os.path.join(tmpdir, "skeleton_data.npz")
+            parse_cmd = [
+                BLENDER_EXE,
+                "--background",
+                "--python", BLENDER_PARSE_SKELETON,
+                "--",
+                output_path,
+                skeleton_npz_path
+            ]
+
+            try:
+                result = subprocess.run(
+                    parse_cmd,
+                    capture_output=True,
+                    text=True,
+                    timeout=PARSE_TIMEOUT
+                )
+                if result.stdout:
+                    print(f"[UniRigExtractSkeleton] Blender parse output:\n{result.stdout}")
+                if result.stderr:
+                    stderr_lines = result.stderr.split('\n')
+                    important_lines = [l for l in stderr_lines if 'error' in l.lower() or 'fail' in l.lower()]
+                    if important_lines:
+                        print(f"[UniRigExtractSkeleton] Blender parse warnings:\n" + '\n'.join(important_lines))
+
+                if not os.path.exists(skeleton_npz_path):
+                    raise RuntimeError(f"Blender FBX parsing failed: {skeleton_npz_path} not created")
+
+                parse_time = time.time() - step_start
+                print(f"[UniRigExtractSkeleton] Skeleton parsed in {parse_time:.2f}s")
+
+            except subprocess.TimeoutExpired:
+                raise RuntimeError(f"Blender parsing timed out (>{PARSE_TIMEOUT}s)")
+            except Exception as e:
+                print(f"[UniRigExtractSkeleton] Blender parse error: {e}")
+                raise
+
+            # Load skeleton data from NPZ
+            print(f"[UniRigExtractSkeleton] Loading skeleton data from NPZ...")
+            skeleton_data = np.load(skeleton_npz_path, allow_pickle=True)
+            print(f"[UniRigExtractSkeleton] NPZ contains keys: {list(skeleton_data.keys())}")
+
+            # Extract skeleton components
+            vertices = skeleton_data['vertices']
+            edges = skeleton_data['edges']
+            bone_names = skeleton_data['bone_names']
+            bone_parents = skeleton_data['bone_parents']
+            bone_to_head_vertex = skeleton_data['bone_to_head_vertex']
+
+            print(f"[UniRigExtractSkeleton] Extracted {len(vertices)} joints, {len(bone_names)} bones")
+
+            # Extract FBX mesh data
+            mesh_vertices_fbx = skeleton_data.get('mesh_vertices_fbx', [])
+            mesh_faces_fbx = skeleton_data.get('mesh_faces_fbx', [])
+            mesh_vertex_normals_fbx = skeleton_data.get('mesh_vertex_normals_fbx')
+            mesh_face_normals_fbx = skeleton_data.get('mesh_face_normals_fbx')
+
+            if len(mesh_vertices_fbx) > 0:
+                print(f"[UniRigExtractSkeleton] Found FBX mesh: {len(mesh_vertices_fbx)} vertices, {len(mesh_faces_fbx)} faces")
+
+            # Load UV and texture data
+            uv_coords = skeleton_data.get('uv_coords', np.array([]))
+            uv_faces = skeleton_data.get('uv_faces', np.array([]))
+            if len(uv_coords) > 0:
+                print(f"[UniRigExtractSkeleton] Loaded UV coordinates: {len(uv_coords)} UVs")
+
+            texture_data_base64 = str(skeleton_data.get('texture_data_base64', ''))
+            texture_format = str(skeleton_data.get('texture_format', ''))
+            texture_width = int(skeleton_data.get('texture_width', 0))
+            texture_height = int(skeleton_data.get('texture_height', 0))
+            material_name = str(skeleton_data.get('material_name', ''))
+
+            if texture_data_base64:
+                print(f"[UniRigExtractSkeleton] Loaded texture: {texture_width}x{texture_height} {texture_format} ({len(texture_data_base64)//1024}KB base64)")
+
+            # Create normalized mesh from FBX data
+            if len(mesh_vertices_fbx) > 0:
+                print(f"[UniRigExtractSkeleton] Using FBX mesh as single source of truth")
+                print(f"[UniRigExtractSkeleton] FBX mesh bounds: min={mesh_vertices_fbx.min(axis=0)}, max={mesh_vertices_fbx.max(axis=0)}")
+
+                normalized_mesh = Trimesh(
+                    vertices=mesh_vertices_fbx,
+                    faces=mesh_faces_fbx,
+                    vertex_normals=mesh_vertex_normals_fbx,
+                    process=False
+                )
+                print(f"[UniRigExtractSkeleton] Created normalized mesh from FBX: {len(mesh_vertices_fbx)} vertices, {len(mesh_faces_fbx)} faces")
+            else:
+                print(f"[UniRigExtractSkeleton] No FBX mesh data, using original trimesh")
+                normalized_mesh = trimesh
+
+            # Save persistent NPZ
+            persistent_npz = os.path.join(folder_paths.get_temp_directory(), f"skeleton_{seed}.npz")
+            shutil.copy(skeleton_npz_path, persistent_npz)
+            print(f"[UniRigExtractSkeleton] Saved skeleton NPZ to: {persistent_npz}")
+
+            # Build skeleton dict
+            skeleton = {
+                "joints": vertices,
+                "edges": edges,
+                "names": bone_names,
+                "parents": bone_parents,
+                "bone_to_head_vertex": bone_to_head_vertex,
+                "tails": None,  # Will be computed from edges if needed
+                "mesh_vertices": mesh_vertices_fbx if len(mesh_vertices_fbx) > 0 else None,
+                "mesh_faces": mesh_faces_fbx if len(mesh_faces_fbx) > 0 else None,
+                "mesh_vertex_normals": mesh_vertex_normals_fbx,
+                "mesh_face_normals": mesh_face_normals_fbx,
+                "uv_coords": uv_coords if len(uv_coords) > 0 else None,
+                "uv_faces": uv_faces if len(uv_faces) > 0 else None,
+                "texture_data_base64": texture_data_base64 if texture_data_base64 else None,
+                "texture_format": texture_format,
+                "texture_width": texture_width,
+                "texture_height": texture_height,
+                "material_name": material_name,
+                "fbx_path": persistent_fbx,
+                "npz_path": persistent_npz,
+            }
+
+            print(f"[UniRigExtractSkeleton] Built skeleton dict with FBX mesh: {len(mesh_vertices_fbx)} vertices, {len(mesh_faces_fbx)} faces")
+            if mesh_vertex_normals_fbx is not None:
+                print(f"[UniRigExtractSkeleton] FBX mesh includes: {len(mesh_vertex_normals_fbx)} vertex normals, {len(mesh_face_normals_fbx)} face normals")
+            print(f"[UniRigExtractSkeleton] Included hierarchy: {len(bone_names)} bones with parent relationships")
+
+            # Create texture preview
+            texture_preview = None
+            if texture_data_base64:
+                texture_preview = decode_texture_to_comfy_image(texture_data_base64)
+                if texture_preview is not None:
+                    print(f"[UniRigExtractSkeleton] Texture preview created: {texture_width}x{texture_height}")
+
+            if texture_preview is None:
+                texture_preview = create_placeholder_texture()
+
+            total_time = time.time() - total_start
+            print(f"[UniRigExtractSkeleton] Skeleton extraction complete!")
+            print(f"[UniRigExtractSkeleton] TOTAL TIME: {total_time:.2f}s")
+
+            return (normalized_mesh, skeleton, texture_preview)

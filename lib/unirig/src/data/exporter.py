@@ -220,6 +220,8 @@ class Exporter():
         texture_data_base64: Union[str, None]=None,
         texture_format: Union[str, None]=None,
         material_name: Union[str, None]=None,
+        texture_width: Union[int, None]=None,
+        texture_height: Union[int, None]=None,
     ):
         '''
         Export skeleton to FBX using external Blender executable.
@@ -266,12 +268,25 @@ class Exporter():
                 return obj.tolist()
             elif isinstance(obj, (np.integer, np.floating)):
                 return obj.item()  # Convert numpy scalar to Python int/float
+            elif isinstance(obj, (np.str_, np.bytes_)):
+                return str(obj)  # Convert numpy string types to Python str
+            elif isinstance(obj, np.bool_):
+                return bool(obj)  # Convert numpy bool to Python bool
+            elif isinstance(obj, bytes):
+                return obj.decode('utf-8') if obj else ""  # Convert bytes to str
             elif isinstance(obj, list):
                 return [convert_to_python(item) for item in obj]
             elif isinstance(obj, dict):
                 return {key: convert_to_python(value) for key, value in obj.items()}
             else:
                 return obj
+
+        # Convert texture params to ensure they're pure Python types
+        texture_data_base64_py = convert_to_python(texture_data_base64) if texture_data_base64 else ""
+        texture_format_py = convert_to_python(texture_format) if texture_format else ""
+        material_name_py = convert_to_python(material_name) if material_name else "Material"
+        texture_width_py = convert_to_python(texture_width) if texture_width is not None else None
+        texture_height_py = convert_to_python(texture_height) if texture_height is not None else None
 
         data = {
             'joints': convert_to_python(joints),
@@ -283,9 +298,11 @@ class Exporter():
             'tails': convert_to_python(tails),
             'uv_coords': convert_to_python(uv_coords),
             'uv_faces': convert_to_python(uv_faces),
-            'texture_data_base64': texture_data_base64 if texture_data_base64 else "",
-            'texture_format': texture_format if texture_format else "",
-            'material_name': material_name if material_name else "Material",
+            'texture_data_base64': texture_data_base64_py,
+            'texture_format': texture_format_py,
+            'material_name': material_name_py,
+            'texture_width': texture_width_py,
+            'texture_height': texture_height_py,
             'group_per_vertex': int(group_per_vertex) if isinstance(group_per_vertex, (np.integer, np.floating)) else group_per_vertex,
             'do_not_normalize': bool(do_not_normalize),
         }
@@ -294,6 +311,13 @@ class Exporter():
         print(f"[Exporter] Data summary: joints={len(data['joints']) if data['joints'] else 0}, "
               f"vertices={len(data['vertices']) if data['vertices'] else 0}, "
               f"faces={len(data['faces']) if data['faces'] else 0}")
+
+        # Log texture info
+        if texture_data_base64_py:
+            print(f"[Exporter] Texture data included: {texture_format_py} {texture_width_py}x{texture_height_py} "
+                  f"({len(texture_data_base64_py)} chars base64)")
+        if uv_coords is not None:
+            print(f"[Exporter] UV data included: {len(data['uv_coords'])} UV coords")
 
         # Save to temporary pickle file
         with tempfile.NamedTemporaryFile(mode='wb', suffix='.pkl', delete=False) as f:
