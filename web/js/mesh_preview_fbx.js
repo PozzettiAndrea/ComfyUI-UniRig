@@ -99,13 +99,13 @@ app.registerExtension({
 
                         // If filename is just a basename, it's in output
                         if (!filename.includes('/') && !filename.includes('\\')) {
-                            // Try output directory first
-                            filepath = `/view?filename=${encodeURIComponent(filename)}&type=output&subfolder=`;
+                            // Try output directory first - use absolute URL for blob iframe
+                            filepath = `${window.location.origin}/view?filename=${encodeURIComponent(filename)}&type=output&subfolder=`;
                             console.log(`[UniRig] Using output path: ${filepath}`);
                         } else {
                             // Full path - extract just the filename
                             const basename = filename.split(/[/\\]/).pop();
-                            filepath = `/view?filename=${encodeURIComponent(basename)}&type=output&subfolder=`;
+                            filepath = `${window.location.origin}/view?filename=${encodeURIComponent(basename)}&type=output&subfolder=`;
                             console.log(`[UniRig] Extracted basename: ${basename}, path: ${filepath}`);
                         }
 

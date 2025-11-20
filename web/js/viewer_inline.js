@@ -1,5 +1,5 @@
 // Auto-generated inline viewer - DO NOT EDIT
-// Generated on 2025-11-20T23:12:32.139Z
+// Generated on 2025-11-20T23:55:01.387Z
 
 export const VIEWER_HTML = `<!DOCTYPE html>
 <html>
@@ -37492,6 +37492,7 @@ version 0.6.9
         let meshBounds = null;
         let boneGizmoSize = 0.03;
         let currentFBXFilename = null;  // Store current FBX filename for export
+        let parentOrigin = null;  // Store parent window's origin for API calls
 
         // Raycaster for bone picking
         const raycaster = new THREE.Raycaster();
@@ -37816,7 +37817,7 @@ version 0.6.9
         // Load FBX file
         function loadFBX(filepath) {
             console.log('[UniRig FBX Viewer] Loading:', filepath);
-            console.log('[UniRig FBX Viewer] Full URL will be:', window.location.origin + filepath);
+            console.log('[UniRig FBX Viewer] Filepath is already absolute:', filepath);
             loading.textContent = 'Loading rigged mesh...';
             loading.style.display = 'block';
             loading.style.color = 'white';
@@ -38148,7 +38149,8 @@ version 0.6.9
                 formData.append('type', 'output');
                 formData.append('subfolder', '');
 
-                const response = await fetch('/upload/image', {
+                const uploadUrl = parentOrigin ? \`\${parentOrigin}/upload/image\` : '/upload/image';
+                const response = await fetch(uploadUrl, {
                     method: 'POST',
                     body: formData
                 });
@@ -38287,7 +38289,8 @@ version 0.6.9
                         formData.append('type', 'output');
                         formData.append('subfolder', '');
 
-                        const response = await fetch('/upload/image', {
+                        const uploadUrl = parentOrigin ? \`\${parentOrigin}/upload/image\` : '/upload/image';
+                        const response = await fetch(uploadUrl, {
                             method: 'POST',
                             body: formData
                         });
@@ -38412,7 +38415,8 @@ version 0.6.9
                 console.log(\`[UniRig FBX Viewer] Captured \${Object.keys(boneTransforms).length} bone transforms\`);
 
                 // Send to backend API
-                const response = await fetch('/unirig/export_posed_fbx', {
+                const exportUrl = parentOrigin ? \`\${parentOrigin}/unirig/export_posed_fbx\` : '/unirig/export_posed_fbx';
+                const response = await fetch(exportUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -38443,6 +38447,12 @@ version 0.6.9
         // Listen for messages from parent window
         window.addEventListener('message', (event) => {
             console.log('[UniRig FBX Viewer] Received postMessage:', event.data);
+
+            // Store parent origin from the first message
+            if (!parentOrigin && event.origin) {
+                parentOrigin = event.origin;
+                console.log('[UniRig FBX Viewer] Stored parent origin:', parentOrigin);
+            }
 
             if (event.data.type === 'LOAD_FBX') {
                 console.log('[UniRig FBX Viewer] Loading FBX:', event.data.filepath);
