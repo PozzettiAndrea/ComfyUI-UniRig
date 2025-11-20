@@ -201,6 +201,7 @@ class UniRigLoadSkeletonModel:
                 "unirig_path": UNIRIG_PATH,
                 "models_dir": str(UNIRIG_MODELS_DIR),
                 "cached": False,
+                "model_cache_key": None,
             }
             return (model_wrapper,)
 
@@ -337,6 +338,7 @@ class UniRigLoadSkinningModel:
                 "unirig_path": UNIRIG_PATH,
                 "models_dir": str(UNIRIG_MODELS_DIR),
                 "cached": False,
+                "model_cache_key": None,
             }
             return (model_wrapper,)
 
