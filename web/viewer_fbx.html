@@ -1019,15 +1019,91 @@
 
                 statusEl.textContent = 'Exporting GLB...';
 
+                // Create a new scene for export
+                const exportScene = new THREE.Scene();
+
+                // Find the SkinnedMesh
+                let skinnedMesh = null;
+                currentModel.traverse((child) => {
+                    if (child.isSkinnedMesh) {
+                        skinnedMesh = child;
+                    }
+                });
+
+                if (!skinnedMesh) {
+                    statusEl.textContent = 'No mesh to export';
+                    console.error('[UniRig FBX Viewer] No SkinnedMesh found');
+                    return;
+                }
+
+                // Clone and bake the current pose into the geometry
+                const bakedGeometry = skinnedMesh.geometry.clone();
+
+                // Apply current skeleton pose to vertices (bake the pose)
+                skinnedMesh.updateMatrixWorld(true);
+                const position = bakedGeometry.attributes.position;
+                const vertex = new THREE.Vector3();
+                const skinIndex = bakedGeometry.attributes.skinIndex;
+                const skinWeight = bakedGeometry.attributes.skinWeight;
+                const boneMatrices = skinnedMesh.skeleton.boneMatrices;
+
+                for (let i = 0; i < position.count; i++) {
+                    vertex.fromBufferAttribute(position, i);
+
+                    // Apply skinning transformation
+                    const finalVertex = new THREE.Vector3();
+                    for (let j = 0; j < 4; j++) {
+                        const weight = skinWeight.getComponent(i, j);
+                        if (weight > 0) {
+                            const boneIndex = skinIndex.getComponent(i, j);
+                            const boneMatrix = new THREE.Matrix4();
+                            boneMatrix.fromArray(boneMatrices, boneIndex * 16);
+
+                            const tempVertex = vertex.clone();
+                            tempVertex.applyMatrix4(boneMatrix);
+                            tempVertex.multiplyScalar(weight);
+                            finalVertex.add(tempVertex);
+                        }
+                    }
+
+                    position.setXYZ(i, finalVertex.x, finalVertex.y, finalVertex.z);
+                }
+
+                position.needsUpdate = true;
+                bakedGeometry.computeVertexNormals();
+
+                // Convert material to MeshStandardMaterial
+                const oldMat = skinnedMesh.material;
+                const newMat = new THREE.MeshStandardMaterial({
+                    name: oldMat.name,
+                    map: oldMat.map,
+                    metalness: 0.0,
+                    roughness: 0.8,
+                    transparent: oldMat.transparent,
+                    opacity: oldMat.opacity,
+                    side: oldMat.side
+                });
+
+                // Create regular Mesh (not SkinnedMesh) with baked geometry
+                const bakedMesh = new THREE.Mesh(bakedGeometry, newMat);
+                bakedMesh.name = skinnedMesh.name;
+
+                // Add mesh to scene
+                exportScene.add(bakedMesh);
+
+                console.log('[UniRig FBX Viewer] GLB Export - Baked pose into geometry (no skeleton)');
+                console.log('[UniRig FBX Viewer] GLB Export - Converted material:', oldMat.type, '→ MeshStandardMaterial');
+
                 // Create GLTFExporter instance
                 const exporter = new GLTFExporter();
 
-                // Export the current model with current bone positions
+                // Export the scene with baked mesh (no skeleton)
                 exporter.parse(
-                    currentModel,  // The scene/object to export
+                    exportScene,  // The export scene with baked static mesh
                     async (gltf) => {
                         // Convert to blob
                         const blob = new Blob([gltf], { type: 'application/octet-stream' });
+                        console.log('[UniRig FBX Viewer] GLB Export - Blob size:', (blob.size / 1024).toFixed(2), 'KB');
 
                         // Upload to ComfyUI output directory
                         const formData = new FormData();
