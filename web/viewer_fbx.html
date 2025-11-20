@@ -138,6 +138,7 @@
         <div class="control-group">
             <button id="takeScreenshot">Take Screenshot</button>
             <button id="exportGLB">Export GLB (Current Pose)</button>
+            <button id="exportFBX">Export FBX (Current Pose)</button>
         </div>
 
         <div id="status">No mesh loaded</div>
@@ -249,6 +250,7 @@
         let defaultCameraPosition = new THREE.Vector3(2, 2, 2);
         let meshBounds = null;
         let boneGizmoSize = 0.03;
+        let currentFBXFilename = null;  // Store current FBX filename for export
 
         // Raycaster for bone picking
         const raycaster = new THREE.Raycaster();
@@ -722,8 +724,13 @@
                                 console.log('[UniRig FBX Viewer] Mesh size:', size);
                                 console.log('[UniRig FBX Viewer] Scale ratio (mesh/skeleton):', maxDim / Math.max(skeletonSize.x, skeletonSize.y, skeletonSize.z));
 
-                                // Save rest pose
-                                saveRestPose();
+                                // Save rest pose (only if not already saved)
+                                // This prevents overwriting the original rest pose when loading exported FBX files
+                                if (restPoseData.length === 0) {
+                                    saveRestPose();
+                                } else {
+                                    console.log('[UniRig FBX Viewer] Rest pose already saved, skipping saveRestPose()');
+                                }
 
                                 // Create bone gizmos
                                 createBoneGizmos();
@@ -964,12 +971,35 @@
         // Export GLB button
         document.getElementById('exportGLB').addEventListener('click', async () => {
             try {
-                statusEl.textContent = 'Exporting GLB...';
-
                 if (!currentModel) {
                     statusEl.textContent = 'No model to export';
                     return;
                 }
+
+                // Ask user for filename
+                const defaultFilename = `fbx_export_${Date.now()}`;
+                let filename = prompt('Enter filename for GLB export (without extension):', defaultFilename);
+
+                // User cancelled
+                if (filename === null) {
+                    statusEl.textContent = 'Export cancelled';
+                    return;
+                }
+
+                // Trim whitespace
+                filename = filename.trim();
+
+                // Use default if empty
+                if (filename === '') {
+                    filename = defaultFilename;
+                }
+
+                // Add .glb extension if not present
+                if (!filename.toLowerCase().endsWith('.glb')) {
+                    filename = filename + '.glb';
+                }
+
+                statusEl.textContent = 'Exporting GLB...';
 
                 // Create GLTFExporter instance
                 const exporter = new GLTFExporter();
@@ -980,9 +1010,6 @@
                     async (gltf) => {
                         // Convert to blob
                         const blob = new Blob([gltf], { type: 'application/octet-stream' });
-
-                        // Create filename with timestamp
-                        const filename = `fbx_export_${Date.now()}.glb`;
 
                         // Upload to ComfyUI output directory
                         const formData = new FormData();
@@ -1016,12 +1043,172 @@
             }
         });
 
+        // Export FBX button
+        document.getElementById('exportFBX').addEventListener('click', async () => {
+            try {
+                if (!currentModel) {
+                    statusEl.textContent = 'No model to export';
+                    return;
+                }
+
+                if (!currentFBXFilename) {
+                    statusEl.textContent = 'FBX filename not available';
+                    console.error('[UniRig FBX Viewer] currentFBXFilename is not set');
+                    return;
+                }
+
+                // Ask user for filename
+                const defaultFilename = `posed_export_${Date.now()}`;
+                let filename = prompt('Enter filename for FBX export (without extension):', defaultFilename);
+
+                // User cancelled
+                if (filename === null) {
+                    statusEl.textContent = 'Export cancelled';
+                    return;
+                }
+
+                // Trim whitespace
+                filename = filename.trim();
+
+                // Use default if empty
+                if (filename === '') {
+                    filename = defaultFilename;
+                }
+
+                // Add .fbx extension if not present
+                if (!filename.toLowerCase().endsWith('.fbx')) {
+                    filename = filename + '.fbx';
+                }
+
+                statusEl.textContent = 'Exporting FBX...';
+
+                // Capture current bone transforms
+                const boneTransforms = {};
+
+                console.log('[UniRig FBX Viewer] DEBUG: Current model info:');
+                console.log('[UniRig FBX Viewer] DEBUG: Model position:', currentModel.position);
+                console.log('[UniRig FBX Viewer] DEBUG: Model rotation:', currentModel.rotation);
+                console.log('[UniRig FBX Viewer] DEBUG: Model scale:', currentModel.scale);
+
+                // Compute DELTA transforms (current - rest) for each bone
+                // Blender's pose_bone.location is an OFFSET from rest, not absolute position
+                // So we need to send deltas, not absolute transforms
+
+                console.log('[UniRig FBX Viewer] DEBUG: Computing deltas...');
+                console.log('[UniRig FBX Viewer] DEBUG: Rest pose data length:', restPoseData.length);
+                console.log('[UniRig FBX Viewer] DEBUG: Bones length:', bones.length);
+
+                // Create bone index mapping for fast lookup
+                const boneToIndex = new Map();
+                bones.forEach((bone, index) => {
+                    boneToIndex.set(bone, index);
+                });
+
+                let debugCount = 0;
+                currentModel.traverse((child) => {
+                    if (child.isBone) {
+                        // Find this bone's rest pose data
+                        const boneIndex = boneToIndex.get(child);
+                        if (boneIndex === undefined || !restPoseData[boneIndex]) {
+                            console.warn(`[UniRig FBX Viewer] No rest pose data for bone: ${child.name}`);
+                            return;
+                        }
+
+                        const rest = restPoseData[boneIndex];
+
+                        // Debug: print first 3 bones current vs rest
+                        if (debugCount < 3) {
+                            console.log(`[UniRig FBX Viewer] DEBUG: Bone ${child.name}:`);
+                            console.log('  Current:', { pos: child.position, quat: child.quaternion });
+                            console.log('  Rest:', { pos: rest.position, quat: rest.quaternion });
+                            debugCount++;
+                        }
+
+                        // Compute position delta: current - rest
+                        const posDelta = new THREE.Vector3().subVectors(child.position, rest.position);
+
+                        // Compute rotation delta: current * rest.inverse()
+                        const quatDelta = child.quaternion.clone().multiply(rest.quaternion.clone().invert());
+
+                        // Compute scale delta: current / rest (component-wise)
+                        const scaleDelta = new THREE.Vector3(
+                            child.scale.x / rest.scale.x,
+                            child.scale.y / rest.scale.y,
+                            child.scale.z / rest.scale.z
+                        );
+
+                        boneTransforms[child.name] = {
+                            position: {
+                                x: posDelta.x,
+                                y: posDelta.y,
+                                z: posDelta.z
+                            },
+                            quaternion: {
+                                x: quatDelta.x,
+                                y: quatDelta.y,
+                                z: quatDelta.z,
+                                w: quatDelta.w
+                            },
+                            scale: {
+                                x: scaleDelta.x,
+                                y: scaleDelta.y,
+                                z: scaleDelta.z
+                            }
+                        };
+                    }
+                });
+
+                console.log('[UniRig FBX Viewer] Captured DELTA transforms (current - rest) for', Object.keys(boneTransforms).length, 'bones');
+
+                // Print first 3 bone transforms for debugging
+                const boneNames = Object.keys(boneTransforms).slice(0, 3);
+                console.log('[UniRig FBX Viewer] DEBUG: Sample bone delta transforms:');
+                boneNames.forEach(name => {
+                    console.log(`[UniRig FBX Viewer] DEBUG: Bone "${name}":`, boneTransforms[name]);
+                });
+
+                // Send to backend API
+                const response = await fetch('/unirig/export_posed_fbx', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fbx_filename: currentFBXFilename,
+                        bone_transforms: boneTransforms,
+                        output_filename: filename
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    statusEl.textContent = `FBX saved: ${result.filename}`;
+                    console.log('[UniRig FBX Viewer] FBX exported:', result.filename);
+                } else {
+                    statusEl.textContent = `FBX export failed: ${result.error || 'Unknown error'}`;
+                    console.error('[UniRig FBX Viewer] FBX export failed:', result.error);
+                }
+
+            } catch (error) {
+                statusEl.textContent = 'FBX export error';
+                console.error('[UniRig FBX Viewer] FBX export error:', error);
+            }
+        });
+
         // Listen for messages from parent window
         window.addEventListener('message', (event) => {
             console.log('[UniRig FBX Viewer] Received postMessage:', event.data);
 
             if (event.data.type === 'LOAD_FBX') {
                 console.log('[UniRig FBX Viewer] Loading FBX:', event.data.filepath);
+                // Extract filename from filepath (e.g., "/view?filename=foo.fbx" -> "foo.fbx")
+                const filepathStr = event.data.filepath;
+                const match = filepathStr.match(/filename=([^&]+)/);
+                if (match) {
+                    currentFBXFilename = decodeURIComponent(match[1]);
+                    console.log('[UniRig FBX Viewer] Stored filename:', currentFBXFilename);
+                }
                 loadFBX(event.data.filepath);
             }
         });

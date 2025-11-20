@@ -9,6 +9,7 @@ import numpy as np
 import time
 import shutil
 import pickle
+import json
 import folder_paths
 
 # Support both relative imports (ComfyUI) and absolute imports (testing)
@@ -266,23 +267,18 @@ class UniRigLoadRiggedMesh:
 
     @classmethod
     def INPUT_TYPES(cls):
-        input_dir = folder_paths.get_input_directory()
-        fbx_files = []
-
-        for root, dirs, files in os.walk(input_dir):
-            for file in files:
-                if file.lower().endswith('.fbx'):
-                    rel_path = os.path.relpath(os.path.join(root, file), input_dir)
-                    fbx_files.append(rel_path)
-
-        fbx_files.sort()
-
-        if not fbx_files:
-            fbx_files = ["No FBX files found in input directory"]
-
         return {
             "required": {
-                "fbx_file": (fbx_files,),
+                "source_folder": (["input", "output"], {
+                    "default": "output",
+                    "tooltip": "Source folder to load FBX from (ComfyUI input or output directory)"
+                }),
+                "fbx_file": ("COMBO", {
+                    "remote": {
+                        "route": "/unirig/fbx_files",
+                        "refresh_button": True,
+                    },
+                }),
             },
         }
 
@@ -291,15 +287,50 @@ class UniRigLoadRiggedMesh:
     FUNCTION = "load"
     CATEGORY = "unirig"
 
-    def load(self, fbx_file):
-        """Load an FBX file and return it as a RIGGED_MESH."""
-        print(f"[UniRigLoadRiggedMesh] Loading FBX file: {fbx_file}")
-
-        if fbx_file == "No FBX files found in input directory":
-            raise RuntimeError("No FBX files found in ComfyUI/input directory. Please add an FBX file first.")
-
+    @classmethod
+    def get_fbx_files_from_input(cls):
+        """Get list of available FBX files in input folder."""
+        fbx_files = []
         input_dir = folder_paths.get_input_directory()
-        fbx_path = os.path.join(input_dir, fbx_file)
+
+        if input_dir is not None and os.path.exists(input_dir):
+            for root, dirs, files in os.walk(input_dir):
+                for file in files:
+                    if file.lower().endswith('.fbx'):
+                        rel_path = os.path.relpath(os.path.join(root, file), input_dir)
+                        fbx_files.append(rel_path)
+
+        return sorted(fbx_files)
+
+    @classmethod
+    def get_fbx_files_from_output(cls):
+        """Get list of available FBX files in output folder."""
+        fbx_files = []
+        output_dir = folder_paths.get_output_directory()
+
+        if output_dir is not None and os.path.exists(output_dir):
+            for root, dirs, files in os.walk(output_dir):
+                for file in files:
+                    if file.lower().endswith('.fbx'):
+                        rel_path = os.path.relpath(os.path.join(root, file), output_dir)
+                        fbx_files.append(rel_path)
+
+        return sorted(fbx_files)
+
+    def load(self, source_folder, fbx_file):
+        """Load an FBX file and return it as a RIGGED_MESH."""
+        print(f"[UniRigLoadRiggedMesh] Loading FBX file: {fbx_file} from {source_folder}")
+
+        if fbx_file == "No FBX files found":
+            raise RuntimeError(f"No FBX files found in ComfyUI/{source_folder} directory. Please add an FBX file first.")
+
+        # Determine base folder based on source_folder
+        if source_folder == "input":
+            base_dir = folder_paths.get_input_directory()
+        else:  # output
+            base_dir = folder_paths.get_output_directory()
+
+        fbx_path = os.path.join(base_dir, fbx_file)
 
         if not os.path.exists(fbx_path):
             raise RuntimeError(f"FBX file not found: {fbx_path}")
@@ -527,3 +558,110 @@ class UniRigPreviewRiggedMesh:
                 "has_skeleton": [bool(has_skeleton)],
             }
         }
+
+
+class UniRigExportPosedFBX:
+    """
+    Export rigged mesh with custom bone pose to FBX.
+
+    Takes a rigged mesh and bone transform data, applies the pose,
+    and exports the result as FBX using Blender.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "rigged_mesh": ("RIGGED_MESH",),
+                "output_filename": ("STRING", {
+                    "default": "posed_export.fbx",
+                    "tooltip": "Output filename for the posed FBX"
+                }),
+            },
+            "optional": {
+                "bone_transforms_json": ("STRING", {
+                    "default": "{}",
+                    "multiline": True,
+                    "tooltip": "JSON string containing bone transforms (name -> {position, quaternion, scale})"
+                }),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("filepath",)
+    FUNCTION = "export_posed_fbx"
+    CATEGORY = "unirig"
+    OUTPUT_NODE = True
+
+    def export_posed_fbx(self, rigged_mesh, output_filename, bone_transforms_json="{}"):
+        """Export rigged mesh with custom pose to FBX."""
+        print(f"[UniRigExportPosedFBX] Exporting posed FBX...")
+
+        # Get original FBX path
+        fbx_path = rigged_mesh.get("fbx_path")
+        if not fbx_path or not os.path.exists(fbx_path):
+            raise RuntimeError(f"Rigged mesh FBX not found: {fbx_path}")
+
+        print(f"[UniRigExportPosedFBX] Source FBX: {fbx_path}")
+
+        # Parse bone transforms
+        try:
+            bone_transforms = json.loads(bone_transforms_json)
+            print(f"[UniRigExportPosedFBX] Loaded transforms for {len(bone_transforms)} bones")
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Invalid JSON in bone_transforms_json: {e}")
+
+        # Save bone transforms to temporary JSON file
+        temp_dir = folder_paths.get_temp_directory()
+        transforms_json_path = os.path.join(temp_dir, f"bone_transforms_{int(time.time())}.json")
+        with open(transforms_json_path, 'w') as f:
+            json.dump(bone_transforms, f)
+
+        print(f"[UniRigExportPosedFBX] Saved transforms to: {transforms_json_path}")
+
+        # Prepare output path
+        output_dir = folder_paths.get_output_directory()
+        if not output_filename.endswith('.fbx'):
+            output_filename = output_filename + '.fbx'
+        output_fbx_path = os.path.join(output_dir, output_filename)
+
+        try:
+            # Path to Blender script
+            blender_script = os.path.join(NODE_DIR, 'lib', 'blender_export_posed_fbx.py')
+
+            if not os.path.exists(blender_script):
+                raise RuntimeError(f"Blender export script not found: {blender_script}")
+
+            if not os.path.exists(BLENDER_EXE):
+                raise RuntimeError(f"Blender executable not found: {BLENDER_EXE}")
+
+            # Build command
+            cmd = [
+                BLENDER_EXE,
+                '--background',
+                '--python', blender_script,
+                '--',
+                fbx_path,
+                output_fbx_path,
+                transforms_json_path,
+            ]
+
+            print(f"[UniRigExportPosedFBX] Running Blender to export posed FBX...")
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=BLENDER_TIMEOUT)
+
+            if result.returncode != 0:
+                print(f"[UniRigExportPosedFBX] Blender stderr: {result.stderr}")
+                print(f"[UniRigExportPosedFBX] Blender stdout: {result.stdout}")
+                raise RuntimeError(f"FBX export failed with return code {result.returncode}")
+
+            if not os.path.exists(output_fbx_path):
+                raise RuntimeError(f"Export completed but output file not found: {output_fbx_path}")
+
+            print(f"[UniRigExportPosedFBX] ✓ Successfully exported to: {output_fbx_path}")
+
+            return (output_fbx_path,)
+
+        finally:
+            # Clean up temporary JSON file
+            if os.path.exists(transforms_json_path):
+                os.unlink(transforms_json_path)
