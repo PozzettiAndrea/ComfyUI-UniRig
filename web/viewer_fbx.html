@@ -178,7 +178,8 @@
         const renderer = new THREE.WebGLRenderer({
             canvas,
             antialias: true,
-            powerPreference: 'high-performance'
+            powerPreference: 'high-performance',
+            preserveDrawingBuffer: true  // Required for screenshots
         });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Cap at 2x to save GPU memory
@@ -691,9 +692,26 @@
                                     skinning: true
                                 });
                             } else if (Array.isArray(child.material)) {
-                                child.material.forEach(mat => mat.skinning = true);
+                                child.material.forEach(mat => {
+                                    mat.skinning = true;
+                                    // DEBUG: Log material transparency properties
+                                    console.log('[UniRig FBX Viewer] Material transparency:', JSON.stringify({
+                                        name: mat.name,
+                                        transparent: mat.transparent,
+                                        opacity: mat.opacity,
+                                        depthWrite: mat.depthWrite
+                                    }));
+                                });
                             } else {
                                 child.material.skinning = true;
+                                // DEBUG: Log material transparency properties
+                                const transparencyInfo = {
+                                    name: child.material.name,
+                                    transparent: child.material.transparent,
+                                    opacity: child.material.opacity,
+                                    depthWrite: child.material.depthWrite
+                                };
+                                console.log('[UniRig FBX Viewer] Material transparency:', JSON.stringify(transparencyInfo));
                             }
 
                             // Create skeleton helper
@@ -1034,7 +1052,11 @@
                         console.error('[UniRig FBX Viewer] GLB export error:', error);
                         statusEl.textContent = 'GLB export error';
                     },
-                    { binary: true }  // Export as binary GLB format
+                    {
+                        binary: true,  // Export as binary GLB format
+                        embedImages: true,  // Embed textures in the GLB file
+                        maxTextureSize: 4096  // Preserve texture quality
+                    }
                 );
 
             } catch (error) {
@@ -1104,8 +1126,9 @@
                     // Compute position delta: current - rest
                     const posDelta = new THREE.Vector3().subVectors(bone.position, rest.position);
 
-                    // Compute rotation delta: current * rest.inverse()
-                    const quatDelta = bone.quaternion.clone().multiply(rest.quaternion.clone().invert());
+                    // Compute rotation delta: rest.inverse() * current
+                    // This gives us the delta that Blender's POSE mode expects
+                    const quatDelta = rest.quaternion.clone().invert().multiply(bone.quaternion.clone());
 
                     // Compute scale delta: current / rest (component-wise)
                     const scaleDelta = new THREE.Vector3(

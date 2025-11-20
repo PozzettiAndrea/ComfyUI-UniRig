@@ -117,6 +117,11 @@ if 'pytest' not in sys.modules:
                 # Run Blender
                 result = subprocess.run(cmd, capture_output=True, text=True, timeout=BLENDER_TIMEOUT)
 
+                # Print Blender output for debugging
+                if result.stdout:
+                    print("[UniRig Export API] Blender output:")
+                    print(result.stdout)
+
                 # Clean up temporary JSON file
                 if os.path.exists(transforms_json_path):
                     os.unlink(transforms_json_path)
