@@ -181,21 +181,16 @@ def test_node_class_structures():
     # These need pytest with proper package setup to work
     # In standalone smoke test mode, we just verify the files exist and defer to pytest
     all_nodes = [
-        ("skeleton_extraction", "UniRigExtractSkeleton"),
-        ("skeleton_extraction", "UniRigExtractRig"),
-        ("skinning", "UniRigApplySkinning"),
-        ("skinning", "UniRigApplySkinningML"),
+        ("skeleton_extraction", "UniRigExtractSkeletonNew"),
+        ("skinning", "UniRigApplySkinningMLNew"),
         ("mesh_io", "UniRigLoadMesh"),
         ("mesh_io", "UniRigSaveMesh"),
         ("model_loaders", "UniRigLoadSkeletonModel"),
         ("model_loaders", "UniRigLoadSkinningModel"),
         ("skeleton_io", "UniRigSaveSkeleton"),
-        ("skeleton_io", "UniRigSaveRiggedMesh"),
         ("skeleton_io", "UniRigLoadRiggedMesh"),
         ("skeleton_io", "UniRigPreviewRiggedMesh"),
-        ("skeleton_processing", "UniRigDenormalizeSkeleton"),
-        ("skeleton_processing", "UniRigValidateSkeleton"),
-        ("skeleton_processing", "UniRigPrepareSkeletonForSkinning"),
+        ("skeleton_io", "UniRigExportPosedFBX"),
     ]
 
     # Verify node files exist

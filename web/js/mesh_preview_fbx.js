@@ -4,6 +4,7 @@
  */
 
 import { app } from "../../../../scripts/app.js";
+import { VIEWER_HTML } from "./viewer_inline.js";
 
 console.log("[UniRig] Loading FBX mesh preview extension...");
 
@@ -28,9 +29,17 @@ app.registerExtension({
                 iframe.style.border = "none";
                 iframe.style.backgroundColor = "#2a2a2a";
 
-                // Point to our FBX viewer HTML (with cache buster)
-                iframe.src = "/extensions/ComfyUI-UniRig/viewer_fbx.html?v=" + Date.now();
-                console.log('[UniRig] Setting iframe src to:', iframe.src);
+                // Create blob URL from inline HTML (no external requests!)
+                const blob = new Blob([VIEWER_HTML], { type: 'text/html' });
+                const blobUrl = URL.createObjectURL(blob);
+                iframe.src = blobUrl;
+                console.log('[UniRig] Setting iframe src to blob URL (fully self-contained)');
+
+                // Clean up blob URL when iframe is removed
+                iframe.addEventListener('load', () => {
+                    // Keep blob URL alive while iframe is loaded
+                    iframe._blobUrl = blobUrl;
+                });
 
                 // Add load event listener
                 iframe.onload = () => {

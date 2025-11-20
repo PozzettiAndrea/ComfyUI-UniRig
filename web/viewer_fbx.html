@@ -144,21 +144,16 @@
         <div id="status">No mesh loaded</div>
     </div>
 
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "/extensions/ComfyUI-UniRig/static/three/three.module.js",
-            "three/addons/": "/extensions/ComfyUI-UniRig/static/three/examples/jsm/"
-        }
-    }
-    </script>
+    <!-- Load bundled Three.js and all dependencies from a single file -->
+    <script src="/extensions/ComfyUI-UniRig/static/three/viewer-bundle.js"></script>
 
-    <script type="module">
-        import * as THREE from 'three';
-        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-        import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
-        import { TransformControls } from 'three/addons/controls/TransformControls.js';
-        import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+    <script>
+        // All dependencies are now available from the bundle via window object
+        const THREE = window.THREE;
+        const OrbitControls = window.OrbitControls;
+        const FBXLoader = window.FBXLoader;
+        const TransformControls = window.TransformControls;
+        const GLTFExporter = window.GLTFExporter;
 
         console.log('[UniRig FBX Viewer] Initializing...');
 
