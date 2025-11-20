@@ -10,9 +10,16 @@ Change their pose, export a new one
 
 ## Video demos
 
-Rigging/skinning workflow:
+Rigging/skinning workflow (video is sped up for documentation purposes):
+
+
+https://github.com/user-attachments/assets/6d06a3cd-db63-4e3a-b13b-78ff7868a162
+
 
 Manipulation/saving/export:
+
+
+https://github.com/user-attachments/assets/f320db66-4323-4993-a46e-87e2717748ef
 
 
 ## Available Nodes
