@@ -49,7 +49,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
-        pip install -r requirements.txt
+        python install.py
         pip install -r requirements-dev.txt
         playwright install --with-deps chromium
 
