@@ -27,9 +27,11 @@ sys.path.insert(0, str(custom_nodes_dir))
 # This prevents import errors when pytest tries to load __init__.py files
 
 # Mock folder_paths module (ComfyUI path management)
+# Use cacheable location for models in CI (instead of /tmp)
+test_models_dir = os.environ.get("TEST_MODELS_DIR", str(Path.home() / ".cache" / "test_models"))
 mock_folder_paths = type("folder_paths", (), {})()
-mock_folder_paths.models_dir = "/tmp/test_models"
-mock_folder_paths.get_folder_paths = lambda x: ["/tmp/test_models"]
+mock_folder_paths.models_dir = test_models_dir
+mock_folder_paths.get_folder_paths = lambda x: [test_models_dir]
 mock_folder_paths.get_temp_directory = lambda: "/tmp/comfy_temp"
 mock_folder_paths.get_output_directory = lambda: "/tmp/comfy_output"
 mock_folder_paths.get_input_directory = lambda: "/tmp/comfy_input"
@@ -181,8 +183,10 @@ def setup_test_directories():
     import tempfile
 
     # Create temporary directories for tests
+    # Use cacheable location for models (not /tmp)
+    test_models_dir = os.environ.get("TEST_MODELS_DIR", str(Path.home() / ".cache" / "test_models"))
     temp_dirs = [
-        "/tmp/test_models",
+        test_models_dir,
         "/tmp/comfy_temp",
         "/tmp/comfy_output",
         "/tmp/comfy_input"

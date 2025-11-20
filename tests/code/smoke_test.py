@@ -29,9 +29,11 @@ if str(_nodes_dir) not in sys.path:
 
 # Mock ComfyUI dependencies BEFORE importing nodes
 # This allows smoke test to run without ComfyUI installed
+# Use cacheable location for models in CI (instead of /tmp)
+_test_models_dir = os.environ.get("TEST_MODELS_DIR", str(Path.home() / ".cache" / "test_models"))
 mock_folder_paths = type("folder_paths", (), {})()
-mock_folder_paths.models_dir = "/tmp/test_models"
-mock_folder_paths.get_folder_paths = lambda x: ["/tmp/test_models"]
+mock_folder_paths.models_dir = _test_models_dir
+mock_folder_paths.get_folder_paths = lambda x: [_test_models_dir]
 mock_folder_paths.get_temp_directory = lambda: "/tmp/comfy_temp"
 mock_folder_paths.get_output_directory = lambda: "/tmp/comfy_output"
 mock_folder_paths.get_input_directory = lambda: "/tmp/comfy_input"

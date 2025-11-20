@@ -26,6 +26,25 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: 'pip'
 
+    - name: Cache Blender installation
+      uses: actions/cache@v4
+      with:
+        path: lib/blender
+        key: blender-${{ runner.os }}-4.2.3
+        restore-keys: |
+          blender-${{ runner.os }}-
+
+    - name: Cache HuggingFace models and test data
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache/huggingface
+          ~/.cache/test_models
+        key: models-${{ runner.os }}-unirig-${{ hashFiles('**/model_loaders.py') }}
+        restore-keys: |
+          models-${{ runner.os }}-unirig-
+          models-${{ runner.os }}-
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
