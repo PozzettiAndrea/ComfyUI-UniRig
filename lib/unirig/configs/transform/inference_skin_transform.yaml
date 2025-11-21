@@ -29,5 +29,5 @@ predict_transform_config:
         vertex_query: 1
         grid_weight: 3.0
         # mode: exp
-        backend: open3d # switched from pyrender to avoid OpenGL/EGL dependencies
+        backend: trimesh # pure Python voxelization, works on all platforms including Python 3.13+
   sampler_config: *sampler_config

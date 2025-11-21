@@ -327,7 +327,7 @@ The process of skinning training is very similar to skeleton training. You can m
 python run.py --task=configs/task/train_rignet_skin.yaml
 ```
 
-If you run into pyrender related issues, change `vertex_group_confis/kwargs/voxel_skin/backend` to `open3d` in `configs/transform/train_rignet_skin_transform`. This also means you need to change it in prediction mode.
+If you run into pyrender related issues, change `vertex_group_confis/kwargs/voxel_skin/backend` to `trimesh` in `configs/transform/train_rignet_skin_transform`. This also means you need to change it in prediction mode. Note: `trimesh` is the default backend and is recommended for best compatibility.
 
 Note that this task takes up at least 60GB memory on a single gpu, even with `batch_size=2` in data config. You can change `batch_size` to 1, increase `accumulate_grad_batches` in the task, and decrease `num_train_vertex` in `configs/model/unirig_skin.yaml` for less memory requirement.
 

@@ -15,7 +15,6 @@ dependencies = [
     "trimesh",
     "numpy",
     "scipy",
-    "open3d",
     "pyrender",
 
     # UniRig ML dependencies

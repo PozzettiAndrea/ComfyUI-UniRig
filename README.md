@@ -56,6 +56,43 @@ https://github.com/user-attachments/assets/f320db66-4323-4993-a46e-87e2717748ef
 - **Fast**: Optimized inference pipeline
 - **Easy**: One-click install via ComfyUI Manager
 
+## Installation
+
+### Via ComfyUI Manager (Recommended)
+1. Open ComfyUI Manager
+2. Search for "UniRig"
+3. Click Install
+4. Restart ComfyUI
+
+The installation will automatically:
+- Install all required dependencies
+- Download and install Blender 4.2.3 for your platform
+- Set up the UniRig models cache
+
+### Manual Installation
+```bash
+cd ComfyUI/custom_nodes
+git clone https://github.com/PozzettiAndrea/ComfyUI-UniRig.git
+cd ComfyUI-UniRig
+python install.py
+```
+
+### Compatibility
+
+**Voxelization Backend**: This node pack uses `trimesh` for voxelization, ensuring compatibility across all platforms including Python 3.13+ on Windows.
+
+**Supported Platforms**:
+- ✅ Windows (Python 3.10 - 3.13+)
+- ✅ Linux (Python 3.10 - 3.13+)
+- ✅ macOS Intel (Python 3.10 - 3.13+)
+- ✅ macOS Apple Silicon (Python 3.10 - 3.13+)
+
+**Advanced Configuration**: If you encounter issues with voxelization, you can change the `backend` setting in the config files:
+- Default: `trimesh` (pure Python, works everywhere)
+- Alternative: `pyrender` (requires OpenGL/EGL)
+
+Config file: `lib/unirig/configs/transform/inference_skin_transform.yaml`
+
 ## Credits
 
 - [UniRig Paper](https://zjp-shadow.github.io/works/UniRig/)

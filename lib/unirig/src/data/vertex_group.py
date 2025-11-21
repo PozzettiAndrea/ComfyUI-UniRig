@@ -284,9 +284,9 @@ def voxelization(
     faces: ndarray,
     grid: int=256,
     scale: float=1.0,
-    backend: Literal['pyrender', 'open3d']='pyrender',
+    backend: Literal['pyrender', 'trimesh']='trimesh',
 ):
-    assert backend in ['pyrender', 'open3d']
+    assert backend in ['pyrender', 'trimesh']
     if backend == 'pyrender':
         import pyrender
         znear = 0.05
@@ -349,7 +349,7 @@ def voxelization(
         for name, pose in camera_poses.items():
             scene.add(camera, name=name, pose=pose)
         camera_nodes = [node for node in scene.get_nodes() if isinstance(node, pyrender.Node) and node.camera is not None]
-        # if you are having issues with pyrender, change `backend` to 'open3d' in configs/transform/<name>.yaml
+        # if you are having issues with pyrender, change `backend` to 'trimesh' in configs/transform/<name>.yaml
         renderer = pyrender.OffscreenRenderer(viewport_width=grid, viewport_height=grid)
 
         i, j, k = np.indices((grid, grid, grid))
@@ -380,54 +380,58 @@ def voxelization(
         mask = (mask_x & mask_y) | (mask_x & mask_z) | (mask_y & mask_z)
         grid_coords = grid_coords[mask]
         return grid_coords
-    else:
-        import open3d as o3d
-        mesh_o3d = o3d.geometry.TriangleMesh()
-        mesh_o3d.vertices = o3d.utility.Vector3dVector(vertices)
-        mesh_o3d.triangles = o3d.utility.Vector3iVector(faces)
+    elif backend == 'trimesh':
+        import trimesh
+        # Create trimesh object
+        mesh_tri = trimesh.Trimesh(vertices=vertices, faces=faces)
         voxel_size = 2 / grid
-        voxel = o3d.geometry.VoxelGrid.create_from_triangle_mesh(mesh_o3d, voxel_size=voxel_size)
-        origin = voxel.origin
-        coords = np.array([pt.grid_index for pt in voxel.get_voxels()])
-        
-        max_coords = np.max(coords, axis=0)
-        shape = tuple(max_coords + 1)
-        voxel = np.zeros(shape, dtype=bool)
-        voxel[tuple(coords.T)] = True
-        
-        grids = np.indices(voxel.shape)
+
+        # Voxelize the mesh using trimesh
+        voxel_grid = mesh_tri.voxelized(pitch=voxel_size)
+
+        # Get the voxel matrix
+        voxel_matrix = voxel_grid.matrix
+
+        # Fill interior voxels using projection method
+        grids = np.indices(voxel_matrix.shape)
         x_coord = grids[0, ...]
         y_coord = grids[1, ...]
         z_coord = grids[2, ...]
-        
+
         INF = 2147483647
         x_tmp = x_coord.copy()
-        x_tmp[~voxel] = INF
+        x_tmp[~voxel_matrix] = INF
         x_min = x_tmp.min(axis=0)
-        x_tmp[~voxel] = -1
+        x_tmp[~voxel_matrix] = -1
         x_max = x_tmp.max(axis=0)
-        
+
         y_tmp = y_coord.copy()
-        y_tmp[~voxel] = INF
+        y_tmp[~voxel_matrix] = INF
         y_min = y_tmp.min(axis=1)
-        y_tmp[~voxel] = -1
+        y_tmp[~voxel_matrix] = -1
         y_max = y_tmp.max(axis=1)
-        
+
         z_tmp = z_coord.copy()
-        z_tmp[~voxel] = INF
+        z_tmp[~voxel_matrix] = INF
         z_min = z_tmp.min(axis=2)
-        z_tmp[~voxel] = -1
+        z_tmp[~voxel_matrix] = -1
         z_max = z_tmp.max(axis=2)
-        
+
         in_x = (x_coord >= x_min[None, :, :]) & (x_coord <= x_max[None, :, :])
         in_y = (y_coord >= y_min[:, None, :]) & (y_coord <= y_max[:, None, :])
         in_z = (z_coord >= z_min[:, :, None]) & (z_coord <= z_max[:, :, None])
-        
+
         count = in_x.astype(int) + in_y.astype(int) + in_z.astype(int)
         fill_mask = count >= 2
-        voxel = voxel | fill_mask
-        x, y, z = np.where(voxel)
+        voxel_matrix = voxel_matrix | fill_mask
+
+        # Get voxel coordinates
+        x, y, z = np.where(voxel_matrix)
         grid_indices = np.stack([x, y, z], axis=1)
+
+        # Convert to world coordinates
+        # Trimesh uses a transform matrix to get the origin
+        origin = voxel_grid.transform[:3, 3]  # Extract translation from 4x4 transform
         grid_coords = origin + (grid_indices + 0.5) * voxel_size
         return grid_coords
 

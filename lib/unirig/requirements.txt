@@ -10,7 +10,7 @@ fast-simplification
 bpy==4.2
 flash_attn
 trimesh
-open3d
+# open3d  # Optional - not needed for Python 3.13+, we use trimesh instead
 pyrender
 huggingface_hub
 wandb
