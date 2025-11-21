@@ -8,12 +8,12 @@ on:
 
 jobs:
   linux-installation-tests:
-    name: Linux / Installation Tests / Python 3.10
+    name: Linux / Installation Tests / Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
       fail-fast: false
 
     steps:
@@ -52,7 +52,7 @@ jobs:
       run: |
         echo "## Linux Installation Test Results" >> $GITHUB_STEP_SUMMARY
         echo "✅ Platform: Ubuntu Latest" >> $GITHUB_STEP_SUMMARY
-        echo "✅ Python: 3.10" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Python: ${{ matrix.python-version }}" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "### Tests Completed:" >> $GITHUB_STEP_SUMMARY
         echo "- Dependencies install successfully" >> $GITHUB_STEP_SUMMARY

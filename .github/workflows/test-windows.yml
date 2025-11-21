@@ -8,12 +8,12 @@ on:
 
 jobs:
   windows-installation-tests:
-    name: Windows / Installation Tests / Python 3.10
+    name: Windows / Installation Tests / Python ${{ matrix.python-version }}
     runs-on: windows-latest
     timeout-minutes: 15
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
       fail-fast: false
 
     steps:
@@ -52,7 +52,7 @@ jobs:
       run: |
         echo "## Windows Installation Test Results" >> $env:GITHUB_STEP_SUMMARY
         echo "✅ Platform: Windows Latest" >> $env:GITHUB_STEP_SUMMARY
-        echo "✅ Python: 3.10" >> $env:GITHUB_STEP_SUMMARY
+        echo "✅ Python: ${{ matrix.python-version }}" >> $env:GITHUB_STEP_SUMMARY
         echo "" >> $env:GITHUB_STEP_SUMMARY
         echo "### Tests Completed:" >> $env:GITHUB_STEP_SUMMARY
         echo "- Dependencies install successfully" >> $env:GITHUB_STEP_SUMMARY
