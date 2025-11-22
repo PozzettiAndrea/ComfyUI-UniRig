@@ -327,7 +327,12 @@ def run_inference(cache_key: str, request_data: dict) -> dict:
                 writer_config['npz_dir'] = npz_dir
                 writer_config['output_dir'] = None
                 writer_config['output_name'] = output_file
-                writer_config['user_mode'] = True
+                # For skeleton inference, disable user_mode to allow NPZ export with bone names
+                # This ensures VRoid/template bone names are saved to predict_skeleton.npz
+                is_skeleton_inference = 'skeleton' in cache_key.lower()
+                writer_config['user_mode'] = not is_skeleton_inference
+                if is_skeleton_inference:
+                    print(f"[UniRigCache] Enabling NPZ export for skeleton inference (user_mode=False)")
             callbacks.append(get_writer(**writer_config, order_config=predict_transform_config.order_config))
 
         # DIAGNOSTIC: Log data module info (DON'T setup or consume dataloader!)
@@ -355,6 +360,19 @@ def run_inference(cache_key: str, request_data: dict) -> dict:
         if system is not None:
             system.eval()
             print(f"[UniRigCache] Model set to eval mode (training={system.training})")
+
+        # Override generate_kwargs with user-specified cls if provided
+        # This fixes the issue where system config has hardcoded assign_cls=articulationxl
+        # Note: Only ARSystem (skeleton) has generate_kwargs, SkinSystem (skinning) doesn't
+        if cls is not None and system is not None and hasattr(system, 'generate_kwargs'):
+            original_cls = system.generate_kwargs.get('assign_cls', 'None')
+            system.generate_kwargs['assign_cls'] = cls
+            print(f"[UniRigCache] Overriding generate_kwargs assign_cls: {original_cls} → {cls}")
+        elif system is not None and hasattr(system, 'generate_kwargs'):
+            # User wants auto-detection, remove hardcoded assign_cls
+            if 'assign_cls' in system.generate_kwargs:
+                removed_cls = system.generate_kwargs.pop('assign_cls')
+                print(f"[UniRigCache] Removed hardcoded assign_cls='{removed_cls}' for auto-detection")
 
         # Create trainer with progress bar disabled and FORCE GPU usage
         trainer_config = task.get('trainer', {})

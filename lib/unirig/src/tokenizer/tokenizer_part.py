@@ -297,8 +297,19 @@ class TokenizerPart(TokenizerSpec):
             cls = self.cls_token_to_name[cls]
         else:
             cls = None
+
+        # Auto-infer parts if they're all None/empty
         if self.order is not None:
-            names = self.order.make_names(cls=cls, parts=parts, num_bones=num_bones)
+            # Filter out None values from parts list (spring tokens)
+            cleaned_parts = [p for p in parts if p is not None]
+
+            # If no real parts were generated, infer from cls and parts_order
+            if len(cleaned_parts) == 0 and cls is not None and cls in self.order.parts_order:
+                print(f"[Tokenizer] Model generated no part tokens for cls='{cls}', auto-inferring from parts_order")
+                cleaned_parts = list(self.order.parts_order[cls])
+                print(f"[Tokenizer] Inferred parts: {cleaned_parts}")
+
+            names = self.order.make_names(cls=cls, parts=cleaned_parts, num_bones=num_bones)
         else:
             names = [f"bone_{i}" for i in range(num_bones)]
         return DetokenizeOutput(

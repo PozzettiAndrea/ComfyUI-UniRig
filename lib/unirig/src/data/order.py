@@ -66,12 +66,21 @@ class Order():
         Get names for specified cls.
         '''
         names = []
+
+        # Auto-infer parts from cls when parts list is empty
+        # This handles cases where the model doesn't generate part tokens
+        if len(parts) == 0 and cls is not None and cls in self.parts_order:
+            print(f"[Order] Auto-inferring parts for cls='{cls}' (parts list was empty)")
+            parts = list(self.parts_order[cls])
+            print(f"[Order] Inferred parts: {parts}")
+
         for part in parts:
             if part is None: # spring
                 continue
             if cls in self.parts and part in self.parts[cls]:
                 names.extend(self.parts[cls][part])
-        assert len(names) <= num_bones, "number of bones in required skeleton is more than existing bones"
+
+        assert len(names) <= num_bones, f"Expected {len(names)} bones for cls='{cls}', got {num_bones} bones"
         for i in range(len(names), num_bones):
             names.append(f"bone_{i}")
         return names

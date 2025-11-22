@@ -97,11 +97,19 @@ class RawData(Exporter):
                 v = v.astype(to)
             d[k] = v
         return RawData(**d)
-    
+
     def save(self, path: str):
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        np.savez(file=path, **self.__dict__)
-    
+        # Convert Python lists to numpy arrays to avoid 0-d array issues
+        save_dict = {}
+        for k, v in self.__dict__.items():
+            if isinstance(v, list):
+                # Convert list to proper numpy array (not 0-d scalar)
+                save_dict[k] = np.array(v, dtype=object) if len(v) > 0 else np.array([], dtype=object)
+            else:
+                save_dict[k] = v
+        np.savez(file=path, **save_dict)
+
     @property
     def N(self):
         '''
@@ -231,11 +239,19 @@ class RawSkeleton(Exporter):
     def load(path: str) -> 'RawSkeleton':
         data = np.load(path, allow_pickle=True)
         return RawSkeleton(**{name: data[name][()] for name in data})
-    
+
     def save(self, path: str):
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        np.savez(file=path, **self.__dict__)
-    
+        # Convert Python lists to numpy arrays to avoid 0-d array issues
+        save_dict = {}
+        for k, v in self.__dict__.items():
+            if isinstance(v, list):
+                # Convert list to proper numpy array (not 0-d scalar)
+                save_dict[k] = np.array(v, dtype=object) if len(v) > 0 else np.array([], dtype=object)
+            else:
+                save_dict[k] = v
+        np.savez(file=path, **save_dict)
+
     @staticmethod
     def from_detokenize_output(res: DetokenizeOutput, order: Union[Order, None]) -> 'RawSkeleton':
         J = len(res.bones)
@@ -336,7 +352,15 @@ class RawSkin(Exporter):
     def load(path: str) -> 'RawSkin':
         data = np.load(path, allow_pickle=True)
         return RawSkin(**{name: data[name][()] for name in data})
-    
+
     def save(self, path: str):
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        np.savez(file=path, **self.__dict__)
+        # Convert Python lists to numpy arrays to avoid 0-d array issues
+        save_dict = {}
+        for k, v in self.__dict__.items():
+            if isinstance(v, list):
+                # Convert list to proper numpy array (not 0-d scalar)
+                save_dict[k] = np.array(v, dtype=object) if len(v) > 0 else np.array([], dtype=object)
+            else:
+                save_dict[k] = v
+        np.savez(file=path, **save_dict)
