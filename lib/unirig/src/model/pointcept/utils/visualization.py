@@ -6,7 +6,12 @@ Please cite our work if the code is helpful to you.
 """
 
 import os
-import open3d as o3d
+try:
+    import open3d as o3d
+    OPEN3D_AVAILABLE = True
+except ImportError:
+    o3d = None
+    OPEN3D_AVAILABLE = False
 import numpy as np
 import torch
 

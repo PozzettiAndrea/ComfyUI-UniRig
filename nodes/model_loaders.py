@@ -9,7 +9,12 @@ import os
 import sys
 import yaml
 from pathlib import Path
-from box import Box
+
+# Lazy import for Box to avoid import errors before install.py runs
+def _get_box():
+    """Lazy import for python-box."""
+    from box import Box
+    return Box
 
 # Support both relative imports (ComfyUI) and absolute imports (testing)
 try:
@@ -23,10 +28,13 @@ _MODEL_CACHE = {}
 # In-process model cache module
 _MODEL_CACHE_MODULE = None
 
+# Store import errors for better error messages
+_MODEL_CACHE_IMPORT_ERROR = None
+
 
 def _get_model_cache():
     """Get the in-process model cache module."""
-    global _MODEL_CACHE_MODULE
+    global _MODEL_CACHE_MODULE, _MODEL_CACHE_IMPORT_ERROR
     if _MODEL_CACHE_MODULE is None:
         # Use sys.modules to ensure same instance across all imports
         if "unirig_model_cache" in sys.modules:
@@ -38,11 +46,45 @@ def _get_model_cache():
                 spec = importlib.util.spec_from_file_location("unirig_model_cache", cache_path)
                 _MODEL_CACHE_MODULE = importlib.util.module_from_spec(spec)
                 sys.modules["unirig_model_cache"] = _MODEL_CACHE_MODULE
-                spec.loader.exec_module(_MODEL_CACHE_MODULE)
+                try:
+                    spec.loader.exec_module(_MODEL_CACHE_MODULE)
+                except ImportError as e:
+                    # Capture the actual import error for better error messages
+                    _MODEL_CACHE_IMPORT_ERROR = e
+                    error_msg = str(e).lower()
+
+                    # Log specific dependency that's missing
+                    if "spconv" in error_msg:
+                        print("[UniRig] ERROR: spconv is not installed.")
+                        print("[UniRig] Install with: pip install spconv-cu121 (match your CUDA version)")
+                    elif "torch_scatter" in error_msg:
+                        print("[UniRig] ERROR: torch-scatter is not installed.")
+                        print("[UniRig] Install with: pip install torch-scatter")
+                    elif "torch_cluster" in error_msg:
+                        print("[UniRig] ERROR: torch-cluster is not installed.")
+                        print("[UniRig] Install with: pip install torch-cluster")
+                    else:
+                        print(f"[UniRig] ERROR: Failed to load model cache: {e}")
+
+                    # Cleanup failed module
+                    del sys.modules["unirig_model_cache"]
+                    _MODEL_CACHE_MODULE = False
+                except Exception as e:
+                    _MODEL_CACHE_IMPORT_ERROR = e
+                    print(f"[UniRig] ERROR: Failed to load model cache: {e}")
+                    import traceback
+                    traceback.print_exc()
+                    del sys.modules["unirig_model_cache"]
+                    _MODEL_CACHE_MODULE = False
             else:
                 print(f"[UniRig] Warning: Model cache module not found at {cache_path}")
                 _MODEL_CACHE_MODULE = False
     return _MODEL_CACHE_MODULE if _MODEL_CACHE_MODULE else None
+
+
+def get_model_cache_error():
+    """Get the error that caused model cache loading to fail."""
+    return _MODEL_CACHE_IMPORT_ERROR
 
 
 def _ensure_unirig_in_path():
@@ -51,8 +93,9 @@ def _ensure_unirig_in_path():
         sys.path.insert(0, UNIRIG_PATH)
 
 
-def _load_yaml_config(config_path: str) -> Box:
+def _load_yaml_config(config_path: str):
     """Load a YAML config file."""
+    Box = _get_box()
     if config_path.endswith('.yaml'):
         config_path = config_path.removesuffix('.yaml')
     config_path += '.yaml'

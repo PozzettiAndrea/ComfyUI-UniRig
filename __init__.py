@@ -18,6 +18,35 @@ INIT_ERRORS = []
 # Set web directory for JavaScript extensions (FBX viewer widget)
 WEB_DIRECTORY = "./web"
 
+def _check_optional_dependencies():
+    """Check for optional dependencies and warn about missing ones."""
+    missing = []
+
+    try:
+        import spconv
+    except ImportError:
+        missing.append(("spconv", "pip install spconv-cu121  # Match your CUDA version"))
+
+    try:
+        import torch_scatter
+    except ImportError:
+        missing.append(("torch-scatter", "pip install torch-scatter"))
+
+    try:
+        import torch_cluster
+    except ImportError:
+        missing.append(("torch-cluster", "pip install torch-cluster"))
+
+    if missing:
+        print("[ComfyUI-UniRig] WARNING: Missing optional dependencies for GPU model caching:")
+        for name, install_cmd in missing:
+            print(f"  - {name}: {install_cmd}")
+        print("[ComfyUI-UniRig] GPU-accelerated inference will not be available until these are installed.")
+        print("[ComfyUI-UniRig] Run 'python install.py' to install dependencies.")
+
+    return len(missing) == 0
+
+
 # Only run initialization and imports when loaded by ComfyUI, not during pytest
 # This prevents relative import errors when pytest collects test modules
 if 'pytest' not in sys.modules:
@@ -28,6 +57,26 @@ if 'pytest' not in sys.modules:
         from .nodes import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
         print("[ComfyUI-UniRig] [OK] Node classes imported successfully")
         INIT_SUCCESS = True
+    except ImportError as e:
+        error_msg = str(e).lower()
+
+        # Check for specific missing dependencies
+        if "box" in error_msg:
+            print("[ComfyUI-UniRig] [ERROR] python-box is not installed.")
+            print("[ComfyUI-UniRig] Install with: pip install python-box")
+            print("[ComfyUI-UniRig] Or run: python install.py")
+        elif "trimesh" in error_msg:
+            print("[ComfyUI-UniRig] [ERROR] trimesh is not installed.")
+            print("[ComfyUI-UniRig] Install with: pip install trimesh")
+        else:
+            print(f"[ComfyUI-UniRig] [ERROR] Import failed: {e}")
+
+        INIT_ERRORS.append(f"Failed to import node classes: {str(e)}")
+        print(f"[ComfyUI-UniRig] Traceback:\n{traceback.format_exc()}")
+
+        # Set to empty if import failed
+        NODE_CLASS_MAPPINGS = {}
+        NODE_DISPLAY_NAME_MAPPINGS = {}
     except Exception as e:
         error_msg = f"Failed to import node classes: {str(e)}"
         INIT_ERRORS.append(error_msg)
@@ -37,6 +86,10 @@ if 'pytest' not in sys.modules:
         # Set to empty if import failed
         NODE_CLASS_MAPPINGS = {}
         NODE_DISPLAY_NAME_MAPPINGS = {}
+
+    # Check optional dependencies (only if main import succeeded)
+    if INIT_SUCCESS:
+        _check_optional_dependencies()
 
     # Add static route for Three.js and other libraries
     try:

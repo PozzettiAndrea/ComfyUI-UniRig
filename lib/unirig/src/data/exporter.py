@@ -10,8 +10,8 @@ import tempfile
 try:
     import open3d as o3d
     OPEN3D_EQUIPPED = True
-except:
-    print("do not have open3d")
+except ImportError:
+    o3d = None
     OPEN3D_EQUIPPED = False
 
 class Exporter():

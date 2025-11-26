@@ -30,7 +30,12 @@ from pointcept.utils.timer import Timer
 TRAINERS = Registry("trainers")
 from cuml.cluster.hdbscan import HDBSCAN
 # from sklearn.cluster import HDBSCAN
-import open3d as o3d
+try:
+    import open3d as o3d
+    OPEN3D_AVAILABLE = True
+except ImportError:
+    o3d = None
+    OPEN3D_AVAILABLE = False
 import matplotlib.colors as mcolors
 import numpy as np
 from collections import OrderedDict

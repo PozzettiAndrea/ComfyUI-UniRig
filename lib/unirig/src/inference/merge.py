@@ -22,7 +22,12 @@ from box import Box
 
 from scipy.spatial import cKDTree
 
-import open3d as o3d
+try:
+    import open3d as o3d
+    OPEN3D_AVAILABLE = True
+except ImportError:
+    o3d = None
+    OPEN3D_AVAILABLE = False
 import itertools
 
 # bpy import removed - use wrapper scripts for Blender operations
