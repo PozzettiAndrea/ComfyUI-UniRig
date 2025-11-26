@@ -37,39 +37,12 @@ UNIRIG_MODELS_DIR = Path(folder_paths.models_dir) / "unirig"
 UNIRIG_MODELS_DIR.mkdir(parents=True, exist_ok=True)
 (UNIRIG_MODELS_DIR / "hub").mkdir(parents=True, exist_ok=True)
 
-# Set HuggingFace cache to use ComfyUI's models folder FIRST
+# Set HuggingFace cache to use ComfyUI's models folder (never ~/.cache)
 os.environ['HF_HOME'] = str(UNIRIG_MODELS_DIR)
 os.environ['TRANSFORMERS_CACHE'] = str(UNIRIG_MODELS_DIR / "transformers")
 os.environ['HF_HUB_CACHE'] = str(UNIRIG_MODELS_DIR / "hub")
 
-# Check if models exist in old HuggingFace cache and move them
-try:
-    old_hf_hub = Path.home() / ".cache" / "huggingface" / "hub"
-    models_to_move = [
-        ("models--VAST-AI--UniRig", "UniRig models (1.4GB)"),
-        ("models--facebook--opt-350m", "OPT-350M transformer"),
-    ]
-
-    for model_dir, description in models_to_move:
-        old_cache = old_hf_hub / model_dir
-        new_cache = UNIRIG_MODELS_DIR / "hub" / model_dir
-
-        if old_cache.exists() and not new_cache.exists():
-            print(f"[UniRig] Found {description} in old cache: {old_cache}")
-            print(f"[UniRig] Moving to ComfyUI models folder...")
-            try:
-                import shutil
-                shutil.move(str(old_cache), str(new_cache))
-                print(f"[UniRig] Moved {description}")
-            except Exception as move_error:
-                print(f"[UniRig] Warning: Could not move {description}: {move_error}")
-                print(f"[UniRig] Manual move: mv '{old_cache}' '{new_cache}'")
-
-    print(f"[UniRig] Models cache location: {UNIRIG_MODELS_DIR}")
-except Exception as e:
-    print(f"[UniRig] Warning during model setup: {e}")
-    import traceback
-    traceback.print_exc()
+print(f"[UniRig] Models cache location: {UNIRIG_MODELS_DIR}")
 
 # Find Blender executable
 BLENDER_DIR = LIB_DIR / "blender"
