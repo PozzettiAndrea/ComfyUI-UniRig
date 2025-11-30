@@ -350,7 +350,7 @@ class UniRigExtractSkeletonNew:
         # Check if Blender is available
         if not BLENDER_EXE or not os.path.exists(BLENDER_EXE):
             raise RuntimeError(
-                f"Blender not found. Please run install_blender.py or install manually."
+                f"Blender not found. Please run blender_install.py or install manually."
             )
 
         # Check if UniRig is available

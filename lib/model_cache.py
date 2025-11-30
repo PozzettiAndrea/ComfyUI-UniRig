@@ -352,7 +352,8 @@ def run_inference(cache_key: str, request_data: dict) -> dict:
 
         # Run prediction
         checkpoint_path = cached.get("checkpoint_path")
-        trainer.predict(system, datamodule=data, ckpt_path=checkpoint_path, return_predictions=False)
+        # PyTorch 2.6+ requires weights_only=False for checkpoints with Box objects
+        trainer.predict(system, datamodule=data, ckpt_path=checkpoint_path, return_predictions=False, weights_only=False)
 
         # Keep model on GPU after prediction
         if system is not None and cached.get("cache_to_gpu", True) and torch.cuda.is_available():

@@ -317,7 +317,7 @@ if __name__ == "__main__":
         trainer.fit(system, datamodule=data, ckpt_path=resume_from_checkpoint)
     elif mode == 'predict':
         assert resume_from_checkpoint is not None, 'expect resume_from_checkpoint in task'
-        trainer.predict(system, datamodule=data, ckpt_path=resume_from_checkpoint, return_predictions=False)
+        trainer.predict(system, datamodule=data, ckpt_path=resume_from_checkpoint, return_predictions=False, weights_only=False)
     elif mode == 'validate':
         trainer.validate(system, datamodule=data, ckpt_path=resume_from_checkpoint)
     else:
