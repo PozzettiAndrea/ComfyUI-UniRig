@@ -140,10 +140,57 @@ class UniRigApplySkinningMLNew:
 
         # Validate model has cache key
         if not skinning_model.get("model_cache_key"):
-            raise RuntimeError(
-                "skinning_model does not have a cached model. "
-                "Ensure UniRigLoadSkinningModel has 'cache_to_gpu' enabled."
-            )
+            # Check if there was an import error that caused cache loading to fail
+            try:
+                from .model_loaders import get_model_cache_error
+            except ImportError:
+                from model_loaders import get_model_cache_error
+
+            import_error = get_model_cache_error()
+
+            if import_error:
+                error_str = str(import_error).lower()
+                if "spconv" in error_str:
+                    raise RuntimeError(
+                        "UniRig model loading failed: spconv is not installed.\n\n"
+                        "spconv is required for GPU-accelerated point cloud processing.\n\n"
+                        "Install with:\n"
+                        "  pip install spconv-cu118  # For CUDA 11.8\n"
+                        "  pip install spconv-cu120  # For CUDA 12.0\n"
+                        "  pip install spconv-cu121  # For CUDA 12.1\n\n"
+                        "Choose the version matching your CUDA installation.\n"
+                        "Check CUDA version with: nvidia-smi"
+                    )
+                elif "torch_scatter" in error_str:
+                    raise RuntimeError(
+                        "UniRig model loading failed: torch-scatter is not installed.\n\n"
+                        "torch-scatter is required for efficient scatter operations.\n\n"
+                        "Install with:\n"
+                        "  pip install torch-scatter\n\n"
+                        "Note: If no wheel is available for your PyTorch version,\n"
+                        "you may need to build from source:\n"
+                        "  pip install git+https://github.com/rusty1s/pytorch_scatter.git"
+                    )
+                elif "torch_cluster" in error_str:
+                    raise RuntimeError(
+                        "UniRig model loading failed: torch-cluster is not installed.\n\n"
+                        "Install with:\n"
+                        "  pip install torch-cluster\n\n"
+                        "Note: If no wheel is available for your PyTorch version,\n"
+                        "you may need to build from source:\n"
+                        "  pip install git+https://github.com/rusty1s/pytorch_cluster.git"
+                    )
+                else:
+                    raise RuntimeError(
+                        f"UniRig model loading failed due to import error:\n{import_error}\n\n"
+                        "Check that all required dependencies are installed.\n"
+                        "Run: pip install -r requirements.txt"
+                    )
+            else:
+                raise RuntimeError(
+                    "skinning_model does not have a cached model. "
+                    "Ensure UniRigLoadSkinningModel has 'cache_to_gpu' enabled."
+                )
 
         print(f"[UniRigApplySkinningMLNew] Using pre-loaded cached model")
         task_config_path = skinning_model.get("task_config_path")
