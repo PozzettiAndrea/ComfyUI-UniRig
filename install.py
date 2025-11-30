@@ -19,9 +19,9 @@ if _SCRIPT_DIR not in sys.path:
 
 def main():
     """Main installation routine."""
-    from installer import install, install_blender
+    from installer import install
 
-    # Run the main installation
+    # Run the main installation (Blender is installed separately via blender_install.py)
     result = install()
 
     if not result.get("success"):

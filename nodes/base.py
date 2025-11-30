@@ -45,10 +45,35 @@ os.environ['HF_HUB_CACHE'] = str(UNIRIG_MODELS_DIR / "hub")
 print(f"[UniRig] Models cache location: {UNIRIG_MODELS_DIR}")
 
 # Find Blender executable
+# Detection priority:
+# 1. UNIRIG_BLENDER_PATH environment variable (explicit override)
+# 2. System PATH ('blender' command)
+# 3. Local lib/blender/ directory
+# 4. Print instructions (no auto-download)
+
+import shutil
+
 BLENDER_DIR = LIB_DIR / "blender"
 BLENDER_EXE = None
-if BLENDER_DIR.exists():
-    # Support both relative imports (ComfyUI) and absolute imports (testing)
+
+# 1. Check explicit override first
+if os.environ.get('UNIRIG_BLENDER_PATH'):
+    blender_path = os.environ.get('UNIRIG_BLENDER_PATH')
+    if os.path.isfile(blender_path):
+        BLENDER_EXE = blender_path
+        print(f"[UniRig] Using Blender from UNIRIG_BLENDER_PATH: {BLENDER_EXE}")
+    else:
+        print(f"[UniRig] Warning: UNIRIG_BLENDER_PATH set but file not found: {blender_path}")
+
+# 2. Check system PATH
+if BLENDER_EXE is None:
+    blender_in_path = shutil.which('blender')
+    if blender_in_path:
+        BLENDER_EXE = blender_in_path
+        print(f"[UniRig] Found Blender in PATH: {BLENDER_EXE}")
+
+# 3. Check local lib/blender/
+if BLENDER_EXE is None and BLENDER_DIR.exists():
     try:
         from ..install import find_blender_executable
     except ImportError:
@@ -56,30 +81,20 @@ if BLENDER_DIR.exists():
     blender_bin = find_blender_executable(str(BLENDER_DIR))
     if blender_bin:
         BLENDER_EXE = str(blender_bin)
-        os.environ['BLENDER_EXE'] = BLENDER_EXE
-        print(f"[UniRig] Found Blender: {BLENDER_EXE}")
+        print(f"[UniRig] Found local Blender: {BLENDER_EXE}")
 
-# Install Blender if not found (unless disabled via env var)
-SKIP_BLENDER_INSTALL = os.environ.get('UNIRIG_SKIP_BLENDER_INSTALL', '0') == '1'
+# 4. Print instructions if not found (no auto-download)
+if BLENDER_EXE is None:
+    print("[UniRig] WARNING: Blender not found!")
+    print("[UniRig] Skeleton extraction nodes require Blender 4.2+")
+    print("[UniRig] Options:")
+    print("[UniRig]   1. Install Blender and add to PATH")
+    print("[UniRig]   2. Set UNIRIG_BLENDER_PATH environment variable")
+    print("[UniRig]   3. Run: python blender_install.py")
 
-if not BLENDER_EXE and not SKIP_BLENDER_INSTALL:
-    print("[UniRig] Blender not found, installing...")
-    try:
-        # Import from parent package
-        sys.path.insert(0, str(NODE_DIR))
-        try:
-            from ..install import install_blender
-        except ImportError:
-            from install import install_blender
-        BLENDER_EXE = install_blender(target_dir=BLENDER_DIR)
-        if BLENDER_EXE:
-            print(f"[UniRig] Blender installed: {BLENDER_EXE}")
-        else:
-            print("[UniRig] Warning: Blender installation failed")
-    except Exception as e:
-        print(f"[UniRig] Warning: Could not install Blender: {e}")
-elif not BLENDER_EXE and SKIP_BLENDER_INSTALL:
-    print("[UniRig] Blender not found, auto-install skipped (UNIRIG_SKIP_BLENDER_INSTALL=1)")
+# Set environment variable for subprocesses
+if BLENDER_EXE:
+    os.environ['BLENDER_EXE'] = BLENDER_EXE
 
 # Add local UniRig to path
 if UNIRIG_PATH not in sys.path:
