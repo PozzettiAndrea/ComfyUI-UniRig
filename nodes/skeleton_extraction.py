@@ -999,6 +999,12 @@ class UniRigExtractSkeletonNew:
             # Close npz file to release handle (required for Windows temp cleanup)
             skeleton_data.close()
 
+            # Windows-specific: Force garbage collection to release file handles
+            # This helps prevent "file in use by another process" errors during temp cleanup
+            if sys.platform == 'win32':
+                import gc
+                gc.collect()
+
             print(f"[UniRigExtractSkeletonNew] Included hierarchy: {len(names_list)} bones with parent relationships")
 
             # Create texture preview output

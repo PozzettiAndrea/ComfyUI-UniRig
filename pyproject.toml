@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-unirig"
 description = "Automatic skeleton extraction for ComfyUI using UniRig (SIGGRAPH 2025). Self-contained with bundled Blender. This node is a first draft! Please open a github issue if you have any feature requests or problems :)"
-version = "1.0.8"
+version = "1.0.9"
 license = {file = "LICENSE"}
 requires-python = ">=3.10"
 classifiers = [

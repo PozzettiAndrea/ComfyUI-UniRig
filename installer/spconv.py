@@ -58,14 +58,28 @@ def install_spconv(cuda_suffix: str) -> InstallResult:
         except subprocess.TimeoutExpired:
             continue
 
-    # All versions failed
-    InstallLogger.warning("Failed to install spconv (optional)")
-    InstallLogger.info("For manual installation, see https://github.com/traveller59/spconv")
+    # All versions failed - this is important to communicate clearly
+    InstallLogger.warning("=" * 60)
+    InstallLogger.warning("spconv installation FAILED")
+    InstallLogger.warning("=" * 60)
+    InstallLogger.warning("spconv is REQUIRED for GPU-accelerated skeleton extraction.")
+    InstallLogger.warning("Without spconv, UniRig nodes will NOT work.")
+    InstallLogger.warning("")
+    InstallLogger.warning("To install manually:")
+    InstallLogger.warning(f"  pip install spconv-{cuda_suffix}")
+    InstallLogger.warning("")
+    InstallLogger.warning("If no wheel is available for your CUDA version, try:")
+    InstallLogger.warning("  pip install spconv-cu121  # CUDA 12.1")
+    InstallLogger.warning("  pip install spconv-cu120  # CUDA 12.0")
+    InstallLogger.warning("  pip install spconv-cu118  # CUDA 11.8")
+    InstallLogger.warning("")
+    InstallLogger.warning("See: https://github.com/traveller59/spconv")
+    InstallLogger.warning("=" * 60)
 
-    # Return success=True because spconv is optional
+    # Return success=True to not block installation, but with clear error
     return InstallResult(
         success=True,
         method="skipped",
         optional=True,
-        error="No compatible spconv version found"
+        error="spconv required for GPU inference - install manually"
     )
