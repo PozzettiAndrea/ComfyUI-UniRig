@@ -49,8 +49,13 @@ def load_fbx_with_blender(file_path: str) -> Tuple[Optional[trimesh.Trimesh], st
     """
     if not BLENDER_EXE or not os.path.exists(BLENDER_EXE):
         return None, (
-            "FBX loading requires Blender. "
-            "Install Blender and add to PATH, or run: python blender_install.py"
+            "FBX file format requires Blender for conversion.\n"
+            "Blender is not installed or not found.\n\n"
+            "To fix this:\n"
+            "1. Run: python blender_install.py\n"
+            "   OR\n"
+            "2. Install Blender manually and add to PATH\n\n"
+            "Alternatively, convert your FBX to GLB/OBJ format using Blender or other software."
         )
 
     if not os.path.exists(BLENDER_LOAD_FBX):
@@ -140,9 +145,12 @@ def load_mesh_file(file_path: str) -> Tuple[Optional[trimesh.Trimesh], str]:
     if not os.path.exists(file_path):
         return None, f"File not found: {file_path}"
 
-    # Check file extension - FBX requires Blender
-    ext = Path(file_path).suffix.lower()
-    if ext in ['.fbx']:
+    # Check file extension - FBX requires Blender (use os.path for Windows compatibility)
+    _, ext = os.path.splitext(file_path)
+    ext = ext.lower()
+    print(f"[UniRigLoadMesh] File extension detected: '{ext}'")
+
+    if ext == '.fbx':
         print(f"[UniRigLoadMesh] Detected FBX file, using Blender loader")
         return load_fbx_with_blender(file_path)
 

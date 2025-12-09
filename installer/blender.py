@@ -173,8 +173,26 @@ def install_blender(target_dir: Path = None) -> Optional[str]:
 
     Returns:
         str: Path to Blender executable, or None if installation failed.
+
+    Environment Variables:
+        UNIRIG_SKIP_BLENDER_INSTALL: Set to '1' to skip Blender download.
+            Assumes Blender is already installed and available in system PATH.
     """
+    import os
+
     InstallLogger.header("Blender Installation")
+
+    # Check if Blender installation is disabled
+    if os.environ.get('UNIRIG_SKIP_BLENDER_INSTALL', '').lower() in ('1', 'true', 'yes'):
+        InstallLogger.info("UNIRIG_SKIP_BLENDER_INSTALL is set - skipping Blender download")
+        InstallLogger.info("Assuming Blender is available in system PATH")
+        # Try to find blender in PATH
+        blender_in_path = shutil.which('blender')
+        if blender_in_path:
+            InstallLogger.info(f"Found Blender in PATH: {blender_in_path}")
+            return blender_in_path
+        InstallLogger.warning("Blender not found in PATH - some features may not work")
+        return None
 
     if target_dir is None:
         script_dir = Path(__file__).parent.parent.absolute()

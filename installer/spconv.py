@@ -59,27 +59,28 @@ def install_spconv(cuda_suffix: str) -> InstallResult:
             continue
 
     # All versions failed - this is important to communicate clearly
-    InstallLogger.warning("=" * 60)
-    InstallLogger.warning("spconv installation FAILED")
-    InstallLogger.warning("=" * 60)
-    InstallLogger.warning("spconv is REQUIRED for GPU-accelerated skeleton extraction.")
-    InstallLogger.warning("Without spconv, UniRig nodes will NOT work.")
-    InstallLogger.warning("")
-    InstallLogger.warning("To install manually:")
-    InstallLogger.warning(f"  pip install spconv-{cuda_suffix}")
-    InstallLogger.warning("")
-    InstallLogger.warning("If no wheel is available for your CUDA version, try:")
-    InstallLogger.warning("  pip install spconv-cu121  # CUDA 12.1")
-    InstallLogger.warning("  pip install spconv-cu120  # CUDA 12.0")
-    InstallLogger.warning("  pip install spconv-cu118  # CUDA 11.8")
-    InstallLogger.warning("")
-    InstallLogger.warning("See: https://github.com/traveller59/spconv")
-    InstallLogger.warning("=" * 60)
+    InstallLogger.error("=" * 60)
+    InstallLogger.error("spconv installation FAILED")
+    InstallLogger.error("=" * 60)
+    InstallLogger.error("spconv is REQUIRED for UniRig inference.")
+    InstallLogger.error("Without spconv, UniRig skeleton extraction will NOT work.")
+    InstallLogger.error("")
+    InstallLogger.error("To install manually:")
+    InstallLogger.error(f"  pip install spconv-{cuda_suffix}")
+    InstallLogger.error("")
+    InstallLogger.error("If no wheel is available for your CUDA version, try:")
+    InstallLogger.error("  pip install spconv-cu121  # CUDA 12.1")
+    InstallLogger.error("  pip install spconv-cu120  # CUDA 12.0")
+    InstallLogger.error("  pip install spconv-cu118  # CUDA 11.8")
+    InstallLogger.error("")
+    InstallLogger.error("See: https://github.com/traveller59/spconv")
+    InstallLogger.error("=" * 60)
 
-    # Return success=True to not block installation, but with clear error
+    # Return success=False because spconv is required for inference
+    # We don't block installation, but mark it as failed/not optional
     return InstallResult(
-        success=True,
-        method="skipped",
-        optional=True,
-        error="spconv required for GPU inference - install manually"
+        success=False,
+        method="failed",
+        optional=False,
+        error="spconv is required for UniRig inference - install manually"
     )

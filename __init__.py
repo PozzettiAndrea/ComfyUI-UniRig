@@ -9,11 +9,48 @@ Repository: https://github.com/VAST-AI-Research/UniRig
 
 import os
 import sys
+import subprocess
 import traceback
 
 # Track initialization status
 INIT_SUCCESS = False
 INIT_ERRORS = []
+
+
+def _ensure_critical_deps():
+    """
+    Ensure critical dependencies are installed before importing nodes.
+    This handles the case where ComfyUI loads the node before install.py runs.
+
+    Respects UNIRIG_SKIP_INSTALL env var for Docker/containerized deployments
+    where users manage dependencies themselves.
+    """
+    # Check if auto-install is disabled (for Docker/containerized deployments)
+    if os.environ.get('UNIRIG_SKIP_INSTALL', '').lower() in ('1', 'true', 'yes'):
+        print("[ComfyUI-UniRig] UNIRIG_SKIP_INSTALL is set - skipping auto-install")
+        return True
+
+    critical_deps = [
+        ("box", "python-box"),  # (import_name, pip_name)
+        ("trimesh", "trimesh"),
+        ("numpy", "numpy"),
+    ]
+
+    for import_name, pip_name in critical_deps:
+        try:
+            __import__(import_name)
+        except ImportError:
+            print(f"[ComfyUI-UniRig] Missing {pip_name}, installing...")
+            try:
+                subprocess.check_call([
+                    sys.executable, "-m", "pip", "install", pip_name
+                ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                print(f"[ComfyUI-UniRig] Installed {pip_name}")
+            except subprocess.CalledProcessError:
+                print(f"[ComfyUI-UniRig] [ERROR] Failed to install {pip_name}")
+                return False
+
+    return True
 
 # Set web directory for JavaScript extensions (FBX viewer widget)
 WEB_DIRECTORY = "./web"
@@ -54,6 +91,9 @@ _RUNNING_TESTS = os.environ.get('PYTEST_CURRENT_TEST') is not None
 
 if not _RUNNING_TESTS:
     print("[ComfyUI-UniRig] Initializing custom node...")
+
+    # Ensure critical dependencies are installed first
+    _ensure_critical_deps()
 
     # Import node classes
     try:

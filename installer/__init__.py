@@ -25,14 +25,26 @@ def install(skip_optional: bool = False, verbose: bool = True) -> dict:
     Main installation entry point.
 
     Args:
-        skip_optional: If True, skip optional dependencies (flash-attn)
+        skip_optional: If True, skip optional dependencies (currently unused, flash-attn is required)
         verbose: If True, print detailed output
 
     Returns:
         dict with installation results for each component
+
+    Environment Variables:
+        UNIRIG_SKIP_INSTALL: Set to '1' to skip all dependency installation (for Docker)
+        UNIRIG_SKIP_BLENDER_INSTALL: Set to '1' to skip Blender download (assumes Blender in PATH)
     """
+    import os
+
+    # Check if installation is disabled via environment variable
+    if os.environ.get('UNIRIG_SKIP_INSTALL', '').lower() in ('1', 'true', 'yes'):
+        InstallLogger.info("UNIRIG_SKIP_INSTALL is set - skipping dependency installation")
+        InstallLogger.info("Ensure all dependencies are pre-installed in your environment")
+        return {"success": True, "skipped": True}
+
     results = {}
-    total_steps = 5 if not skip_optional else 4
+    total_steps = 5
 
     InstallLogger.header("ComfyUI-UniRig: Installing dependencies")
 
@@ -74,14 +86,20 @@ def install(skip_optional: bool = False, verbose: bool = True) -> dict:
             InstallLogger.info("You may need to install manually:")
             InstallLogger.info(f"  pip install {pkg}")
 
-    # Step 4: Install spconv (optional)
-    InstallLogger.step(4, total_steps, "Installing spconv...")
+    # Step 4: Install spconv (required for inference, but may not have wheels available)
+    InstallLogger.step(4, total_steps, "Installing spconv (required for inference)...")
     results["spconv"] = install_spconv(torch_info["cuda_suffix"])
 
-    # Step 5: Install flash-attn (optional)
-    if not skip_optional:
-        InstallLogger.step(5, total_steps, "Installing flash-attn (optional)...")
-        results["flash_attn"] = install_flash_attn()
+    if not results["spconv"].success:
+        InstallLogger.warning("spconv installation failed - UniRig skeleton extraction will NOT work")
+        InstallLogger.warning("Please install spconv manually before using UniRig nodes")
+
+    # Step 5: Install flash-attn (required for model compatibility)
+    InstallLogger.step(5, total_steps, "Installing flash-attn (required)...")
+    results["flash_attn"] = install_flash_attn()
+
+    if not results["flash_attn"].success and not results["flash_attn"].optional:
+        InstallLogger.warning("flash-attn installation failed - UniRig may not work correctly")
 
     # Summary
     _print_summary(results)

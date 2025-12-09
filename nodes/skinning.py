@@ -389,17 +389,24 @@ class UniRigApplySkinningMLNew:
         print(f"[UniRigApplySkinningMLNew] Skinning application complete!")
 
         # Clean up temporary directory
-        # Windows-specific: Force garbage collection to release file handles
+        # Windows-specific: Force garbage collection and retry logic to release file handles
         # This helps prevent "file in use by another process" errors during cleanup
         if sys.platform == 'win32':
             import gc
             gc.collect()
+            # Give Windows a moment to release file handles
+            time.sleep(0.1)
 
         try:
+            # First attempt with ignore_errors
             shutil.rmtree(temp_dir, ignore_errors=True)
             print(f"[UniRigApplySkinningMLNew] Cleaned up temp directory")
         except Exception as e:
             # Don't fail the whole operation if cleanup fails
             print(f"[UniRigApplySkinningMLNew] Warning: Could not clean up temp directory: {e}")
+
+        # Windows: If directory still exists, schedule for deletion on restart
+        if sys.platform == 'win32' and os.path.exists(temp_dir):
+            print(f"[UniRigApplySkinningMLNew] Note: Temp directory will be cleaned on next restart: {temp_dir}")
 
         return (output_filename, texture_preview)
