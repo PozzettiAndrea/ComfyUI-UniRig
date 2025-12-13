@@ -15,6 +15,7 @@ SOURCE_REPOS = {
 # Newer CUDA versions fall back to older spconv versions
 CUDA_TO_SPCONV = {
     'cu130': ['cu121', 'cu120'],  # CUDA 13.0 -> try cu121 or cu120
+    'cu129': ['cu121', 'cu120'],  # CUDA 12.9 -> try cu121 or cu120
     'cu128': ['cu121', 'cu120'],
     'cu127': ['cu121', 'cu120'],
     'cu126': ['cu121', 'cu120'],

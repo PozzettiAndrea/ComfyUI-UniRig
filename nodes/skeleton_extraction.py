@@ -535,12 +535,16 @@ class UniRigExtractSkeletonNew:
                 print(f"[UniRigExtractSkeletonNew] Skeleton parse error: {e}")
                 raise
 
-            # Load skeleton data
+            # Load skeleton data - extract all data immediately and close to avoid Windows file locking
             print(f"[UniRigExtractSkeletonNew] Loading skeleton data from NPZ...")
-            skeleton_data = np.load(skeleton_npz, allow_pickle=True)
-            print(f"[UniRigExtractSkeletonNew] NPZ contains keys: {list(skeleton_data.keys())}")
-            all_joints = skeleton_data['vertices']
-            edges = skeleton_data['edges']
+            with np.load(skeleton_npz, allow_pickle=True) as skeleton_data:
+                print(f"[UniRigExtractSkeletonNew] NPZ contains keys: {list(skeleton_data.keys())}")
+                all_joints = np.array(skeleton_data['vertices'])  # Copy data
+                edges = list(skeleton_data['edges'])  # Copy data
+                # Pre-extract optional fields to avoid keeping file handle open
+                skeleton_bone_parents = np.array(skeleton_data['bone_parents']) if 'bone_parents' in skeleton_data else None
+                skeleton_bone_to_head = np.array(skeleton_data['bone_to_head_vertex']) if 'bone_to_head_vertex' in skeleton_data else None
+            # File handle released immediately after with block
 
             print(f"[UniRigExtractSkeletonNew] Extracted {len(all_joints)} joints, {len(edges)} bones")
             print(f"[UniRigExtractSkeletonNew] Skeleton already normalized by UniRig to range [{all_joints.min():.3f}, {all_joints.max():.3f}]")
@@ -652,8 +656,8 @@ class UniRigExtractSkeletonNew:
             print(f"[UniRigExtractSkeletonNew] Created normalized mesh: {len(mesh_vertices)} vertices, {len(mesh_faces)} faces")
 
             # Build parents list from bone_parents
-            if 'bone_parents' in skeleton_data:
-                bone_parents = skeleton_data['bone_parents']
+            if skeleton_bone_parents is not None:
+                bone_parents = skeleton_bone_parents
                 num_bones = len(bone_parents)
                 parents_list = [None if p == -1 else int(p) for p in bone_parents]
 
@@ -705,8 +709,8 @@ class UniRigExtractSkeletonNew:
                         print(f"[UniRigExtractSkeletonNew] Using {len(names_list)} generic bone names (fallback)")
 
                 # Map bones to their head joint positions
-                if 'bone_to_head_vertex' in skeleton_data:
-                    bone_to_head = skeleton_data['bone_to_head_vertex']
+                if skeleton_bone_to_head is not None:
+                    bone_to_head = skeleton_bone_to_head
                     bone_joints = np.array([all_joints[bone_to_head[i]] for i in range(num_bones)])
                 else:
                     bone_joints = all_joints[:num_bones]
@@ -993,17 +997,11 @@ class UniRigExtractSkeletonNew:
                 "output_format": "smpl" if remap_to_smpl else ("mixamo" if remap_to_mixamo else "vroid"),
             }
 
-            if 'bone_to_head_vertex' in skeleton_data:
-                skeleton['bone_to_head_vertex'] = skeleton_data['bone_to_head_vertex'].tolist()
+            if skeleton_bone_to_head is not None:
+                skeleton['bone_to_head_vertex'] = skeleton_bone_to_head.tolist()
 
-            # Close npz file to release handle (required for Windows temp cleanup)
-            skeleton_data.close()
-
-            # Windows-specific: Force garbage collection to release file handles
-            # This helps prevent "file in use by another process" errors during temp cleanup
-            if sys.platform == 'win32':
-                import gc
-                gc.collect()
+            # Note: skeleton_data NPZ file was already closed immediately after extraction
+            # to avoid Windows file locking issues during temp cleanup
 
             print(f"[UniRigExtractSkeletonNew] Included hierarchy: {len(names_list)} bones with parent relationships")
 

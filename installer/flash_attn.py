@@ -236,6 +236,28 @@ def install_flash_attn() -> InstallResult:
 
     os_name, torch_version, cuda_version, python_version = system_info
 
+    # Install triton dependency first (required for flash_attn)
+    if os_name == "windows":
+        InstallLogger.info("Installing triton-windows (required for flash-attn on Windows)...")
+        try:
+            subprocess.run(
+                [sys.executable, "-m", "pip", "install", "triton-windows"],
+                capture_output=True, timeout=PIP_TIMEOUT
+            )
+        except Exception:
+            pass  # Triton install failure is not fatal, flash_attn may still work
+    else:
+        # Linux - triton is usually bundled with PyTorch, but install if missing
+        if not check_package_installed("triton"):
+            InstallLogger.info("Installing triton (required for flash-attn)...")
+            try:
+                subprocess.run(
+                    [sys.executable, "-m", "pip", "install", "triton"],
+                    capture_output=True, timeout=PIP_TIMEOUT
+                )
+            except Exception:
+                pass  # Triton install failure is not fatal
+
     InstallLogger.info(f"Detecting flash-attn wheel for: {os_name}, PyTorch {torch_version}, CUDA {cuda_version}, Python {python_version}")
 
     # Check if platform is supported
