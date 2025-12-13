@@ -7,6 +7,7 @@ No separate server process needed - models live in the main ComfyUI process.
 
 import os
 import sys
+import inspect
 from pathlib import Path
 import torch
 import lightning as L
@@ -352,8 +353,16 @@ def run_inference(cache_key: str, request_data: dict) -> dict:
 
         # Run prediction
         checkpoint_path = cached.get("checkpoint_path")
-        # PyTorch 2.6+ requires weights_only=False for checkpoints with Box objects
-        trainer.predict(system, datamodule=data, ckpt_path=checkpoint_path, return_predictions=False, weights_only=False)
+        # Check if weights_only parameter is supported (Lightning >= 2.6.0)
+        predict_sig = inspect.signature(trainer.predict)
+        if 'weights_only' in predict_sig.parameters:
+            # PyTorch 2.6+ requires weights_only=False for checkpoints with Box objects
+            trainer.predict(system, datamodule=data, ckpt_path=checkpoint_path,
+                            return_predictions=False, weights_only=False)
+        else:
+            # Older Lightning versions don't have weights_only parameter
+            trainer.predict(system, datamodule=data, ckpt_path=checkpoint_path,
+                            return_predictions=False)
 
         # Keep model on GPU after prediction
         if system is not None and cached.get("cache_to_gpu", True) and torch.cuda.is_available():
