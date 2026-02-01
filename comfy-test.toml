@@ -2,10 +2,9 @@
 levels = ["syntax", "install", "registration", "instantiation", "static_capture", "execution"]
 
 [test.workflows]
-run = "all"
-screenshot = "all"
 timeout = 300
-gpu = "all"
+cpu = []        # No CPU-only workflows - skip CPU jobs
+gpu = "all"     # All workflows need GPU
 
 [test.platforms]
 linux = true
