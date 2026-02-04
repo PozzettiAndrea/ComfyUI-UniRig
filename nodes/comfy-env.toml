@@ -1,7 +1,7 @@
 python = "3.11"  # Required by bpy 4.2
 
 [cuda]
-packages = ["torch-scatter", "torch-cluster", "flash-attn"]
+packages = ["torch-scatter", "torch-cluster", "flash-attn", "torch"]
 
 [pypi-dependencies]
 # Blender

@@ -77,8 +77,7 @@ class MIAAutoRig:
         4. Post-process and export FBX
         """
         # Lazy import - only run in isolated worker
-        # Use absolute import since nodes_gpu dir is in sys.path (isolated env)
-        from mia_inference import load_mia_models, get_cached_models, run_mia_inference
+        from .mia_inference import load_mia_models, get_cached_models, run_mia_inference
 
         total_start = time.time()
 
