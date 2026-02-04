@@ -1,5 +1,7 @@
 # ComfyUI-UniRig
 
+**[View Workflow Gallery](https://pozzettiandrea.github.io/ComfyUI-UniRig/)**
+
 Automatic skeleton extraction for ComfyUI using UniRig (SIGGRAPH 2025) or Make it Animatable (CVPR 2025).
 Self-contained with bundled Blender and UniRig/MIA code.
 

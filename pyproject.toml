@@ -1,49 +1,10 @@
 [project]
-name = "comfyui-unirig"
+name = "ComfyUI-UniRig"
 description = "Automatic skeleton extraction for ComfyUI using UniRig (SIGGRAPH 2025). Self-contained with bundled Blender. This node is a first draft! Please open a github issue if you have any feature requests or problems :)"
-
 version = "1.4.5"
 license = {file = "LICENSE"}
-requires-python = ">=3.10"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-]
-
-# Core dependencies for ComfyUI-UniRig
-dynamic = ["dependencies"]
-
-[project.urls]
-Repository = "https://github.com/PozzettiAndrea/ComfyUI-UniRig"
-Documentation = "https://github.com/PozzettiAndrea/ComfyUI-UniRig#readme"
-
-# Comfy Registry configuration
-[build-system]
-requires = ["setuptools>=45", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
 
 [tool.comfy]
 PublisherId = "pznodes"
 DisplayName = "UniRig"
 Icon = ""
-
-[project.optional-dependencies]
-# Development dependencies
-dev = [
-    "pytest",
-    "black",
-    "flake8",
-]
-
-# Direct bpy preprocessing (requires Python 3.11+)
-# Enables mesh preprocessing without Blender subprocess
-# Install with: pip install comfyui-unirig[bpy]
-bpy = [
-    "bpy>=4.0.0",
-]
