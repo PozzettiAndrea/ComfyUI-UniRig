@@ -10,7 +10,6 @@ bpy = ">=4.2,<4.3"
 # Core
 numpy = "<2.0"
 trimesh = { version = "*", extras = ["easy"] }
-torch = "*"
 
 # ML libs
 transformers = "==4.51.3"
