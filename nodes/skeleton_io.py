@@ -97,6 +97,7 @@ class UniRigLoadRiggedMesh:
                 for file in files:
                     if file.lower().endswith('.fbx'):
                         rel_path = os.path.relpath(os.path.join(root, file), input_dir)
+                        rel_path = rel_path.replace(os.sep, '/')  # Normalize to forward slashes for cross-platform
                         fbx_files.append(rel_path)
 
         return sorted(fbx_files)
@@ -112,6 +113,7 @@ class UniRigLoadRiggedMesh:
                 for file in files:
                     if file.lower().endswith('.fbx'):
                         rel_path = os.path.relpath(os.path.join(root, file), output_dir)
+                        rel_path = rel_path.replace(os.sep, '/')  # Normalize to forward slashes for cross-platform
                         fbx_files.append(rel_path)
 
         return sorted(fbx_files)

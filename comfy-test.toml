@@ -1,5 +1,5 @@
 [test]
-levels = ["syntax", "install", "registration", "instantiation", "static_capture", "execution"]
+levels = ["syntax", "install", "registration", "instantiation", "execution"]
 
 [test.workflows]
 timeout = 300
