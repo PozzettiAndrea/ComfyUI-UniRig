@@ -8,9 +8,9 @@ gpu = "all"
 
 [test.platforms]
 # CPU platforms
-linux = false
-macos = false
-windows = false
+linux = true
+macos = true
+windows = true
 windows_portable = true
 linux_gpu = false
 windows_gpu = true
