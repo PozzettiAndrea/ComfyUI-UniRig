@@ -71,24 +71,13 @@ class UniRigLoadRiggedMesh:
 
     @classmethod
     def INPUT_TYPES(cls):
-        # Get initial list for validation
-        fbx_files = cls.get_fbx_files_from_output()
-        if not fbx_files:
-            fbx_files = ["No FBX files found"]
+        input_files = cls.get_fbx_files_from_input()
+        output_files = cls.get_fbx_files_from_output()
+        all_files = sorted(set(input_files + output_files)) or [""]
 
         return {
             "required": {
-                "source_folder": (["input", "output"], {
-                    "default": "output",
-                    "tooltip": "Source folder to load FBX from (ComfyUI input or output directory)"
-                }),
-                "fbx_file": (fbx_files, {
-                    "remote": {
-                        "route": "/unirig/fbx_files",
-                        "refresh_button": True,
-                    },
-                    "tooltip": "FBX file to load. Click refresh after adding new files."
-                }),
+                "fbx_file": (all_files, {"file_upload": True}),
             },
         }
 
@@ -127,36 +116,39 @@ class UniRigLoadRiggedMesh:
 
         return sorted(fbx_files)
 
-    def load(self, source_folder, fbx_file):
+    def load(self, fbx_file):
         """Load an FBX file and return its filename in output directory."""
-        print(f"[UniRigLoadRiggedMesh] Loading FBX file: {fbx_file} from {source_folder}")
+        print(f"[UniRigLoadRiggedMesh] Loading FBX file: {fbx_file}")
 
-        if fbx_file == "No FBX files found":
-            raise RuntimeError(f"No FBX files found in ComfyUI/{source_folder} directory. Please add an FBX file first.")
+        if not fbx_file:
+            raise RuntimeError("No FBX file specified. Please select or upload an FBX file.")
 
-        # Determine base folder based on source_folder
-        if source_folder == "input":
-            base_dir = folder_paths.get_input_directory()
-        else:  # output
-            base_dir = folder_paths.get_output_directory()
+        # Search in both input and output directories
+        input_dir = folder_paths.get_input_directory()
+        output_dir = folder_paths.get_output_directory()
 
-        fbx_path = os.path.join(base_dir, fbx_file)
+        input_path = os.path.join(input_dir, fbx_file)
+        output_path = os.path.join(output_dir, fbx_file)
 
-        if not os.path.exists(fbx_path):
-            raise RuntimeError(f"FBX file not found: {fbx_path}")
+        # Find the file
+        if os.path.exists(output_path):
+            fbx_path = output_path
+            source = "output"
+        elif os.path.exists(input_path):
+            fbx_path = input_path
+            source = "input"
+        else:
+            raise RuntimeError(f"FBX file not found: {fbx_file}")
 
         # If loading from input, copy to output directory
-        output_dir = folder_paths.get_output_directory()
-        if source_folder == "input":
-            # Create output filename with timestamp to avoid conflicts
+        if source == "input":
             output_filename = f"loaded_{int(time.time())}_{os.path.basename(fbx_file)}"
-            output_path = os.path.join(output_dir, output_filename)
-            shutil.copy(fbx_path, output_path)
+            final_output_path = os.path.join(output_dir, output_filename)
+            shutil.copy(fbx_path, final_output_path)
             print(f"[UniRigLoadRiggedMesh] Copied from input to output: {output_filename}")
         else:
-            # Already in output, use as-is
             output_filename = fbx_file
-            output_path = fbx_path
+            final_output_path = output_path
             print(f"[UniRigLoadRiggedMesh] Using existing file from output: {output_filename}")
 
         # Extract mesh info with Blender (using original path for analysis)
@@ -275,7 +267,7 @@ class UniRigLoadRiggedMesh:
             skeleton_info = {"has_skeleton": "unknown", "error": str(e)}
 
         # Create info string
-        file_size = os.path.getsize(output_path)
+        file_size = os.path.getsize(final_output_path)
         info_lines = [
             f"File: {os.path.basename(fbx_file)}",
             f"Size: {file_size / 1024:.1f} KB",
@@ -317,7 +309,7 @@ class UniRigLoadRiggedMesh:
         print(f"[UniRigLoadRiggedMesh] Loaded successfully")
         print(info_string)
 
-        return (output_path, info_string)
+        return (final_output_path, info_string)
 
 
 class UniRigPreviewRiggedMesh:
