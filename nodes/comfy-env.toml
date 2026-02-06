@@ -29,12 +29,13 @@ fast-simplification = "*"
 pyrender = "*"
 libigl = "*"
 cumm-cu121 = "==0.7.11"
-embreex = "*"
 pccm = "*"
 shapely = "*"
 
 [target.linux-64.pypi-dependencies]
 triton = ">=3.0.0"
+embreex = "*"
 
 [target.win-64.pypi-dependencies]
 triton-windows = "*"
+embreex = "*"
