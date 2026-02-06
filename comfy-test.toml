@@ -4,7 +4,7 @@ levels = ["syntax", "install", "execution"]
 [test.workflows]
 timeout = 300
 cpu = ['apply_animation','skeleton_comparison','rigged_manipulator']
-gpu = "all"
+gpu = ["skeleton_comparison","apply_animation"]
 
 [test.platforms]
 # CPU platforms
