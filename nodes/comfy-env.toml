@@ -27,6 +27,7 @@ spconv-cu121 = "*"
 # Geometry
 fast-simplification = "*"
 pyrender = "*"
+PyOpenGL = ">=3.1.7"
 libigl = "*"
 cumm-cu121 = "==0.7.11"
 pccm = "*"
