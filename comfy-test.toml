@@ -10,8 +10,8 @@ gpu = "all"
 # CPU platforms
 linux = false
 macos = false
-windows = true
+windows = false
 windows_portable = false
-linux_gpu = false
+linux_gpu = true
 windows_gpu = false
 windows_portable_gpu = false
