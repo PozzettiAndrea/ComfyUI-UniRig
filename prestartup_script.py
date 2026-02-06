@@ -6,7 +6,7 @@ from comfy_3d_viewers import copy_viewer
 
 setup_env()
 
-SCRIPT_DIR = Path(__file__).resolve().parent
+SCRIPT_DIR = Path(__file__).parent
 COMFYUI_DIR = SCRIPT_DIR.parent.parent
 
 # Copy viewers
