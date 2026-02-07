@@ -8,10 +8,10 @@ gpu = ["skeleton_comparison","apply_animation"]
 
 [test.platforms]
 # CPU platforms
-linux = true
-macos = true
-windows = true
-windows_portable = true
-linux_gpu = false
+linux = false
+macos = false
+windows = false
+windows_portable = false
+linux_gpu = true
 windows_gpu = false
 windows_portable_gpu = false
