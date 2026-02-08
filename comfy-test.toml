@@ -1,5 +1,6 @@
 [test]
 levels = ["syntax", "install", "execution"]
+publish = 'true'
 
 [test.workflows]
 timeout = 300
@@ -8,10 +9,10 @@ gpu = ["skeleton_comparison","apply_animation"]
 
 [test.platforms]
 # CPU platforms
-linux = false
-macos = false
-windows = false
-windows_portable = false
+linux = true
+macos = true
+windows = true
+windows_portable = true
 linux_gpu = true
 windows_gpu = false
-windows_portable_gpu = false
+windows_portable_gpu = true
