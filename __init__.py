@@ -1,9 +1,13 @@
 """ComfyUI-UniRig - Automatic rigging and skeleton extraction."""
 
-from comfy_env import wrap_nodes
-from .nodes import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
+import os
+import sys
+from pathlib import Path
 
-wrap_nodes()
+
+print("[geompack] loading...", file=sys.stderr, flush=True)
+from comfy_env import register_nodes
+print("[geompack] calling register_nodes", file=sys.stderr, flush=True)
 
 # FBX files API (used by skeleton_io.py remote dropdown)
 try:
