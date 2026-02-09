@@ -1,6 +1,6 @@
 [project]
 name = "ComfyUI-UniRig"
-description = "Automatic skeleton extraction for ComfyUI using UniRig (SIGGRAPH 2025). Self-contained with bundled Blender. This node is a first draft! Please open a github issue if you have any feature requests or problems :)"
+description = "Automatic skeleton extraction for ComfyUI using UniRig (SIGGRAPH 2025)"
 version = "1.4.6"
 license = {file = "LICENSE"}
 
