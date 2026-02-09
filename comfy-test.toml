@@ -14,5 +14,5 @@ macos = true
 windows = true
 windows_portable = true
 linux_gpu = true
-windows_gpu = false
+windows_gpu = true
 windows_portable_gpu = true
