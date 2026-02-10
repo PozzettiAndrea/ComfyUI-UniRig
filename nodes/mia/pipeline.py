@@ -306,6 +306,21 @@ def preprocess(
     return data
 
 
+_BW_CHUNK_SIZE = 32768
+
+
+def _chunked_bw(model, pts_device, verts_device, chunk_size=_BW_CHUNK_SIZE):
+    """Run bone weight model in chunks over vertices to avoid OOM on large meshes."""
+    n_verts = verts_device.shape[1]
+    if n_verts <= chunk_size:
+        return model(pts_device, verts_device).bw
+    chunks = []
+    for i in range(0, n_verts, chunk_size):
+        chunk = verts_device[:, i:i + chunk_size]
+        chunks.append(model(pts_device, chunk).bw)
+    return torch.cat(chunks, dim=1)
+
+
 def infer(
     data: InferenceData,
     model_bw: torch.nn.Module,
@@ -348,16 +363,19 @@ def infer(
         pts_device = pts.to(device)
         verts_device = verts.to(device)
 
-        bw = model_bw(pts_device, verts_device).bw
+        bw = _chunked_bw(model_bw, pts_device, verts_device)
 
         if use_normal and pts_normal is not None:
             pts_normal_device = pts_normal.to(device)
             verts_normal_device = verts_normal.to(device) if verts_normal is not None else None
 
-            bw_normal = model_bw_normal(
-                torch.cat([pts_device, pts_normal_device], dim=-1),
-                torch.cat([verts_device, verts_normal_device], dim=-1) if verts_normal_device is not None else verts_device
-            ).bw
+            pts_with_normal = torch.cat([pts_device, pts_normal_device], dim=-1)
+            verts_with_normal = (
+                torch.cat([verts_device, verts_normal_device], dim=-1)
+                if verts_normal_device is not None
+                else verts_device
+            )
+            bw_normal = _chunked_bw(model_bw_normal, pts_with_normal, verts_with_normal)
 
             # Blend normal weights for spine/shoulder/arm regions
             mask = get_conflict_mask(
