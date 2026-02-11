@@ -2,4 +2,4 @@
 packages = ["libgl1-mesa-glx", "libglu1-mesa"]
 
 [node_reqs]
-ComfyUI-GeometryPack = "PozzettiAndrea/ComfyUI-GeometryPack"
+ComfyUI-CameraPack = "PozzettiAndrea/ComfyUI-CameraPack"
