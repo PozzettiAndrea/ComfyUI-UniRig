@@ -7,3 +7,4 @@ trimesh
 numpy
 scipy
 libigl
+hf_xet

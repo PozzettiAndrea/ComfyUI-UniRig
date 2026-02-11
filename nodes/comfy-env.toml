@@ -23,6 +23,7 @@ python-box = "*"
 huggingface_hub = "*"
 wandb = "*"
 spconv-cu121 = "*"
+hf_xet = "*"
 
 # Geometry
 fast-simplification = "*"
