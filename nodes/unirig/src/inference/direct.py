@@ -186,6 +186,44 @@ def _load_skeleton_model(checkpoint_path: str, device: Optional[torch.device] = 
     return model, tokenizer
 
 
+def _remap_skin_state_dict_flash_to_mha(state_dict: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
+    """
+    Remap skin checkpoint from Flash attention (Wq, Wkv, out_proj) to PyTorch
+    MultiheadAttention (in_proj_weight, in_proj_bias, out_proj.weight/bias).
+
+    Checkpoint was saved with Flash MHA; when FLASH_ATTENTION=0 the model uses
+    nn.MultiheadAttention, which expects different parameter names and layout.
+    """
+    import re
+    out = {k: v for k, v in state_dict.items() if ".attention.Wq" not in k and ".attention.Wkv" not in k and ".attention.out_proj" not in k}
+    # Find all attention block prefixes: e.g. bone_encoder.attn.0.attention, mesh_bone_attn.5.attention
+    prefixes = set()
+    for k in state_dict:
+        m = re.match(r"^(.+\.attention)\.(Wq|Wkv|out_proj)\.", k)
+        if m:
+            prefixes.add(m.group(1))
+    for prefix in prefixes:
+        base = prefix + ".attn."
+        wq_w = state_dict.get(prefix + ".Wq.weight")
+        wq_b = state_dict.get(prefix + ".Wq.bias")
+        wkv_w = state_dict.get(prefix + ".Wkv.weight")
+        wkv_b = state_dict.get(prefix + ".Wkv.bias")
+        out_w = state_dict.get(prefix + ".out_proj.weight")
+        out_b = state_dict.get(prefix + ".out_proj.bias")
+        if wq_w is None or wkv_w is None or out_w is None:
+            continue
+        # PyTorch MHA: in_proj = [Q; K; V] stacked; Flash has Wq (Q) and Wkv (K,V)
+        in_proj_weight = torch.cat([wq_w, wkv_w], dim=0)
+        out[base + "in_proj_weight"] = in_proj_weight
+        if wq_b is not None and wkv_b is not None:
+            in_proj_bias = torch.cat([wq_b, wkv_b], dim=0)
+            out[base + "in_proj_bias"] = in_proj_bias
+        out[base + "out_proj.weight"] = out_w
+        if out_b is not None:
+            out[base + "out_proj.bias"] = out_b
+    return out
+
+
 def _load_skin_model(checkpoint_path: str, device: Optional[torch.device] = None):
     """
     Load the skinning model directly.
@@ -240,18 +278,36 @@ def _load_skin_model(checkpoint_path: str, device: Optional[torch.device] = None
         new_key = k[6:] if k.startswith('model.') else k
         cleaned_state_dict[new_key] = v
 
-    # Try loading, remap keys if needed (attention structure difference)
+    # If model expects PyTorch MHA but checkpoint uses Flash-style keys, remap up front.
+    try:
+        model_keys = model.state_dict().keys()
+        expects_mha = any(".attention.attn.in_proj_weight" in k for k in model_keys)
+    except Exception:
+        expects_mha = False
+    has_flash_keys = any(".attention.Wq." in k or ".attention.Wkv." in k for k in cleaned_state_dict.keys())
+    if expects_mha and has_flash_keys:
+        print("[UniRig Direct] Detected Flash-style attention keys; remapping to PyTorch MHA format...")
+        cleaned_state_dict = _remap_skin_state_dict_flash_to_mha(cleaned_state_dict)
+
+    # Try loading; remap Flash checkpoint -> PyTorch MHA when FLASH_ATTENTION=0
     try:
         model.load_state_dict(cleaned_state_dict, strict=True)
     except RuntimeError as e:
-        if 'attention.attn.Wq' in str(e):
+        err_str = str(e)
+        # Checkpoint has Flash keys (*.attention.Wq/Wkv/out_proj), model expects PyTorch MHA (*.attention.attn.in_proj_*)
+        if "Unexpected key(s)" in err_str and ("attention.Wq" in err_str or "attention.Wkv" in err_str):
+            print("[UniRig Direct] Checkpoint uses Flash attention keys; remapping to PyTorch MHA for compatibility...")
+            cleaned_state_dict = _remap_skin_state_dict_flash_to_mha(cleaned_state_dict)
+            model.load_state_dict(cleaned_state_dict, strict=True)
+        elif "attention.attn.Wq" in err_str:
+            # Model expects Flash keys but checkpoint has flat .attention.Wq (add .attn)
             print("[UniRig Direct] Remapping attention keys for compatibility...")
             remapped_dict = {}
             for k, v in cleaned_state_dict.items():
                 new_key = k
-                for suffix in ['.Wq.', '.Wkv.', '.out_proj.']:
-                    old_pattern = f'.attention{suffix}'
-                    new_pattern = f'.attention.attn{suffix}'
+                for suffix in [".Wq.", ".Wkv.", ".out_proj."]:
+                    old_pattern = ".attention" + suffix
+                    new_pattern = ".attention.attn" + suffix
                     if old_pattern in new_key:
                         new_key = new_key.replace(old_pattern, new_pattern)
                 remapped_dict[new_key] = v
