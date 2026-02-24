@@ -44,14 +44,42 @@ def _flash_attention_context():
         return torch.backends.cuda.sdp_kernel(enable_flash=True, enable_math=True, enable_mem_efficient=False)
 
 
+def _flash_attention_enabled() -> bool:
+    env = os.getenv("FLASH_ATTENTION")
+    if env is not None and env.strip().lower() in {"0", "false", "no", "off", "disable", "disabled"}:
+        return False
+    if not torch.cuda.is_available():
+        return False
+    try:
+        major, _minor = torch.cuda.get_device_capability()
+    except Exception:
+        return False
+    return major >= 8
+
+
+def _sdpa_math(q, k, v):
+    # q,k,v are (B, H, T, C)
+    scale = 1.0 / math.sqrt(q.size(-1))
+    attn = torch.matmul(q, k.transpose(-2, -1)) * scale
+    attn = torch.softmax(attn.float(), dim=-1).to(q.dtype)
+    return torch.matmul(attn, v)
+
+
 def flash_attention(q, k, v):
-    with _flash_attention_context():
-        q = q.transpose(1, 2)
-        k = k.transpose(1, 2)
-        v = v.transpose(1, 2)
-        out = F.scaled_dot_product_attention(q, k, v)
-        out = out.transpose(1, 2)
-    return out
+    q = q.transpose(1, 2)
+    k = k.transpose(1, 2)
+    v = v.transpose(1, 2)
+    if q.device.type == 'cpu':
+        return _sdpa_math(q, k, v).transpose(1, 2)
+    if not _flash_attention_enabled():
+        out = _sdpa_math(q, k, v)
+        return out.transpose(1, 2)
+    try:
+        with _flash_attention_context():
+            out = F.scaled_dot_product_attention(q, k, v)
+    except (RuntimeError, AssertionError):
+        out = _sdpa_math(q, k, v)
+    return out.transpose(1, 2)
 
 class MultiheadAttention(nn.Module):
     def __init__(

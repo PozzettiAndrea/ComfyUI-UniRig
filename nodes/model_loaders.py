@@ -452,9 +452,9 @@ class UniRigLoadModel:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "model_id": (["apozz/UniRig-safetensors", "VAST-AI/UniRig"], {
+                "model_id": (["apozz/UniRig-safetensors", "VAST-AI/UniRig", "False"], {
                     "default": "apozz/UniRig-safetensors",
-                    "tooltip": "apozz: safetensors (default). VAST-AI/UniRig: official .ckpt from Hugging Face."
+                    "tooltip": "apozz: safetensors (default). VAST-AI/UniRig: official .ckpt from Hugging Face. 'False' is legacy and uses default."
                 }),
                 "cache_to_gpu": ("BOOLEAN", {
                     "default": True,
@@ -468,8 +468,12 @@ class UniRigLoadModel:
     FUNCTION = "load_models"
     CATEGORY = "UniRig"
 
+    _VALID_MODEL_IDS = ("apozz/UniRig-safetensors", "VAST-AI/UniRig")
+
     def load_models(self, model_id="apozz/UniRig-safetensors", cache_to_gpu=True):
         """Load and cache both skeleton and skinning models."""
+        if model_id not in self._VALID_MODEL_IDS:
+            model_id = "apozz/UniRig-safetensors"
         print(f"[UniRigLoadModel] Loading UniRig models (source: {model_id})...")
         print(f"[UniRigLoadModel] GPU caching: {'enabled' if cache_to_gpu else 'disabled'}")
 

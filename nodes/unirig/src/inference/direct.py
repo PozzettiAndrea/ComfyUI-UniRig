@@ -11,6 +11,10 @@ from pathlib import Path
 from typing import Optional, Dict, Any, Tuple, List
 from safetensors.torch import load_file as load_safetensors
 
+# Global model cache
+_MODEL_CACHE: Dict[str, Any] = {}
+
+
 def _load_checkpoint_state_dict(checkpoint_path: str) -> Dict[str, torch.Tensor]:
     """Load state dict from .safetensors or .ckpt file."""
     if checkpoint_path.endswith('.ckpt'):
@@ -162,6 +166,27 @@ def _load_skeleton_model(checkpoint_path: str, device: Optional[torch.device] = 
 
         with open(config_dir / 'model' / 'unirig_ar_350m_1024_81920_float32.yaml') as f:
             model_config = Box(yaml.safe_load(f))
+
+        # Disable mesh encoder flash when no usable kernel (CPU or Flash disabled)
+        _use_flash = True
+        if device is not None and getattr(device, 'type', None) == 'cpu':
+            _use_flash = False
+        elif not torch.cuda.is_available():
+            _use_flash = False
+        else:
+            _env = os.getenv("FLASH_ATTENTION")
+            if _env is not None and _env.strip().lower() in {"0", "false", "no", "off", "disable", "disabled"}:
+                _use_flash = False
+            else:
+                try:
+                    major, _ = torch.cuda.get_device_capability()
+                    if major < 8:
+                        _use_flash = False
+                except Exception:
+                    _use_flash = False
+        if not _use_flash and getattr(model_config.mesh_encoder, 'flash', True):
+            model_config.mesh_encoder.flash = False
+            print("[UniRig Direct] Mesh encoder flash disabled (CPU or Flash unavailable), using math attention")
 
         with open(config_dir / 'tokenizer' / 'tokenizer_parts_articulationxl_256.yaml') as f:
             tokenizer_config = Box(yaml.safe_load(f))
@@ -334,6 +359,7 @@ def _load_skin_model(checkpoint_path: str, device: Optional[torch.device] = None
 
 def get_skeleton_model(checkpoint_path: str, device: Optional[torch.device] = None, force_reload: bool = False):
     """Get or load cached skeleton model."""
+    globals().setdefault("_MODEL_CACHE", {})
     cache_key = f"skeleton:{checkpoint_path}"
     if cache_key not in _MODEL_CACHE or force_reload:
         _MODEL_CACHE[cache_key] = _load_skeleton_model(checkpoint_path, device)
@@ -342,6 +368,7 @@ def get_skeleton_model(checkpoint_path: str, device: Optional[torch.device] = No
 
 def get_skin_model(checkpoint_path: str, device: Optional[torch.device] = None, force_reload: bool = False):
     """Get or load cached skin model."""
+    globals().setdefault("_MODEL_CACHE", {})
     cache_key = f"skin:{checkpoint_path}"
     if cache_key not in _MODEL_CACHE or force_reload:
         _MODEL_CACHE[cache_key] = _load_skin_model(checkpoint_path, device)
@@ -350,7 +377,7 @@ def get_skin_model(checkpoint_path: str, device: Optional[torch.device] = None, 
 
 def clear_model_cache():
     """Clear all cached models to free memory."""
-    global _MODEL_CACHE
+    globals().setdefault("_MODEL_CACHE", {})
     _MODEL_CACHE.clear()
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
