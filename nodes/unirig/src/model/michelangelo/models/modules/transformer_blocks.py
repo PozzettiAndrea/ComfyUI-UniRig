@@ -34,15 +34,23 @@ def init_linear(l, stddev):
     if l.bias is not None:
         nn.init.constant_(l.bias, 0.0)
 
+
+def _flash_attention_context():
+    """Context manager for SDPA with flash preferred. Uses new API on PyTorch 2.10+."""
+    try:
+        from torch.nn.attention import SDPBackend, sdpa_kernel
+        return sdpa_kernel(SDPBackend.FLASH_ATTENTION, SDPBackend.MATH)
+    except ImportError:
+        return torch.backends.cuda.sdp_kernel(enable_flash=True, enable_math=True, enable_mem_efficient=False)
+
+
 def flash_attention(q, k, v):
-    with torch.backends.cuda.sdp_kernel(enable_flash=True, enable_math=True, enable_mem_efficient=False):
+    with _flash_attention_context():
         q = q.transpose(1, 2)
         k = k.transpose(1, 2)
         v = v.transpose(1, 2)
         out = F.scaled_dot_product_attention(q, k, v)
         out = out.transpose(1, 2)
-        # print("use flash atten 2")   
-
     return out
 
 class MultiheadAttention(nn.Module):

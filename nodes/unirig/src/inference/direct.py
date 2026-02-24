@@ -11,8 +11,18 @@ from pathlib import Path
 from typing import Optional, Dict, Any, Tuple, List
 from safetensors.torch import load_file as load_safetensors
 
-# Global model cache
-_MODEL_CACHE: Dict[str, Any] = {}
+def _load_checkpoint_state_dict(checkpoint_path: str) -> Dict[str, torch.Tensor]:
+    """Load state dict from .safetensors or .ckpt file."""
+    if checkpoint_path.endswith('.ckpt'):
+        torch_version = tuple(map(int, torch.__version__.split('.')[:2]))
+        if torch_version >= (2, 6):
+            ckpt = torch.load(checkpoint_path, map_location='cpu', weights_only=False)
+        else:
+            ckpt = torch.load(checkpoint_path, map_location='cpu')
+        if isinstance(ckpt, dict) and 'state_dict' in ckpt:
+            return ckpt['state_dict']
+        return ckpt
+    return load_safetensors(checkpoint_path)
 
 
 def sample_mesh_surface(
@@ -168,9 +178,9 @@ def _load_skeleton_model(checkpoint_path: str, device: Optional[torch.device] = 
         # Restore original working directory
         os.chdir(original_cwd)
 
-    # Load weights from safetensors
+    # Load weights from safetensors or .ckpt
     print(f"[UniRig Direct] Loading skeleton weights from {checkpoint_path}")
-    state_dict = load_safetensors(checkpoint_path)
+    state_dict = _load_checkpoint_state_dict(checkpoint_path)
 
     # Remove 'model.' prefix if present
     cleaned_state_dict = {}
@@ -268,9 +278,9 @@ def _load_skin_model(checkpoint_path: str, device: Optional[torch.device] = None
         # Restore original working directory
         os.chdir(original_cwd)
 
-    # Load weights from safetensors
+    # Load weights from safetensors or .ckpt
     print(f"[UniRig Direct] Loading skin weights from {checkpoint_path}")
-    state_dict = load_safetensors(checkpoint_path)
+    state_dict = _load_checkpoint_state_dict(checkpoint_path)
 
     # Remove 'model.' prefix if present
     cleaned_state_dict = {}

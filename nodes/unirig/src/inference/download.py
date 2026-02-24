@@ -20,28 +20,55 @@ def _get_models_dir() -> Path:
 
 def download(ckpt_name: str) -> str:
     """Download model checkpoint, returns path to local file."""
+    # apozz/UniRig-safetensors (default): safetensors at repo root
     MAP = {
         'experiments/skeleton/articulation-xl_quantization_256/model.ckpt': 'skeleton.safetensors',
         'experiments/skin/articulation-xl/model.ckpt': 'skin.safetensors',
         'experiments/skin/skeleton/model.ckpt': 'skin.safetensors',
     }
 
+    # VAST-AI/UniRig (official): .ckpt files in repo subdirs
+    VAST_AI_REPO = 'VAST-AI/UniRig'
+    VAST_AI_MAP = {
+        'vast_ai/skeleton': 'skeleton/articulation-xl_quantization_256/model.ckpt',
+        'vast_ai/skin': 'skin/articulation-xl/model.ckpt',
+    }
+
     try:
+        models_dir = _get_models_dir()
+        models_dir.mkdir(parents=True, exist_ok=True)
+
+        # VAST-AI/UniRig branch
+        if ckpt_name in VAST_AI_MAP:
+            repo_filename = VAST_AI_MAP[ckpt_name]
+            # Download creates models_dir/skeleton/.../model.ckpt (or skin/.../model.ckpt)
+            local_subpath = Path(repo_filename)
+            local_path = models_dir / local_subpath
+            if local_path.exists():
+                print(f"[UniRig] Found model: {local_path}")
+                return str(local_path)
+            print(f"[UniRig] Downloading {repo_filename} from {VAST_AI_REPO}...")
+            downloaded = hf_hub_download(
+                repo_id=VAST_AI_REPO,
+                filename=repo_filename,
+                local_dir=str(models_dir),
+                local_dir_use_symlinks=False,
+            )
+            print(f"[UniRig] Downloaded to: {downloaded}")
+            return downloaded
+
+        # apozz/UniRig-safetensors branch
         if ckpt_name not in MAP:
             print(f"[UniRig] Unknown checkpoint: {ckpt_name}")
             return ckpt_name
 
         filename = MAP[ckpt_name]
-        models_dir = _get_models_dir()
         local_path = models_dir / filename
 
         # Check if already exists
         if local_path.exists():
             print(f"[UniRig] Found model: {local_path}")
             return str(local_path)
-
-        # Create directory if needed
-        models_dir.mkdir(parents=True, exist_ok=True)
 
         # Download directly to models folder
         print(f"[UniRig] Downloading {filename} from apozz/UniRig-safetensors...")

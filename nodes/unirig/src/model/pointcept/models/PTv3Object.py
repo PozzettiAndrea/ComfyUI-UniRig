@@ -31,6 +31,8 @@ if flash_attn is not None and not _flash_attn_supported():
     print("[UniRig] FlashAttention disabled for PTv3Object (non-Ampere GPU or FLASH_ATTENTION=0)")
     flash_attn = None
 
+_PTV3OBJECT_FLASH_FALLBACK_LOGGED = False
+
 from .utils.misc import offset2bincount
 from .utils.structure import Point
 from .modules import PointModule, PointSequential
@@ -111,7 +113,10 @@ class SerializedAttention(PointModule):
             print("WARNING: enable_qknorm is False in PTv3Object and training may be fragile")
         # Graceful fallback if flash_attn is not available
         if enable_flash and flash_attn is None:
-            print("[UniRig] flash_attn not available for PTv3Object, falling back to standard PyTorch attention")
+            global _PTV3OBJECT_FLASH_FALLBACK_LOGGED
+            if not _PTV3OBJECT_FLASH_FALLBACK_LOGGED:
+                _PTV3OBJECT_FLASH_FALLBACK_LOGGED = True
+                print("[UniRig] flash_attn not available for PTv3Object, falling back to standard PyTorch attention")
             enable_flash = False
             self.enable_flash = False  # Fix: Update instance variable too
 

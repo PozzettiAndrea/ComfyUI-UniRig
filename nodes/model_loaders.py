@@ -115,9 +115,9 @@ class UniRigLoadSkeletonModel:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "model_id": ("STRING", {
+                "model_id": (["apozz/UniRig-safetensors", "VAST-AI/UniRig"], {
                     "default": "apozz/UniRig-safetensors",
-                    "tooltip": "HuggingFace model ID for skeleton model"
+                    "tooltip": "apozz: safetensors (default). VAST-AI/UniRig: official .ckpt from Hugging Face."
                 }),
                 "cache_to_gpu": ("BOOLEAN", {
                     "default": True,
@@ -165,15 +165,23 @@ class UniRigLoadSkeletonModel:
 
         _ensure_unirig_in_path()
 
+        # Task config depends on model source
+        if model_id == "VAST-AI/UniRig":
+            task_config_path = os.path.join(
+                UNIRIG_PATH,
+                "configs/task/quick_inference_skeleton_vast_ai.yaml"
+            )
+        else:
+            task_config_path = os.path.join(
+                UNIRIG_PATH,
+                "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml"
+            )
+
         # Pre-download model weights
         try:
             from src.inference.download import download
 
             # Load task config to get checkpoint path
-            task_config_path = os.path.join(
-                UNIRIG_PATH,
-                "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml"
-            )
             task_config = _load_yaml_config(task_config_path)
 
             # Download checkpoint if needed
@@ -251,13 +259,15 @@ class UniRigLoadSkeletonModel:
             traceback.print_exc()
 
             # Return minimal config that will trigger full load in inference
+            task_fallback = (
+                os.path.join(UNIRIG_PATH, "configs/task/quick_inference_skeleton_vast_ai.yaml")
+                if model_id == "VAST-AI/UniRig"
+                else os.path.join(UNIRIG_PATH, "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml")
+            )
             model_wrapper = {
                 "type": "skeleton",
                 "model_id": model_id,
-                "task_config_path": os.path.join(
-                    UNIRIG_PATH,
-                    "configs/task/quick_inference_skeleton_articulationxl_ar_256.yaml"
-                ),
+                "task_config_path": task_fallback,
                 "unirig_path": UNIRIG_PATH,
                 "models_dir": str(UNIRIG_MODELS_DIR),
                 "cached": False,
@@ -279,9 +289,9 @@ class UniRigLoadSkinningModel:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "model_id": ("STRING", {
+                "model_id": (["apozz/UniRig-safetensors", "VAST-AI/UniRig"], {
                     "default": "apozz/UniRig-safetensors",
-                    "tooltip": "HuggingFace model ID for skinning model"
+                    "tooltip": "apozz: safetensors (default). VAST-AI/UniRig: official .ckpt from Hugging Face."
                 }),
                 "cache_to_gpu": ("BOOLEAN", {
                     "default": True,
@@ -329,15 +339,23 @@ class UniRigLoadSkinningModel:
 
         _ensure_unirig_in_path()
 
+        # Task config depends on model source
+        if model_id == "VAST-AI/UniRig":
+            task_config_path = os.path.join(
+                UNIRIG_PATH,
+                "configs/task/quick_inference_skin_vast_ai.yaml"
+            )
+        else:
+            task_config_path = os.path.join(
+                UNIRIG_PATH,
+                "configs/task/quick_inference_unirig_skin.yaml"
+            )
+
         # Pre-download model weights
         try:
             from src.inference.download import download
 
             # Load task config to get checkpoint path
-            task_config_path = os.path.join(
-                UNIRIG_PATH,
-                "configs/task/quick_inference_unirig_skin.yaml"
-            )
             task_config = _load_yaml_config(task_config_path)
 
             # Download checkpoint if needed
@@ -405,13 +423,15 @@ class UniRigLoadSkinningModel:
             traceback.print_exc()
 
             # Return minimal config
+            task_fallback = (
+                os.path.join(UNIRIG_PATH, "configs/task/quick_inference_skin_vast_ai.yaml")
+                if model_id == "VAST-AI/UniRig"
+                else os.path.join(UNIRIG_PATH, "configs/task/quick_inference_unirig_skin.yaml")
+            )
             model_wrapper = {
                 "type": "skinning",
                 "model_id": model_id,
-                "task_config_path": os.path.join(
-                    UNIRIG_PATH,
-                    "configs/task/quick_inference_unirig_skin.yaml"
-                ),
+                "task_config_path": task_fallback,
                 "unirig_path": UNIRIG_PATH,
                 "models_dir": str(UNIRIG_MODELS_DIR),
                 "cached": False,
@@ -432,6 +452,10 @@ class UniRigLoadModel:
     def INPUT_TYPES(cls):
         return {
             "required": {
+                "model_id": (["apozz/UniRig-safetensors", "VAST-AI/UniRig"], {
+                    "default": "apozz/UniRig-safetensors",
+                    "tooltip": "apozz: safetensors (default). VAST-AI/UniRig: official .ckpt from Hugging Face."
+                }),
                 "cache_to_gpu": ("BOOLEAN", {
                     "default": True,
                     "tooltip": "Keep models cached on GPU for faster inference. Disable to save VRAM (models will be loaded on-demand)."
@@ -444,12 +468,10 @@ class UniRigLoadModel:
     FUNCTION = "load_models"
     CATEGORY = "UniRig"
 
-    def load_models(self, cache_to_gpu=True):
+    def load_models(self, model_id="apozz/UniRig-safetensors", cache_to_gpu=True):
         """Load and cache both skeleton and skinning models."""
-        print(f"[UniRigLoadModel] Loading UniRig models...")
+        print(f"[UniRigLoadModel] Loading UniRig models (source: {model_id})...")
         print(f"[UniRigLoadModel] GPU caching: {'enabled' if cache_to_gpu else 'disabled'}")
-
-        model_id = "apozz/UniRig-safetensors"
 
         # Load skeleton model
         skeleton_loader = UniRigLoadSkeletonModel()

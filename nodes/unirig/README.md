@@ -84,7 +84,7 @@ We appreciate your patience as we prepare these components for release. Follow [
   `spconv` is installed from [this repo](https://github.com/traveller59/spconv), `torch_scatter` and `torch_cluster` are installed from [this site](https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html). Also, there is a high chance that you will encounter flash_attn installation error, go to its [original repo](https://github.com/Dao-AILab/flash-attention) and follow its installation guide.
 
 5.  **Download Model Checkpoint:**
-    The currently available skeleton prediction model checkpoint is hosted on Hugging Face and will typically be downloaded automatically by the provided scripts/functions.
+    The currently available skeleton prediction model checkpoint is hosted on Hugging Face and will typically be downloaded automatically by the provided scripts/functions. In ComfyUI-UniRig, the **Load Model** (or **Load Skeleton Model** / **Load Skinning Model**) nodes offer two sources: **apozz/UniRig-safetensors** (default, safetensors) and **VAST-AI/UniRig** (official `.ckpt` from [Hugging Face](https://huggingface.co/VAST-AI/UniRig)).
 
 6.  **(Optional, for importing/exporting .vrm) Install the blender addon:**
     The blender addon is modifed from [VRM-Addon-for-Blender](https://github.com/saturday06/VRM-Addon-for-Blender).
@@ -196,6 +196,8 @@ bash launch/inference/merge.sh --source results/giraffe_skin.fbx --target exampl
 ```
 
 Note that there will be no skinning if you try to merge a skeleton file(`giraffe_skeleton.fbx`). Use the predicted skinning result(`giraffe_skin.fbx`) instead!
+
+When using **ComfyUI-UniRig**, the Auto Rig node already outputs a single rigged FBX (skeleton + skin + mesh), so you do not need to run merge separately.
 
 ### Rignet Dataset Validation
 
@@ -383,11 +385,22 @@ Available models are hosted on the: https://huggingface.co/VAST-AI/UniRig
 ## Citation
 
 ```
-@article{zhang2025unirig,
-  title={One Model to Rig Them All: Diverse Skeleton Rigging with UniRig},
-  author={Zhang, Jia-Peng and Pu, Cheng-Feng and Guo, Meng-Hao and Cao, Yan-Pei and Hu, Shi-Min},
-  journal={arXiv preprint arXiv:2504.12451},
-  year={2025}
+@article{10.1145/3730930,
+  author = {Zhang, Jia-Peng and Pu, Cheng-Feng and Guo, Meng-Hao and Cao, Yan-Pei and Hu, Shi-Min},
+  title = {One Model to Rig Them All: Diverse Skeleton Rigging with UniRig},
+  year = {2025},
+  issue_date = {August 2025},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {44},
+  number = {4},
+  issn = {0730-0301},
+  url = {https://doi.org/10.1145/3730930},
+  doi = {10.1145/3730930},
+  journal = {ACM Trans. Graph.},
+  month = jul,
+  articleno = {123},
+  numpages = {18}
 }
 ```
 

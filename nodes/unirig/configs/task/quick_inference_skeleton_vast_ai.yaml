@@ -1,0 +1,30 @@
+mode: predict
+debug: False
+experiment_name: quick_inference_skeleton_vast_ai
+resume_from_checkpoint: vast_ai/skeleton
+
+components:
+  data: quick_inference
+  tokenizer: tokenizer_parts_articulationxl_256
+  transform: inference_ar_transform
+  model: unirig_ar_350m_1024_81920_float32
+  system: ar_inference_articulationxl
+  data_name: raw_data.npz
+
+writer:
+  __target__: ar
+  output_dir: ~ # export results into the same input folder
+  add_num: False
+  repeat: 1
+  export_npz: predict_skeleton
+  export_obj: skeleton
+  export_fbx: skeleton
+  # export_pc: pc
+
+trainer:
+  max_epochs: 1
+  num_nodes: 1
+  devices: 1
+  precision: bf16-mixed
+  accelerator: gpu
+  strategy: auto
