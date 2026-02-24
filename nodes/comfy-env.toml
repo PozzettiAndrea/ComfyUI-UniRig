@@ -1,5 +1,8 @@
 python = "3.11"  # Required by bpy 4.2
 
+[env_vars]
+FLASH_ATTENTION = "0"
+
 [cuda]
 packages = ["torch-scatter", "torch-cluster", "flash-attn", "torch", "torchvision"]
 
