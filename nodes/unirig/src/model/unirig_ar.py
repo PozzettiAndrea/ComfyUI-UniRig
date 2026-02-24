@@ -1,4 +1,5 @@
 import json
+import os
 import torch
 from torch import nn, FloatTensor, LongTensor
 import numpy as np
@@ -21,10 +22,28 @@ from copy import deepcopy
 # Check flash_attn availability
 try:
     import flash_attn
-    FLASH_ATTN_AVAILABLE = True
+    _FLASH_ATTN_IMPORTED = True
 except ImportError:
-    FLASH_ATTN_AVAILABLE = False
-    print("[UniRig] flash_attn not available for AR model, using standard PyTorch attention (slower but functional)")
+    _FLASH_ATTN_IMPORTED = False
+
+def _flash_attn_supported() -> bool:
+    env = os.getenv("FLASH_ATTENTION")
+    if env is not None and env.strip().lower() in {"0", "false", "no", "off", "disable", "disabled"}:
+        return False
+    if not torch.cuda.is_available():
+        return False
+    try:
+        major, _minor = torch.cuda.get_device_capability()
+    except Exception:
+        return False
+    return major >= 8
+
+FLASH_ATTN_AVAILABLE = _FLASH_ATTN_IMPORTED and _flash_attn_supported()
+if not FLASH_ATTN_AVAILABLE:
+    if _FLASH_ATTN_IMPORTED:
+        print("[UniRig] FlashAttention disabled for AR model (non-Ampere GPU or FLASH_ATTENTION=0), using standard PyTorch attention")
+    else:
+        print("[UniRig] flash_attn not available for AR model, using standard PyTorch attention (slower but functional)")
 
 class VocabSwitchingLogitsProcessor(LogitsProcessor):
     def __init__(self, tokenizer: TokenizerSpec, start_tokens: LongTensor):

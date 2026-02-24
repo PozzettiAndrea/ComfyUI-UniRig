@@ -259,18 +259,18 @@ class UniRigLoadMesh:
         # Get list of available mesh files from input folder (default)
         mesh_files = cls.get_mesh_files_from_input()
 
-        # If no files found, provide a default message
-        if not mesh_files:
-            mesh_files = ["No mesh files found"]
+        default_path = mesh_files[0] if mesh_files else ""
 
         return {
             "required": {
-                "source_folder": (["input", "output"], {
+                "source_folder": (["input", "output", "path"], {
                     "default": "input",
-                    "tooltip": "Source folder to load mesh from (ComfyUI input or output directory)"
+                    "tooltip": "Source: 'input'/'output' = ComfyUI folder; 'path' = any file path (absolute or relative to cwd)"
                 }),
-                "file_path": (mesh_files, {
-                    "tooltip": "Mesh file to load. Refresh the node after changing source_folder."
+                "file_path": ("STRING", {
+                    "default": default_path,
+                    "tooltip": "Mesh file to load (relative to the selected folder, or any path when source is 'path').",
+                    "multiline": False
                 }),
             },
         }
@@ -322,6 +322,12 @@ class UniRigLoadMesh:
     @classmethod
     def IS_CHANGED(cls, source_folder, file_path):
         """Force re-execution when file changes."""
+        if source_folder == "path":
+            full_path = os.path.normpath(os.path.abspath(file_path))
+            if os.path.exists(full_path):
+                return os.path.getmtime(full_path)
+            return file_path
+
         base_folder = COMFYUI_INPUT_FOLDER if source_folder == "input" else COMFYUI_OUTPUT_FOLDER
 
         if base_folder is not None:
@@ -350,7 +356,7 @@ class UniRigLoadMesh:
 
         Args:
             source_folder: "input" or "output"
-            file_path: Path to mesh file (relative to source folder or absolute)
+            file_path: Path to mesh file
 
         Returns:
             tuple: (trimesh.Trimesh,)
@@ -362,7 +368,16 @@ class UniRigLoadMesh:
         full_path = None
         searched_paths = []
 
-        if source_folder == "input" and COMFYUI_INPUT_FOLDER is not None:
+        if source_folder == "path":
+            # Use file_path as-is (absolute or relative to cwd)
+            full_path = os.path.normpath(os.path.abspath(file_path))
+            searched_paths.append(full_path)
+            if os.path.exists(full_path):
+                print(f"[UniRigLoadMesh] Loading from path: {full_path}")
+            else:
+                full_path = None
+
+        elif source_folder == "input" and COMFYUI_INPUT_FOLDER is not None:
             # First, try in ComfyUI input/3d folder
             input_3d_path = os.path.join(COMFYUI_INPUT_FOLDER, "3d", file_path)
             searched_paths.append(input_3d_path)

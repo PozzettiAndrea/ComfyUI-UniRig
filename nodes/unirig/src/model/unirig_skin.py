@@ -1,3 +1,4 @@
+import os
 import torch
 from torch import nn, FloatTensor, LongTensor, Tensor
 import torch.nn.functional as F
@@ -11,10 +12,28 @@ import torch_scatter
 # Try to import flash_attn, fall back to standard PyTorch if not available
 try:
     from flash_attn.modules.mha import MHA as FlashMHA
-    FLASH_ATTN_AVAILABLE = True
+    _FLASH_ATTN_IMPORTED = True
 except ImportError:
-    FLASH_ATTN_AVAILABLE = False
-    print("[UniRig] flash_attn not available, using standard PyTorch attention (slower but functional)")
+    _FLASH_ATTN_IMPORTED = False
+
+def _flash_attn_supported() -> bool:
+    env = os.getenv("FLASH_ATTENTION")
+    if env is not None and env.strip().lower() in {"0", "false", "no", "off", "disable", "disabled"}:
+        return False
+    if not torch.cuda.is_available():
+        return False
+    try:
+        major, _minor = torch.cuda.get_device_capability()
+    except Exception:
+        return False
+    return major >= 8
+
+FLASH_ATTN_AVAILABLE = _FLASH_ATTN_IMPORTED and _flash_attn_supported()
+if not FLASH_ATTN_AVAILABLE:
+    if _FLASH_ATTN_IMPORTED:
+        print("[UniRig] FlashAttention disabled for skinning (non-Ampere GPU or FLASH_ATTENTION=0), using standard PyTorch attention")
+    else:
+        print("[UniRig] flash_attn not available, using standard PyTorch attention (slower but functional)")
 
 # Wrapper to make standard PyTorch MultiheadAttention compatible with flash_attn MHA API
 class MHA(nn.Module):

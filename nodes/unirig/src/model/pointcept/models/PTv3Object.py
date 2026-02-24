@@ -1,6 +1,7 @@
 from functools import partial
 from addict import Dict
 import math
+import os
 import torch
 import torch.nn as nn
 import spconv.pytorch as spconv
@@ -12,6 +13,22 @@ from einops import rearrange
 try:
     import flash_attn
 except ImportError:
+    flash_attn = None
+
+def _flash_attn_supported() -> bool:
+    env = os.getenv("FLASH_ATTENTION")
+    if env is not None and env.strip().lower() in {"0", "false", "no", "off", "disable", "disabled"}:
+        return False
+    if not torch.cuda.is_available():
+        return False
+    try:
+        major, _minor = torch.cuda.get_device_capability()
+    except Exception:
+        return False
+    return major >= 8
+
+if flash_attn is not None and not _flash_attn_supported():
+    print("[UniRig] FlashAttention disabled for PTv3Object (non-Ampere GPU or FLASH_ATTENTION=0)")
     flash_attn = None
 
 from .utils.misc import offset2bincount
