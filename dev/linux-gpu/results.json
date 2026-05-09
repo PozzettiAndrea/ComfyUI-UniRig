@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-05-09T16:42:05.993490+00:00",
+  "platform": "linux",
+  "hardware": {
+    "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
+    "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
+    "gpu": "NVIDIA GeForce RTX 3090"
+  },
+  "commit_hash": "d86e4cb0896414f23d629d03f1c1d83a6c430844",
+  "success": true,
+  "summary": {
+    "total": 6,
+    "passed": 3,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "apply_animation",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "mia_humanoid",
+      "status": "pass",
+      "duration_seconds": 90.98,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
+        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
+        "gpu": "NVIDIA GeForce RTX 3090"
+      },
+      "resources": {
+        "ram": {
+          "peak": 5.78,
+          "avg": 3.76
+        },
+        "total_ram_gb": 31.2,
+        "samples": 89,
+        "vram": {
+          "peak": 2.76,
+          "avg": 1.49
+        }
+      }
+    },
+    {
+      "name": "rigged_manipulator",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "skeleton_comparison",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "unirig_bird",
+      "status": "pass",
+      "duration_seconds": 115.42,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
+        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
+        "gpu": "NVIDIA GeForce RTX 3090"
+      },
+      "resources": {
+        "ram": {
+          "peak": 6.31,
+          "avg": 3.89
+        },
+        "total_ram_gb": 31.2,
+        "samples": 112,
+        "vram": {
+          "peak": 3.8,
+          "avg": 1.22
+        }
+      }
+    },
+    {
+      "name": "unirig_humanoid",
+      "status": "pass",
+      "duration_seconds": 94.64,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
+        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
+        "gpu": "NVIDIA GeForce RTX 3090"
+      },
+      "resources": {
+        "ram": {
+          "peak": 5.7,
+          "avg": 3.82
+        },
+        "total_ram_gb": 31.2,
+        "samples": 92,
+        "vram": {
+          "peak": 3.77,
+          "avg": 1.77
+        }
+      }
+    }
+  ]
+}

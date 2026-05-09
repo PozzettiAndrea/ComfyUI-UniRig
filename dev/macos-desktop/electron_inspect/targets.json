@@ -1,0 +1,11 @@
+[
+  {
+    "description": "",
+    "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:9222/devtools/page/8A3A08058C4E5D77385B400D80C98F16",
+    "id": "8A3A08058C4E5D77385B400D80C98F16",
+    "title": "ComfyUI",
+    "type": "page",
+    "url": "file:///Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/ComfyUI.app/Contents/Resources/desktop-ui/index.html#/welcome",
+    "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/8A3A08058C4E5D77385B400D80C98F16"
+  }
+]

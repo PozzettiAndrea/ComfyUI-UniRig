@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-05-09T11:39:47.390717+00:00",
+  "platform": "windows",
+  "hardware": {
+    "os": "Windows-2025Server-10.0.26100-SP0",
+    "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+  },
+  "commit_hash": "3572a86be5389ec717dfc1fba2006dc30ccd2cc1",
+  "success": true,
+  "summary": {
+    "total": 6,
+    "passed": 3,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "apply_animation",
+      "status": "pass",
+      "duration_seconds": 83.7,
+      "error": null,
+      "hardware": {
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+      },
+      "resources": {
+        "ram": {
+          "peak": 5.05,
+          "avg": 4.79
+        },
+        "total_ram_gb": 16.0,
+        "samples": 84
+      }
+    },
+    {
+      "name": "mia_humanoid",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "rigged_manipulator",
+      "status": "pass",
+      "duration_seconds": 20.14,
+      "error": null,
+      "hardware": {
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+      },
+      "resources": {
+        "ram": {
+          "peak": 4.91,
+          "avg": 4.75
+        },
+        "total_ram_gb": 16.0,
+        "samples": 21
+      }
+    },
+    {
+      "name": "skeleton_comparison",
+      "status": "pass",
+      "duration_seconds": 11.59,
+      "error": null,
+      "hardware": {
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+      },
+      "resources": {
+        "ram": {
+          "peak": 5.04,
+          "avg": 4.91
+        },
+        "total_ram_gb": 16.0,
+        "samples": 12
+      }
+    },
+    {
+      "name": "unirig_bird",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "unirig_humanoid",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    }
+  ]
+}

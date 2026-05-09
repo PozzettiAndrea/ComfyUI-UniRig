@@ -1,0 +1,114 @@
+[Console-log] [FBX Viewer] Cleaning up resources before unload
+[Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+[Console-log] [GeomPack] Loading mesh preview extension...
+[Console-log] [GeomPack] Mesh preview extension registered
+[Console-log] [SMPL] Loading SMPL Viewer extension
+[Console-log] [SMPLViewer] Extension registered: comfy3d.smplviewer
+[Console-log] [FileListUpdater] Loading File List Updater extension
+[Console-log] [FileListUpdater] Extension registered
+[Console-log] [GeomPack Multi JS] Loading mesh_preview_multi.js extension
+[Console-log] [GeomPack Gaussian] Loading extension...
+[Console-log] [GeomPack] Loading UV mesh preview extension...
+[Console-log] [GeomPack] UV mesh preview extension registered
+[Console-log] [GeomPack] Loading VTK.js bounding box preview extension...
+[Console-log] [GeomPack] VTK.js bounding box preview extension registered
+[Console-log] [MHR] Loading MHR Viewer extension
+[Console-log] [MHRViewer] Extension registered: comfy3d.mhrviewer
+[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension
+[Console-log] [FBXAnimationViewer] Loading FBX Animation Viewer extension...
+[Console-log] [FBXAnimationViewer] Extension registered: comfy3d.fbxanimationviewer
+[Console-log] [GeomPack] Loading VTK.js textured mesh preview extension...
+[Console-log] [GeomPack] VTK.js textured mesh preview extension registered
+[Console-log] [DynamicWidgets] Loading extension...
+[Console-log] [DynamicWidgets] Extension registered
+[Console-log] [BVHViewer] Loading BVH Viewer extension
+[Console-log] [BVHViewer] Loading BVH viewer extension...
+[Console-log] [BVHViewer] Extension registered: comfy3d.bvhviewer
+[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension
+[Console-log] [CompareSMPLBVH] Loading Compare SMPL BVH extension...
+[Console-log] [CompareSMPLBVH] Extension registered: comfy3d.comparesmplbvh
+[Console-log] [FBX Preview] Auto-registering for all known FBX preview node types...
+[Console-log] [UniRig] Loading FBX mesh preview extension...
+[Console-log] [UniRig] Detected extension folder: ComfyUI-UniRig
+[Console-log] [UniRig] FBX mesh preview extension registered
+[Console-log] [SAM3DBody] Loading FBX mesh preview extension...
+[Console-log] [SAM3DBody] Detected extension folder: ComfyUI-UniRig
+[Console-log] [SAM3DBody] FBX mesh preview extension registered
+[Console-log] [MotionCapture] Loading FBX mesh preview extension...
+[Console-log] [MotionCapture] Detected extension folder: ComfyUI-UniRig
+[Console-log] [MotionCapture] FBX mesh preview extension registered
+[Console-log] [MotionCapture] Loading FBX mesh preview extension...
+[Console-log] [MotionCapture] Detected extension folder: ComfyUI-UniRig
+[Console-log] [MotionCapture] FBX mesh preview extension registered
+[Console-log] [UniRig Compare] Loading compare skeleton widget...
+[Console-log] [UniRig Compare] Detected extension folder: ComfyUI-UniRig
+[Console-log] [UniRig Compare] Compare skeleton widget registered
+[Console-log] [VTK Bundle] GLTFImporter included in bundle
+[Console-log] [UniRig Debug] Loading FBX mesh preview extension...
+[Console-log] [UniRig Debug] Detected extension folder: ComfyUI-UniRig
+[Console-log] [UniRig Debug] FBX mesh preview extension registered
+[Console-log] [DynamicWidgets] Loaded mappings for 6 nodes
+[Console-warning] WARNING: Multiple instances of Three.js being imported.
+[Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+[Console-log] [GeomPack] Registering Preview Mesh node
+[Console-log] [GeomPack] Registering Preview Mesh UV node
+[Console-log] [GeomPack Gaussian] Registering Preview Gaussian node
+[Console-log] [UniRig] Registering Preview Rigged Mesh node
+[Console-log] [UniRig Debug] Registering Preview Rigged Mesh node
+[Console-log] [UniRig Compare] Registering Compare Skeletons node
+[Console-log] [DynamicWidgets] Setting up node: GeomPackTransformMesh
+[Console-log] [UniRig] Node created, adding FBX viewer widget
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1769794002938
+[Console-log] [UniRig] Widget created: DOMWidgetImpl
+[Console-log] [DynamicWidgets] GeomPackTransformMesh: operation="rotate", visible=[rotate_x, rotate_y, rotate_z]
+[Console-log] [DynamicWidgets] Widget "translate_x": hidden=true
+[Console-log] [DynamicWidgets] Widget "translate_y": hidden=true
+[Console-log] [DynamicWidgets] Widget "translate_z": hidden=true
+[Console-log] [DynamicWidgets] Widget "rotate_x": hidden=false
+[Console-log] [DynamicWidgets] Widget "rotate_y": hidden=false
+[Console-log] [DynamicWidgets] Widget "rotate_z": hidden=false
+[Console-log] [DynamicWidgets] Widget "scale_uniform": hidden=true
+[Console-log] [DynamicWidgets] Widget "scale_x": hidden=true
+[Console-log] [DynamicWidgets] Widget "scale_y": hidden=true
+[Console-log] [DynamicWidgets] Widget "scale_z": hidden=true
+[Console-log] [DynamicWidgets] Widget "mirror_axis": hidden=true
+[Console-log] [DynamicWidgets] Widget "center_x": hidden=true
+[Console-log] [DynamicWidgets] Widget "center_y": hidden=true
+[Console-log] [DynamicWidgets] Widget "center_z": hidden=true
+[Console-log] [DynamicWidgets] Widget "matrix_string": hidden=true
+[Console-log] [FBX Viewer] Three.js bundle loaded from: http://localhost:8188/extensions/ComfyUI-UniRig/three/viewer-bundle.js
+[Console-log] [FBX Viewer] Initializing...
+[Console-log] [FBX Viewer] Ready
+[Console-log] [UniRig] Viewer iframe is ready!
+[Console-log] [UniRig] Iframe loaded successfully
+[Console-log] [DynamicWidgets] Setting up node: GeomPackTransformMesh
+[Console-log] [UniRig Compare] Node created, adding compare viewer widget
+[Console-log] [UniRig Compare] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=1769794003882
+[Console-log] [UniRig Compare] Widget created: DOMWidgetImpl
+[Console-log] [DynamicWidgets] GeomPackTransformMesh: operation="rotate", visible=[rotate_x, rotate_y, rotate_z]
+[Console-log] [DynamicWidgets] Widget "translate_x": hidden=true
+[Console-log] [DynamicWidgets] Widget "translate_y": hidden=true
+[Console-log] [DynamicWidgets] Widget "translate_z": hidden=true
+[Console-log] [DynamicWidgets] Widget "rotate_x": hidden=false
+[Console-log] [DynamicWidgets] Widget "rotate_y": hidden=false
+[Console-log] [DynamicWidgets] Widget "rotate_z": hidden=false
+[Console-log] [DynamicWidgets] Widget "scale_uniform": hidden=true
+[Console-log] [DynamicWidgets] Widget "scale_x": hidden=true
+[Console-log] [DynamicWidgets] Widget "scale_y": hidden=true
+[Console-log] [DynamicWidgets] Widget "scale_z": hidden=true
+[Console-log] [DynamicWidgets] Widget "mirror_axis": hidden=true
+[Console-log] [DynamicWidgets] Widget "center_x": hidden=true
+[Console-log] [DynamicWidgets] Widget "center_y": hidden=true
+[Console-log] [DynamicWidgets] Widget "center_z": hidden=true
+[Console-log] [DynamicWidgets] Widget "matrix_string": hidden=true
+[Console-log] [UniRig Compare] Three.js bundle loaded
+[Console-log] [UniRig Compare] Initializing dual viewer...
+[Console-log] [UniRig Compare] Ready
+[Console-log] [UniRig] Viewer iframe is ready!
+[Console-log] [UniRig Compare] Viewer iframe is ready!
+[Console-log] [UniRig Compare] Iframe loaded successfully
+[Console-error] Failed to load resource: the server responded with a status of 405 (Method Not Allowed)

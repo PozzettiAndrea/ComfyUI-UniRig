@@ -1,0 +1,21 @@
+Capturing execution frames: rigged_manipulator.json
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Frame 2 saved (frame_001.jpg, t=2.3s)
+  [capture-periodic] freeze=5ms shot=144ms unfreeze=5ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.5s)
+  [capture-periodic] freeze=4ms shot=132ms unfreeze=5ms saved=True
+  [capture-loop] iter=50 t=6.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=5.1/16.0GB (32%) swap=0.2/2.9GB (6%) cpu=17% browser_rss=0.77GB
+  [capture-loop] iter=100 t=12.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=5.1/16.0GB (32%) swap=0.3/2.9GB (12%) cpu=62% browser_rss=0.76GB
+  Node executed (1 total), capturing...
+  Frame 4 saved (frame_003.jpg, t=14.0s)
+  [capture-node] freeze=10ms shot=802ms unfreeze=29ms saved=True
+  Execution complete (t=15.1s)
+  Captured 4 unique frames over 15.15s
+  [debug] iframes: 1
+  [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778343522755, canvas=486x710, rafFrozen=False
+  [timing] trigger_3d_previews: 0.1s
+  Saved high-quality screenshot: rigged_manipulator_executed.png
+  [timing] final_screenshot: 0.2s
+    Captured 5 video frames

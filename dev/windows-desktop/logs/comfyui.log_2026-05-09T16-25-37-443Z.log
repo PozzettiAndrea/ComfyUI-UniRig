@@ -1,0 +1,163 @@
+[2026-05-09 16:24:19.731] [info]  setup plugin alembic.autogenerate.schemas
+
+[2026-05-09 16:24:19.734] [info]  setup plugin alembic.autogenerate.tables
+setup plugin alembic.autogenerate.types
+setup plugin alembic.autogenerate.constraints
+setup plugin alembic.autogenerate.defaults
+setup plugin alembic.autogenerate.comments
+
+[2026-05-09 16:24:20.248] [info]  Adding extra search path custom_nodes C:\Users\runneradmin\Documents\ComfyUI\custom_nodes
+Adding extra search path download_model_base C:\Users\runneradmin\Documents\ComfyUI\models
+
+[2026-05-09 16:24:20.250] [info]  Adding extra search path custom_nodes C:\Users\runneradmin\AppData\Local\Programs\ComfyUI\resources\ComfyUI\custom_nodes
+Setting output directory to: C:\Users\runneradmin\Documents\ComfyUI\output
+Setting input directory to: C:\Users\runneradmin\Documents\ComfyUI\input
+Setting user directory to: C:\Users\runneradmin\Documents\ComfyUI\user
+
+[2026-05-09 16:24:21.777] [info]  [START] Security scan
+[DONE] Security scan
+** ComfyUI startup time: 
+[2026-05-09 16:24:21.778] [info]  2026-05-09 16:24:21.775
+** Platform: Windows
+** Python version: 3.12.11 (main, Aug 18 2025, 19:17:54) [MSC v.1944 64 bit (AMD64)]
+** Python executable: C:\Users\runneradmin\Documents\ComfyUI\.venv\Scripts\python.exe
+** ComfyUI Path: C:\Users\runneradmin\AppData\Local\Programs\ComfyUI\resources\ComfyUI
+** ComfyUI Base Folder Path: C:\Users\runneradmin\AppData\Local\Programs\ComfyUI\resources\ComfyUI
+
+[2026-05-09 16:24:21.787] [info]  ** User directory: 
+[2026-05-09 16:24:21.788] [info]  C:\Users\runneradmin\Documents\ComfyUI\user
+** ComfyUI-Manager config path: C:\Users\runneradmin\Documents\ComfyUI\user\__manager\config.ini
+** Log path: C:\Users\runneradmin\Documents\ComfyUI\user\comfyui.log
+
+[2026-05-09 16:24:22.929] [info]  [ComfyUI-Manager] Skipped fixing the 'comfyui-frontend-package' dependency because the ComfyUI is outdated.
+
+[2026-05-09 16:24:22.930] [info]  [PRE] ComfyUI-Manager
+
+[2026-05-09 16:24:23.302] [error] [comfy-env] comfyui-unirig: 1 isolation env(s):
+[2026-05-09 16:24:23.304] [error] 
+[comfy-env]   nodes -> C:\Users\runneradmin\Documents\ComfyUI\custom_nodes\comfyui-unirig\nodes
+[comfy-env] prestartup complete
+[2026-05-09 16:24:23.306] [error] 
+
+[2026-05-09 16:24:26.481] [info]  Found comfy_kitchen backend cuda: {'available': False, 'disabled': True, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
+
+[2026-05-09 16:24:26.483] [info]  Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
+Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+
+[2026-05-09 16:24:26.490] [info]  Checkpoint files will always be loaded safely.
+
+[2026-05-09 16:24:26.509] [info]  Total VRAM 16379 MB, total RAM 16379 MB
+
+[2026-05-09 16:24:26.510] [info]  pytorch version: 2.10.0+cpu
+Set vram state to: DISABLED
+Device: cpu
+
+[2026-05-09 16:24:26.831] [info]  Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+
+[2026-05-09 16:24:29.767] [info]  Python version: 3.12.11 (main, Aug 18 2025, 19:17:54) [MSC v.1944 64 bit (AMD64)]
+
+[2026-05-09 16:24:29.769] [info]  ComfyUI version: 0.20.1
+comfy-aimdo version: 0.2.14
+
+[2026-05-09 16:24:29.770] [info]  comfy-kitchen version: 0.2.8
+
+[2026-05-09 16:24:29.773] [info]  [Prompt Server] web root: C:\Users\runneradmin\AppData\Local\Programs\ComfyUI\resources\ComfyUI\web_custom_versions\desktop_app
+
+[2026-05-09 16:24:29.780] [info]  Asset seeder disabled
+
+[2026-05-09 16:24:29.782] [info]  [START] ComfyUI-Manager
+
+[2026-05-09 16:24:29.948] [info]  [ComfyUI-Manager] Using GitPython backend
+
+[2026-05-09 16:24:30.108] [info]  [ComfyUI-Manager] network_mode: public
+[ComfyUI-Manager] The matrix sharing feature has been disabled because the `matrix-nio` dependency is not installed.
+	To use this feature, please run the following command:
+	C:\Users\runneradmin\Documents\ComfyUI\.venv\Scripts\python.exe -m pip install matrix-nio
+
+
+[2026-05-09 16:24:31.975] [info]  loading...
+
+[2026-05-09 16:24:31.977] [info]  calling register_nodes
+
+[2026-05-09 16:24:31.980] [error] [comfy-env] Version: 0.3.78
+[2026-05-09 16:24:31.981] [error] 
+
+[2026-05-09 16:24:34.785] [error] [comfy-env] register_nodes: comfyui-unirig
+[2026-05-09 16:24:34.788] [error] 
+
+[2026-05-09 16:24:34.791] [error] [comfy-env] ComfyUI source dir: C:\Users\runneradmin\AppData\Local\Programs\ComfyUI\resources\ComfyUI
+[2026-05-09 16:24:34.793] [error] 
+
+[2026-05-09 16:24:34.795] [error] [comfy-env] Scanning nodes metadata (isolation root)...
+[2026-05-09 16:24:34.796] [error] 
+
+[2026-05-09 16:24:34.804] [error] [comfy-env] Cache hit for nodes: 16 nodes
+[2026-05-09 16:24:34.805] [error] 
+[comfy-env] Scanned nodes root: 16 nodes (0.0s)
+[2026-05-09 16:24:34.806] [error] 
+
+[2026-05-09 16:24:34.807] [error] [comfy-env] Imported nodes root: 16 nodes (isolation)
+
+[2026-05-09 16:24:34.808] [error] [comfy-env] Registered 16 total nodes
+[2026-05-09 16:24:34.812] [error] 
+
+[2026-05-09 16:24:34.818] [info]  
+Import times for custom nodes:
+
+[2026-05-09 16:24:34.819] [info]     0.0 seconds: C:\Users\runneradmin\AppData\Local\Programs\ComfyUI\resources\ComfyUI\custom_nodes\websocket_image_save.py
+   0.0 seconds: C:\Users\runneradmin\Documents\ComfyUI\custom_nodes\ComfyUI-CameraPack
+   2.8 seconds: C:\Users\runneradmin\Documents\ComfyUI\custom_nodes\comfyui-unirig
+
+
+[2026-05-09 16:24:34.823] [info]  Context impl SQLiteImpl.
+
+[2026-05-09 16:24:34.824] [info]  Will assume non-transactional DDL.
+
+[2026-05-09 16:24:34.833] [error] Failed to initialize database. Please ensure you have installed the latest requirements. If the error persists, please report this as in future the database will be required: Could not acquire lock on database 'C:/Users/runneradmin/Documents/ComfyUI/user/comfyui.db'. Another ComfyUI process may already be using it. Use --database-url to specify a separate database file.
+
+[2026-05-09 16:24:34.940] [info]  Starting server
+
+
+[2026-05-09 16:24:34.942] [info]  To see the GUI go to: http://127.0.0.1:8001
+
+[2026-05-09 16:24:37.006] [info]  [ComfyUI-Manager] The ComfyRegistry cache update is still in progress, so an outdated cache is being used.
+
+[2026-05-09 16:24:37.131] [info]  FETCH DATA from: C:\Users\runneradmin\Documents\ComfyUI\.venv\Lib\site-packages\comfyui_manager\custom-node-list.json
+[2026-05-09 16:24:37.157] [info]   [DONE]
+
+[2026-05-09 16:24:39.786] [error] Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\runneradmin\AppData\Roaming\uv\python\cpython-3.12.11-windows-x86_64-none\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\runneradmin\AppData\Roaming\uv\python\cpython-3.12.11-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+[2026-05-09 16:24:41.183] [info]  [ComfyUI-Manager] The ComfyRegistry cache update is still in progress, so an outdated cache is being used.
+
+[2026-05-09 16:24:41.313] [info]  FETCH DATA from: C:\Users\runneradmin\Documents\ComfyUI\.venv\Lib\site-packages\comfyui_manager\custom-node-list.json
+[2026-05-09 16:24:41.340] [info]   [DONE]
+
+[2026-05-09 16:25:03.276] [info]  got prompt
+
+[2026-05-09 16:25:03.302] [info]  [comfyui-unirig] python: C:\Users\runneradmin\Documents\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+[2026-05-09 16:25:03.304] [info]  
+[comfyui-unirig] sys_path sent to worker: ['C:\\Users\\runneradmin\\AppData\\Local\\Programs\\ComfyUI\\resources\\ComfyUI', 'C:\\Users\\runneradmin\\Documents\\ComfyUI\\custom_nodes\\comfyui-unirig', 'C:\\Users\\runneradmin\\Documents\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages', 'C:\\Users\\runneradmin\\Documents\\ComfyUI\\custom_nodes\\comfyui-unirig']
+
+[2026-05-09 16:25:16.233] [error] [worker:comfyui-unirig] FBX version: 7400
+
+[2026-05-09 16:25:16.499] [error] [comfyui-unirig] Health check: ping (timeout=5.0s)...
+[2026-05-09 16:25:16.501] [error] 
+
+[2026-05-09 16:25:16.518] [error] [comfyui-unirig] Health check: ok
+
+[2026-05-09 16:25:16.901] [error] [worker:comfyui-unirig] FBX version: 7400
+
+[2026-05-09 16:25:17.262] [error] [comfyui-unirig] Health check: ping (timeout=5.0s)...
+[2026-05-09 16:25:17.264] [error] 
+
+[2026-05-09 16:25:17.296] [error] [comfyui-unirig] Health check: ok
+
+[2026-05-09 16:25:17.592] [info]  Prompt executed in 14.31 seconds
+

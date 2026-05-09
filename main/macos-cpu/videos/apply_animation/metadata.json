@@ -1,0 +1,30 @@
+{
+  "frames": [
+    {
+      "file": "frame_000.jpg",
+      "time": 0.0,
+      "log": "Capturing execution frames: apply_animation.json"
+    },
+    {
+      "file": "frame_001.jpg",
+      "time": 2.46,
+      "log": "Capturing execution frames: apply_animation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution..."
+    },
+    {
+      "file": "frame_002.jpg",
+      "time": 4.88,
+      "log": "Capturing execution frames: apply_animation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Frame 2 saved (frame_001.jpg, t=2.5s)\n  [capture-periodic] freeze=9ms shot=237ms unfreeze=27ms saved=True"
+    },
+    {
+      "file": "frame_003.jpg",
+      "time": 6.96,
+      "log": "Capturing execution frames: apply_animation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Frame 2 saved (frame_001.jpg, t=2.5s)\n  [capture-periodic] freeze=9ms shot=237ms unfreeze=27ms saved=True\n  Frame 3 saved (frame_002.jpg, t=4.9s)\n  [capture-periodic] freeze=4ms shot=183ms unfreeze=23ms saved=True\n  [capture-loop] iter=50 t=6.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=3.7/7.0GB (58%) swap=0.0/0.0GB (0%) cpu=66% browser_rss=0.74GB"
+    },
+    {
+      "file": "frame_004.jpg",
+      "time": 10.423717260360718,
+      "log": "Final screenshot"
+    }
+  ],
+  "total_time": 7.31
+}

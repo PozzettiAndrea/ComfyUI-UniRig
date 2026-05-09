@@ -1,0 +1,171 @@
+Capturing execution frames: rig_human_with_texture_mia.json
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
+  [Console-warning] WARNING: Multiple instances of Three.js being imported.
+  [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
+  Validating workflow...
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Prompt has 9 nodes
+  [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
+  [ComfyUI]     Inputs: {"fbx_output_path": ["42", 0], "preview": ""}
+  [ComfyUI]   Node 27: UniRigLoadMesh
+  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
+  [ComfyUI]   Node 41: MIALoadModel
+  [ComfyUI]     Inputs: {"cache_to_gpu": true}
+  [ComfyUI]   Node 42: MIAAutoRig
+  [ComfyUI]     Inputs: {"fbx_name": "rigatoni", "no_fingers": false, "use_normal": false, "reset_to_rest": true, "trimesh": ["45", 0], "model": ["41", 0]}
+  [ComfyUI]   Node 43: UniRigOrientationCheck
+  [ComfyUI]     Inputs: {"max_height": 512, "mesh": ["45", 0]}
+  [ComfyUI]   Node 44: PreviewImage
+  [ComfyUI]     Inputs: {"images": ["43", 0]}
+  [ComfyUI]   Node 45: GeomPackTransformMesh
+  [ComfyUI]     Inputs: {"operation": "rotate", "translate_x": 0, "translate_y": -90, "translate_z": 0, "rotate_x": 0, "rotate_y": 0, "rotate_z": 0, "scale_uniform": 1, "scale_x": 1, "scale_y": 1, "scale_z": 1, "mirror_axis"
+  [ComfyUI]   Node 46: UniRigOrientationCheck
+  [ComfyUI]     Inputs: {"max_height": 512, "mesh": ["27", 0]}
+  [ComfyUI]   Node 47: PreviewImage
+  [ComfyUI]     Inputs: {"images": ["46", 0]}
+  [ComfyUI] Generated prompt_id: b4cd80fd-c0d2-4101-98a0-c7fb74cebf36
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] === Validation PASSED ===
+  Queuing workflow for execution...
+  [ComfyUI] got prompt
+  [ComfyUI] [UniRig] Running prestartup script...
+  [ComfyUI] [UniRig] Copied viewer_fbx.html from comfy-3d-viewers
+  [ComfyUI] [UniRig] Copied viewer-bundle.js from comfy-3d-viewers
+  [ComfyUI] [UniRig] Copied mesh_preview_fbx.js from comfy-3d-viewers
+  [ComfyUI] [UniRig] Copied viewer_fbx_debug.html from comfy-3d-viewers
+  [ComfyUI] [UniRig] Copied viewer_fbx_compare.html from comfy-3d-viewers
+  [ComfyUI] [UniRig] Copied debug_skeleton_widget.js from comfy-3d-viewers
+  [ComfyUI] [UniRig] Copied compare_skeleton_widget.js from comfy-3d-viewers
+  [ComfyUI] [UniRig] Copied mixamo.fbx to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/3d/mixamo.fbx
+  [ComfyUI] [UniRig] Copied realistic_male_character.glb to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/3d/realistic_male_character.glb
+  [ComfyUI] [UniRig] Copied FinalBaseMesh.obj to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/3d/FinalBaseMesh.obj
+  [ComfyUI] [UniRig] Copied mixamo/Dying.fbx to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/animation_templates/mixamo/Dying.fbx
+  [ComfyUI] [UniRig] Copied mixamo/Breakdance.fbx to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/animation_templates/mixamo/Breakdance.fbx
+  [ComfyUI] [UniRig] Copied mixamo/Hip_Hop_Dancing.fbx to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/animation_templates/mixamo/Hip_Hop_Dancing.fbx
+  [ComfyUI] [UniRig] Copied mixamo/Mma_Kick.fbx to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/animation_templates/mixamo/Mma_Kick.fbx
+  [ComfyUI] [UniRig] Copied mixamo/Capoeira.fbx to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/animation_templates/mixamo/Capoeira.fbx
+  [ComfyUI] [UniRig] Copied smpl/amass_sample.npz to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/animation_templates/smpl/amass_sample.npz
+  [ComfyUI] [UniRig] Copied smpl/dmpl_sample.npz to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/animation_templates/smpl/dmpl_sample.npz
+  [ComfyUI] [UniRig] Animation templates ready at /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/animation_templates
+  [ComfyUI] [UniRig] Copied animation character: mixamo.fbx
+  [ComfyUI] [UniRig] Animation characters ready at /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/animation_characters
+  [ComfyUI] [UniRig] Prestartup script completed.
+  [ComfyUI] [GeometryPack] Copied 93 file(s) from comfy-3d-viewers package
+  [ComfyUI] [GeometryPack] Copied dynamic_widgets.js from comfy-dynamic-widgets package
+  [ComfyUI] [GeometryPack] Copied ArmoredWarrior_00005_.glb to input/3d/
+  [ComfyUI] [GeometryPack] Copied cow.off to input/3d/
+  [ComfyUI] [GeometryPack] Copied utah_teapot.stl to input/3d/
+  [ComfyUI] [GeometryPack] Copied mount_textured.glb to input/3d/
+  [ComfyUI] [GeometryPack] Copied rigged_human.fbx to input/3d/
+  [ComfyUI] [GeometryPack] Copied tshirt.glb to input/3d/
+  [ComfyUI] [GeometryPack] Copied truck.obj to input/3d/
+  [ComfyUI] [GeometryPack] Copied coca_cola.blend to input/3d/
+  [ComfyUI] [GeometryPack] Copied fandisk.ply to input/3d/
+  [ComfyUI] [GeometryPack] Copied camelhead.off to input/3d/
+  [ComfyUI] [GeometryPack] Copied camel_b.obj to input/3d/
+  [ComfyUI] [GeometryPack] Copied Stanford_Bunny.stl to input/3d/
+  [ComfyUI] [GeometryPack] Copied spot_the_cow.obj to input/3d/
+  [ComfyUI] [GeometryPack] [OK] Copied 13 asset(s) to /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/3d
+  [ComfyUI] [UniRig] Models directory: /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/models/unirig
+  [ComfyUI] [UniRig] Main nodes loaded (2 nodes)
+  [ComfyUI] [comfy-env] Warning: Isolated environment not found
+  [ComfyUI] [comfy-env] Expected: .pixi/envs/default or .venv
+  [ComfyUI] [comfy-env] Run 'comfy-env install' in /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes
+  [ComfyUI] [UniRig] Isolated nodes loaded (15 nodes)
+  [ComfyUI] [UniRig] Total nodes loaded: 17
+  [ComfyUI] [GeomPack] Main nodes loaded (50 nodes)
+  [ComfyUI] [comfy-env] Wrapping 6 nodes from cgal
+  [ComfyUI] [comfy-env]   site-packages: /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-GeometryPack/nodes/cgal/.pixi/envs/default/lib/python3.13/site-packages
+  [ComfyUI] [comfy-env]   lib: /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-GeometryPack/nodes/cgal/.pixi/envs/default/lib
+  [ComfyUI] [comfy-env]   env_vars: KMP_DUPLICATE_LIB_OK=TRUE, OMP_NUM_THREADS=1
+  [ComfyUI] [GeomPack] CGAL nodes loaded (6 nodes, isolated)
+  [ComfyUI] [comfy-env] Wrapping 5 nodes from blender
+  [ComfyUI] [comfy-env]   site-packages: /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-GeometryPack/nodes/blender/.pixi/envs/default/lib/python3.1/site-packages
+  [ComfyUI] [comfy-env]   lib: /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-GeometryPack/nodes/blender/.pixi/envs/default/lib
+  [ComfyUI] [GeomPack] Blender nodes loaded (5 nodes, isolated)
+  [ComfyUI] [comfy-env] Wrapping 1 nodes from gpu
+  [ComfyUI] [comfy-env]   site-packages: /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-GeometryPack/nodes/gpu/.pixi/envs/default/lib/python3.13/site-packages
+  [ComfyUI] [comfy-env]   lib: /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-GeometryPack/nodes/gpu/.pixi/envs/default/lib
+  [ComfyUI] [GeomPack] GPU nodes loaded (1 nodes, isolated)
+  [ComfyUI] [GeomPack] Total nodes loaded: 62
+  [ComfyUI] [GeometryPack] Generated widget mappings for 6 nodes (6 selectors)
+  [ComfyUI] [GeomPack] Custom server routes registered
+  [ComfyUI] [UniRigLoadModel] Loading UniRig models...
+  [ComfyUI] [UniRigLoadModel] GPU caching: disabled
+  [ComfyUI] [UniRigLoadSkeletonModel] Loading skeleton model: apozz/UniRig-safetensors
+  [ComfyUI] [UniRigLoadSkeletonModel] GPU caching: disabled (will offload to CPU)
+  [ComfyUI] [UniRigLoadSkeletonModel] Error loading model: No module named 'box'
+  [ComfyUI] [UniRigLoadSkinningModel] Loading skinning model: apozz/UniRig-safetensors
+  [ComfyUI] [UniRigLoadSkinningModel] GPU caching: disabled (will offload to CPU)
+  [ComfyUI] [UniRigLoadSkinningModel] Error loading model: No module named 'box'
+  [ComfyUI] [UniRigLoadModel] Both models loaded successfully
+  [ComfyUI] [UniRigLoadMesh] Found mesh in input folder: 3d/realistic_male_character.glb
+  [ComfyUI] [UniRigLoadMesh] File extension detected: '.glb'
+  [ComfyUI] [UniRigLoadMesh] Loading: /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/input/3d/realistic_male_character.glb
+  [ComfyUI] [UniRigLoadMesh] Loaded type: Scene
+  [ComfyUI] [UniRigLoadMesh] Scene has 7 geometries
+  [ComfyUI] [UniRigLoadMesh]   Geometry 'tripo_node_d0bcade7_tripo_mat_d0bcade7_0': visual type = TextureVisuals
+  [ComfyUI] [UniRigLoadMesh]     Material: PBRMaterial
+  [ComfyUI] [UniRigLoadMesh]     Has baseColorTexture: yes
+  [ComfyUI] [UniRigLoadMesh]   Geometry 'tripo_node_d0bcade7_tripo_mat_d0bcade7_1': visual type = TextureVisuals
+  [ComfyUI] [UniRigLoadMesh]     Material: PBRMaterial
+  [ComfyUI] [UniRigLoadMesh]     Has baseColorTexture: yes
+  [ComfyUI] [UniRigLoadMesh]   Geometry 'tripo_node_d0bcade7_tripo_mat_d0bcade7_0_2': visual type = TextureVisuals
+  [ComfyUI] [UniRigLoadMesh]     Material: PBRMaterial
+  [ComfyUI] [UniRigLoadMesh]     Has baseColorTexture: yes
+  [ComfyUI] [UniRigLoadMesh]   Geometry 'tripo_node_d0bcade7_tripo_mat_d0bcade7_0_3': visual type = TextureVisuals
+  [ComfyUI] [UniRigLoadMesh]     Material: PBRMaterial
+  [ComfyUI] [UniRigLoadMesh]     Has baseColorTexture: yes
+  [ComfyUI] [UniRigLoadMesh]   Geometry 'tripo_node_d0bcade7_tripo_mat_d0bcade7_0_4': visual type = TextureVisuals
+  [ComfyUI] [UniRigLoadMesh]     Material: PBRMaterial
+  [ComfyUI] [UniRigLoadMesh]     Has baseColorTexture: yes
+  [ComfyUI] [UniRigLoadMesh]   Geometry 'tripo_node_d0bcade7_tripo_mat_d0bcade7_0_5': visual type = TextureVisuals
+  [ComfyUI] [UniRigLoadMesh]     Material: PBRMaterial
+  [ComfyUI] [UniRigLoadMesh]     Has baseColorTexture: yes
+  [ComfyUI] [UniRigLoadMesh]   Geometry 'tripo_node_d0bcade7_tripo_mat_d0bcade7_0_6': visual type = TextureVisuals
+  [ComfyUI] [UniRigLoadMesh]     Material: PBRMaterial
+  [ComfyUI] [UniRigLoadMesh]     Has baseColorTexture: yes
+  [ComfyUI] [UniRigLoadMesh] Converting Scene to single mesh (scene has 7 geometries)
+  [ComfyUI] [UniRigLoadMesh] After dump(): visual type = TextureVisuals
+  [ComfyUI] [UniRigLoadMesh] After dump(): material = PBRMaterial
+  [ComfyUI] [UniRigLoadMesh] Initial mesh: 394992 vertices, 642547 faces
+  [ComfyUI] [UniRigLoadMesh] Visual type: TextureVisuals
+  [ComfyUI] [UniRigLoadMesh]   Has UV coords: (394992, 2)
+  [ComfyUI] [UniRigLoadMesh]   Material type: PBRMaterial
+  [ComfyUI] [UniRigLoadMesh]   Has baseColorTexture!
+  [ComfyUI] [UniRigLoadMesh] Successfully loaded: 394992 vertices, 642547 faces
+  [ComfyUI] [UniRigLoadMesh] Loaded: 394992 vertices, 642547 faces
+  [ComfyUI] [UniRigAutoRig] Starting complete rigging pipeline...
+  [ComfyUI] [UniRigAutoRig] Skeleton template: mixamo
+  [ComfyUI] [UniRigAutoRig] Step 1/2: Extracting skeleton...
+  [ComfyUI] [UniRigExtractSkeletonNew] Starting skeleton extraction (cached model only)...
+  [ComfyUI] [UniRigExtractSkeletonNew] Skeleton template: mixamo
+  [ComfyUI] [UniRigExtractSkeletonNew] Mixamo requested, using vroid extraction + name remapping
+  [ComfyUI] !!! Exception during processing !!! No module named 'mia_inference'
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 518, in execute
+  [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]   File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 329, in get_output_data
+  [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
+  [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]   File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 303, in _async_map_node_over_list
+  [ComfyUI]     await process_inputs(input_dict, i)
+  [ComfyUI]   File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 291, in process_inputs
+  [ComfyUI]     result = f(**inputs)
+  [ComfyUI]   File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_auto_rig.py", line 81, in auto_rig
+  [ComfyUI]     from mia_inference import load_mia_models, get_cached_models, run_mia_inference
+  [ComfyUI] ModuleNotFoundError: No module named 'mia_inference'
+  [ComfyUI] 
+  [ComfyUI] Prompt executed in 1.74 seconds
+  Execution error: {'prompt_id': '33197fa5-d8f7-4bb7-a25b-033fb52ef2ee', 'node_id': '42', 'node_type': 'MIAAutoRig', 'executed': ['45', '43', '27', '46', '44', '41', '47'], 'exception_message': "No module named 'mia_inference'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 518, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 329, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 303, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 291, in process_inputs\n    result = f(**inputs)\n', '  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_auto_rig.py", line 81, in auto_rig\n    from mia_inference import load_mia_models, get_cached_models, run_mia_inference\n'], 'current_inputs': {'fbx_name': ['rigatoni'], 'no_fingers': [False], 'use_normal': [False], 'reset_to_rest': [True], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'backend': 'mia', 'cache_to_gpu': True}"]}, 'current_outputs': ['45', '43', '27', '47', '41', '46', '44', '42', '10'], 'timestamp': 1769793940446}
+    Status: FAILED
+    Error: Workflow execution failed: {'prompt_id': '33197fa5-d8f7-4bb7-a25b-033fb52ef2ee', 'node_id': '42', 'node_type': 'MIAAutoRig', 'executed': ['45', '43', '27', '46', '44', '41', '47'], 'exception_message': "No module named 'mia_inference'\n", 'exception_type': 'ModuleNotFoundError', 'traceback': ['  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 518, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 329, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 303, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/execution.py", line 291, in process_inputs\n    result = f(**inputs)\n', '  File "/home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_auto_rig.py", line 81, in auto_rig\n    from mia_inference import load_mia_models, get_cached_models, run_mia_inference\n'], 'current_inputs': {'fbx_name': ['rigatoni'], 'no_fingers': [False], 'use_normal': [False], 'reset_to_rest': [True], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'backend': 'mia', 'cache_to_gpu': True}"]}, 'current_outputs': ['45', '43', '27', '47', '41', '46', '44', '42', '10'], 'timestamp': 1769793940446}
+    Details: Workflow: /home/runner/work/ComfyUI-UniRig/ComfyUI-UniRig/ComfyUI/custom_nodes/ComfyUI-UniRig/workflows/rig_human_with_texture_mia.json
+Node error: MIAAutoRig

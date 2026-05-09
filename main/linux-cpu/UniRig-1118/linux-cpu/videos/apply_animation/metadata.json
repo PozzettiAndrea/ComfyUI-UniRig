@@ -1,0 +1,30 @@
+{
+  "frames": [
+    {
+      "file": "frame_000.jpg",
+      "time": 0.0,
+      "log": "Capturing execution frames: apply_animation.json"
+    },
+    {
+      "file": "frame_001.jpg",
+      "time": 2.31,
+      "log": "Capturing execution frames: apply_animation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution..."
+    },
+    {
+      "file": "frame_002.jpg",
+      "time": 4.52,
+      "log": "Capturing execution frames: apply_animation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Frame 2 saved (frame_001.jpg, t=2.3s)\n  [capture-periodic] freeze=3ms shot=127ms unfreeze=5ms saved=True"
+    },
+    {
+      "file": "frame_003.jpg",
+      "time": 5.87,
+      "log": "Capturing execution frames: apply_animation.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution...\n  Frame 2 saved (frame_001.jpg, t=2.3s)\n  [capture-periodic] freeze=3ms shot=127ms unfreeze=5ms saved=True\n  Frame 3 saved (frame_002.jpg, t=4.5s)\n  [capture-periodic] freeze=4ms shot=119ms unfreeze=4ms saved=True"
+    },
+    {
+      "file": "frame_004.jpg",
+      "time": 70.00540089607239,
+      "log": "Final screenshot"
+    }
+  ],
+  "total_time": 67.73
+}

@@ -1,0 +1,24 @@
+[00:00] Crash dump logging enabled: /Users/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-1504/macos-cpu/crash_dump.log
+[00:00] 
+[00:00] [1/2] REGISTRATION
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=None, server_url=http://127.0.0.1:8188, api=None
+[00:00] 
+Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connected to server! (attempt 1, 0.0s)
+[00:00] Checking for import errors in server logs...
+[00:00] No import errors detected
+[00:00] Found 700 registered nodes
+[00:00] [REGISTRATION] PASSED
+[00:00] 
+[00:00] [2/2] INSTANTIATION
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x10287f010>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x10287efb0>
+[00:00] Testing node constructors...
+[00:06] All 0 node(s) instantiated successfully!
+[00:06] [INSTANTIATION] PASSED
+[00:06] 
+macos: PASSED

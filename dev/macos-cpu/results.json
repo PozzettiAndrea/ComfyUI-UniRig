@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-05-09T17:16:26.088746+00:00",
+  "platform": "macos",
+  "hardware": {
+    "os": "macOS-15.7.4-arm64-arm-64bit",
+    "cpu": "arm"
+  },
+  "commit_hash": "d86e4cb0896414f23d629d03f1c1d83a6c430844",
+  "success": true,
+  "summary": {
+    "total": 6,
+    "passed": 3,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "apply_animation",
+      "status": "pass",
+      "duration_seconds": 78.04,
+      "error": null,
+      "hardware": {
+        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 3.85,
+          "avg": 3.75
+        },
+        "total_ram_gb": 7.0,
+        "samples": 75
+      }
+    },
+    {
+      "name": "mia_humanoid",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "rigged_manipulator",
+      "status": "pass",
+      "duration_seconds": 14.32,
+      "error": null,
+      "hardware": {
+        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 3.8,
+          "avg": 3.73
+        },
+        "total_ram_gb": 7.0,
+        "samples": 14
+      }
+    },
+    {
+      "name": "skeleton_comparison",
+      "status": "pass",
+      "duration_seconds": 10.1,
+      "error": null,
+      "hardware": {
+        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "cpu": "arm"
+      },
+      "resources": {
+        "ram": {
+          "peak": 3.8,
+          "avg": 3.77
+        },
+        "total_ram_gb": 7.0,
+        "samples": 10
+      }
+    },
+    {
+      "name": "unirig_bird",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    },
+    {
+      "name": "unirig_humanoid",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for CPU runner",
+      "hardware": null
+    }
+  ]
+}

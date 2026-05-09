@@ -1,0 +1,22 @@
+Capturing execution frames: apply_animation.json
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Frame 2 saved (frame_001.jpg, t=2.4s)
+  [capture-periodic] freeze=5ms shot=131ms unfreeze=7ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.6s)
+  [capture-periodic] freeze=4ms shot=137ms unfreeze=7ms saved=True
+  Node executed (1 total), capturing...
+  Frame 4 saved (frame_003.jpg, t=5.6s)
+  [capture-node] freeze=785ms shot=860ms unfreeze=0ms saved=True
+  Execution complete (t=5.6s)
+  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+  [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
+  [3d-wait] Phase 2: iframes=0
+  [3d-wait] Total 3D wait: 60.0s
+  Captured 4 unique frames over 67.32s
+  [debug] iframes: 0
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: apply_animation_executed.png
+  [timing] final_screenshot: 0.2s
+    Captured 5 video frames

@@ -1,0 +1,95 @@
+[00:00] Crash dump logging enabled: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-1118/linux-cpu/crash_dump.log
+[00:00] 
+[00:00] [1/3] REGISTRATION
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=None, server_url=http://127.0.0.1:8188, api=None
+[00:00] 
+Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connected to server! (attempt 1, 0.0s)
+[00:00] Checking for import errors in server logs...
+[00:00] No import errors detected
+[00:00] Found 720 registered nodes
+[00:00] [REGISTRATION] PASSED
+[00:00] 
+[00:00] [2/3] INSTANTIATION
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x7f0f2c777990>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7f0f2d4c4c90>
+[00:00] Testing node constructors...
+[00:01] All 16 node(s) instantiated successfully!
+[00:01] [INSTANTIATION] PASSED
+[00:01] 
+[00:01] [3/3] EXECUTION
+[00:01] ----------------------------------------
+[00:01] 
+[DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x7f0f2c777990>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7f0f2d4c4c90>
+[00:01] CPU runner - will execute 3 workflow(s)
+[00:01] Running 6 workflow(s) (all with videos)...
+[00:02] Starting headless browser...
+[00:02]   Installing Mesa llvmpipe (apt)...
+[00:04]   Mesa install failed: E: Unable to locate package libegl1-mesa
+
+[00:04]   No GPU, no Mesa — using SwiftShader software rendering
+[00:05] Capturing execution frames: apply_animation.json
+[00:12]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[00:12]   Validating workflow...
+[00:12]   Queuing workflow for execution...
+[00:14]   Frame 2 saved (frame_001.jpg, t=2.3s)
+[00:14]   [capture-periodic] freeze=3ms shot=127ms unfreeze=5ms saved=True
+[00:17]   Frame 3 saved (frame_002.jpg, t=4.5s)
+[00:17]   [capture-periodic] freeze=4ms shot=119ms unfreeze=4ms saved=True
+[00:18]   Node executed (1 total), capturing...
+[00:20]   Frame 4 saved (frame_003.jpg, t=5.9s)
+[00:20]   [capture-node] freeze=830ms shot=974ms unfreeze=0ms saved=True
+[00:20]   Execution complete (t=5.9s)
+[00:20]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+[01:20]   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
+[01:20]   [3d-wait] Phase 2: iframes=0
+[01:20]   [3d-wait] Total 3D wait: 60.0s
+[01:20]   Captured 4 unique frames over 67.73s
+[01:20]   [debug] iframes: 0
+[01:20]   [timing] trigger_3d_previews: 0.0s
+[01:22]   Saved high-quality screenshot: apply_animation_executed.png
+[01:22]   [timing] final_screenshot: 0.3s
+[01:22]   [2/6] SKIPPED (not in cpu list) mia_humanoid.json
+[01:23] Capturing execution frames: rigged_manipulator.json
+[01:29]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[01:29]   Validating workflow...
+[01:29]   Queuing workflow for execution...
+[01:31]   Frame 2 saved (frame_001.jpg, t=2.3s)
+[01:31]   [capture-periodic] freeze=5ms shot=121ms unfreeze=7ms saved=True
+[01:33]   Frame 3 saved (frame_002.jpg, t=4.5s)
+[01:33]   [capture-periodic] freeze=3ms shot=121ms unfreeze=8ms saved=True
+[01:34]   Node executed (1 total), capturing...
+[01:35]   Frame 4 saved (frame_003.jpg, t=5.4s)
+[01:35]   [capture-node] freeze=4ms shot=702ms unfreeze=5ms saved=True
+[01:35]   Execution complete (t=6.4s)
+[01:35]   Captured 4 unique frames over 6.46s
+[01:35]   [debug] iframes: 1
+[01:35]   [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778239180880, canvas=486x710, rafFrozen=False
+[01:35]   [timing] trigger_3d_previews: 0.1s
+[01:37]   Saved high-quality screenshot: rigged_manipulator_executed.png
+[01:37]   [timing] final_screenshot: 0.2s
+[01:38] Capturing execution frames: skeleton_comparison.json
+[01:43]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[01:43]   Validating workflow...
+[01:43]   Queuing workflow for execution...
+[01:44]   Node executed (1 total), capturing...
+[01:46]   Frame 2 saved (frame_001.jpg, t=0.8s)
+[01:46]   [capture-node] freeze=1513ms shot=241ms unfreeze=0ms saved=True
+[01:46]   Execution complete (t=0.8s)
+[01:46]   Captured 2 unique frames over 2.63s
+[01:46]   [debug] iframes: 1
+[01:46]   [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=177823, canvas=387x330, rafFrozen=True
+[01:46]   [timing] trigger_3d_previews: 0.0s
+[01:48]   Saved high-quality screenshot: skeleton_comparison_executed.png
+[01:48]   [timing] final_screenshot: 0.2s
+[01:48]   [5/6] SKIPPED (not in cpu list) unirig_bird.json
+[01:49]   [6/6] SKIPPED (not in cpu list) unirig_humanoid.json
+[01:49] Results saved to /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-1118/linux-cpu/results.json
+[01:49] Saved: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-1118/linux-cpu/index.html
+[01:49] [EXECUTION] PASSED
+[01:49] 
+linux: PASSED

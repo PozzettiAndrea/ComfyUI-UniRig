@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-05-09T13:12:57.143366+00:00",
+  "platform": "windows",
+  "hardware": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
+    "gpu": "NVIDIA GeForce RTX 3090"
+  },
+  "commit_hash": "3572a86be5389ec717dfc1fba2006dc30ccd2cc1",
+  "success": true,
+  "summary": {
+    "total": 6,
+    "passed": 3,
+    "failed": 0
+  },
+  "workflows": [
+    {
+      "name": "apply_animation",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "mia_humanoid",
+      "status": "pass",
+      "duration_seconds": 104.64,
+      "error": null,
+      "hardware": {
+        "os": "Windows-10-10.0.26200-SP0",
+        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
+        "gpu": "NVIDIA GeForce RTX 3090"
+      },
+      "resources": {
+        "ram": {
+          "peak": 4.59,
+          "avg": 2.86
+        },
+        "total_ram_gb": 31.9,
+        "samples": 92,
+        "vram": {
+          "peak": 3.17,
+          "avg": 1.85
+        }
+      }
+    },
+    {
+      "name": "rigged_manipulator",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "skeleton_comparison",
+      "status": "skipped",
+      "duration_seconds": 0,
+      "error": "Not configured for GPU runner",
+      "hardware": null
+    },
+    {
+      "name": "unirig_bird",
+      "status": "pass",
+      "duration_seconds": 165.92,
+      "error": null,
+      "hardware": {
+        "os": "Windows-10-10.0.26200-SP0",
+        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
+        "gpu": "NVIDIA GeForce RTX 3090"
+      },
+      "resources": {
+        "ram": {
+          "peak": 5.63,
+          "avg": 2.89
+        },
+        "total_ram_gb": 31.9,
+        "samples": 146,
+        "vram": {
+          "peak": 4.25,
+          "avg": 1.75
+        }
+      }
+    },
+    {
+      "name": "unirig_humanoid",
+      "status": "pass",
+      "duration_seconds": 138.58,
+      "error": null,
+      "hardware": {
+        "os": "Windows-10-10.0.26200-SP0",
+        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
+        "gpu": "NVIDIA GeForce RTX 3090"
+      },
+      "resources": {
+        "ram": {
+          "peak": 5.14,
+          "avg": 3.07
+        },
+        "total_ram_gb": 31.9,
+        "samples": 122,
+        "vram": {
+          "peak": 4.21,
+          "avg": 2.32
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+Capturing execution frames: rigged_manipulator.json
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Node executed (1 total), capturing...
+  Frame 2 saved (frame_001.jpg, t=1.0s)
+  [capture-node] freeze=4ms shot=186ms unfreeze=0ms saved=True
+  Execution complete (t=1.0s)
+  Captured 2 unique frames over 1.28s
+  [debug] iframes: 1
+  [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778013743512, canvas=300x150, rafFrozen=True
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: rigged_manipulator_executed.png
+  [timing] final_screenshot: 1.4s
+    Captured 3 video frames

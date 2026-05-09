@@ -1,0 +1,26 @@
+Capturing execution frames: apply_animation.json
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Frame 2 saved (frame_001.jpg, t=2.4s)
+  [capture-periodic] freeze=4ms shot=139ms unfreeze=6ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.7s)
+  [capture-periodic] freeze=4ms shot=124ms unfreeze=3ms saved=True
+  [capture-loop] iter=50 t=6.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=5.2/16.0GB (32%) swap=0.1/2.9GB (5%) cpu=46% browser_rss=0.72GB
+  [capture-loop] iter=100 t=12.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=5.5/16.0GB (34%) swap=0.1/2.9GB (5%) cpu=70% browser_rss=0.71GB
+  Frame 4 saved (frame_003.jpg, t=13.6s)
+  [capture-periodic] freeze=4ms shot=142ms unfreeze=6ms saved=True
+  Node executed (1 total), capturing...
+  Frame 5 saved (frame_004.jpg, t=14.2s)
+  [capture-node] freeze=1205ms shot=1138ms unfreeze=0ms saved=True
+  Execution complete (t=14.2s)
+  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+  [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
+  [3d-wait] Phase 2: iframes=0
+  [3d-wait] Total 3D wait: 60.0s
+  Captured 5 unique frames over 76.64s
+  [debug] iframes: 0
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: apply_animation_executed.png
+  [timing] final_screenshot: 0.2s
+    Captured 6 video frames

@@ -1,0 +1,100 @@
+[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1140\windows-portable-cpu\crash_dump.log
+[00:00] 
+[00:00] [1/3] REGISTRATION
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=None, server_url=http://127.0.0.1:8188, api=None
+[00:00] 
+Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connecting to existing server at http://127.0.0.1:8188...
+[00:00] Connected to server! (attempt 1, 0.0s)
+[00:00] Checking for import errors in server logs...
+[00:00] No import errors detected
+[00:00] Found 708 registered nodes
+[00:00] [REGISTRATION] PASSED
+[00:00] 
+[00:00] [2/3] INSTANTIATION
+[00:00] ----------------------------------------
+[00:00] 
+[DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x0000023416DE17F0>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x0000023416DE1940>
+[00:00] Testing node constructors...
+[00:04] All 16 node(s) instantiated successfully!
+[00:04] [INSTANTIATION] PASSED
+[00:04] 
+[00:04] [3/3] EXECUTION
+[00:04] ----------------------------------------
+[00:04] 
+[DEBUG] server=<comfy_test.comfyui.server.ExternalComfyUIServer object at 0x0000023416DE17F0>, server_url=http://127.0.0.1:8188, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x0000023416DE1940>
+[00:04] CPU runner - will execute 3 workflow(s)
+[00:04] Running 6 workflow(s) (all with videos)...
+[00:04] Starting headless browser...
+[00:05]   Downloading Mesa llvmpipe for Windows...
+[00:10]   Copied opengl32.dll to Chromium dir
+[00:10]   Copied libgallium_wgl.dll to Chromium dir
+[00:10]   Using Mesa llvmpipe (desktop GL) — multithreaded CPU rendering
+[00:11] Capturing execution frames: apply_animation.json
+[00:20]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[00:20]   Validating workflow...
+[00:20]   Queuing workflow for execution...
+[00:23]   Frame 2 saved (frame_001.jpg, t=2.2s)
+[00:23]   [capture-periodic] freeze=3ms shot=108ms unfreeze=6ms saved=True
+[00:25]   Frame 3 saved (frame_002.jpg, t=4.4s)
+[00:25]   [capture-periodic] freeze=3ms shot=97ms unfreeze=5ms saved=True
+[00:26]   [capture-loop] iter=50 t=5.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=5.3/16.0GB (33%) swap=0.3/2.9GB (10%) cpu=38% browser_rss=0.70GB
+[00:31]   Node executed (1 total), capturing...
+[00:33]   Frame 4 saved (frame_003.jpg, t=11.0s)
+[00:33]   [capture-node] freeze=812ms shot=1113ms unfreeze=0ms saved=True
+[00:33]   Execution complete (t=11.0s)
+[00:33]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+[01:33]   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
+[01:33]   [3d-wait] Phase 2: iframes=0
+[01:33]   [3d-wait] Total 3D wait: 60.0s
+[01:33]   Captured 4 unique frames over 73.02s
+[01:33]   [debug] iframes: 0
+[01:33]   [timing] trigger_3d_previews: 0.0s
+[01:35]   Saved high-quality screenshot: apply_animation_executed.png
+[01:35]   [timing] final_screenshot: 0.2s
+[01:36]   [2/6] SKIPPED (not in cpu list) mia_humanoid.json
+[01:36] Capturing execution frames: rigged_manipulator.json
+[01:42]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[01:42]   Validating workflow...
+[01:42]   Queuing workflow for execution...
+[01:45]   Frame 2 saved (frame_001.jpg, t=2.3s)
+[01:45]   [capture-periodic] freeze=5ms shot=130ms unfreeze=5ms saved=True
+[01:47]   Frame 3 saved (frame_002.jpg, t=4.5s)
+[01:47]   [capture-periodic] freeze=5ms shot=132ms unfreeze=4ms saved=True
+[01:48]   [capture-loop] iter=50 t=6.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=10 ram=5.3/16.0GB (33%) swap=0.3/2.9GB (10%) cpu=18% browser_rss=0.73GB
+[01:55]   Node executed (1 total), capturing...
+[01:56]   Frame 4 saved (frame_003.jpg, t=13.2s)
+[01:56]   [capture-node] freeze=6ms shot=757ms unfreeze=0ms saved=True
+[01:56]   Execution complete (t=13.1s)
+[01:56]   Captured 4 unique frames over 13.95s
+[01:56]   [debug] iframes: 1
+[01:56]   [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778326937298, canvas=486x710, rafFrozen=True
+[01:56]   [timing] trigger_3d_previews: 0.0s
+[01:58]   Saved high-quality screenshot: rigged_manipulator_executed.png
+[01:58]   [timing] final_screenshot: 0.2s
+[01:59] Capturing execution frames: skeleton_comparison.json
+[02:05]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[02:05]   Validating workflow...
+[02:05]   Queuing workflow for execution...
+[02:07]   Frame 2 saved (frame_001.jpg, t=2.3s)
+[02:07]   [capture-periodic] freeze=5ms shot=131ms unfreeze=6ms saved=True
+[02:08]   Node executed (1 total), capturing...
+[02:10]   Frame 3 saved (frame_002.jpg, t=3.4s)
+[02:10]   [capture-node] freeze=1029ms shot=952ms unfreeze=0ms saved=True
+[02:10]   Execution complete (t=3.4s)
+[02:10]   Captured 3 unique frames over 5.41s
+[02:10]   [debug] iframes: 1
+[02:10]   [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=177832, canvas=387x330, rafFrozen=True
+[02:10]   [timing] trigger_3d_previews: 0.0s
+[02:12]   Saved high-quality screenshot: skeleton_comparison_executed.png
+[02:12]   [timing] final_screenshot: 0.2s
+[02:12]   [5/6] SKIPPED (not in cpu list) unirig_bird.json
+[02:13]   [6/6] SKIPPED (not in cpu list) unirig_humanoid.json
+[02:13] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1140\windows-portable-cpu\results.json
+[02:13] Model report: 8 files, 18.7 MB -> D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1140\windows-portable-cpu\models.json
+[02:13] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1140\windows-portable-cpu\index.html
+[02:13] [EXECUTION] PASSED
+[02:13] 
+windows_portable: PASSED

@@ -1,0 +1,23 @@
+Capturing execution frames: apply_animation.json
+  Frame 1 saved (frame_000.jpg, t=0.0s)
+  Validating workflow...
+  Queuing workflow for execution...
+  Frame 2 saved (frame_001.jpg, t=2.3s)
+  [capture-periodic] freeze=4ms shot=207ms unfreeze=16ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.7s)
+  [capture-periodic] freeze=4ms shot=240ms unfreeze=15ms saved=True
+  [capture-loop] iter=50 t=6.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=3.8/7.0GB (59%) swap=0.0/0.0GB (0%) cpu=45% browser_rss=0.65GB
+  Node executed (1 total), capturing...
+  Frame 4 saved (frame_003.jpg, t=6.5s)
+  [capture-node] freeze=4ms shot=1360ms unfreeze=0ms saved=True
+  Execution complete (t=6.5s)
+  [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+  [3d-wait] Phase 1 exception after 60.0s: Timeout 60000ms exceeded.
+  [3d-wait] Phase 2: iframes=0
+  [3d-wait] Total 3D wait: 60.0s
+  Captured 4 unique frames over 67.99s
+  [debug] iframes: 0
+  [timing] trigger_3d_previews: 0.0s
+  Saved high-quality screenshot: apply_animation_executed.png
+  [timing] final_screenshot: 0.4s
+    Captured 5 video frames

@@ -1,0 +1,20 @@
+{
+  "frames": [
+    {
+      "file": "frame_000.jpg",
+      "time": 0.0,
+      "log": "Capturing execution frames: skeleton_comparison.json"
+    },
+    {
+      "file": "frame_001.jpg",
+      "time": 2.49,
+      "log": "Capturing execution frames: skeleton_comparison.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution..."
+    },
+    {
+      "file": "frame_002.jpg",
+      "time": 5.104063272476196,
+      "log": "Final screenshot"
+    }
+  ],
+  "total_time": 2.89
+}

@@ -1,0 +1,83 @@
+{
+  "models_dir": "/workspaces/UniRig-1151/ComfyUI/models",
+  "summary": {
+    "total_files": 11,
+    "total_size_bytes": 5228813056,
+    "total_size_human": "4.9 GB"
+  },
+  "folders": {
+    "mia": {
+      "total_size_bytes": 2330090627,
+      "total_size_human": "2.2 GB",
+      "source": {
+        "type": "unknown"
+      },
+      "files": [
+        {
+          "path": "pose.pth",
+          "size_bytes": 525848433,
+          "size_human": "501.5 MB"
+        },
+        {
+          "path": "joints.pth",
+          "size_bytes": 525833771,
+          "size_human": "501.5 MB"
+        },
+        {
+          "path": "bw_normal.pth",
+          "size_bytes": 429008352,
+          "size_human": "409.1 MB"
+        },
+        {
+          "path": "joints_coarse.pth",
+          "size_bytes": 424706373,
+          "size_human": "405.0 MB"
+        },
+        {
+          "path": "bw.pth",
+          "size_bytes": 424693698,
+          "size_human": "405.0 MB"
+        }
+      ]
+    },
+    "unirig": {
+      "total_size_bytes": 2898722429,
+      "total_size_human": "2.7 GB",
+      "source": {
+        "type": "unknown"
+      },
+      "files": [
+        {
+          "path": "skin.safetensors",
+          "size_bytes": 1458123556,
+          "size_human": "1.4 GB"
+        },
+        {
+          "path": "skeleton.safetensors",
+          "size_bytes": 1440598432,
+          "size_human": "1.3 GB"
+        },
+        {
+          "path": ".cache/huggingface/CACHEDIR.TAG",
+          "size_bytes": 191,
+          "size_human": "191.0 B"
+        },
+        {
+          "path": ".cache/huggingface/download/skeleton.safetensors.metadata",
+          "size_bytes": 125,
+          "size_human": "125.0 B"
+        },
+        {
+          "path": ".cache/huggingface/download/skin.safetensors.metadata",
+          "size_bytes": 124,
+          "size_human": "124.0 B"
+        },
+        {
+          "path": ".cache/huggingface/.gitignore",
+          "size_bytes": 1,
+          "size_human": "1.0 B"
+        }
+      ]
+    }
+  }
+}

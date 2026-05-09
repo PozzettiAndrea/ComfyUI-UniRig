@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-01-25T01:17:40.378435+00:00",
+  "platform": "linux",
+  "summary": {
+    "total": 5,
+    "passed": 4,
+    "failed": 1
+  },
+  "workflows": [
+    {
+      "name": "apply_animation",
+      "status": "fail",
+      "duration_seconds": 5.81,
+      "error": "Workflow validation failed\n\nDetails:\nPrompt outputs failed validation\nNode errors:\n{\n  \"8\": {\n    \"errors\": [\n      {\n        \"type\": \"required_input_missing\",\n        \"message\": \"Required input is missing\",\n        \"details\": \"fbx_file\",\n        \"extra_info\": {\n          \"input_name\": \"fbx_file\"\n        }\n      }\n    ],\n    \"dependent_outputs\": [\n      \"7\",\n      \"6\"\n    ],\n    \"class_type\": \"UniRigLoadRiggedMesh\"\n  }\n}",
+      "hardware": {
+        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
+        "cpu": "AMD EPYC 7763 64-Core Processor"
+      }
+    },
+    {
+      "name": "rig_human_with_texture",
+      "status": "pass",
+      "duration_seconds": 72.02,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
+        "cpu": "AMD EPYC 7763 64-Core Processor"
+      }
+    },
+    {
+      "name": "rig_human_with_texture_mia",
+      "status": "pass",
+      "duration_seconds": 194.69,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
+        "cpu": "AMD EPYC 7763 64-Core Processor"
+      }
+    },
+    {
+      "name": "rig_human_with_texture_mia_debug",
+      "status": "pass",
+      "duration_seconds": 15.62,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
+        "cpu": "AMD EPYC 7763 64-Core Processor"
+      }
+    },
+    {
+      "name": "rigged_manipulator",
+      "status": "pass",
+      "duration_seconds": 33.04,
+      "error": null,
+      "hardware": {
+        "os": "Linux-6.11.0-1018-azure-x86_64-with-glibc2.39",
+        "cpu": "AMD EPYC 7763 64-Core Processor"
+      }
+    }
+  ]
+}

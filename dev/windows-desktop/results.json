@@ -1,0 +1,29 @@
+{
+  "workflows": [
+    {
+      "name": "system",
+      "status": "pass",
+      "duration_seconds": 0,
+      "error": null,
+      "hardware": null
+    },
+    {
+      "name": "apply_animation",
+      "status": "pass",
+      "duration_seconds": 12,
+      "error": null
+    },
+    {
+      "name": "skeleton_comparison",
+      "status": "pass",
+      "duration_seconds": 14,
+      "error": null
+    },
+    {
+      "name": "rigged_manipulator",
+      "status": "pass",
+      "duration_seconds": 13,
+      "error": null
+    }
+  ]
+}
