@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-05-10T01:21:26.563225+00:00",
+  "timestamp": "2026-05-10T08:38:04.978109+00:00",
   "platform": "macos",
   "hardware": {
-    "os": "macOS-15.7.4-arm64-arm-64bit",
+    "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
     "cpu": "arm"
   },
-  "commit_hash": "d86e4cb0896414f23d629d03f1c1d83a6c430844",
-  "success": false,
+  "commit_hash": "d5dc353223a993d12ed98e6f742c114091b54ec0",
+  "success": true,
   "summary": {
     "total": 6,
-    "passed": 0,
-    "failed": 3
+    "passed": 3,
+    "failed": 0
   },
   "workflows": [
     {
       "name": "apply_animation",
-      "status": "fail",
-      "duration_seconds": 8.59,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"model_fbx_path\":[\"9\",0]},\"_meta\":{}}",
+      "status": "pass",
+      "duration_seconds": 77.85,
+      "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 0.49,
-          "avg": 0.49
+          "peak": 1.15,
+          "avg": 1.03
         },
         "total_ram_gb": 7.0,
-        "samples": 9
+        "samples": 72
       }
     },
     {
@@ -40,38 +40,38 @@
     },
     {
       "name": "rigged_manipulator",
-      "status": "fail",
-      "duration_seconds": 5.62,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_output_path\":[\"4\",0]},\"_meta\":{}}",
+      "status": "pass",
+      "duration_seconds": 13.96,
+      "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 0.48,
-          "avg": 0.46
+          "peak": 1.08,
+          "avg": 0.97
         },
         "total_ram_gb": 7.0,
-        "samples": 6
+        "samples": 13
       }
     },
     {
       "name": "skeleton_comparison",
-      "status": "fail",
-      "duration_seconds": 5.59,
-      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_path_left\":[\"54\",0],\"fbx_path_right\":[\"55\",0]},\"_meta\":{}}",
+      "status": "pass",
+      "duration_seconds": 8.42,
+      "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 0.46,
-          "avg": 0.45
+          "peak": 1.09,
+          "avg": 1.08
         },
         "total_ram_gb": 7.0,
-        "samples": 6
+        "samples": 8
       }
     },
     {
