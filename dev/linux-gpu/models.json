@@ -1,8 +1,8 @@
 {
-  "models_dir": "/workspaces/UniRig-0316/ComfyUI/models",
+  "models_dir": "/workspaces/UniRig-1432/ComfyUI/models",
   "summary": {
     "total_files": 11,
-    "total_size_bytes": 5228813057,
+    "total_size_bytes": 5228813056,
     "total_size_human": "4.9 GB"
   },
   "folders": {
@@ -41,7 +41,7 @@
       ]
     },
     "unirig": {
-      "total_size_bytes": 2898722430,
+      "total_size_bytes": 2898722429,
       "total_size_human": "2.7 GB",
       "source": {
         "type": "unknown"
@@ -69,8 +69,8 @@
         },
         {
           "path": ".cache/huggingface/download/skeleton.safetensors.metadata",
-          "size_bytes": 125,
-          "size_human": "125.0 B"
+          "size_bytes": 124,
+          "size_human": "124.0 B"
         },
         {
           "path": ".cache/huggingface/.gitignore",
