@@ -20,8 +20,8 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI]   Node 55: UniRigLoadRiggedMesh
   [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
   [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
-  [ComfyUI] Generated prompt_id: e73ba5d8-a37e-4a36-91fe-66d66fbdacf7
-  [ComfyUI] Generated prompt_id: e73ba5d8-a37e-4a36-91fe-66d66fbdacf7
+  [ComfyUI] Generated prompt_id: a8c1c174-5fac-46df-a72e-94f2478ee167
+  [ComfyUI] Generated prompt_id: a8c1c174-5fac-46df-a72e-94f2478ee167
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Validation result: valid=True
@@ -54,8 +54,8 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.38s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.38s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.53s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.53s): result: NodeOutput
   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
@@ -80,8 +80,8 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.59s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.59s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.56s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.56s): result: NodeOutput
   [ComfyUI] [comfy-env] Running UniRigCompareSkeletons: fbx_path_left: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniR..., fbx_path_right: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniR...
   [ComfyUI] [comfy-env] Running UniRigCompareSkeletons: fbx_path_left: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniR..., fbx_path_right: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniR...
   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigCompareSkeletons.EXECUTE_NORMALIZED
@@ -104,17 +104,17 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [SubprocessWorker] call_id=7 sending call_method
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.08s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.08s): result: NodeOutput
-  [ComfyUI] Prompt executed in 1.06 seconds
-  [ComfyUI] Prompt executed in 1.06 seconds
+  [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.29s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.29s): result: NodeOutput
+  [ComfyUI] Prompt executed in 1.39 seconds
+  [ComfyUI] Prompt executed in 1.39 seconds
   Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=3.0s)
-  [capture-node] freeze=154ms shot=243ms unfreeze=0ms saved=True
-  Execution complete (t=3.1s)
-  Captured 2 unique frames over 3.47s
+  Frame 2 saved (frame_001.jpg, t=1.8s)
+  [capture-node] freeze=1490ms shot=256ms unfreeze=0ms saved=True
+  Execution complete (t=1.8s)
+  Captured 2 unique frames over 3.58s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41887/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17784, canvas=387x330, rafFrozen=True
+  [debug]   iframe[0]: src=http://127.0.0.1:41885/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17784, canvas=387x330, rafFrozen=True
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: skeleton_comparison_executed.png
   [timing] final_screenshot: 0.2s
