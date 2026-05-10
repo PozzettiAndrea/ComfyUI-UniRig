@@ -1,11 +1,12 @@
 {
-  "timestamp": "2026-05-05T20:42:42.823812+00:00",
+  "timestamp": "2026-05-10T21:45:46.971808+00:00",
   "platform": "macos",
   "hardware": {
     "os": "macOS-15.7.4-arm64-arm-64bit",
     "cpu": "arm"
   },
-  "commit_hash": "7e152dbb87e48da7db366ae67b341d937a09b1ba",
+  "commit_hash": "730c866082148b2a513df16f27fec81d8fa1685f",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25640427591",
   "success": true,
   "summary": {
     "total": 6,
@@ -16,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 18.4,
+      "duration_seconds": 77.59,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
@@ -24,11 +25,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 3.78,
-          "avg": 3.74
+          "peak": 1.05,
+          "avg": 0.92
         },
         "total_ram_gb": 7.0,
-        "samples": 18
+        "samples": 72
       }
     },
     {
@@ -41,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 10.88,
+      "duration_seconds": 21.81,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
@@ -49,17 +50,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 3.72,
-          "avg": 3.69
+          "peak": 1.01,
+          "avg": 0.89
         },
         "total_ram_gb": 7.0,
-        "samples": 11
+        "samples": 20
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.34,
+      "duration_seconds": 12.03,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
@@ -67,11 +68,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 3.71,
-          "avg": 3.67
+          "peak": 1.02,
+          "avg": 1.01
         },
         "total_ram_gb": 7.0,
-        "samples": 10
+        "samples": 12
       }
     },
     {

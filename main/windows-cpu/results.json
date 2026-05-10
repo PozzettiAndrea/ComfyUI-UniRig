@@ -1,11 +1,12 @@
 {
-  "timestamp": "2026-05-09T11:39:47.390717+00:00",
+  "timestamp": "2026-05-10T21:42:40.038318+00:00",
   "platform": "windows",
   "hardware": {
-    "os": "Windows-2025Server-10.0.26100-SP0",
+    "os": "Windows-10-10.0.26100-SP0",
     "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "3572a86be5389ec717dfc1fba2006dc30ccd2cc1",
+  "commit_hash": "730c866082148b2a513df16f27fec81d8fa1685f",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25640426792",
   "success": true,
   "summary": {
     "total": 6,
@@ -16,19 +17,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 83.7,
+      "duration_seconds": 84.99,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 5.05,
-          "avg": 4.79
+          "peak": 1.04,
+          "avg": 0.96
         },
         "total_ram_gb": 16.0,
-        "samples": 84
+        "samples": 85
       }
     },
     {
@@ -41,34 +42,34 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 20.14,
+      "duration_seconds": 19.38,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 4.91,
-          "avg": 4.75
+          "peak": 1.0,
+          "avg": 0.87
         },
         "total_ram_gb": 16.0,
-        "samples": 21
+        "samples": 20
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 11.59,
+      "duration_seconds": 11.25,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 5.04,
-          "avg": 4.91
+          "peak": 0.96,
+          "avg": 0.96
         },
         "total_ram_gb": 16.0,
         "samples": 12

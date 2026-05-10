@@ -1,11 +1,12 @@
 {
-  "timestamp": "2026-05-09T11:34:48.080674+00:00",
+  "timestamp": "2026-05-10T21:41:49.244358+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-    "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+    "cpu": "AMD EPYC 7763 64-Core Processor"
   },
-  "commit_hash": "3572a86be5389ec717dfc1fba2006dc30ccd2cc1",
+  "commit_hash": "730c866082148b2a513df16f27fec81d8fa1685f",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25640425925",
   "success": true,
   "summary": {
     "total": 6,
@@ -16,16 +17,16 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 77.91,
+      "duration_seconds": 77.75,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 2.52,
-          "avg": 2.33
+          "peak": 1.73,
+          "avg": 1.63
         },
         "total_ram_gb": 15.6,
         "samples": 78
@@ -41,37 +42,37 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 14.22,
+      "duration_seconds": 13.72,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 2.54,
-          "avg": 2.41
+          "peak": 1.73,
+          "avg": 1.65
         },
         "total_ram_gb": 15.6,
-        "samples": 15
+        "samples": 14
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.42,
+      "duration_seconds": 9.73,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 2.55,
-          "avg": 2.53
+          "peak": 1.73,
+          "avg": 1.72
         },
         "total_ram_gb": 15.6,
-        "samples": 11
+        "samples": 10
       }
     },
     {

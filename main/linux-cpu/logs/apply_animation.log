@@ -1,25 +1,81 @@
 Capturing execution frames: apply_animation.json
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Prompt has 4 nodes
+  [ComfyUI]   Node 6: UniRigApplyAnimation
+  [ComfyUI]     Inputs: {"model_fbx_path": ["9", 0], "animation_type": "mixamo", "animation_file": "Breakdance.fbx", "output_name": ""}
+  [ComfyUI]   Node 7: Preview3D
+  [ComfyUI]     Inputs: {"model_file": ["6", 0], "image": "", "camera_info": ["10", 0]}
+  [ComfyUI]   Node 9: UniRigLoadRiggedMesh
+  [ComfyUI]     Inputs: {"fbx_file": "3d/mixamo.fbx"}
   Queuing workflow for execution...
+  [ComfyUI]   Node 10: CreateLoad3DCamera
+  [ComfyUI]     Inputs: {"pos_x": 0, "pos_y": 20, "pos_z": 20, "target_x": 0, "target_y": 0, "target_z": 0, "zoom": 1, "camera_type": "perspective"}
+  [ComfyUI] Generated prompt_id: 933d422c-0e26-4055-bb41-7d1213ce27e9
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] got prompt
+  [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
+  [ComfyUI] [comfy-env] SubprocessWorker: /home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-2138/ComfyUI'}
+  [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-UniRig] python: /home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-2138/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-2138/ComfyUI/custom_nodes/ComfyUI-UniRig', '/home/runner/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-2138/ComfyUI/custom_nodes/ComfyUI-UniRig']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_gvkgsays/persistent_worker.py', 'abstract://comfy_worker_5e759c5309c8']...
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_5e759c5309c8 (abstract, no filesystem path)
+  [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
   Frame 2 saved (frame_001.jpg, t=2.3s)
-  [capture-periodic] freeze=3ms shot=103ms unfreeze=6ms saved=True
+  [capture-periodic] freeze=3ms shot=129ms unfreeze=4ms saved=True
+  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
   Frame 3 saved (frame_002.jpg, t=4.5s)
-  [capture-periodic] freeze=3ms shot=132ms unfreeze=7ms saved=True
-  [capture-loop] iter=50 t=5.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=2.4/15.6GB (15%) swap=0.0/3.0GB (0%) cpu=31% browser_rss=0.92GB
+  [capture-periodic] freeze=2ms shot=97ms unfreeze=2ms saved=True
+  [capture-loop] iter=50 t=5.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=2.4/15.6GB (15%) swap=0.0/3.0GB (0%) cpu=29% browser_rss=0.90GB
+  [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (6.09s): result: NodeOutput
+  [ComfyUI] [comfy-env] Running UniRigApplyAnimation: model_fbx_path: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., animation_type: 'mixamo', animation_file: 'Breakdance.fbx', output_name: ''
+  [ComfyUI] [SubprocessWorker] call_method: nodes.animation.UniRigApplyAnimation.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
+  [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+  [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7700
+  [ComfyUI] [worker:ComfyUI-UniRig]
+  [ComfyUI] FBX export starting... '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-2138/ComfyUI/output/loaded_1778449219_mixamo_Breakdance.fbx'
+  [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
+  [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
   Frame 4 saved (frame_003.jpg, t=6.7s)
-  [capture-periodic] freeze=2ms shot=102ms unfreeze=4ms saved=True
+  [capture-periodic] freeze=2ms shot=113ms unfreeze=3ms saved=True
+  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 0.4164 sec.
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] UniRigApplyAnimation done (0.62s): result: NodeOutput
+  [ComfyUI] Prompt executed in 6.71 seconds
   Node executed (1 total), capturing...
-  Frame 5 saved (frame_004.jpg, t=7.2s)
-  [capture-node] freeze=960ms shot=973ms unfreeze=0ms saved=True
-  Execution complete (t=7.2s)
+  Frame 5 saved (frame_004.jpg, t=7.4s)
+  [capture-node] freeze=721ms shot=818ms unfreeze=0ms saved=True
+  Execution complete (t=7.4s)
   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
   [3d-wait] Phase 2: iframes=0
   [3d-wait] Total 3D wait: 60.0s
-  Captured 5 unique frames over 69.15s
+  Captured 5 unique frames over 69.02s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: apply_animation_executed.png
-  [timing] final_screenshot: 0.2s
+  [timing] final_screenshot: 0.3s
     Captured 6 video frames

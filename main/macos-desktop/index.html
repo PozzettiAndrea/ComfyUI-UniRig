@@ -1445,11 +1445,18 @@
             if (document.getElementById('lightbox').classList.contains('active') && !overlay.classList.contains('active')) {
                 if (key === 'ArrowLeft') { navigateLightbox(-1); }
                 if (key === 'ArrowRight') { navigateLightbox(1); }
+                if ((key === 'ArrowUp' || key === 'ArrowDown') && inIframe) {
+                    window.parent.postMessage({
+                        type: 'comfytest-platform-shift',
+                        delta: key === 'ArrowUp' ? -1 : 1,
+                        workflow: currentWorkflow,
+                    }, '*');
+                }
             }
         }
 
         document.onkeydown = (e) => {
-            if (['Escape', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+            if (['Escape', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
                 e.preventDefault();
                 handleKey(e.key);
             }

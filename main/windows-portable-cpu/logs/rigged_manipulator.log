@@ -1,20 +1,113 @@
 Capturing execution frames: rigged_manipulator.json
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Prompt has 2 nodes
+  [ComfyUI] Prompt has 2 nodes
+  [ComfyUI]   Node 3: UniRigPreviewRiggedMesh
+  [ComfyUI]   Node 3: UniRigPreviewRiggedMesh
+  [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+  [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
   Queuing workflow for execution...
-  Frame 2 saved (frame_001.jpg, t=2.3s)
-  [capture-periodic] freeze=5ms shot=130ms unfreeze=5ms saved=True
-  Frame 3 saved (frame_002.jpg, t=4.5s)
-  [capture-periodic] freeze=5ms shot=132ms unfreeze=4ms saved=True
-  [capture-loop] iter=50 t=6.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=10 ram=5.3/16.0GB (33%) swap=0.3/2.9GB (10%) cpu=18% browser_rss=0.73GB
+  [ComfyUI]   Node 4: UniRigLoadRiggedMesh
+  [ComfyUI]   Node 4: UniRigLoadRiggedMesh
+  [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
+  [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
+  [ComfyUI] Generated prompt_id: 89eb177f-6eba-4171-b78f-4d97ffacc387
+  [ComfyUI] Generated prompt_id: 89eb177f-6eba-4171-b78f-4d97ffacc387
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] got prompt
+  [ComfyUI] got prompt
+  [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: 'animation_characters/mixamo.fbx'
+  [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: 'animation_characters/mixamo.fbx'
+  [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-UniRig] Health check: failed
+  [ComfyUI] [ComfyUI-UniRig] Health check: failed
+  [ComfyUI] [ComfyUI-UniRig] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-UniRig] Socket unhealthy, restarting worker...
+  [ComfyUI] [comfy-env] unirig-nodes: Library/bin has 235 DLLs
+  [ComfyUI] [comfy-env] unirig-nodes: Library/bin has 235 DLLs
+  [ComfyUI] [ComfyUI-UniRig] python: C:\ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [ComfyUI-UniRig] python: C:\ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-2137\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-2137\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig', 'C:\\ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-2137\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig']
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-2137\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-2137\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig', 'C:\\ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-2137\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'unirig-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_aeeockfl\\persistent_worker.py', 'tcp://127.0.0.1:53532']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\ce\\pixi.toml', '-e', 'unirig-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_aeeockfl\\persistent_worker.py', 'tcp://127.0.0.1:53532']...
+  Frame 2 saved (frame_001.jpg, t=2.4s)
+  [capture-periodic] freeze=4ms shot=133ms unfreeze=6ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.6s)
+  [capture-periodic] freeze=4ms shot=103ms unfreeze=6ms saved=True
+  [capture-loop] iter=50 t=6.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=5.3/16.0GB (33%) swap=0.4/2.9GB (15%) cpu=16% browser_rss=0.77GB
+  [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=3 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=3 sending call_method
+  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
+  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
+  [capture-loop] iter=100 t=12.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=5.6/16.0GB (35%) swap=0.4/2.9GB (15%) cpu=54% browser_rss=0.76GB
+  [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+  [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (13.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (13.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniR...
+  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniR...
+  [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigPreviewRiggedMesh.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigPreviewRiggedMesh.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ok
+  [ComfyUI] [ComfyUI-UniRig] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=4 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=4 sending call_method
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.28s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.28s): result: NodeOutput
+  [ComfyUI] Prompt executed in 13.66 seconds
+  [ComfyUI] Prompt executed in 13.66 seconds
   Node executed (1 total), capturing...
-  Frame 4 saved (frame_003.jpg, t=13.2s)
-  [capture-node] freeze=6ms shot=757ms unfreeze=0ms saved=True
-  Execution complete (t=13.1s)
-  Captured 4 unique frames over 13.95s
+  Frame 4 saved (frame_003.jpg, t=14.1s)
+  [capture-node] freeze=6ms shot=652ms unfreeze=10ms saved=True
+  Execution complete (t=15.0s)
+  Captured 4 unique frames over 15.08s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:8188/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778326937298, canvas=486x710, rafFrozen=True
-  [timing] trigger_3d_previews: 0.0s
+  [debug]   iframe[0]: src=http://127.0.0.1:41885/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778449640790, canvas=486x710, rafFrozen=False
+  [timing] trigger_3d_previews: 0.1s
   Saved high-quality screenshot: rigged_manipulator_executed.png
   [timing] final_screenshot: 0.2s
     Captured 5 video frames

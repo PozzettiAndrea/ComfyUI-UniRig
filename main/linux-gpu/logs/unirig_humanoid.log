@@ -1,51 +1,31 @@
 Capturing execution frames: unirig_humanoid.json
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Prompt has 4 nodes
+  [ComfyUI] Prompt has 4 nodes
+  [ComfyUI] Prompt has 4 nodes
+  [ComfyUI] Prompt has 4 nodes
   Queuing workflow for execution...
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] [ComfyUI-UniRig] python: /workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
-  [ComfyUI] [ComfyUI-UniRig] python: /workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
-  [ComfyUI] [ComfyUI-UniRig] python: /workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
-  [ComfyUI] [ComfyUI-UniRig] python: /workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
-  [ComfyUI] Prompt has 4 nodes
-  [ComfyUI] Prompt has 4 nodes
-  [ComfyUI] Prompt has 4 nodes
-  [ComfyUI] Prompt has 4 nodes
-  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-1151/ComfyUI', '/workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig', '/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages', '/workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig']
-  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-1151/ComfyUI', '/workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig', '/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages', '/workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig']
-  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-1151/ComfyUI', '/workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig', '/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages', '/workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig']
-  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-1151/ComfyUI', '/workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig', '/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages', '/workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig']
   [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
   [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
   [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
   [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
   [ComfyUI]     Inputs: {"fbx_output_path": ["39", 0], "preview": ""}
   [ComfyUI]     Inputs: {"fbx_output_path": ["39", 0], "preview": ""}
   [ComfyUI]     Inputs: {"fbx_output_path": ["39", 0], "preview": ""}
   [ComfyUI]     Inputs: {"fbx_output_path": ["39", 0], "preview": ""}
-  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/workspaces/UniRig-1151/ComfyUI/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_68se9rwq/persistent_worker.py', 'abstract://comfy_worker_a29278fe0980']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/workspaces/UniRig-1151/ComfyUI/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_68se9rwq/persistent_worker.py', 'abstract://comfy_worker_a29278fe0980']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/workspaces/UniRig-1151/ComfyUI/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_68se9rwq/persistent_worker.py', 'abstract://comfy_worker_a29278fe0980']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/workspaces/UniRig-1151/ComfyUI/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_68se9rwq/persistent_worker.py', 'abstract://comfy_worker_a29278fe0980']...
   [ComfyUI]   Node 27: UniRigLoadMesh
   [ComfyUI]   Node 27: UniRigLoadMesh
   [ComfyUI]   Node 27: UniRigLoadMesh
   [ComfyUI]   Node 27: UniRigLoadMesh
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_a29278fe0980 (abstract, no filesystem path)
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_a29278fe0980 (abstract, no filesystem path)
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_a29278fe0980 (abstract, no filesystem path)
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_a29278fe0980 (abstract, no filesystem path)
   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
@@ -66,10 +46,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     Inputs: {"precision": "auto", "attn_backend": "auto"}
   [ComfyUI]     Inputs: {"precision": "auto", "attn_backend": "auto"}
   [ComfyUI]     Inputs: {"precision": "auto", "attn_backend": "auto"}
-  [ComfyUI] Generated prompt_id: a24b710e-d7d3-4f44-bafa-30979cece58a
-  [ComfyUI] Generated prompt_id: a24b710e-d7d3-4f44-bafa-30979cece58a
-  [ComfyUI] Generated prompt_id: a24b710e-d7d3-4f44-bafa-30979cece58a
-  [ComfyUI] Generated prompt_id: a24b710e-d7d3-4f44-bafa-30979cece58a
+  [ComfyUI] Generated prompt_id: 3ac67c2b-6e69-41cf-a2b8-161ab9bcab46
+  [ComfyUI] Generated prompt_id: 3ac67c2b-6e69-41cf-a2b8-161ab9bcab46
+  [ComfyUI] Generated prompt_id: 3ac67c2b-6e69-41cf-a2b8-161ab9bcab46
+  [ComfyUI] Generated prompt_id: 3ac67c2b-6e69-41cf-a2b8-161ab9bcab46
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Calling execution.validate_prompt()...
@@ -90,10 +70,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [comfy-env] Running UniRigLoadModel: precision: 'auto', attn_backend: 'auto'
   [ComfyUI] [comfy-env] Running UniRigLoadModel: precision: 'auto', attn_backend: 'auto'
   [ComfyUI] [comfy-env] Running UniRigLoadModel: precision: 'auto', attn_backend: 'auto'
-  [ComfyUI] [VRAM] Before UniRigLoadModel: 564 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigLoadModel: 564 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigLoadModel: 564 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigLoadModel: 564 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigLoadModel: 563 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigLoadModel: 563 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigLoadModel: 563 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigLoadModel: 563 / 7703 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.UniRigLoadModel.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.UniRigLoadModel.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.UniRigLoadModel.EXECUTE_NORMALIZED
@@ -114,44 +94,34 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [ComfyUI-UniRig] Socket unhealthy, restarting worker...
   [ComfyUI] [ComfyUI-UniRig] Socket unhealthy, restarting worker...
   [ComfyUI] [ComfyUI-UniRig] Socket unhealthy, restarting worker...
+  [ComfyUI] [ComfyUI-UniRig] python: /workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [ComfyUI-UniRig] python: /workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [ComfyUI-UniRig] python: /workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [ComfyUI-UniRig] python: /workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
   [ComfyUI] [comfy-env] Invalidated 3 stale model patchers (will be cleaned up during next unload)
   [ComfyUI] [comfy-env] Invalidated 3 stale model patchers (will be cleaned up during next unload)
   [ComfyUI] [comfy-env] Invalidated 3 stale model patchers (will be cleaned up during next unload)
   [ComfyUI] [comfy-env] Invalidated 3 stale model patchers (will be cleaned up during next unload)
-  [ComfyUI] Exception ignored in atexit callback: <function disable_all at 0x7ddb032f3d90>
-  [ComfyUI] Exception ignored in atexit callback: <function disable_all at 0x7ddb032f3d90>
-  [ComfyUI] Exception ignored in atexit callback: <function disable_all at 0x7ddb032f3d90>
-  [ComfyUI] Exception ignored in atexit callback: <function disable_all at 0x7ddb032f3d90>
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/bpy/3.6/scripts/modules/addon_utils.py", line 478, in disable_all
-  [ComfyUI]   File "/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/bpy/3.6/scripts/modules/addon_utils.py", line 478, in disable_all
-  [ComfyUI]   File "/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/bpy/3.6/scripts/modules/addon_utils.py", line 478, in disable_all
-  [ComfyUI]   File "/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/bpy/3.6/scripts/modules/addon_utils.py", line 478, in disable_all
-  [ComfyUI]     addon_modules = [
-  [ComfyUI]     addon_modules = [
-  [ComfyUI]     addon_modules = [
-  [ComfyUI]     addon_modules = [
-  [ComfyUI]   File "/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/bpy/3.6/scripts/modules/addon_utils.py", line 478, in <listcomp>
-  [ComfyUI]   File "/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/bpy/3.6/scripts/modules/addon_utils.py", line 478, in <listcomp>
-  [ComfyUI]   File "/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/bpy/3.6/scripts/modules/addon_utils.py", line 478, in <listcomp>
-  [ComfyUI]   File "/workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/bpy/3.6/scripts/modules/addon_utils.py", line 478, in <listcomp>
-  [ComfyUI]     addon_modules = [
-  [ComfyUI]     addon_modules = [
-  [ComfyUI]     addon_modules = [
-  [ComfyUI]     addon_modules = [
-  [ComfyUI] RuntimeError: dictionary changed size during iteration
-  [ComfyUI] RuntimeError: dictionary changed size during iteration
-  [ComfyUI] RuntimeError: dictionary changed size during iteration
-  [ComfyUI] RuntimeError: dictionary changed size during iteration
-  Frame 2 saved (frame_001.jpg, t=3.0s)
-  [capture-periodic] freeze=31ms shot=179ms unfreeze=7ms saved=True
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: WARNING: You need pytorch with cu130 or higher to use optimized CUDA operations.
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-2036/ComfyUI', '/workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig', '/workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages', '/workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig']
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-2036/ComfyUI', '/workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig', '/workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages', '/workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig']
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-2036/ComfyUI', '/workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig', '/workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages', '/workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig']
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-2036/ComfyUI', '/workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig', '/workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages', '/workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/workspaces/UniRig-2036/ComfyUI/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_o1irwk_a/persistent_worker.py', 'abstract://comfy_worker_ee3b6b105130']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/workspaces/UniRig-2036/ComfyUI/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_o1irwk_a/persistent_worker.py', 'abstract://comfy_worker_ee3b6b105130']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/workspaces/UniRig-2036/ComfyUI/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_o1irwk_a/persistent_worker.py', 'abstract://comfy_worker_ee3b6b105130']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/workspaces/UniRig-2036/ComfyUI/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_o1irwk_a/persistent_worker.py', 'abstract://comfy_worker_ee3b6b105130']...
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_ee3b6b105130 (abstract, no filesystem path)
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_ee3b6b105130 (abstract, no filesystem path)
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_ee3b6b105130 (abstract, no filesystem path)
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_ee3b6b105130 (abstract, no filesystem path)
+  [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+  [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -172,14 +142,20 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [SubprocessWorker] call_id=24 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=24 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=24 sending call_method
+  Frame 2 saved (frame_001.jpg, t=2.4s)
+  [capture-periodic] freeze=10ms shot=111ms unfreeze=2ms saved=True
+  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
+  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
+  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
+  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigSkin_3' (695 MB) -> cpu: 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigSkin_3' (695 MB) -> cpu: 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigSkin_3' (695 MB) -> cpu: 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigSkin_3' (695 MB) -> cpu: 270 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigSkin_3' (695 MB) -> cpu: 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigSkin_3' (695 MB) -> cpu: 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigSkin_3' (695 MB) -> cpu: 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigSkin_3' (695 MB) -> cpu: 269 / 7703 MB
   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
@@ -196,14 +172,14 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] Model 'UniRigSkin_3' gone from worker (restarted?), treating as offloaded
   [ComfyUI] Model 'UniRigSkin_3' gone from worker (restarted?), treating as offloaded
   [ComfyUI] Model 'UniRigSkin_3' gone from worker (restarted?), treating as offloaded
-  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigSkin_3' (695 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigSkin_3' (695 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigSkin_3' (695 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigSkin_3' (695 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'OPTForCausalLM_2' (583 MB) -> cpu: 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'OPTForCausalLM_2' (583 MB) -> cpu: 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'OPTForCausalLM_2' (583 MB) -> cpu: 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'OPTForCausalLM_2' (583 MB) -> cpu: 270 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigSkin_3' (695 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigSkin_3' (695 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigSkin_3' (695 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigSkin_3' (695 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'OPTForCausalLM_2' (583 MB) -> cpu: 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'OPTForCausalLM_2' (583 MB) -> cpu: 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'OPTForCausalLM_2' (583 MB) -> cpu: 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'OPTForCausalLM_2' (583 MB) -> cpu: 269 / 7703 MB
   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
@@ -220,14 +196,14 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] Model 'OPTForCausalLM_2' gone from worker (restarted?), treating as offloaded
   [ComfyUI] Model 'OPTForCausalLM_2' gone from worker (restarted?), treating as offloaded
   [ComfyUI] Model 'OPTForCausalLM_2' gone from worker (restarted?), treating as offloaded
-  [ComfyUI] [comfy-env] [VRAM] After offload 'OPTForCausalLM_2' (583 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'OPTForCausalLM_2' (583 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'OPTForCausalLM_2' (583 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'OPTForCausalLM_2' (583 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigAR_1' (686 MB) -> cpu: 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigAR_1' (686 MB) -> cpu: 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigAR_1' (686 MB) -> cpu: 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigAR_1' (686 MB) -> cpu: 270 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'OPTForCausalLM_2' (583 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'OPTForCausalLM_2' (583 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'OPTForCausalLM_2' (583 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'OPTForCausalLM_2' (583 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigAR_1' (686 MB) -> cpu: 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigAR_1' (686 MB) -> cpu: 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigAR_1' (686 MB) -> cpu: 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] Before offload 'UniRigAR_1' (686 MB) -> cpu: 269 / 7703 MB
   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
@@ -244,26 +220,26 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] Model 'UniRigAR_1' gone from worker (restarted?), treating as offloaded
   [ComfyUI] Model 'UniRigAR_1' gone from worker (restarted?), treating as offloaded
   [ComfyUI] Model 'UniRigAR_1' gone from worker (restarted?), treating as offloaded
-  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigAR_1' (686 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigAR_1' (686 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigAR_1' (686 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigAR_1' (686 MB): 270 / 7703 MB
-  [ComfyUI] [comfy-env] UniRigLoadModel done (4.34s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadModel done (4.34s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadModel done (4.34s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadModel done (4.34s): result: NodeOutput
-  [ComfyUI] [VRAM] After UniRigLoadModel: 270 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigLoadModel: 270 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigLoadModel: 270 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigLoadModel: 270 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigAR_1' (686 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigAR_1' (686 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigAR_1' (686 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] [VRAM] After offload 'UniRigAR_1' (686 MB): 269 / 7703 MB
+  [ComfyUI] [comfy-env] UniRigLoadModel done (4.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadModel done (4.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadModel done (4.16s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadModel done (4.16s): result: NodeOutput
+  [ComfyUI] [VRAM] After UniRigLoadModel: 269 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigLoadModel: 269 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigLoadModel: 269 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigLoadModel: 269 / 7703 MB
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 270 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 270 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 270 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 270 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 269 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 269 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 269 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 269 / 7703 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
@@ -300,28 +276,28 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [SubprocessWorker] call_id=28 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=28 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=28 sending call_method
-  Frame 3 saved (frame_002.jpg, t=5.2s)
-  [capture-periodic] freeze=44ms shot=198ms unfreeze=10ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.5s)
+  [capture-periodic] freeze=2ms shot=157ms unfreeze=4ms saved=True
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.61s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.61s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.61s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.61s): result: NodeOutput
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 270 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 270 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 270 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 270 / 7703 MB
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.49s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.49s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.49s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.49s): result: NodeOutput
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 269 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 269 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 269 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 269 / 7703 MB
   [ComfyUI] [comfy-env] Running UniRigAutoRig: skeleton_template: 'mixamo', fbx_name: '', target_face_count: 50000, debug: False, trimesh: Trimesh, model: dict
   [ComfyUI] [comfy-env] Running UniRigAutoRig: skeleton_template: 'mixamo', fbx_name: '', target_face_count: 50000, debug: False, trimesh: Trimesh, model: dict
   [ComfyUI] [comfy-env] Running UniRigAutoRig: skeleton_template: 'mixamo', fbx_name: '', target_face_count: 50000, debug: False, trimesh: Trimesh, model: dict
   [ComfyUI] [comfy-env] Running UniRigAutoRig: skeleton_template: 'mixamo', fbx_name: '', target_face_count: 50000, debug: False, trimesh: Trimesh, model: dict
-  [ComfyUI] [VRAM] Before UniRigAutoRig: 270 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigAutoRig: 270 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigAutoRig: 270 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigAutoRig: 270 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigAutoRig: 269 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigAutoRig: 269 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigAutoRig: 269 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigAutoRig: 269 / 7703 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.auto_rig.UniRigAutoRig.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.auto_rig.UniRigAutoRig.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.auto_rig.UniRigAutoRig.EXECUTE_NORMALIZED
@@ -358,34 +334,34 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [SubprocessWorker] call_id=29 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=29 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=29 sending call_method
-  [ComfyUI] [worker:ComfyUI-UniRig] Data are loaded, start creating Blender stuff
-  [ComfyUI] [worker:ComfyUI-UniRig] Data are loaded, start creating Blender stuff
-  [ComfyUI] [worker:ComfyUI-UniRig] Data are loaded, start creating Blender stuff
-  [ComfyUI] [worker:ComfyUI-UniRig] Data are loaded, start creating Blender stuff
-  [ComfyUI] [worker:ComfyUI-UniRig] glTF import finished in 0.77s
-  [ComfyUI] [worker:ComfyUI-UniRig] glTF import finished in 0.77s
-  [ComfyUI] [worker:ComfyUI-UniRig] glTF import finished in 0.77s
-  [ComfyUI] [worker:ComfyUI-UniRig] glTF import finished in 0.77s
-  Frame 4 saved (frame_003.jpg, t=7.6s)
-  [capture-periodic] freeze=30ms shot=178ms unfreeze=7ms saved=True
-  [capture-loop] iter=50 t=8.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=26
-  Frame 5 saved (frame_004.jpg, t=9.9s)
-  [capture-periodic] freeze=34ms shot=188ms unfreeze=7ms saved=True
-  [capture-loop] iter=100 t=14.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4
-  [capture-loop] iter=150 t=21.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=23
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Data are loaded, start creating Blender stuff
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Data are loaded, start creating Blender stuff
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Data are loaded, start creating Blender stuff
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Data are loaded, start creating Blender stuff
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Blender create Mesh node geometry_0
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Blender create Mesh node geometry_0
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Blender create Mesh node geometry_0
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Blender create Mesh node geometry_0
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.30s
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.30s
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.30s
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.30s
+  [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=4.6/31.3GB (15%) swap=0.5/32.0GB (2%) cpu=23% browser_rss=0.95GB
+  Frame 4 saved (frame_003.jpg, t=6.8s)
+  [capture-periodic] freeze=1ms shot=127ms unfreeze=4ms saved=True
+  [capture-loop] iter=100 t=11.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=5.2/31.3GB (16%) swap=0.5/32.0GB (2%) cpu=37% browser_rss=0.86GB
+  [capture-loop] iter=150 t=17.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=4.6/31.3GB (15%) swap=0.5/32.0GB (2%) cpu=26% browser_rss=0.86GB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
-  Frame 6 saved (frame_005.jpg, t=23.7s)
-  [capture-periodic] freeze=34ms shot=187ms unfreeze=8ms saved=True
-  Frame 7 saved (frame_006.jpg, t=26.1s)
-  [capture-periodic] freeze=36ms shot=161ms unfreeze=2ms saved=True
-  [capture-loop] iter=200 t=28.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=37
-  [ComfyUI] /workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  [ComfyUI] /workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  [ComfyUI] /workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
-  [ComfyUI] /workspaces/UniRig-1151/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  Frame 5 saved (frame_004.jpg, t=19.9s)
+  [capture-periodic] freeze=1ms shot=116ms unfreeze=2ms saved=True
+  [capture-loop] iter=200 t=23.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=4.5/31.3GB (14%) swap=0.5/32.0GB (2%) cpu=26% browser_rss=0.86GB
+  [ComfyUI] /workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  [ComfyUI] /workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  [ComfyUI] /workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  [ComfyUI] /workspaces/UniRig-2036/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
   [ComfyUI]   warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
   [ComfyUI]   warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
   [ComfyUI]   warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
@@ -398,31 +374,31 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=29
-  [ComfyUI] [comfy-env] VRAM request: 0.72GB, free before eviction: 7.79GB
-  [ComfyUI] [comfy-env] VRAM request: 0.72GB, free before eviction: 7.79GB
-  [ComfyUI] [comfy-env] VRAM request: 0.72GB, free before eviction: 7.79GB
-  [ComfyUI] [comfy-env] VRAM request: 0.72GB, free before eviction: 7.79GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 7.79GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 7.79GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 7.79GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 7.79GB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +468MB (now 468MB) reserved=480MB peak=468MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +468MB (now 468MB) reserved=480MB peak=468MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +468MB (now 468MB) reserved=480MB peak=468MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +468MB (now 468MB) reserved=480MB peak=468MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +1710MB (now 2178MB) reserved=2688MB peak=2231MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +1710MB (now 2178MB) reserved=2688MB peak=2231MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +1710MB (now 2178MB) reserved=2688MB peak=2231MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +1710MB (now 2178MB) reserved=2688MB peak=2231MB
-  [capture-loop] iter=250 t=35.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=27
+  [ComfyUI] [comfy-env] VRAM request: 0.72GB, free before eviction: 7.80GB
+  [ComfyUI] [comfy-env] VRAM request: 0.72GB, free before eviction: 7.80GB
+  [ComfyUI] [comfy-env] VRAM request: 0.72GB, free before eviction: 7.80GB
+  [ComfyUI] [comfy-env] VRAM request: 0.72GB, free before eviction: 7.80GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.80GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.80GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.80GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.80GB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +224MB (now 224MB) reserved=256MB peak=224MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +1953MB (now 2177MB) reserved=2688MB peak=2231MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +1953MB (now 2177MB) reserved=2688MB peak=2231MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +1953MB (now 2177MB) reserved=2688MB peak=2231MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +1953MB (now 2177MB) reserved=2688MB peak=2231MB
+  [capture-loop] iter=250 t=29.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=5.5/31.3GB (18%) swap=0.5/32.0GB (2%) cpu=26% browser_rss=0.86GB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] -1483MB (now 696MB) reserved=704MB peak=2368MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] -1483MB (now 696MB) reserved=704MB peak=2368MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] -1483MB (now 696MB) reserved=704MB peak=2368MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] -1483MB (now 696MB) reserved=704MB peak=2368MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] -1482MB (now 696MB) reserved=704MB peak=2353MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] -1482MB (now 696MB) reserved=704MB peak=2353MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] -1482MB (now 696MB) reserved=704MB peak=2353MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] -1482MB (now 696MB) reserved=704MB peak=2353MB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
@@ -451,65 +427,57 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [comfy-env] VRAM after eviction: 6.95GB
   [ComfyUI] [comfy-env] VRAM after eviction: 6.95GB
   [ComfyUI] [comfy-env] VRAM after eviction: 6.95GB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +559MB (now 1255MB) reserved=1280MB peak=2368MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +559MB (now 1255MB) reserved=1280MB peak=2368MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +559MB (now 1255MB) reserved=1280MB peak=2368MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +559MB (now 1255MB) reserved=1280MB peak=2368MB
-  Frame 8 saved (frame_007.jpg, t=39.8s)
-  [capture-periodic] freeze=43ms shot=206ms unfreeze=8ms saved=True
-  [capture-loop] iter=300 t=41.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=39
-  Frame 9 saved (frame_008.jpg, t=42.3s)
-  [capture-periodic] freeze=36ms shot=197ms unfreeze=6ms saved=True
-  [ComfyUI] /workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/unirig/unirig_skin.py:352: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  [ComfyUI] /workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/unirig/unirig_skin.py:352: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  [ComfyUI] /workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/unirig/unirig_skin.py:352: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  [ComfyUI] /workspaces/UniRig-1151/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/unirig/unirig_skin.py:352: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  Frame 6 saved (frame_005.jpg, t=33.0s)
+  [capture-periodic] freeze=9ms shot=99ms unfreeze=6ms saved=True
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +508MB (now 1204MB) reserved=1216MB peak=2353MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +508MB (now 1204MB) reserved=1216MB peak=2353MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +508MB (now 1204MB) reserved=1216MB peak=2353MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +508MB (now 1204MB) reserved=1216MB peak=2353MB
+  [capture-loop] iter=300 t=34.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=6.2/31.3GB (20%) swap=0.5/32.0GB (2%) cpu=26% browser_rss=0.87GB
+  [ComfyUI] /workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/unirig/unirig_skin.py:352: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  [ComfyUI] /workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/unirig/unirig_skin.py:352: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  [ComfyUI] /workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/unirig/unirig_skin.py:352: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  [ComfyUI] /workspaces/UniRig-2036/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/unirig/unirig_skin.py:352: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
   [ComfyUI]   'offset': torch.tensor(batch['offset']),
   [ComfyUI]   'offset': torch.tensor(batch['offset']),
   [ComfyUI]   'offset': torch.tensor(batch['offset']),
   [ComfyUI]   'offset': torch.tensor(batch['offset']),
-  [ComfyUI] W0509 11:59:26.210000 1423 .ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
-  [ComfyUI] W0509 11:59:26.210000 1423 .ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
-  [ComfyUI] W0509 11:59:26.210000 1423 .ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
-  [ComfyUI] W0509 11:59:26.210000 1423 .ce/.pixi/envs/unirig-nodes/lib/python3.10/site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +211MB (now 1415MB) reserved=1696MB peak=2353MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +211MB (now 1415MB) reserved=1696MB peak=2353MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +211MB (now 1415MB) reserved=1696MB peak=2353MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +211MB (now 1415MB) reserved=1696MB peak=2353MB
+  [ComfyUI] W0510 20:44:27.206000 1510 .ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+  [ComfyUI] W0510 20:44:27.206000 1510 .ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+  [ComfyUI] W0510 20:44:27.206000 1510 .ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
+  [ComfyUI] W0510 20:44:27.206000 1510 .ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/torch/fx/_symbolic_trace.py:53] is_fx_tracing will return true for both fx.symbolic_trace and torch.export. Please use is_fx_tracing_symbolic_tracing() for specifically fx.symbolic_trace or torch.compiler.is_compiling() for specifically torch.export/compile.
   [ComfyUI] [worker:ComfyUI-UniRig] [33m[comfy-attn] Varlen attention: flash[0m
   [ComfyUI] [worker:ComfyUI-UniRig] [33m[comfy-attn] Varlen attention: flash[0m
   [ComfyUI] [worker:ComfyUI-UniRig] [33m[comfy-attn] Varlen attention: flash[0m
   [ComfyUI] [worker:ComfyUI-UniRig] [33m[comfy-attn] Varlen attention: flash[0m
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +253MB (now 1509MB) reserved=1696MB peak=2368MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +253MB (now 1509MB) reserved=1696MB peak=2368MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +253MB (now 1509MB) reserved=1696MB peak=2368MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +253MB (now 1509MB) reserved=1696MB peak=2368MB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
-  [capture-loop] iter=350 t=48.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=28
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: Warning: Could not apply texture: 'bpy_prop_collection[key]: key "Specular IOR Level" not found'
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: Warning: Could not apply texture: 'bpy_prop_collection[key]: key "Specular IOR Level" not found'
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: Warning: Could not apply texture: 'bpy_prop_collection[key]: key "Specular IOR Level" not found'
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: Warning: Could not apply texture: 'bpy_prop_collection[key]: key "Specular IOR Level" not found'
-  Frame 10 saved (frame_009.jpg, t=49.2s)
-  [capture-periodic] freeze=33ms shot=157ms unfreeze=6ms saved=True
-  Frame 11 saved (frame_010.jpg, t=51.5s)
-  [capture-periodic] freeze=34ms shot=171ms unfreeze=6ms saved=True
+  [capture-loop] iter=350 t=40.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=6.2/31.3GB (20%) swap=0.5/32.0GB (2%) cpu=26% browser_rss=0.87GB
+  Frame 7 saved (frame_006.jpg, t=41.7s)
+  [capture-periodic] freeze=2ms shot=147ms unfreeze=4ms saved=True
   [ComfyUI] [worker:ComfyUI-UniRig]
   [ComfyUI] [worker:ComfyUI-UniRig]
   [ComfyUI] [worker:ComfyUI-UniRig]
   [ComfyUI] [worker:ComfyUI-UniRig]
-  [ComfyUI] FBX export starting... '/tmp/unirig_skinning_new_x7jc55l6/rigged.fbx'
-  [ComfyUI] FBX export starting... '/tmp/unirig_skinning_new_x7jc55l6/rigged.fbx'
-  [ComfyUI] FBX export starting... '/tmp/unirig_skinning_new_x7jc55l6/rigged.fbx'
-  [ComfyUI] FBX export starting... '/tmp/unirig_skinning_new_x7jc55l6/rigged.fbx'
+  [ComfyUI] FBX export starting... '/tmp/unirig_skinning_new_8jx7lb_q/rigged.fbx'
+  [ComfyUI] FBX export starting... '/tmp/unirig_skinning_new_8jx7lb_q/rigged.fbx'
+  [ComfyUI] FBX export starting... '/tmp/unirig_skinning_new_8jx7lb_q/rigged.fbx'
+  [ComfyUI] FBX export starting... '/tmp/unirig_skinning_new_8jx7lb_q/rigged.fbx'
   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
-  [capture-loop] iter=400 t=55.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3
-  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 5.0671 sec.
-  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 5.0671 sec.
-  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 5.0671 sec.
-  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 5.0671 sec.
+  [capture-loop] iter=400 t=46.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=6.3/31.3GB (20%) swap=0.5/32.0GB (2%) cpu=26% browser_rss=0.87GB
+  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 4.1601 sec.
+  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 4.1601 sec.
+  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 4.1601 sec.
+  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 4.1601 sec.
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=29
@@ -526,26 +494,26 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [comfy-env] Created 3 model patchers: ['UniRigAR_1', 'OPTForCausalLM_2', 'UniRigSkin_3']
   [ComfyUI] [comfy-env] Created 3 model patchers: ['UniRigAR_1', 'OPTForCausalLM_2', 'UniRigSkin_3']
   [ComfyUI] [comfy-env] Created 3 model patchers: ['UniRigAR_1', 'OPTForCausalLM_2', 'UniRigSkin_3']
-  [ComfyUI] [comfy-env] UniRigAutoRig done (51.84s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigAutoRig done (51.84s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigAutoRig done (51.84s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigAutoRig done (51.84s): result: NodeOutput
-  [ComfyUI] [VRAM] After UniRigAutoRig: 3636 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigAutoRig: 3636 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigAutoRig: 3636 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigAutoRig: 3636 / 7703 MB
+  [ComfyUI] [comfy-env] UniRigAutoRig done (42.99s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigAutoRig done (42.99s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigAutoRig done (42.99s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigAutoRig done (42.99s): result: NodeOutput
+  [ComfyUI] [VRAM] After UniRigAutoRig: 3635 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigAutoRig: 3635 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigAutoRig: 3635 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigAutoRig: 3635 / 7703 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
-  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'rigged_1778327977_mixamo.fbx'
-  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'rigged_1778327977_mixamo.fbx'
-  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'rigged_1778327977_mixamo.fbx'
-  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'rigged_1778327977_mixamo.fbx'
-  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3636 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3636 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3636 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3636 / 7703 MB
+  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'rigged_1778445877_mixamo.fbx'
+  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'rigged_1778445877_mixamo.fbx'
+  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'rigged_1778445877_mixamo.fbx'
+  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: 'rigged_1778445877_mixamo.fbx'
+  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3635 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3635 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3635 / 7703 MB
+  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3635 / 7703 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
@@ -590,30 +558,32 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.05s): result: NodeOutput
-  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3636 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3636 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3636 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3636 / 7703 MB
+  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.01s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.01s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.01s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.01s): result: NodeOutput
+  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3635 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3635 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3635 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3635 / 7703 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (695 MB), SubprocessModel (583 MB), SubprocessModel (686 MB)
-  [ComfyUI] Prompt executed in 56.85 seconds
-  [ComfyUI] Prompt executed in 56.85 seconds
-  [ComfyUI] Prompt executed in 56.85 seconds
-  [ComfyUI] Prompt executed in 56.85 seconds
+  [ComfyUI] Prompt executed in 47.67 seconds
+  [ComfyUI] Prompt executed in 47.67 seconds
+  [ComfyUI] Prompt executed in 47.67 seconds
+  [ComfyUI] Prompt executed in 47.67 seconds
+  Frame 8 saved (frame_007.jpg, t=48.2s)
+  [capture-periodic] freeze=2ms shot=1104ms unfreeze=12ms saved=True
   Node executed (1 total), capturing...
-  Frame 12 saved (frame_011.jpg, t=57.9s)
-  [capture-node] freeze=27ms shot=216ms unfreeze=103ms saved=True
-  Execution complete (t=59.7s)
-  Captured 12 unique frames over 59.75s
+  Frame 9 saved (frame_008.jpg, t=49.8s)
+  [capture-node] freeze=42ms shot=150ms unfreeze=0ms saved=True
+  Execution complete (t=49.8s)
+  Captured 9 unique frames over 50.06s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41892/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778327916567, canvas=1634x1420, rafFrozen=False
-  [timing] trigger_3d_previews: 0.1s
+  [debug]   iframe[0]: src=http://127.0.0.1:41894/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778445826591, canvas=817x710, rafFrozen=True
+  [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: unirig_humanoid_executed.png
-  [timing] final_screenshot: 0.9s
-    Captured 13 video frames
+  [timing] final_screenshot: 0.3s
+    Captured 10 video frames

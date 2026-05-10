@@ -1,0 +1,11 @@
+[
+  {
+    "description": "",
+    "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:9222/devtools/page/75744C5D3BD4C98376302D943386BBDA",
+    "id": "75744C5D3BD4C98376302D943386BBDA",
+    "title": "ComfyUI",
+    "type": "page",
+    "url": "file:///C:/Users/runneradmin/AppData/Local/Programs/ComfyUI/resources/desktop-ui/index.html#/not-supported",
+    "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/75744C5D3BD4C98376302D943386BBDA"
+  }
+]
