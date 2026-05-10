@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-05-10T01:21:46.678319+00:00",
+  "timestamp": "2026-05-10T03:04:52.865374+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-    "cpu": "AMD EPYC 9V74 80-Core Processor"
+    "cpu": "AMD EPYC 7763 64-Core Processor"
   },
-  "commit_hash": "d86e4cb0896414f23d629d03f1c1d83a6c430844",
+  "commit_hash": "d5dc353223a993d12ed98e6f742c114091b54ec0",
   "success": true,
   "summary": {
     "total": 6,
@@ -16,19 +16,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 75.73,
+      "duration_seconds": 74.97,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 1.77,
-          "avg": 1.66
+          "peak": 1.72,
+          "avg": 1.62
         },
         "total_ram_gb": 15.6,
-        "samples": 76
+        "samples": 75
       }
     },
     {
@@ -41,37 +41,37 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 14.57,
+      "duration_seconds": 13.62,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 1.76,
-          "avg": 1.66
+          "peak": 1.73,
+          "avg": 1.63
         },
         "total_ram_gb": 15.6,
-        "samples": 15
+        "samples": 14
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.49,
+      "duration_seconds": 10.0,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
-        "cpu": "AMD EPYC 9V74 80-Core Processor"
+        "cpu": "AMD EPYC 7763 64-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 1.74,
+          "peak": 1.73,
           "avg": 1.73
         },
         "total_ram_gb": 15.6,
-        "samples": 11
+        "samples": 10
       }
     },
     {
