@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-09T16:19:16.576374+00:00",
+  "timestamp": "2026-05-10T01:24:34.939666+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-2025Server-10.0.26100-SP0",
@@ -16,7 +16,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 84.16,
+      "duration_seconds": 82.48,
       "error": null,
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
@@ -24,11 +24,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 5.45,
-          "avg": 5.17
+          "peak": 1.04,
+          "avg": 0.94
         },
         "total_ram_gb": 16.0,
-        "samples": 85
+        "samples": 83
       }
     },
     {
@@ -41,7 +41,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 23.93,
+      "duration_seconds": 20.26,
       "error": null,
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
@@ -49,17 +49,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 5.33,
-          "avg": 5.15
+          "peak": 0.99,
+          "avg": 0.83
         },
         "total_ram_gb": 16.0,
-        "samples": 24
+        "samples": 21
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 12.05,
+      "duration_seconds": 11.12,
       "error": null,
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
@@ -67,11 +67,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 5.44,
-          "avg": 5.3
+          "peak": 0.94,
+          "avg": 0.94
         },
         "total_ram_gb": 16.0,
-        "samples": 13
+        "samples": 12
       }
     },
     {
