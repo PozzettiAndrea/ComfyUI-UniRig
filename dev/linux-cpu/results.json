@@ -1,11 +1,12 @@
 {
-  "timestamp": "2026-05-10T03:04:52.865374+00:00",
+  "timestamp": "2026-05-10T17:03:37.484962+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
     "cpu": "AMD EPYC 7763 64-Core Processor"
   },
-  "commit_hash": "d5dc353223a993d12ed98e6f742c114091b54ec0",
+  "commit_hash": "f65628868e22c1564f5b77ac6c166c658dbd62af",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25634510694",
   "success": true,
   "summary": {
     "total": 6,
@@ -16,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 74.97,
+      "duration_seconds": 75.67,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
@@ -24,11 +25,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.72,
-          "avg": 1.62
+          "peak": 1.68,
+          "avg": 1.59
         },
         "total_ram_gb": 15.6,
-        "samples": 75
+        "samples": 76
       }
     },
     {
@@ -41,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 13.62,
+      "duration_seconds": 14.48,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
@@ -49,17 +50,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.73,
-          "avg": 1.63
+          "peak": 1.69,
+          "avg": 1.61
         },
         "total_ram_gb": 15.6,
-        "samples": 14
+        "samples": 15
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.0,
+      "duration_seconds": 10.36,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
@@ -67,11 +68,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.73,
-          "avg": 1.73
+          "peak": 1.7,
+          "avg": 1.69
         },
         "total_ram_gb": 15.6,
-        "samples": 10
+        "samples": 11
       }
     },
     {
