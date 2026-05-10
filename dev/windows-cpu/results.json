@@ -1,11 +1,12 @@
 {
-  "timestamp": "2026-05-10T03:08:21.602478+00:00",
+  "timestamp": "2026-05-10T17:06:30.601758+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-2025Server-10.0.26100-SP0",
-    "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+    "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "d5dc353223a993d12ed98e6f742c114091b54ec0",
+  "commit_hash": "f65628868e22c1564f5b77ac6c166c658dbd62af",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25634511157",
   "success": true,
   "summary": {
     "total": 6,
@@ -16,19 +17,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 86.35,
+      "duration_seconds": 87.95,
       "error": null,
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
           "peak": 0.94,
-          "avg": 0.85
+          "avg": 0.84
         },
         "total_ram_gb": 16.0,
-        "samples": 86
+        "samples": 85
       }
     },
     {
@@ -41,34 +42,34 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 21.67,
+      "duration_seconds": 17.87,
       "error": null,
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.89,
+          "peak": 0.87,
           "avg": 0.74
         },
         "total_ram_gb": 16.0,
-        "samples": 22
+        "samples": 18
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 11.94,
+      "duration_seconds": 11.25,
       "error": null,
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.85,
-          "avg": 0.84
+          "peak": 0.84,
+          "avg": 0.83
         },
         "total_ram_gb": 16.0,
         "samples": 12
