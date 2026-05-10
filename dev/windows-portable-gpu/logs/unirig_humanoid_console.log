@@ -33,7 +33,7 @@
 [Console-log] [UniRig Debug] Registering Preview Rigged Mesh node
 [Console-log] [UniRig Compare] Registering Compare Skeletons node
 [Console-log] [UniRig] Node created, adding FBX viewer widget
-[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778332531663
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778416735416
 [Console-log] [UniRig] Widget created: DOMWidgetImpl
 [Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41882/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
@@ -42,7 +42,7 @@
 [Console-log] [UniRig] Iframe loaded successfully
 [Console-log] [FBX Viewer] Received postMessage: {type: RESIZE, width: 733.319580078125, height: 637.37646484375}
 [Console-log] [UniRig] Node created, adding FBX viewer widget
-[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778332532670
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778416736296
 [Console-log] [UniRig] Widget created: DOMWidgetImpl
 [Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41882/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
@@ -50,4 +50,5 @@
 [Console-log] [UniRig] Viewer iframe is ready!
 [Console-log] [UniRig] Viewer iframe is ready!
 [Console-log] [UniRig] Iframe loaded successfully
+[Console-log] [FBX Viewer] Received postMessage: {type: RESIZE, width: 733.3195190429688, height: 637.37646484375}
 [Console-log] [comfy-test] graphToPrompt: 4 nodes, missing class_type: [], sample: {"inputs":{"fbx_output_path":["39",0],"preview":""},"class_type":"UniRigPreviewRiggedMesh","_meta":{"title":"UniRig: Preview Rigged Mesh"}}

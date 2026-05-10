@@ -1,11 +1,11 @@
 Capturing execution frames: unirig_humanoid.json
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] === /validate endpoint called ===
   Queuing workflow for execution...
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] === /validate endpoint called ===
   [ComfyUI] Received JSON with keys: ['prompt']
   [ComfyUI] Received JSON with keys: ['prompt']
   [ComfyUI] Received JSON with keys: ['prompt']
@@ -46,10 +46,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     Inputs: {"precision": "auto", "attn_backend": "auto"}
   [ComfyUI]     Inputs: {"precision": "auto", "attn_backend": "auto"}
   [ComfyUI]     Inputs: {"precision": "auto", "attn_backend": "auto"}
-  [ComfyUI] Generated prompt_id: 235c3b8e-5e77-4456-880f-e6020f11c9d7
-  [ComfyUI] Generated prompt_id: 235c3b8e-5e77-4456-880f-e6020f11c9d7
-  [ComfyUI] Generated prompt_id: 235c3b8e-5e77-4456-880f-e6020f11c9d7
-  [ComfyUI] Generated prompt_id: 235c3b8e-5e77-4456-880f-e6020f11c9d7
+  [ComfyUI] Generated prompt_id: 280c11b2-4b14-4515-8d56-ba3f902a4664
+  [ComfyUI] Generated prompt_id: 280c11b2-4b14-4515-8d56-ba3f902a4664
+  [ComfyUI] Generated prompt_id: 280c11b2-4b14-4515-8d56-ba3f902a4664
+  [ComfyUI] Generated prompt_id: 280c11b2-4b14-4515-8d56-ba3f902a4664
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Calling execution.validate_prompt()...
@@ -70,10 +70,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [comfy-env] Running UniRigLoadModel: precision: 'auto', attn_backend: 'auto'
   [ComfyUI] [comfy-env] Running UniRigLoadModel: precision: 'auto', attn_backend: 'auto'
   [ComfyUI] [comfy-env] Running UniRigLoadModel: precision: 'auto', attn_backend: 'auto'
-  [ComfyUI] [VRAM] Before UniRigLoadModel: 1042 / 12287 MB
-  [ComfyUI] [VRAM] Before UniRigLoadModel: 1042 / 12287 MB
-  [ComfyUI] [VRAM] Before UniRigLoadModel: 1042 / 12287 MB
-  [ComfyUI] [VRAM] Before UniRigLoadModel: 1042 / 12287 MB
+  [ComfyUI] [VRAM] Before UniRigLoadModel: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigLoadModel: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigLoadModel: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigLoadModel: 1156 / 16379 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.UniRigLoadModel.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.UniRigLoadModel.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.UniRigLoadModel.EXECUTE_NORMALIZED
@@ -114,22 +114,22 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadModel done (0.06s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadModel done (0.06s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadModel done (0.06s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadModel done (0.06s): result: NodeOutput
-  [ComfyUI] [VRAM] After UniRigLoadModel: 1042 / 12287 MB
-  [ComfyUI] [VRAM] After UniRigLoadModel: 1042 / 12287 MB
-  [ComfyUI] [VRAM] After UniRigLoadModel: 1042 / 12287 MB
-  [ComfyUI] [VRAM] After UniRigLoadModel: 1042 / 12287 MB
+  [ComfyUI] [comfy-env] UniRigLoadModel done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadModel done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadModel done (0.02s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadModel done (0.02s): result: NodeOutput
+  [ComfyUI] [VRAM] After UniRigLoadModel: 1156 / 16379 MB
+  [ComfyUI] [VRAM] After UniRigLoadModel: 1156 / 16379 MB
+  [ComfyUI] [VRAM] After UniRigLoadModel: 1156 / 16379 MB
+  [ComfyUI] [VRAM] After UniRigLoadModel: 1156 / 16379 MB
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1042 / 12287 MB
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1042 / 12287 MB
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1042 / 12287 MB
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1042 / 12287 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1156 / 16379 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
@@ -170,22 +170,22 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.69s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.69s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.69s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.69s): result: NodeOutput
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 1042 / 12287 MB
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 1042 / 12287 MB
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 1042 / 12287 MB
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 1042 / 12287 MB
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.40s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.40s): result: NodeOutput
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 1156 / 16379 MB
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 1156 / 16379 MB
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 1156 / 16379 MB
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 1156 / 16379 MB
   [ComfyUI] [comfy-env] Running UniRigAutoRig: skeleton_template: 'mixamo', fbx_name: '', target_face_count: 50000, debug: False, trimesh: Trimesh, model: dict
   [ComfyUI] [comfy-env] Running UniRigAutoRig: skeleton_template: 'mixamo', fbx_name: '', target_face_count: 50000, debug: False, trimesh: Trimesh, model: dict
   [ComfyUI] [comfy-env] Running UniRigAutoRig: skeleton_template: 'mixamo', fbx_name: '', target_face_count: 50000, debug: False, trimesh: Trimesh, model: dict
   [ComfyUI] [comfy-env] Running UniRigAutoRig: skeleton_template: 'mixamo', fbx_name: '', target_face_count: 50000, debug: False, trimesh: Trimesh, model: dict
-  [ComfyUI] [VRAM] Before UniRigAutoRig: 1042 / 12287 MB
-  [ComfyUI] [VRAM] Before UniRigAutoRig: 1042 / 12287 MB
-  [ComfyUI] [VRAM] Before UniRigAutoRig: 1042 / 12287 MB
-  [ComfyUI] [VRAM] Before UniRigAutoRig: 1042 / 12287 MB
+  [ComfyUI] [VRAM] Before UniRigAutoRig: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigAutoRig: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigAutoRig: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigAutoRig: 1156 / 16379 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.auto_rig.UniRigAutoRig.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.auto_rig.UniRigAutoRig.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.auto_rig.UniRigAutoRig.EXECUTE_NORMALIZED
@@ -230,309 +230,16 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Blender create Mesh node geometry_0
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Blender create Mesh node geometry_0
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Blender create Mesh node geometry_0
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.41s
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.41s
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.41s
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.41s
-  Frame 2 saved (frame_001.jpg, t=2.3s)
-  [capture-periodic] freeze=3ms shot=130ms unfreeze=4ms saved=True
-  Frame 3 saved (frame_002.jpg, t=4.5s)
-  [capture-periodic] freeze=3ms shot=128ms unfreeze=3ms saved=True
-  [capture-loop] iter=50 t=6.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=12.2/31.9GB (38%) swap=0.3/12.3GB (2%) cpu=7% browser_rss=0.65GB
-  [capture-loop] iter=100 t=11.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=12.1/31.9GB (38%) swap=0.3/12.3GB (2%) cpu=4% browser_rss=0.65GB
-  [ComfyUI] [worker:ComfyUI-UniRig]
-  [ComfyUI] [worker:ComfyUI-UniRig]
-  [ComfyUI] [worker:ComfyUI-UniRig]
-  [ComfyUI] [worker:ComfyUI-UniRig]
-  [ComfyUI] === WATCHDOG TICK 2 ===
-  [ComfyUI] === WATCHDOG TICK 2 ===
-  [ComfyUI] === WATCHDOG TICK 2 ===
-  [ComfyUI] === WATCHDOG TICK 2 ===
-  [ComfyUI] [worker:ComfyUI-UniRig] Thread 0x00003610 (most recent call first):
-  [ComfyUI] [worker:ComfyUI-UniRig] Thread 0x00003610 (most recent call first):
-  [ComfyUI] [worker:ComfyUI-UniRig] Thread 0x00003610 (most recent call first):
-  [ComfyUI] [worker:ComfyUI-UniRig] Thread 0x00003610 (most recent call first):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00003384 (most recent call first):
-  [ComfyUI] Thread 0x00003384 (most recent call first):
-  [ComfyUI] Thread 0x00003384 (most recent call first):
-  [ComfyUI] Thread 0x00003384 (most recent call first):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00000d2c (most recent call first):
-  [ComfyUI] Thread 0x00000d2c (most recent call first):
-  [ComfyUI] Thread 0x00000d2c (most recent call first):
-  [ComfyUI] Thread 0x00000d2c (most recent call first):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00004cf8 (most recent call first):
-  [ComfyUI] Thread 0x00004cf8 (most recent call first):
-  [ComfyUI] Thread 0x00004cf8 (most recent call first):
-  [ComfyUI] Thread 0x00004cf8 (most recent call first):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00004028 (most recent call first):
-  [ComfyUI] Thread 0x00004028 (most recent call first):
-  [ComfyUI] Thread 0x00004028 (most recent call first):
-  [ComfyUI] Thread 0x00004028 (most recent call first):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] Thread 0x0000308c (most recent call first):
-  [ComfyUI] Thread 0x0000308c (most recent call first):
-  [ComfyUI] Thread 0x0000308c (most recent call first):
-  [ComfyUI] Thread 0x0000308c (most recent call first):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00000cb8 (most recent call first):
-  [ComfyUI] Thread 0x00000cb8 (most recent call first):
-  [ComfyUI] Thread 0x00000cb8 (most recent call first):
-  [ComfyUI] Thread 0x00000cb8 (most recent call first):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 363 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 660 in wait
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\tqdm\_monitor.py", line 60 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] Thread 0x0000457c (most recent call first):
-  [ComfyUI] Thread 0x0000457c (most recent call first):
-  [ComfyUI] Thread 0x0000457c (most recent call first):
-  [ComfyUI] Thread 0x0000457c (most recent call first):
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 106 in _vram_poller
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 106 in _vram_poller
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 106 in _vram_poller
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 106 in _vram_poller
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] Current thread 0x000034c8 (most recent call first):
-  [ComfyUI] Current thread 0x000034c8 (most recent call first):
-  [ComfyUI] Current thread 0x000034c8 (most recent call first):
-  [ComfyUI] Current thread 0x000034c8 (most recent call first):
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 995 in run
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\threading.py", line 1015 in _bootstrap
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] Thread 0x00004d80 (most recent call first):
-  [ComfyUI] Thread 0x00004d80 (most recent call first):
-  [ComfyUI] Thread 0x00004d80 (most recent call first):
-  [ComfyUI] Thread 0x00004d80 (most recent call first):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct_preprocess.py", line 138 in preprocess_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct_preprocess.py", line 138 in preprocess_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct_preprocess.py", line 138 in preprocess_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct_preprocess.py", line 138 in preprocess_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 350 in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 350 in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 350 in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 350 in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116 in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116 in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116 in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116 in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1807 in <module>
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1807 in <module>
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1807 in <module>
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1807 in <module>
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] [worker:ComfyUI-UniRig] === END ===
-  [ComfyUI] [worker:ComfyUI-UniRig] === END ===
-  [ComfyUI] [worker:ComfyUI-UniRig] === END ===
-  [ComfyUI] [worker:ComfyUI-UniRig] === END ===
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [capture-loop] iter=150 t=17.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=11.3/31.9GB (35%) swap=0.3/12.3GB (2%) cpu=5% browser_rss=0.65GB
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.32s
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.32s
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.32s
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.32s
+  Frame 2 saved (frame_001.jpg, t=2.2s)
+  [capture-periodic] freeze=2ms shot=79ms unfreeze=2ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.4s)
+  [capture-periodic] freeze=2ms shot=67ms unfreeze=2ms saved=True
+  [capture-loop] iter=50 t=5.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=10.5/15.9GB (66%) swap=0.2/3.0GB (8%) cpu=23% browser_rss=0.76GB
+  [capture-loop] iter=100 t=11.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=9.6/15.9GB (60%) swap=0.2/3.0GB (8%) cpu=24% browser_rss=0.77GB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=9
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=9
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=9
@@ -541,10 +248,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] [SubprocessWorker] got response: error
   [ComfyUI] [SubprocessWorker] got response: error
   [ComfyUI] [SubprocessWorker] got response: error
-  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
@@ -557,10 +264,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
   [ComfyUI]     ctypes.CDLL(path)
   [ComfyUI]     ctypes.CDLL(path)
   [ComfyUI]     ctypes.CDLL(path)
@@ -569,10 +276,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     ~~~~~~~~~~~^^^^^^
   [ComfyUI]     ~~~~~~~~~~~^^^^^^
   [ComfyUI]     ~~~~~~~~~~~^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
   [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
   [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
   [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
@@ -581,10 +288,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
   [ComfyUI]     return _LoadLibrary(self._name, winmode)
   [ComfyUI]     return _LoadLibrary(self._name, winmode)
   [ComfyUI]     return _LoadLibrary(self._name, winmode)
@@ -609,26 +316,26 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
   [ComfyUI]     normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(
   [ComfyUI]     normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(
   [ComfyUI]     normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(
@@ -665,10 +372,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     ^
   [ComfyUI]     ^
   [ComfyUI]     ^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
   [ComfyUI]     direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(
   [ComfyUI]     direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(
   [ComfyUI]     direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(
@@ -705,18 +412,18 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     ^
   [ComfyUI]     ^
   [ComfyUI]     ^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
   [ComfyUI]     return func(*args, **kwargs)
   [ComfyUI]     return func(*args, **kwargs)
   [ComfyUI]     return func(*args, **kwargs)
   [ComfyUI]     return func(*args, **kwargs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
   [ComfyUI]     skeleton = predict_skeleton(
   [ComfyUI]     skeleton = predict_skeleton(
   [ComfyUI]     skeleton = predict_skeleton(
@@ -737,18 +444,18 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     )
   [ComfyUI]     )
   [ComfyUI]     )
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
   [ComfyUI]     return func(*args, **kwargs)
   [ComfyUI]     return func(*args, **kwargs)
   [ComfyUI]     return func(*args, **kwargs)
   [ComfyUI]     return func(*args, **kwargs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
   [ComfyUI]     patcher, tokenizer = get_skeleton_model(
   [ComfyUI]     patcher, tokenizer = get_skeleton_model(
   [ComfyUI]     patcher, tokenizer = get_skeleton_model(
@@ -773,10 +480,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     ^
   [ComfyUI]     ^
   [ComfyUI]     ^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
   [ComfyUI]     model, tokenizer = _load_skeleton_model(
   [ComfyUI]     model, tokenizer = _load_skeleton_model(
   [ComfyUI]     model, tokenizer = _load_skeleton_model(
@@ -801,50 +508,50 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     ^
   [ComfyUI]     ^
   [ComfyUI]     ^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
   [ComfyUI]     from .model_parse import get_model
   [ComfyUI]     from .model_parse import get_model
   [ComfyUI]     from .model_parse import get_model
   [ComfyUI]     from .model_parse import get_model
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
   [ComfyUI]     from .unirig_ar import UniRigAR
   [ComfyUI]     from .unirig_ar import UniRigAR
   [ComfyUI]     from .unirig_ar import UniRigAR
   [ComfyUI]     from .unirig_ar import UniRigAR
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
   [ComfyUI]     from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder
   [ComfyUI]     from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder
   [ComfyUI]     from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder
   [ComfyUI]     from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
   [ComfyUI]     from .michelangelo_encoder import get_encoder as get_encoder_michelangelo
   [ComfyUI]     from .michelangelo_encoder import get_encoder as get_encoder_michelangelo
   [ComfyUI]     from .michelangelo_encoder import get_encoder as get_encoder_michelangelo
   [ComfyUI]     from .michelangelo_encoder import get_encoder as get_encoder_michelangelo
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
   [ComfyUI]     from torch_cluster import fps
   [ComfyUI]     from torch_cluster import fps
   [ComfyUI]     from torch_cluster import fps
   [ComfyUI]     from torch_cluster import fps
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
   [ComfyUI]     torch.ops.load_library(spec.origin)
   [ComfyUI]     torch.ops.load_library(spec.origin)
   [ComfyUI]     torch.ops.load_library(spec.origin)
@@ -853,18 +560,18 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
   [ComfyUI]     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
   [ComfyUI]     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
   [ComfyUI]     raise OSError(f"Could not load this library: {path}") from e
   [ComfyUI]     raise OSError(f"Could not load this library: {path}") from e
   [ComfyUI]     raise OSError(f"Could not load this library: {path}") from e
   [ComfyUI]     raise OSError(f"Could not load this library: {path}") from e
-  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
@@ -873,10 +580,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
@@ -885,10 +592,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
@@ -897,26 +604,26 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
   [ComfyUI]     await process_inputs(input_dict, i)
   [ComfyUI]     await process_inputs(input_dict, i)
   [ComfyUI]     await process_inputs(input_dict, i)
   [ComfyUI]     await process_inputs(input_dict, i)
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
   [ComfyUI]     result = f(**inputs)
   [ComfyUI]     result = f(**inputs)
   [ComfyUI]     result = f(**inputs)
   [ComfyUI]     result = f(**inputs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
   [ComfyUI]     result = worker.call_method(
   [ComfyUI]     result = worker.call_method(
   [ComfyUI]     result = worker.call_method(
@@ -937,10 +644,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     )
   [ComfyUI]     )
   [ComfyUI]     )
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
   [ComfyUI]     raise WorkerError(
   [ComfyUI]     raise WorkerError(
   [ComfyUI]     raise WorkerError(
@@ -953,10 +660,10 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI]     )
   [ComfyUI]     )
   [ComfyUI]     )
-  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] 
@@ -969,84 +676,84 @@ Capturing execution frames: unirig_humanoid.json
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  Execution complete (t=12.9s)
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  Execution error: {'prompt_id': '4a56247b-10d2-4f9f-9f4d-d3c5e67b701d', 'node_id': '39', 'node_type': 'UniRigAutoRig', 'executed': ['40', '27'], 'exception_message': 'Could not load this library: C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1503, in load_library\n    ctypes.CDLL(path)\n    ~~~~~~~~~~~^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 361, in __init__\n    self._handle = self._load_library(name, mode, handle, winmode)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 379, in _load_library\n    return _LoadLibrary(self._name, winmode)\nOSError: [WinError 127] The specified procedure could not be found\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_egmyh0nr\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1826, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\auto_rig.py", line 116, in execute\n    normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(\n                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        trimesh=trimesh,\n        ^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n        target_face_count=target_face_count\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\skeleton_extraction.py", line 421, in execute\n    direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(\n                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        vertices=mesh_vertices_raw,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<7 lines>...\n        attn_backend=model_attn_backend,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\utils\\_contextlib.py", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 674, in predict_skeleton_from_mesh\n    skeleton = predict_skeleton(\n        vertices=sampled_points,\n    ...<5 lines>...\n        attn_backend=attn_backend,\n    )\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\utils\\_contextlib.py", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 428, in predict_skeleton\n    patcher, tokenizer = get_skeleton_model(\n                         ~~~~~~~~~~~~~~~~~~^\n        checkpoint_path, dtype=dtype, attn_backend=attn_backend\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 359, in get_skeleton_model\n    model, tokenizer = _load_skeleton_model(\n                       ~~~~~~~~~~~~~~~~~~~~^\n        checkpoint_path, dtype=dtype, attn_backend=attn_backend\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 185, in _load_skeleton_model\n    from .model_parse import get_model\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\model_parse.py", line 1, in <module>\n    from .unirig_ar import UniRigAR\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\unirig_ar.py", line 22, in <module>\n    from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\parse_encoder.py", line 3, in <module>\n    from .michelangelo_encoder import get_encoder as get_encoder_michelangelo\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\michelangelo_encoder.py", line 23, in <module>\n    from torch_cluster import fps\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\__init__.py", line 18, in <module>\n    torch.ops.load_library(spec.origin)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1505, in load_library\n    raise OSError(f"Could not load this library: {path}") from e\nOSError: Could not load this library: C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 534, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 334, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 308, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 296, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 536, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'skeleton_template': ['mixamo'], 'fbx_name': [''], 'target_face_count': [50000], 'debug': [False], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'skeleton_model': {'type': 'skeleton', 'model_id': 'apozz/UniRig-safetensors', 'checkpoint_path': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig\\\\skeleton.safetensors', 'unirig_path': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-UniRig\\\\nodes\\\\unirig', 'models_dir': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig', 'dtype': 'bf16', 'attn_backend': 'auto'}, 'skinning_model': {'type': 'skinning', 'model_id': 'apozz/UniRig-safetensors', 'checkpoint_path': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig\\\\skin.safetensors', 'unirig_path': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-UniRig\\\\nodes\\\\unirig', 'models_dir': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig', 'dtype': 'bf16', 'attn_backend': 'auto'}, 'model_id': 'apozz/UniRig-safetensors', 'dtype': 'bf16', 'attn_backend': 'auto'}"]}, 'current_outputs': ['10', '39', '27', '40'], 'timestamp': 1778416752022}
   [ComfyUI]     ctypes.CDLL(path)
   [ComfyUI]     ctypes.CDLL(path)
   [ComfyUI]     ctypes.CDLL(path)
   [ComfyUI]     ctypes.CDLL(path)
-  [ComfyUI]     ~~~~~~~~~~~^^^^^^
-  [ComfyUI]     ~~~~~~~~~~~^^^^^^
-  [ComfyUI]     ~~~~~~~~~~~^^^^^^
-  [ComfyUI]     ~~~~~~~~~~~^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
-  [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
-  [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
-  [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
-  [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
-  [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
-  [ComfyUI]     return _LoadLibrary(self._name, winmode)
-  [ComfyUI]     return _LoadLibrary(self._name, winmode)
-  [ComfyUI]     return _LoadLibrary(self._name, winmode)
-  [ComfyUI]     return _LoadLibrary(self._name, winmode)
-  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
-  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
-  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
-  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] The above exception was the direct cause of the following exception:
-  [ComfyUI] The above exception was the direct cause of the following exception:
-  [ComfyUI] The above exception was the direct cause of the following exception:
-  [ComfyUI] The above exception was the direct cause of the following exception:
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] 
-  Execution complete (t=18.1s)
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI] Traceback (most recent call last):
-  Execution error: {'prompt_id': '24421fd0-0fdb-4b19-8773-9cac059beadf', 'node_id': '39', 'node_type': 'UniRigAutoRig', 'executed': ['27', '40'], 'exception_message': 'Could not load this library: C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1503, in load_library\n    ctypes.CDLL(path)\n    ~~~~~~~~~~~^^^^^^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 361, in __init__\n    self._handle = self._load_library(name, mode, handle, winmode)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 379, in _load_library\n    return _LoadLibrary(self._name, winmode)\nOSError: [WinError 127] The specified procedure could not be found\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_avp1l_v1\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1826, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\auto_rig.py", line 116, in execute\n    normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(\n                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        trimesh=trimesh,\n        ^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n        target_face_count=target_face_count\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\skeleton_extraction.py", line 421, in execute\n    direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(\n                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        vertices=mesh_vertices_raw,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<7 lines>...\n        attn_backend=model_attn_backend,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\utils\\_contextlib.py", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 674, in predict_skeleton_from_mesh\n    skeleton = predict_skeleton(\n        vertices=sampled_points,\n    ...<5 lines>...\n        attn_backend=attn_backend,\n    )\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\utils\\_contextlib.py", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 428, in predict_skeleton\n    patcher, tokenizer = get_skeleton_model(\n                         ~~~~~~~~~~~~~~~~~~^\n        checkpoint_path, dtype=dtype, attn_backend=attn_backend\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 359, in get_skeleton_model\n    model, tokenizer = _load_skeleton_model(\n                       ~~~~~~~~~~~~~~~~~~~~^\n        checkpoint_path, dtype=dtype, attn_backend=attn_backend\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 185, in _load_skeleton_model\n    from .model_parse import get_model\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\model_parse.py", line 1, in <module>\n    from .unirig_ar import UniRigAR\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\unirig_ar.py", line 22, in <module>\n    from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\parse_encoder.py", line 3, in <module>\n    from .michelangelo_encoder import get_encoder as get_encoder_michelangelo\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\michelangelo_encoder.py", line 23, in <module>\n    from torch_cluster import fps\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\__init__.py", line 18, in <module>\n    torch.ops.load_library(spec.origin)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1505, in load_library\n    raise OSError(f"Could not load this library: {path}") from e\nOSError: Could not load this library: C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 534, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 334, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 308, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 296, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 536, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'skeleton_template': ['mixamo'], 'fbx_name': [''], 'target_face_count': [50000], 'debug': [False], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'skeleton_model': {'type': 'skeleton', 'model_id': 'apozz/UniRig-safetensors', 'checkpoint_path': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig\\\\skeleton.safetensors', 'unirig_path': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-UniRig\\\\nodes\\\\unirig', 'models_dir': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig', 'dtype': 'bf16', 'attn_backend': 'auto'}, 'skinning_model': {'type': 'skinning', 'model_id': 'apozz/UniRig-safetensors', 'checkpoint_path': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig\\\\skin.safetensors', 'unirig_path': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-UniRig\\\\nodes\\\\unirig', 'models_dir': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig', 'dtype': 'bf16', 'attn_backend': 'auto'}, 'model_id': 'apozz/UniRig-safetensors', 'dtype': 'bf16', 'attn_backend': 'auto'}"]}, 'current_outputs': ['39', '10', '27', '40'], 'timestamp': 1778332553555}
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_avp1l_v1\persistent_worker.py", line 1762, in main
     Status: FAILED
-    Error: Workflow execution failed: {'prompt_id': '24421fd0-0fdb-4b19-8773-9cac059beadf', 'node_id': '39', 'node_type': 'UniRigAutoRig', 'executed': ['27', '40'], 'exception_message': 'Could not load this library: C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1503, in load_library\n    ctypes.CDLL(path)\n    ~~~~~~~~~~~^^^^^^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 361, in __init__\n    self._handle = self._load_library(name, mode, handle, winmode)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 379, in _load_library\n    return _LoadLibrary(self._name, winmode)\nOSError: [WinError 127] The specified procedure could not be found\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_avp1l_v1\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1826, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\auto_rig.py", line 116, in execute\n    normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(\n                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        trimesh=trimesh,\n        ^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n        target_face_count=target_face_count\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\skeleton_extraction.py", line 421, in execute\n    direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(\n                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        vertices=mesh_vertices_raw,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<7 lines>...\n        attn_backend=model_attn_backend,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\utils\\_contextlib.py", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 674, in predict_skeleton_from_mesh\n    skeleton = predict_skeleton(\n        vertices=sampled_points,\n    ...<5 lines>...\n        attn_backend=attn_backend,\n    )\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\utils\\_contextlib.py", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 428, in predict_skeleton\n    patcher, tokenizer = get_skeleton_model(\n                         ~~~~~~~~~~~~~~~~~~^\n        checkpoint_path, dtype=dtype, attn_backend=attn_backend\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 359, in get_skeleton_model\n    model, tokenizer = _load_skeleton_model(\n                       ~~~~~~~~~~~~~~~~~~~~^\n        checkpoint_path, dtype=dtype, attn_backend=attn_backend\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 185, in _load_skeleton_model\n    from .model_parse import get_model\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\model_parse.py", line 1, in <module>\n    from .unirig_ar import UniRigAR\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\unirig_ar.py", line 22, in <module>\n    from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\parse_encoder.py", line 3, in <module>\n    from .michelangelo_encoder import get_encoder as get_encoder_michelangelo\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\michelangelo_encoder.py", line 23, in <module>\n    from torch_cluster import fps\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\__init__.py", line 18, in <module>\n    torch.ops.load_library(spec.origin)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1505, in load_library\n    raise OSError(f"Could not load this library: {path}") from e\nOSError: Could not load this library: C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 534, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 334, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 308, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 296, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 536, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\UniRig-1506\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'skeleton_template': ['mixamo'], 'fbx_name': [''], 'target_face_count': [50000], 'debug': [False], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'skeleton_model': {'type': 'skeleton', 'model_id': 'apozz/UniRig-safetensors', 'checkpoint_path': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig\\\\skeleton.safetensors', 'unirig_path': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-UniRig\\\\nodes\\\\unirig', 'models_dir': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig', 'dtype': 'bf16', 'attn_backend': 'auto'}, 'skinning_model': {'type': 'skinning', 'model_id': 'apozz/UniRig-safetensors', 'checkpoint_path': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig\\\\skin.safetensors', 'unirig_path': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-UniRig\\\\nodes\\\\unirig', 'models_dir': 'C:\\\\workspaces\\\\UniRig-1506\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig', 'dtype': 'bf16', 'attn_backend': 'auto'}, 'model_id': 'apozz/UniRig-safetensors', 'dtype': 'bf16', 'attn_backend': 'auto'}"]}, 'current_outputs': ['39', '10', '27', '40'], 'timestamp': 1778332553555}
+    Error: Workflow execution failed: {'prompt_id': '4a56247b-10d2-4f9f-9f4d-d3c5e67b701d', 'node_id': '39', 'node_type': 'UniRigAutoRig', 'executed': ['40', '27'], 'exception_message': 'Could not load this library: C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1503, in load_library\n    ctypes.CDLL(path)\n    ~~~~~~~~~~~^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 361, in __init__\n    self._handle = self._load_library(name, mode, handle, winmode)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 379, in _load_library\n    return _LoadLibrary(self._name, winmode)\nOSError: [WinError 127] The specified procedure could not be found\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_egmyh0nr\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1826, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\auto_rig.py", line 116, in execute\n    normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(\n                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        trimesh=trimesh,\n        ^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n        target_face_count=target_face_count\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\skeleton_extraction.py", line 421, in execute\n    direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(\n                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        vertices=mesh_vertices_raw,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<7 lines>...\n        attn_backend=model_attn_backend,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\utils\\_contextlib.py", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 674, in predict_skeleton_from_mesh\n    skeleton = predict_skeleton(\n        vertices=sampled_points,\n    ...<5 lines>...\n        attn_backend=attn_backend,\n    )\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\utils\\_contextlib.py", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 428, in predict_skeleton\n    patcher, tokenizer = get_skeleton_model(\n                         ~~~~~~~~~~~~~~~~~~^\n        checkpoint_path, dtype=dtype, attn_backend=attn_backend\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 359, in get_skeleton_model\n    model, tokenizer = _load_skeleton_model(\n                       ~~~~~~~~~~~~~~~~~~~~^\n        checkpoint_path, dtype=dtype, attn_backend=attn_backend\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\direct.py", line 185, in _load_skeleton_model\n    from .model_parse import get_model\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\model_parse.py", line 1, in <module>\n    from .unirig_ar import UniRigAR\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\unirig_ar.py", line 22, in <module>\n    from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\parse_encoder.py", line 3, in <module>\n    from .michelangelo_encoder import get_encoder as get_encoder_michelangelo\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\unirig\\michelangelo_encoder.py", line 23, in <module>\n    from torch_cluster import fps\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\__init__.py", line 18, in <module>\n    torch.ops.load_library(spec.origin)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1505, in load_library\n    raise OSError(f"Could not load this library: {path}") from e\nOSError: Could not load this library: C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 534, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 334, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 308, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 296, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 536, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'skeleton_template': ['mixamo'], 'fbx_name': [''], 'target_face_count': [50000], 'debug': [False], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'skeleton_model': {'type': 'skeleton', 'model_id': 'apozz/UniRig-safetensors', 'checkpoint_path': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig\\\\skeleton.safetensors', 'unirig_path': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-UniRig\\\\nodes\\\\unirig', 'models_dir': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig', 'dtype': 'bf16', 'attn_backend': 'auto'}, 'skinning_model': {'type': 'skinning', 'model_id': 'apozz/UniRig-safetensors', 'checkpoint_path': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig\\\\skin.safetensors', 'unirig_path': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\custom_nodes\\\\ComfyUI-UniRig\\\\nodes\\\\unirig', 'models_dir': 'C:\\\\workspaces\\\\UniRig-1432\\\\portable-comfyui\\\\ComfyUI_windows_portable\\\\ComfyUI\\\\models\\\\unirig', 'dtype': 'bf16', 'attn_backend': 'auto'}, 'model_id': 'apozz/UniRig-safetensors', 'dtype': 'bf16', 'attn_backend': 'auto'}"]}, 'current_outputs': ['10', '39', '27', '40'], 'timestamp': 1778416752022}
     Details: Workflow: C:\ComfyUI-UniRig\workflows\unirig_humanoid.json
 Node error: UniRigAutoRig
+  [ComfyUI]     ~~~~~~~~~~~^^^^^^
+  [ComfyUI]     ~~~~~~~~~~~^^^^^^
+  [ComfyUI]     ~~~~~~~~~~~^^^^^^
+  [ComfyUI]     ~~~~~~~~~~~^^^^^^
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
+  [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
+  [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
+  [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
+  [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]     return _LoadLibrary(self._name, winmode)
+  [ComfyUI]     return _LoadLibrary(self._name, winmode)
+  [ComfyUI]     return _LoadLibrary(self._name, winmode)
+  [ComfyUI]     return _LoadLibrary(self._name, winmode)
+  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
+  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
+  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
+  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] The above exception was the direct cause of the following exception:
+  [ComfyUI] The above exception was the direct cause of the following exception:
+  [ComfyUI] The above exception was the direct cause of the following exception:
+  [ComfyUI] The above exception was the direct cause of the following exception:
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\auto_rig.py", line 116, in execute
   [ComfyUI]     normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(
   [ComfyUI]     normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(
   [ComfyUI]     normalized_mesh, skeleton, texture_preview = UniRigExtractSkeletonNew.execute(
@@ -1083,10 +790,10 @@ Node error: UniRigAutoRig
   [ComfyUI]     ^
   [ComfyUI]     ^
   [ComfyUI]     ^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\skeleton_extraction.py", line 421, in execute
   [ComfyUI]     direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(
   [ComfyUI]     direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(
   [ComfyUI]     direct_skeleton_result, norm_params = direct_module.predict_skeleton_from_mesh(
@@ -1123,18 +830,18 @@ Node error: UniRigAutoRig
   [ComfyUI]     ^
   [ComfyUI]     ^
   [ComfyUI]     ^
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
   [ComfyUI]     return func(*args, **kwargs)
   [ComfyUI]     return func(*args, **kwargs)
   [ComfyUI]     return func(*args, **kwargs)
   [ComfyUI]     return func(*args, **kwargs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
-  [ComfyUI]   File "C:\workspaces\UniRig-1506\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 674, in predict_skeleton_from_mesh
   [ComfyUI]     skeleton = predict_skeleton(
   [ComfyUI]     skeleton = predict_skeleton(
   [ComfyUI]     skeleton = predict_skeleton(
@@ -1154,3 +861,104 @@ Node error: UniRigAutoRig
   [ComfyUI]     )
   [ComfyUI]     )
   [ComfyUI]     )
+  [ComfyUI]     )
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\utils\_contextlib.py", line 124, in decorate_context
+  [ComfyUI]     return func(*args, **kwargs)
+  [ComfyUI]     return func(*args, **kwargs)
+  [ComfyUI]     return func(*args, **kwargs)
+  [ComfyUI]     return func(*args, **kwargs)
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 428, in predict_skeleton
+  [ComfyUI]     patcher, tokenizer = get_skeleton_model(
+  [ComfyUI]     patcher, tokenizer = get_skeleton_model(
+  [ComfyUI]     patcher, tokenizer = get_skeleton_model(
+  [ComfyUI]     patcher, tokenizer = get_skeleton_model(
+  [ComfyUI]                          ~~~~~~~~~~~~~~~~~~^
+  [ComfyUI]                          ~~~~~~~~~~~~~~~~~~^
+  [ComfyUI]                          ~~~~~~~~~~~~~~~~~~^
+  [ComfyUI]                          ~~~~~~~~~~~~~~~~~~^
+  [ComfyUI]         checkpoint_path, dtype=dtype, attn_backend=attn_backend
+  [ComfyUI]         checkpoint_path, dtype=dtype, attn_backend=attn_backend
+  [ComfyUI]         checkpoint_path, dtype=dtype, attn_backend=attn_backend
+  [ComfyUI]         checkpoint_path, dtype=dtype, attn_backend=attn_backend
+  [ComfyUI]         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]     )
+  [ComfyUI]     )
+  [ComfyUI]     )
+  [ComfyUI]     )
+  [ComfyUI]     ^
+  [ComfyUI]     ^
+  [ComfyUI]     ^
+  [ComfyUI]     ^
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 359, in get_skeleton_model
+  [ComfyUI]     model, tokenizer = _load_skeleton_model(
+  [ComfyUI]     model, tokenizer = _load_skeleton_model(
+  [ComfyUI]     model, tokenizer = _load_skeleton_model(
+  [ComfyUI]     model, tokenizer = _load_skeleton_model(
+  [ComfyUI]                        ~~~~~~~~~~~~~~~~~~~~^
+  [ComfyUI]                        ~~~~~~~~~~~~~~~~~~~~^
+  [ComfyUI]                        ~~~~~~~~~~~~~~~~~~~~^
+  [ComfyUI]                        ~~~~~~~~~~~~~~~~~~~~^
+  [ComfyUI]         checkpoint_path, dtype=dtype, attn_backend=attn_backend
+  [ComfyUI]         checkpoint_path, dtype=dtype, attn_backend=attn_backend
+  [ComfyUI]         checkpoint_path, dtype=dtype, attn_backend=attn_backend
+  [ComfyUI]         checkpoint_path, dtype=dtype, attn_backend=attn_backend
+  [ComfyUI]         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [ComfyUI]     )
+  [ComfyUI]     )
+  [ComfyUI]     )
+  [ComfyUI]     )
+  [ComfyUI]     ^
+  [ComfyUI]     ^
+  [ComfyUI]     ^
+  [ComfyUI]     ^
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\direct.py", line 185, in _load_skeleton_model
+  [ComfyUI]     from .model_parse import get_model
+  [ComfyUI]     from .model_parse import get_model
+  [ComfyUI]     from .model_parse import get_model
+  [ComfyUI]     from .model_parse import get_model
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\model_parse.py", line 1, in <module>
+  [ComfyUI]     from .unirig_ar import UniRigAR
+  [ComfyUI]     from .unirig_ar import UniRigAR
+  [ComfyUI]     from .unirig_ar import UniRigAR
+  [ComfyUI]     from .unirig_ar import UniRigAR
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\unirig_ar.py", line 22, in <module>
+  [ComfyUI]     from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder
+  [ComfyUI]     from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder
+  [ComfyUI]     from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder
+  [ComfyUI]     from .parse_encoder import MAP_MESH_ENCODER, get_mesh_encoder
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\parse_encoder.py", line 3, in <module>
+  [ComfyUI]     from .michelangelo_encoder import get_encoder as get_encoder_michelangelo
+  [ComfyUI]     from .michelangelo_encoder import get_encoder as get_encoder_michelangelo
+  [ComfyUI]     from .michelangelo_encoder import get_encoder as get_encoder_michelangelo
+  [ComfyUI]     from .michelangelo_encoder import get_encoder as get_encoder_michelangelo
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\unirig\michelangelo_encoder.py", line 23, in <module>
