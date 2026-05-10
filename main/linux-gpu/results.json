@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-05-10T20:44:41.954497+00:00",
+  "timestamp": "2026-05-10T23:18:05.606230+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
     "cpu": "AMD Ryzen 5 3600 6-Core Processor",
     "gpu": "NVIDIA GeForce RTX 5060"
   },
-  "commit_hash": "b4af84ab8105b5d9de322d86b812cd7069b4ed7a",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25638995721",
+  "commit_hash": "730c866082148b2a513df16f27fec81d8fa1685f",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25642377235",
   "success": true,
   "summary": {
     "total": 6,
@@ -25,7 +25,7 @@
     {
       "name": "mia_humanoid",
       "status": "pass",
-      "duration_seconds": 76.51,
+      "duration_seconds": 77.1,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -34,14 +34,14 @@
       },
       "resources": {
         "ram": {
-          "peak": 6.05,
+          "peak": 6.12,
           "avg": 3.85
         },
         "total_ram_gb": 31.3,
         "samples": 75,
         "vram": {
           "peak": 2.5,
-          "avg": 1.18
+          "avg": 1.19
         }
       }
     },
@@ -62,7 +62,7 @@
     {
       "name": "unirig_bird",
       "status": "pass",
-      "duration_seconds": 78.55,
+      "duration_seconds": 72.41,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -71,21 +71,21 @@
       },
       "resources": {
         "ram": {
-          "peak": 5.87,
-          "avg": 3.23
+          "peak": 6.28,
+          "avg": 3.14
         },
         "total_ram_gb": 31.3,
-        "samples": 77,
+        "samples": 71,
         "vram": {
-          "peak": 4.35,
-          "avg": 0.93
+          "peak": 4.19,
+          "avg": 0.73
         }
       }
     },
     {
       "name": "unirig_humanoid",
       "status": "pass",
-      "duration_seconds": 57.42,
+      "duration_seconds": 55.42,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -94,14 +94,14 @@
       },
       "resources": {
         "ram": {
-          "peak": 6.2,
-          "avg": 4.17
+          "peak": 5.77,
+          "avg": 3.7
         },
         "total_ram_gb": 31.3,
-        "samples": 56,
+        "samples": 54,
         "vram": {
-          "peak": 4.07,
-          "avg": 1.55
+          "peak": 4.0,
+          "avg": 1.46
         }
       }
     }
