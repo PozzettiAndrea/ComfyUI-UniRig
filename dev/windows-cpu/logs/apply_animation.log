@@ -6,41 +6,57 @@ Capturing execution frames: apply_animation.json
   [ComfyUI] Prompt has 4 nodes
   [ComfyUI]   Node 6: UniRigApplyAnimation
   [ComfyUI]     Inputs: {"model_fbx_path": ["9", 0], "animation_type": "mixamo", "animation_file": "Breakdance.fbx", "output_name": ""}
-  Queuing workflow for execution...
   [ComfyUI]   Node 7: Preview3D
+  Queuing workflow for execution...
   [ComfyUI]     Inputs: {"model_file": ["6", 0], "image": "", "camera_info": ["10", 0]}
   [ComfyUI]   Node 9: UniRigLoadRiggedMesh
   [ComfyUI]     Inputs: {"fbx_file": "3d/mixamo.fbx"}
   [ComfyUI]   Node 10: CreateLoad3DCamera
   [ComfyUI]     Inputs: {"pos_x": 0, "pos_y": 20, "pos_z": 20, "target_x": 0, "target_y": 0, "target_z": 0, "zoom": 1, "camera_type": "perspective"}
-  [ComfyUI] Generated prompt_id: d6fdd153-667f-4970-987b-4084f8993b0b
+  [ComfyUI] Generated prompt_id: 5825a0c4-d5c7-4c68-8d9d-4dfb1c23e37f
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Validation result: valid=True
   [ComfyUI] === Validation PASSED ===
   [ComfyUI] got prompt
   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
-  [ComfyUI] [comfy-env] SubprocessWorker: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-0118\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [comfy-env] SubprocessWorker: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-0301\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0301\\ComfyUI'}
   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0118\\ComfyUI'}
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [ComfyUI-UniRig] python: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-0118\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
-  [ComfyUI] [comfy-env] unirig-nodes: Library/bin has 235 DLLs
-  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0118\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0118\\ComfyUI\\custom_nodes\\ComfyUI-UniRig', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0118\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0118\\ComfyUI\\custom_nodes\\ComfyUI-UniRig']
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-0118\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0118\\ComfyUI\\.ce\\pixi.toml', '-e', 'unirig-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_i8aziezn\\persistent_worker.py', 'tcp://127.0.0.1:60730']...
+  [ComfyUI] [comfy-env] unirig-nodes: Library/bin has 234 DLLs
+  [ComfyUI] [ComfyUI-UniRig] python: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-0301\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0301\\ComfyUI', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0301\\ComfyUI\\custom_nodes\\ComfyUI-UniRig', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0301\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0301\\ComfyUI\\custom_nodes\\ComfyUI-UniRig']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-0301\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\runneradmin\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0301\\ComfyUI\\.ce\\pixi.toml', '-e', 'unirig-nodes', 'python', 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\comfyui_pvenv_jaub85sd\\persistent_worker.py', 'tcp://127.0.0.1:63215']...
   Frame 2 saved (frame_001.jpg, t=2.4s)
-  [capture-periodic] freeze=4ms shot=119ms unfreeze=5ms saved=True
+  [capture-periodic] freeze=3ms shot=129ms unfreeze=5ms saved=True
   Frame 3 saved (frame_002.jpg, t=4.6s)
-  [capture-periodic] freeze=3ms shot=107ms unfreeze=3ms saved=True
+  [capture-periodic] freeze=4ms shot=108ms unfreeze=5ms saved=True
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
   [ComfyUI] [SubprocessWorker] created 0 shm blocks
   [ComfyUI] [SubprocessWorker] sending request via socket...
+  [capture-loop] iter=50 t=5.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=5.1/16.0GB (32%) swap=0.2/2.9GB (6%) cpu=30% browser_rss=0.71GB
   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
-  [capture-loop] iter=50 t=5.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=5.3/16.0GB (33%) swap=0.2/2.9GB (6%) cpu=37% browser_rss=0.71GB
+  [ComfyUI] [worker:ComfyUI-UniRig] Exception in module unregister(): '_ops.py'
+  [ComfyUI] [worker:ComfyUI-UniRig] Traceback (most recent call last):
+  [ComfyUI] 
+  [ComfyUI] [worker:ComfyUI-UniRig]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-0301\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\bpy\3.6\scripts\modules\addon_utils.py", line 421, in disable
+  [ComfyUI]     mod.unregister()
+  [ComfyUI] 
+  [ComfyUI] [worker:ComfyUI-UniRig] TypeError: '_OpNamespace' object is not callable
+  [ComfyUI] 
+  [ComfyUI] [worker:ComfyUI-UniRig] Exception in module unregister(): '_classes.py'
+  [ComfyUI] [worker:ComfyUI-UniRig] Traceback (most recent call last):
+  [ComfyUI] 
+  [ComfyUI] [worker:ComfyUI-UniRig]   File "D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-0301\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\bpy\3.6\scripts\modules\addon_utils.py", line 421, in disable
+  [ComfyUI]     mod.unregister()
+  [ComfyUI] 
+  [ComfyUI] [worker:ComfyUI-UniRig] TypeError: '_ClassNamespace' object is not callable
+  [ComfyUI] 
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (7.89s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (9.20s): result: NodeOutput
   [ComfyUI] [comfy-env] Running UniRigApplyAnimation: model_fbx_path: 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniR..., animation_type: 'mixamo', animation_file: 'Breakdance.fbx', output_name: ''
   [ComfyUI] [SubprocessWorker] call_method: nodes.animation.UniRigApplyAnimation.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -54,26 +70,27 @@ Capturing execution frames: apply_animation.json
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7700
   [ComfyUI] [worker:ComfyUI-UniRig]
-  [ComfyUI] FBX export starting... 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0118\\ComfyUI\\output\\loaded_1778376176_mixamo_Breakdance.fbx'
+  [ComfyUI] FBX export starting... 'D:\\a\\comfy-gpu-ci\\comfy-gpu-ci\\test_workspaces\\UniRig-0301\\ComfyUI\\output\\loaded_1778382397_mixamo_Breakdance.fbx'
   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
-  Frame 4 saved (frame_003.jpg, t=9.0s)
-  [capture-periodic] freeze=3ms shot=116ms unfreeze=6ms saved=True
-  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 0.6378 sec.
+  Frame 4 saved (frame_003.jpg, t=11.2s)
+  [capture-periodic] freeze=4ms shot=127ms unfreeze=4ms saved=True
+  [capture-loop] iter=100 t=12.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=5.3/16.0GB (33%) swap=0.2/2.9GB (6%) cpu=59% browser_rss=0.71GB
+  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 6.8125 sec.
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigApplyAnimation done (1.01s): result: NodeOutput
-  [ComfyUI] Prompt executed in 8.92 seconds
+  [ComfyUI] [comfy-env] UniRigApplyAnimation done (3.28s): result: NodeOutput
+  [ComfyUI] Prompt executed in 12.50 seconds
   Node executed (1 total), capturing...
-  Frame 5 saved (frame_004.jpg, t=9.7s)
-  [capture-node] freeze=680ms shot=927ms unfreeze=0ms saved=True
-  Execution complete (t=9.7s)
+  Frame 5 saved (frame_004.jpg, t=13.0s)
+  [capture-node] freeze=4ms shot=925ms unfreeze=0ms saved=True
+  Execution complete (t=13.0s)
   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
   [3d-wait] Phase 2: iframes=0
   [3d-wait] Total 3D wait: 60.0s
-  Captured 5 unique frames over 71.31s
+  Captured 5 unique frames over 74.84s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: apply_animation_executed.png
-  [timing] final_screenshot: 0.2s
+  [timing] final_screenshot: 0.3s
     Captured 6 video frames

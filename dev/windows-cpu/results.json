@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-05-10T01:24:34.939666+00:00",
+  "timestamp": "2026-05-10T03:08:21.602478+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-2025Server-10.0.26100-SP0",
     "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "d86e4cb0896414f23d629d03f1c1d83a6c430844",
+  "commit_hash": "d5dc353223a993d12ed98e6f742c114091b54ec0",
   "success": true,
   "summary": {
     "total": 6,
@@ -16,7 +16,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 82.48,
+      "duration_seconds": 86.35,
       "error": null,
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
@@ -24,11 +24,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.04,
-          "avg": 0.94
+          "peak": 0.94,
+          "avg": 0.85
         },
         "total_ram_gb": 16.0,
-        "samples": 83
+        "samples": 86
       }
     },
     {
@@ -41,7 +41,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 20.26,
+      "duration_seconds": 21.67,
       "error": null,
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
@@ -49,17 +49,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 0.99,
-          "avg": 0.83
+          "peak": 0.89,
+          "avg": 0.74
         },
         "total_ram_gb": 16.0,
-        "samples": 21
+        "samples": 22
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 11.12,
+      "duration_seconds": 11.94,
       "error": null,
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
@@ -67,8 +67,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 0.94,
-          "avg": 0.94
+          "peak": 0.85,
+          "avg": 0.84
         },
         "total_ram_gb": 16.0,
         "samples": 12
