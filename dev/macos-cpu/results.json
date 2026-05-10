@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-05-09T17:16:26.088746+00:00",
+  "timestamp": "2026-05-10T01:21:26.563225+00:00",
   "platform": "macos",
   "hardware": {
     "os": "macOS-15.7.4-arm64-arm-64bit",
     "cpu": "arm"
   },
   "commit_hash": "d86e4cb0896414f23d629d03f1c1d83a6c430844",
-  "success": true,
+  "success": false,
   "summary": {
     "total": 6,
-    "passed": 3,
-    "failed": 0
+    "passed": 0,
+    "failed": 3
   },
   "workflows": [
     {
       "name": "apply_animation",
-      "status": "pass",
-      "duration_seconds": 78.04,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 8.59,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"model_fbx_path\":[\"9\",0]},\"_meta\":{}}",
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 3.85,
-          "avg": 3.75
+          "peak": 0.49,
+          "avg": 0.49
         },
         "total_ram_gb": 7.0,
-        "samples": 75
+        "samples": 9
       }
     },
     {
@@ -40,38 +40,38 @@
     },
     {
       "name": "rigged_manipulator",
-      "status": "pass",
-      "duration_seconds": 14.32,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 5.62,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_output_path\":[\"4\",0]},\"_meta\":{}}",
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 3.8,
-          "avg": 3.73
+          "peak": 0.48,
+          "avg": 0.46
         },
         "total_ram_gb": 7.0,
-        "samples": 14
+        "samples": 6
       }
     },
     {
       "name": "skeleton_comparison",
-      "status": "pass",
-      "duration_seconds": 10.1,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 5.59,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_path_left\":[\"54\",0],\"fbx_path_right\":[\"55\",0]},\"_meta\":{}}",
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 3.8,
-          "avg": 3.77
+          "peak": 0.46,
+          "avg": 0.45
         },
         "total_ram_gb": 7.0,
-        "samples": 10
+        "samples": 6
       }
     },
     {
