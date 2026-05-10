@@ -21,34 +21,33 @@
 [Console-log] [MotionCapture] Loading FBX mesh preview extension...
 [Console-log] [MotionCapture] Detected extension folder: ComfyUI-UniRig
 [Console-log] [MotionCapture] FBX mesh preview extension registered
-[Console-log] [UniRig Compare] Loading compare skeleton widget...
-[Console-log] [UniRig Compare] Detected extension folder: ComfyUI-UniRig
-[Console-log] [UniRig Compare] Compare skeleton widget registered
 [Console-log] [UniRig Debug] Loading FBX mesh preview extension...
 [Console-log] [UniRig Debug] Detected extension folder: ComfyUI-UniRig
 [Console-log] [UniRig Debug] FBX mesh preview extension registered
+[Console-log] [UniRig Compare] Loading compare skeleton widget...
+[Console-log] [UniRig Compare] Detected extension folder: ComfyUI-UniRig
+[Console-log] [UniRig Compare] Compare skeleton widget registered
 [Console-warning] WARNING: Multiple instances of Three.js being imported.
 [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
 [Console-log] [UniRig] Registering Preview Rigged Mesh node
 [Console-log] [UniRig Debug] Registering Preview Rigged Mesh node
 [Console-log] [UniRig Compare] Registering Compare Skeletons node
 [Console-log] [UniRig] Node created, adding FBX viewer widget
-[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778416689905
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778421062733
 [Console-log] [UniRig] Widget created: DOMWidgetImpl
-[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41882/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
+[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41886/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
 [Console-log] [FBX Viewer] Ready
 [Console-log] [UniRig] Viewer iframe is ready!
 [Console-log] [UniRig] Iframe loaded successfully
 [Console-log] [FBX Viewer] Received postMessage: {type: RESIZE, width: 883.4922485351562, height: 767.9014892578125}
 [Console-log] [UniRig] Node created, adding FBX viewer widget
-[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778416690770
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778421063947
 [Console-log] [UniRig] Widget created: DOMWidgetImpl
-[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41882/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
+[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41886/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
 [Console-log] [FBX Viewer] Ready
 [Console-log] [UniRig] Viewer iframe is ready!
 [Console-log] [UniRig] Viewer iframe is ready!
 [Console-log] [UniRig] Iframe loaded successfully
-[Console-log] [FBX Viewer] Received postMessage: {type: RESIZE, width: 733.3194580078125, height: 637.37646484375}
 [Console-log] [comfy-test] graphToPrompt: 4 nodes, missing class_type: [], sample: {"inputs":{"fbx_output_path":["39",0],"preview":""},"class_type":"UniRigPreviewRiggedMesh","_meta":{"title":"UniRig: Preview Rigged Mesh"}}

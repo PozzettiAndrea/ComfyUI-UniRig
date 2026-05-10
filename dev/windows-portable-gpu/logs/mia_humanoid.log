@@ -3,17 +3,17 @@ Capturing execution frames: mia_humanoid.json
   Validating workflow...
   [ComfyUI] === /validate endpoint called ===
   [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Prompt has 4 nodes
+  [ComfyUI] Prompt has 4 nodes
+  [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
+  [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
+  [ComfyUI]     Inputs: {"fbx_output_path": ["42", 0], "preview": ""}
+  [ComfyUI]     Inputs: {"fbx_output_path": ["42", 0], "preview": ""}
+  [ComfyUI]   Node 27: UniRigLoadMesh
+  [ComfyUI]   Node 27: UniRigLoadMesh
   Queuing workflow for execution...
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Prompt has 4 nodes
-  [ComfyUI] Prompt has 4 nodes
-  [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
-  [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
-  [ComfyUI]     Inputs: {"fbx_output_path": ["42", 0], "preview": ""}
-  [ComfyUI]     Inputs: {"fbx_output_path": ["42", 0], "preview": ""}
-  [ComfyUI]   Node 27: UniRigLoadMesh
-  [ComfyUI]   Node 27: UniRigLoadMesh
   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
   [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
   [ComfyUI]   Node 41: MIALoadModel
@@ -22,42 +22,45 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI]     Inputs: {"precision": "fp32", "attn_backend": "auto"}
   [ComfyUI]   Node 42: MIAAutoRig
   [ComfyUI]   Node 42: MIAAutoRig
-  [ComfyUI] [comfy-env] SubprocessWorker: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
-  [ComfyUI] [comfy-env] SubprocessWorker: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
   [ComfyUI]     Inputs: {"fbx_name": "rigatoni", "no_fingers": false, "use_normal": false, "reset_to_rest": true, "trimesh": ["27", 0], "model": ["41", 0]}
   [ComfyUI]     Inputs: {"fbx_name": "rigatoni", "no_fingers": false, "use_normal": false, "reset_to_rest": true, "trimesh": ["27", 0], "model": ["41", 0]}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
-  [ComfyUI] Generated prompt_id: ea01accb-d4e0-4e18-bc1b-eb52a73d93ac
-  [ComfyUI] Generated prompt_id: ea01accb-d4e0-4e18-bc1b-eb52a73d93ac
+  [ComfyUI] Generated prompt_id: 8fe93b04-7b35-4572-b7a4-50d872ff3c82
+  [ComfyUI] Generated prompt_id: 8fe93b04-7b35-4572-b7a4-50d872ff3c82
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Calling execution.validate_prompt()...
   [ComfyUI] Validation result: valid=True
   [ComfyUI] Validation result: valid=True
-  [ComfyUI] [ComfyUI-UniRig] python: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
-  [ComfyUI] [ComfyUI-UniRig] python: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
   [ComfyUI] === Validation PASSED ===
   [ComfyUI] === Validation PASSED ===
-  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig', 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages', 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig']
-  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig', 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages', 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig']
   [ComfyUI] got prompt
   [ComfyUI] got prompt
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
-  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
   [ComfyUI] [comfy-env] Running MIALoadModel: precision: 'fp32', attn_backend: 'auto'
   [ComfyUI] [comfy-env] Running MIALoadModel: precision: 'fp32', attn_backend: 'auto'
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\pixi.toml', '-e', 'unirig-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_egmyh0nr\\persistent_worker.py', 'tcp://127.0.0.1:56026']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\pixi.toml', '-e', 'unirig-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_egmyh0nr\\persistent_worker.py', 'tcp://127.0.0.1:56026']...
-  [ComfyUI] [VRAM] Before MIALoadModel: 1156 / 16379 MB
-  [ComfyUI] [VRAM] Before MIALoadModel: 1156 / 16379 MB
+  [ComfyUI] [comfy-env] SubprocessWorker: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [comfy-env] SubprocessWorker: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [VRAM] Before MIALoadModel: 1271 / 24575 MB
+  [ComfyUI] [VRAM] Before MIALoadModel: 1271 / 24575 MB
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI'}
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.MIALoadModel.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.MIALoadModel.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [comfy-env] unirig-nodes: Library/bin has 235 DLLs
   [ComfyUI] [comfy-env] unirig-nodes: Library/bin has 235 DLLs
-  Frame 2 saved (frame_001.jpg, t=2.2s)
-  [capture-periodic] freeze=2ms shot=81ms unfreeze=2ms saved=True
+  [ComfyUI] [ComfyUI-UniRig] python: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [ComfyUI-UniRig] python: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig', 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages', 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig']
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI', 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig', 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages', 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\python.exe
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\pixi.toml', '-e', 'unirig-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_iuyb9so2\\persistent_worker.py', 'tcp://127.0.0.1:59647']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['C:\\Users\\ContainerAdministrator\\.pixi\\bin\\pixi.exe', 'run', '--as-is', '--manifest-path', 'C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\pixi.toml', '-e', 'unirig-nodes', 'python', 'C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_iuyb9so2\\persistent_worker.py', 'tcp://127.0.0.1:59647']...
+  Frame 2 saved (frame_001.jpg, t=2.4s)
+  [capture-periodic] freeze=12ms shot=135ms unfreeze=5ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.6s)
+  [capture-periodic] freeze=4ms shot=122ms unfreeze=5ms saved=True
+  [capture-loop] iter=50 t=6.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=10.0/31.9GB (31%) swap=0.0/5.0GB (0%) cpu=6% browser_rss=0.76GB
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
@@ -68,18 +71,16 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
-  Frame 3 saved (frame_002.jpg, t=4.5s)
-  [capture-periodic] freeze=2ms shot=68ms unfreeze=2ms saved=True
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] MIALoadModel done (5.01s): result: NodeOutput
-  [ComfyUI] [comfy-env] MIALoadModel done (5.01s): result: NodeOutput
-  [ComfyUI] [VRAM] After MIALoadModel: 1156 / 16379 MB
-  [ComfyUI] [VRAM] After MIALoadModel: 1156 / 16379 MB
+  [ComfyUI] [comfy-env] MIALoadModel done (9.96s): result: NodeOutput
+  [ComfyUI] [comfy-env] MIALoadModel done (9.96s): result: NodeOutput
+  [ComfyUI] [VRAM] After MIALoadModel: 1271 / 24575 MB
+  [ComfyUI] [VRAM] After MIALoadModel: 1271 / 24575 MB
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
   [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1156 / 16379 MB
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1271 / 24575 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 1271 / 24575 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -100,15 +101,14 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [capture-loop] iter=50 t=5.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=7.7/15.9GB (48%) swap=0.2/3.0GB (7%) cpu=15% browser_rss=0.73GB
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.80s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (0.80s): result: NodeOutput
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 1156 / 16379 MB
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 1156 / 16379 MB
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (1.26s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (1.26s): result: NodeOutput
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 1271 / 24575 MB
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 1271 / 24575 MB
   [ComfyUI] [comfy-env] Running MIAAutoRig: fbx_name: 'rigatoni', no_fingers: False, use_normal: False, reset_to_rest: True, trimesh: Trimesh, model: dict
   [ComfyUI] [comfy-env] Running MIAAutoRig: fbx_name: 'rigatoni', no_fingers: False, use_normal: False, reset_to_rest: True, trimesh: Trimesh, model: dict
-  [ComfyUI] [VRAM] Before MIAAutoRig: 1156 / 16379 MB
-  [ComfyUI] [VRAM] Before MIAAutoRig: 1156 / 16379 MB
+  [ComfyUI] [VRAM] Before MIAAutoRig: 1271 / 24575 MB
+  [ComfyUI] [VRAM] Before MIAAutoRig: 1271 / 24575 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.mia_auto_rig.MIAAutoRig.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.mia_auto_rig.MIAAutoRig.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -121,143 +121,158 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] [SubprocessWorker] worker started/confirmed
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  Frame 4 saved (frame_003.jpg, t=11.4s)
+  [capture-periodic] freeze=4ms shot=143ms unfreeze=6ms saved=True
   [ComfyUI] [SubprocessWorker] created 1 shm blocks
   [ComfyUI] [SubprocessWorker] created 1 shm blocks
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] call_id=3 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=3 sending call_method
-  [ComfyUI] C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\huggingface_hub\utils\_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
-  [ComfyUI] C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\huggingface_hub\utils\_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  [ComfyUI] C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\huggingface_hub\utils\_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  [ComfyUI] C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\huggingface_hub\utils\_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
   [ComfyUI]   warnings.warn(
   [ComfyUI]   warnings.warn(
-  Frame 4 saved (frame_003.jpg, t=6.6s)
-  [capture-periodic] freeze=2ms shot=69ms unfreeze=2ms saved=True
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] output/best/new/bw.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/bw.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/bw.pth:  63%|██████▎   | 268M/425M [00:04<00:02, 63.0MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw.pth:  63%|██████▎   | 268M/425M [00:04<00:02, 63.0MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [capture-loop] iter=100 t=12.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=7.9/15.9GB (49%) swap=0.2/3.0GB (7%) cpu=25% browser_rss=0.73GB
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:04<00:00, 98.7MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:04<00:00, 98.7MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:04<00:00, 89.1MB/s]
-  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:04<00:00, 89.1MB/s]
-  [ComfyUI] 
-  [ComfyUI] 
-  Frame 5 saved (frame_004.jpg, t=13.2s)
-  [capture-periodic] freeze=3ms shot=80ms unfreeze=3ms saved=True
-  [ComfyUI] output/best/new/bw_normal.pth:   0%|          | 0.00/429M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/bw_normal.pth:   0%|          | 0.00/429M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/bw_normal.pth:  47%|████▋     | 201M/429M [00:03<00:03, 61.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw_normal.pth:  47%|████▋     | 201M/429M [00:03<00:03, 61.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] output/best/new/bw_normal.pth:  78%|███████▊  | 335M/429M [00:04<00:01, 90.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw_normal.pth:  78%|███████▊  | 335M/429M [00:04<00:01, 90.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 123MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 123MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 102MB/s]
-  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 102MB/s]
   [ComfyUI] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
   [ComfyUI] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  [capture-loop] iter=100 t=13.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=10.6/31.9GB (33%) swap=0.0/5.0GB (0%) cpu=12% browser_rss=0.76GB
   [ComfyUI] 
   [ComfyUI] 
-  [capture-loop] iter=150 t=17.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=8.0/15.9GB (50%) swap=0.2/3.0GB (7%) cpu=24% browser_rss=0.73GB
-  [ComfyUI] output/best/new/joints.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/joints.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/joints.pth:  38%|███▊      | 201M/526M [00:02<00:04, 73.1MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints.pth:  38%|███▊      | 201M/526M [00:02<00:04, 73.1MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  Frame 5 saved (frame_004.jpg, t=13.6s)
+  [capture-periodic] freeze=4ms shot=134ms unfreeze=5ms saved=True
+  [ComfyUI] output/best/new/bw.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
+  [ComfyUI] output/best/new/bw.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
+  [ComfyUI] output/best/new/bw.pth:  16%|█▌        | 67.0M/425M [00:03<00:20, 17.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw.pth:  16%|█▌        | 67.0M/425M [00:03<00:20, 17.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  Frame 6 saved (frame_005.jpg, t=18.1s)
+  [capture-periodic] freeze=4ms shot=144ms unfreeze=5ms saved=True
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/joints.pth:  51%|█████     | 268M/526M [00:03<00:02, 95.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints.pth:  51%|█████     | 268M/526M [00:03<00:02, 95.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  Frame 6 saved (frame_005.jpg, t=19.8s)
-  [capture-periodic] freeze=3ms shot=84ms unfreeze=3ms saved=True
+  [ComfyUI] output/best/new/bw.pth:  47%|████▋     | 201M/425M [00:05<00:04, 46.4MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw.pth:  47%|████▋     | 201M/425M [00:05<00:04, 46.4MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/joints.pth:  64%|██████▍   | 335M/526M [00:04<00:02, 64.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints.pth:  64%|██████▍   | 335M/526M [00:04<00:02, 64.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 118MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 118MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:04<00:00, 136MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:04<00:00, 136MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 80.5MB/s]
+  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 80.5MB/s]
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:04<00:00, 106MB/s]
-  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:04<00:00, 106MB/s]
+  [capture-loop] iter=150 t=19.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=10.7/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=12% browser_rss=0.77GB
+  Frame 7 saved (frame_006.jpg, t=20.3s)
+  [capture-periodic] freeze=5ms shot=157ms unfreeze=5ms saved=True
+  [ComfyUI] output/best/new/bw_normal.pth:   0%|          | 0.00/429M [00:00<?, ?B/s]
+  [ComfyUI] output/best/new/bw_normal.pth:   0%|          | 0.00/429M [00:00<?, ?B/s]
+  [ComfyUI] output/best/new/bw_normal.pth:  16%|█▌        | 67.0M/429M [00:02<00:14, 24.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  16%|█▌        | 67.0M/429M [00:02<00:14, 24.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  Frame 7 saved (frame_006.jpg, t=21.9s)
-  [capture-periodic] freeze=2ms shot=70ms unfreeze=2ms saved=True
-  [capture-loop] iter=200 t=23.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=8.2/15.9GB (51%) swap=0.2/3.0GB (7%) cpu=26% browser_rss=0.73GB
-  [ComfyUI] output/best/new/joints_coarse.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/joints_coarse.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/joints_coarse.pth:   4%|▍         | 18.0M/425M [00:03<01:24, 4.79MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints_coarse.pth:   4%|▍         | 18.0M/425M [00:03<01:24, 4.79MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  47%|████▋     | 201M/429M [00:03<00:03, 67.6MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  47%|████▋     | 201M/429M [00:03<00:03, 67.6MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/joints_coarse.pth:  17%|█▋        | 72.0M/425M [00:04<00:15, 23.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints_coarse.pth:  17%|█▋        | 72.0M/425M [00:04<00:15, 23.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  63%|██████▎   | 268M/429M [00:03<00:01, 91.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  63%|██████▎   | 268M/429M [00:03<00:01, 91.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  Frame 8 saved (frame_007.jpg, t=22.6s)
+  [capture-periodic] freeze=4ms shot=142ms unfreeze=5ms saved=True
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/joints_coarse.pth:  81%|████████  | 343M/425M [00:04<00:00, 140MB/s]  [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints_coarse.pth:  81%|████████  | 343M/425M [00:04<00:00, 140MB/s]  [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  78%|███████▊  | 335M/429M [00:04<00:00, 116MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  78%|███████▊  | 335M/429M [00:04<00:00, 116MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 99.3MB/s]
-  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 99.3MB/s]
+  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 105MB/s]
+  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 105MB/s]
   [ComfyUI] 
   [ComfyUI] 
+  Frame 9 saved (frame_008.jpg, t=24.8s)
+  [capture-periodic] freeze=13ms shot=152ms unfreeze=10ms saved=True
+  [capture-loop] iter=200 t=26.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=14 ram=11.0/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=15% browser_rss=0.77GB
+  [ComfyUI] output/best/new/joints.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
+  [ComfyUI] output/best/new/joints.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
+  [ComfyUI] output/best/new/joints.pth:  38%|███▊      | 201M/526M [00:03<00:05, 61.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints.pth:  38%|███▊      | 201M/526M [00:03<00:05, 61.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints.pth:  51%|█████     | 268M/526M [00:03<00:03, 82.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints.pth:  51%|█████     | 268M/526M [00:03<00:03, 82.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  Frame 10 saved (frame_009.jpg, t=27.1s)
+  [capture-periodic] freeze=5ms shot=142ms unfreeze=5ms saved=True
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints.pth:  64%|██████▍   | 335M/526M [00:04<00:02, 76.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints.pth:  64%|██████▍   | 335M/526M [00:04<00:02, 76.8MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints.pth:  77%|███████▋  | 402M/526M [00:05<00:01, 88.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints.pth:  77%|███████▋  | 402M/526M [00:05<00:01, 88.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 103MB/s]
+  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 103MB/s]
+  [ComfyUI] 
+  [ComfyUI] 
+  Frame 11 saved (frame_010.jpg, t=29.3s)
+  [capture-periodic] freeze=14ms shot=151ms unfreeze=5ms saved=True
+  [ComfyUI] output/best/new/joints_coarse.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
+  [ComfyUI] output/best/new/joints_coarse.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
+  [ComfyUI] output/best/new/joints_coarse.pth:  17%|█▋        | 72.0M/425M [00:03<00:18, 19.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints_coarse.pth:  17%|█▋        | 72.0M/425M [00:03<00:18, 19.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints_coarse.pth:  60%|██████    | 256M/425M [00:04<00:02, 81.0MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints_coarse.pth:  60%|██████    | 256M/425M [00:04<00:02, 81.0MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 151MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 151MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 101MB/s]
+  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 101MB/s]
+  [ComfyUI] 
+  [ComfyUI] 
+  [capture-loop] iter=250 t=33.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=13 ram=11.0/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=14% browser_rss=0.71GB
   [ComfyUI] output/best/new/pose.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
   [ComfyUI] output/best/new/pose.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
   [ComfyUI] output/best/new/pose.pth:  25%|██▌       | 134M/526M [00:03<00:09, 41.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] output/best/new/pose.pth:  25%|██▌       | 134M/526M [00:03<00:09, 41.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [capture-loop] iter=250 t=29.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=8.1/15.9GB (51%) swap=0.2/3.0GB (7%) cpu=26% browser_rss=0.67GB
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] output/best/new/pose.pth:  51%|█████     | 268M/526M [00:03<00:02, 90.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] output/best/new/pose.pth:  51%|█████     | 268M/526M [00:03<00:02, 90.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  Frame 8 saved (frame_007.jpg, t=30.5s)
-  [capture-periodic] freeze=7ms shot=88ms unfreeze=3ms saved=True
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/pose.pth:  64%|██████▎   | 335M/526M [00:04<00:02, 74.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/pose.pth:  64%|██████▎   | 335M/526M [00:04<00:02, 74.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/pose.pth:  77%|███████▋  | 402M/526M [00:05<00:01, 89.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/pose.pth:  77%|███████▋  | 402M/526M [00:05<00:01, 89.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:04<00:00, 155MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:04<00:00, 155MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 137MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 137MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:04<00:00, 107MB/s]
-  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:04<00:00, 107MB/s]
-  Frame 9 saved (frame_008.jpg, t=32.7s)
-  [capture-periodic] freeze=2ms shot=76ms unfreeze=2ms saved=True
-  [ComfyUI] C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  [ComfyUI] C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 103MB/s]
+  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 103MB/s]
+  [capture-loop] iter=300 t=39.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=11.0/31.9GB (35%) swap=0.0/5.0GB (0%) cpu=13% browser_rss=0.71GB
+  [ComfyUI] C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  [ComfyUI] C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   [ComfyUI]   self.layers = nn.TransformerEncoder(layer, num_layers=depth)
   [ComfyUI]   self.layers = nn.TransformerEncoder(layer, num_layers=depth)
-  [capture-loop] iter=300 t=35.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=9.4/15.9GB (59%) swap=0.2/3.0GB (7%) cpu=33% browser_rss=0.67GB
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING:   joints has 3 dtype mismatches after .to(): [('joints_head.mask_attn', torch.bool), ('joints_head.mask_parent', torch.bool), ('joints_head.tree_levels_mask', torch.bool)]
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING:   joints has 3 dtype mismatches after .to(): [('joints_head.mask_attn', torch.bool), ('joints_head.mask_parent', torch.bool), ('joints_head.tree_levels_mask', torch.bool)]
-  [ComfyUI] C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  [ComfyUI] C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  [ComfyUI] C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  [ComfyUI] C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   [ComfyUI]   self.layers = nn.TransformerEncoder(layer, num_layers=depth)
   [ComfyUI]   self.layers = nn.TransformerEncoder(layer, num_layers=depth)
+  [capture-loop] iter=350 t=45.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=11 ram=13.1/31.9GB (41%) swap=0.0/5.0GB (0%) cpu=23% browser_rss=0.71GB
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING:   pose has 3 dtype mismatches after .to(): [('pose_head.mask_attn', torch.bool), ('pose_head.mask_parent', torch.bool), ('pose_head.tree_levels_mask', torch.bool)]
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING:   pose has 3 dtype mismatches after .to(): [('pose_head.mask_attn', torch.bool), ('pose_head.mask_parent', torch.bool), ('pose_head.tree_levels_mask', torch.bool)]
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
@@ -266,36 +281,38 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
-  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 15.96GB
-  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 15.96GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 15.96GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 15.96GB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +288MB (now 288MB) reserved=320MB peak=288MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +288MB (now 288MB) reserved=320MB peak=288MB
+  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 24.44GB
+  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 24.44GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 24.44GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 24.44GB
+  Frame 12 saved (frame_011.jpg, t=47.1s)
+  [capture-periodic] freeze=6ms shot=148ms unfreeze=7ms saved=True
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +228MB (now 228MB) reserved=256MB peak=228MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +228MB (now 228MB) reserved=256MB peak=228MB
   [ComfyUI] [SubprocessWorker] got response: error
   [ComfyUI] [SubprocessWorker] got response: error
-  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] !!! Exception during processing !!! Could not load this library: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] Worker traceback:
   [ComfyUI] Worker traceback:
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
   [ComfyUI]     ctypes.CDLL(path)
   [ComfyUI]     ctypes.CDLL(path)
   [ComfyUI]     ~~~~~~~~~~~^^^^^^
   [ComfyUI]     ~~~~~~~~~~~^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
   [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
   [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
   [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
   [ComfyUI]     return _LoadLibrary(self._name, winmode)
   [ComfyUI]     return _LoadLibrary(self._name, winmode)
   [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
@@ -308,16 +325,16 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] 
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_iuyb9so2\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_iuyb9so2\persistent_worker.py", line 1762, in main
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_auto_rig.py", line 120, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_auto_rig.py", line 120, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_auto_rig.py", line 120, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_auto_rig.py", line 120, in execute
   [ComfyUI]     result_path = run_mia_inference(
   [ComfyUI]     result_path = run_mia_inference(
   [ComfyUI]         mesh=trimesh,
@@ -328,8 +345,8 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI]         reset_to_rest=reset_to_rest,
   [ComfyUI]     )
   [ComfyUI]     )
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_inference.py", line 315, in run_mia_inference
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_inference.py", line 315, in run_mia_inference
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_inference.py", line 315, in run_mia_inference
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_inference.py", line 315, in run_mia_inference
   [ComfyUI]     data = preprocess(
   [ComfyUI]     data = preprocess(
   [ComfyUI]         data,
@@ -340,78 +357,78 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI]         N=N,
   [ComfyUI]     )
   [ComfyUI]     )
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\pipeline.py", line 271, in preprocess
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\pipeline.py", line 271, in preprocess
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\pipeline.py", line 271, in preprocess
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\pipeline.py", line 271, in preprocess
   [ComfyUI]     joints_out = model_coarse(pts_device).joints.cpu()
   [ComfyUI]     joints_out = model_coarse(pts_device).joints.cpu()
   [ComfyUI]                  ~~~~~~~~~~~~^^^^^^^^^^^^
   [ComfyUI]                  ~~~~~~~~~~~~^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1779, in _wrapped_call_impl
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1779, in _wrapped_call_impl
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1779, in _wrapped_call_impl
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1779, in _wrapped_call_impl
   [ComfyUI]     return self._call_impl(*args, **kwargs)
   [ComfyUI]     return self._call_impl(*args, **kwargs)
   [ComfyUI]            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
   [ComfyUI]            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1790, in _call_impl
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1790, in _call_impl
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1790, in _call_impl
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1790, in _call_impl
   [ComfyUI]     return forward_call(*args, **kwargs)
   [ComfyUI]     return forward_call(*args, **kwargs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 594, in forward
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 594, in forward
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 594, in forward
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 594, in forward
   [ComfyUI]     x = self.encode(pc)
   [ComfyUI]     x = self.encode(pc)
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 525, in encode
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 525, in encode
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 525, in encode
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 525, in encode
   [ComfyUI]     sampled_pc = self.fps(pc)
   [ComfyUI]     sampled_pc = self.fps(pc)
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 486, in fps
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 486, in fps
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 486, in fps
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 486, in fps
   [ComfyUI]     idx = _get_fps()(pos[:, :3], batch, ratio=1.0 * N_latents[i] / N_)
   [ComfyUI]     idx = _get_fps()(pos[:, :3], batch, ratio=1.0 * N_latents[i] / N_)
   [ComfyUI]           ~~~~~~~~^^
   [ComfyUI]           ~~~~~~~~^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 19, in _get_fps
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 19, in _get_fps
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 19, in _get_fps
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 19, in _get_fps
   [ComfyUI]     from torch_cluster import fps
   [ComfyUI]     from torch_cluster import fps
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
   [ComfyUI]     torch.ops.load_library(spec.origin)
   [ComfyUI]     torch.ops.load_library(spec.origin)
   [ComfyUI]     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
   [ComfyUI]     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
   [ComfyUI]     raise OSError(f"Could not load this library: {path}") from e
   [ComfyUI]     raise OSError(f"Could not load this library: {path}") from e
-  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 534, in execute
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 334, in get_output_data
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]     return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)
   [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 308, in _async_map_node_over_list
   [ComfyUI]     await process_inputs(input_dict, i)
   [ComfyUI]     await process_inputs(input_dict, i)
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\execution.py", line 296, in process_inputs
   [ComfyUI]     result = f(**inputs)
   [ComfyUI]     result = f(**inputs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\metadata.py", line 536, in proxy
   [ComfyUI]     result = worker.call_method(
   [ComfyUI]     result = worker.call_method(
   [ComfyUI]         module_name=mod,
@@ -422,64 +439,64 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI]         timeout=600.0,
   [ComfyUI]     )
   [ComfyUI]     )
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfy_env\isolation\workers\subprocess.py", line 674, in call_method
   [ComfyUI]     raise WorkerError(
   [ComfyUI]     raise WorkerError(
   [ComfyUI]     ...<2 lines>...
   [ComfyUI]     ...<2 lines>...
   [ComfyUI]     )
   [ComfyUI]     )
-  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
-  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] comfy_env.isolation.workers.base.WorkerError: Could not load this library: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] Worker traceback:
   [ComfyUI] Worker traceback:
   [ComfyUI] Traceback (most recent call last):
   [ComfyUI] Traceback (most recent call last):
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1503, in load_library
   [ComfyUI]     ctypes.CDLL(path)
   [ComfyUI]     ctypes.CDLL(path)
   [ComfyUI]     ~~~~~~~~~~~^^^^^^
   [ComfyUI]     ~~~~~~~~~~~^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 361, in __init__
   [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
   [ComfyUI]     self._handle = self._load_library(name, mode, handle, winmode)
   [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   [ComfyUI]                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  Execution complete (t=47.9s)
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\ctypes\__init__.py", line 379, in _load_library
+  Execution error: {'prompt_id': '082cd746-1f54-42db-891d-7c46cf98d5ee', 'node_id': '42', 'node_type': 'MIAAutoRig', 'executed': ['27', '41'], 'exception_message': 'Could not load this library: C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1503, in load_library\n    ctypes.CDLL(path)\n    ~~~~~~~~~~~^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 361, in __init__\n    self._handle = self._load_library(name, mode, handle, winmode)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 379, in _load_library\n    return _LoadLibrary(self._name, winmode)\nOSError: [WinError 127] The specified procedure could not be found\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_iuyb9so2\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1826, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia_auto_rig.py", line 120, in execute\n    result_path = run_mia_inference(\n        mesh=trimesh,\n    ...<4 lines>...\n        reset_to_rest=reset_to_rest,\n    )\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia_inference.py", line 315, in run_mia_inference\n    data = preprocess(\n        data,\n    ...<5 lines>...\n        N=N,\n    )\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\pipeline.py", line 271, in preprocess\n    joints_out = model_coarse(pts_device).joints.cpu()\n                 ~~~~~~~~~~~~^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\nn\\modules\\module.py", line 1779, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\nn\\modules\\module.py", line 1790, in _call_impl\n    return forward_call(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 594, in forward\n    x = self.encode(pc)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 525, in encode\n    sampled_pc = self.fps(pc)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 486, in fps\n    idx = _get_fps()(pos[:, :3], batch, ratio=1.0 * N_latents[i] / N_)\n          ~~~~~~~~^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 19, in _get_fps\n    from torch_cluster import fps\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\__init__.py", line 18, in <module>\n    torch.ops.load_library(spec.origin)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1505, in load_library\n    raise OSError(f"Could not load this library: {path}") from e\nOSError: Could not load this library: C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 534, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 334, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 308, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 296, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 536, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'fbx_name': ['rigatoni'], 'no_fingers': [False], 'use_normal': [False], 'reset_to_rest': [True], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'backend': 'mia', 'dtype': 'fp32', 'attn_backend': 'auto'}"]}, 'current_outputs': ['27', '10', '41', '42'], 'timestamp': 1778421059722}
   [ComfyUI]     return _LoadLibrary(self._name, winmode)
   [ComfyUI]     return _LoadLibrary(self._name, winmode)
-  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
-  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] The above exception was the direct cause of the following exception:
-  [ComfyUI] The above exception was the direct cause of the following exception:
-  Execution complete (t=36.9s)
-  [ComfyUI] 
-  [ComfyUI] 
-  Execution error: {'prompt_id': 'e388a65c-17a7-4b4f-84fc-1f82411a721c', 'node_id': '42', 'node_type': 'MIAAutoRig', 'executed': ['27', '41'], 'exception_message': 'Could not load this library: C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1503, in load_library\n    ctypes.CDLL(path)\n    ~~~~~~~~~~~^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 361, in __init__\n    self._handle = self._load_library(name, mode, handle, winmode)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 379, in _load_library\n    return _LoadLibrary(self._name, winmode)\nOSError: [WinError 127] The specified procedure could not be found\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_egmyh0nr\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1826, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia_auto_rig.py", line 120, in execute\n    result_path = run_mia_inference(\n        mesh=trimesh,\n    ...<4 lines>...\n        reset_to_rest=reset_to_rest,\n    )\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia_inference.py", line 315, in run_mia_inference\n    data = preprocess(\n        data,\n    ...<5 lines>...\n        N=N,\n    )\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\pipeline.py", line 271, in preprocess\n    joints_out = model_coarse(pts_device).joints.cpu()\n                 ~~~~~~~~~~~~^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\nn\\modules\\module.py", line 1779, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\nn\\modules\\module.py", line 1790, in _call_impl\n    return forward_call(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 594, in forward\n    x = self.encode(pc)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 525, in encode\n    sampled_pc = self.fps(pc)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 486, in fps\n    idx = _get_fps()(pos[:, :3], batch, ratio=1.0 * N_latents[i] / N_)\n          ~~~~~~~~^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 19, in _get_fps\n    from torch_cluster import fps\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\__init__.py", line 18, in <module>\n    torch.ops.load_library(spec.origin)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1505, in load_library\n    raise OSError(f"Could not load this library: {path}") from e\nOSError: Could not load this library: C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 534, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 334, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 308, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 296, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 536, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'fbx_name': ['rigatoni'], 'no_fingers': [False], 'use_normal': [False], 'reset_to_rest': [True], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'backend': 'mia', 'dtype': 'fp32', 'attn_backend': 'auto'}"]}, 'current_outputs': ['10', '42', '27', '41'], 'timestamp': 1778416687964}
-  [ComfyUI] Traceback (most recent call last):
-  [ComfyUI] Traceback (most recent call last):
     Status: FAILED
-    Error: Workflow execution failed: {'prompt_id': 'e388a65c-17a7-4b4f-84fc-1f82411a721c', 'node_id': '42', 'node_type': 'MIAAutoRig', 'executed': ['27', '41'], 'exception_message': 'Could not load this library: C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1503, in load_library\n    ctypes.CDLL(path)\n    ~~~~~~~~~~~^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 361, in __init__\n    self._handle = self._load_library(name, mode, handle, winmode)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 379, in _load_library\n    return _LoadLibrary(self._name, winmode)\nOSError: [WinError 127] The specified procedure could not be found\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_egmyh0nr\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1826, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia_auto_rig.py", line 120, in execute\n    result_path = run_mia_inference(\n        mesh=trimesh,\n    ...<4 lines>...\n        reset_to_rest=reset_to_rest,\n    )\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia_inference.py", line 315, in run_mia_inference\n    data = preprocess(\n        data,\n    ...<5 lines>...\n        N=N,\n    )\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\pipeline.py", line 271, in preprocess\n    joints_out = model_coarse(pts_device).joints.cpu()\n                 ~~~~~~~~~~~~^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\nn\\modules\\module.py", line 1779, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\nn\\modules\\module.py", line 1790, in _call_impl\n    return forward_call(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 594, in forward\n    x = self.encode(pc)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 525, in encode\n    sampled_pc = self.fps(pc)\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 486, in fps\n    idx = _get_fps()(pos[:, :3], batch, ratio=1.0 * N_latents[i] / N_)\n          ~~~~~~~~^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 19, in _get_fps\n    from torch_cluster import fps\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\__init__.py", line 18, in <module>\n    torch.ops.load_library(spec.origin)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1505, in load_library\n    raise OSError(f"Could not load this library: {path}") from e\nOSError: Could not load this library: C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 534, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 334, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 308, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 296, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 536, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\UniRig-1432\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'fbx_name': ['rigatoni'], 'no_fingers': [False], 'use_normal': [False], 'reset_to_rest': [True], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'backend': 'mia', 'dtype': 'fp32', 'attn_backend': 'auto'}"]}, 'current_outputs': ['10', '42', '27', '41'], 'timestamp': 1778416687964}
+    Error: Workflow execution failed: {'prompt_id': '082cd746-1f54-42db-891d-7c46cf98d5ee', 'node_id': '42', 'node_type': 'MIAAutoRig', 'executed': ['27', '41'], 'exception_message': 'Could not load this library: C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\nWorker traceback:\nTraceback (most recent call last):\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1503, in load_library\n    ctypes.CDLL(path)\n    ~~~~~~~~~~~^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 361, in __init__\n    self._handle = self._load_library(name, mode, handle, winmode)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\ctypes\\__init__.py", line 379, in _load_library\n    return _LoadLibrary(self._name, winmode)\nOSError: [WinError 127] The specified procedure could not be found\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "C:\\Users\\ContainerAdministrator\\AppData\\Local\\Temp\\comfyui_pvenv_iuyb9so2\\persistent_worker.py", line 1762, in main\n    result = method(**inputs)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\comfy_api\\latest\\_io.py", line 1826, in EXECUTE_NORMALIZED\n    to_return = cls.execute(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia_auto_rig.py", line 120, in execute\n    result_path = run_mia_inference(\n        mesh=trimesh,\n    ...<4 lines>...\n        reset_to_rest=reset_to_rest,\n    )\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia_inference.py", line 315, in run_mia_inference\n    data = preprocess(\n        data,\n    ...<5 lines>...\n        N=N,\n    )\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\pipeline.py", line 271, in preprocess\n    joints_out = model_coarse(pts_device).joints.cpu()\n                 ~~~~~~~~~~~~^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\nn\\modules\\module.py", line 1779, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\nn\\modules\\module.py", line 1790, in _call_impl\n    return forward_call(*args, **kwargs)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 594, in forward\n    x = self.encode(pc)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 525, in encode\n    sampled_pc = self.fps(pc)\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 486, in fps\n    idx = _get_fps()(pos[:, :3], batch, ratio=1.0 * N_latents[i] / N_)\n          ~~~~~~~~^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\custom_nodes\\ComfyUI-UniRig\\nodes\\mia\\model.py", line 19, in _get_fps\n    from torch_cluster import fps\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch_cluster\\__init__.py", line 18, in <module>\n    torch.ops.load_library(spec.origin)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\Lib\\site-packages\\torch\\_ops.py", line 1505, in load_library\n    raise OSError(f"Could not load this library: {path}") from e\nOSError: Could not load this library: C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\.ce\\.pixi\\envs\\unirig-nodes\\lib\\site-packages\\torch_cluster\\_version_cuda.pyd\n\n', 'exception_type': 'comfy_env.isolation.workers.base.WorkerError', 'traceback': ['  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 534, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 334, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 308, in _async_map_node_over_list\n    await process_inputs(input_dict, i)\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\execution.py", line 296, in process_inputs\n    result = f(**inputs)\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\metadata.py", line 536, in proxy\n    result = worker.call_method(\n        module_name=mod,\n    ...<4 lines>...\n        timeout=600.0,\n    )\n', '  File "C:\\workspaces\\UniRig-1542\\portable-comfyui\\ComfyUI_windows_portable\\python_embeded\\Lib\\site-packages\\comfy_env\\isolation\\workers\\subprocess.py", line 674, in call_method\n    raise WorkerError(\n    ...<2 lines>...\n    )\n'], 'current_inputs': {'fbx_name': ['rigatoni'], 'no_fingers': [False], 'use_normal': [False], 'reset_to_rest': [True], 'trimesh': ['<trimesh.Trimesh(vertices.shape=(394992, 3), faces.shape=(642547, 3), name=`realistic_male_character.glb`)>'], 'model': ["{'backend': 'mia', 'dtype': 'fp32', 'attn_backend': 'auto'}"]}, 'current_outputs': ['27', '10', '41', '42'], 'timestamp': 1778421059722}
     Details: Workflow: C:\ComfyUI-UniRig\workflows\mia_humanoid.json
 Node error: MIAAutoRig
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
-  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_egmyh0nr\persistent_worker.py", line 1762, in main
+  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
+  [ComfyUI] OSError: [WinError 127] The specified procedure could not be found
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] The above exception was the direct cause of the following exception:
+  [ComfyUI] The above exception was the direct cause of the following exception:
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_iuyb9so2\persistent_worker.py", line 1762, in main
+  [ComfyUI]   File "C:\Users\ContainerAdministrator\AppData\Local\Temp\comfyui_pvenv_iuyb9so2\persistent_worker.py", line 1762, in main
   [ComfyUI]     result = method(**inputs)
   [ComfyUI]     result = method(**inputs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\comfy_api\latest\_io.py", line 1826, in EXECUTE_NORMALIZED
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
   [ComfyUI]     to_return = cls.execute(*args, **kwargs)
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_auto_rig.py", line 120, in execute
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_auto_rig.py", line 120, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_auto_rig.py", line 120, in execute
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_auto_rig.py", line 120, in execute
   [ComfyUI]     result_path = run_mia_inference(
   [ComfyUI]     result_path = run_mia_inference(
   [ComfyUI]         mesh=trimesh,
@@ -490,8 +507,8 @@ Node error: MIAAutoRig
   [ComfyUI]         reset_to_rest=reset_to_rest,
   [ComfyUI]     )
   [ComfyUI]     )
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_inference.py", line 315, in run_mia_inference
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_inference.py", line 315, in run_mia_inference
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_inference.py", line 315, in run_mia_inference
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia_inference.py", line 315, in run_mia_inference
   [ComfyUI]     data = preprocess(
   [ComfyUI]     data = preprocess(
   [ComfyUI]         data,
@@ -502,10 +519,55 @@ Node error: MIAAutoRig
   [ComfyUI]         N=N,
   [ComfyUI]     )
   [ComfyUI]     )
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\pipeline.py", line 271, in preprocess
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\pipeline.py", line 271, in preprocess
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\pipeline.py", line 271, in preprocess
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\pipeline.py", line 271, in preprocess
   [ComfyUI]     joints_out = model_coarse(pts_device).joints.cpu()
   [ComfyUI]     joints_out = model_coarse(pts_device).joints.cpu()
   [ComfyUI]                  ~~~~~~~~~~~~^^^^^^^^^^^^
   [ComfyUI]                  ~~~~~~~~~~~~^^^^^^^^^^^^
-  [ComfyUI]   File "C:\workspaces\UniRig-1432\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1779, in _wrapped_call_impl
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1779, in _wrapped_call_impl
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1779, in _wrapped_call_impl
+  [ComfyUI]     return self._call_impl(*args, **kwargs)
+  [ComfyUI]     return self._call_impl(*args, **kwargs)
+  [ComfyUI]            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  [ComfyUI]            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1790, in _call_impl
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\nn\modules\module.py", line 1790, in _call_impl
+  [ComfyUI]     return forward_call(*args, **kwargs)
+  [ComfyUI]     return forward_call(*args, **kwargs)
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 594, in forward
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 594, in forward
+  [ComfyUI]     x = self.encode(pc)
+  [ComfyUI]     x = self.encode(pc)
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 525, in encode
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 525, in encode
+  [ComfyUI]     sampled_pc = self.fps(pc)
+  [ComfyUI]     sampled_pc = self.fps(pc)
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 486, in fps
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 486, in fps
+  [ComfyUI]     idx = _get_fps()(pos[:, :3], batch, ratio=1.0 * N_latents[i] / N_)
+  [ComfyUI]     idx = _get_fps()(pos[:, :3], batch, ratio=1.0 * N_latents[i] / N_)
+  [ComfyUI]           ~~~~~~~~^^
+  [ComfyUI]           ~~~~~~~~^^
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 19, in _get_fps
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes\mia\model.py", line 19, in _get_fps
+  [ComfyUI]     from torch_cluster import fps
+  [ComfyUI]     from torch_cluster import fps
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch_cluster\__init__.py", line 18, in <module>
+  [ComfyUI]     torch.ops.load_library(spec.origin)
+  [ComfyUI]     torch.ops.load_library(spec.origin)
+  [ComfyUI]     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  [ComfyUI]     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
+  [ComfyUI]   File "C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\Lib\site-packages\torch\_ops.py", line 1505, in load_library
+  [ComfyUI]     raise OSError(f"Could not load this library: {path}") from e
+  [ComfyUI]     raise OSError(f"Could not load this library: {path}") from e
+  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] OSError: Could not load this library: C:\workspaces\UniRig-1542\portable-comfyui\ComfyUI_windows_portable\ComfyUI\.ce\.pixi\envs\unirig-nodes\lib\site-packages\torch_cluster\_version_cuda.pyd
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] Prompt executed in 47.49 seconds
+  [ComfyUI] Prompt executed in 47.49 seconds
