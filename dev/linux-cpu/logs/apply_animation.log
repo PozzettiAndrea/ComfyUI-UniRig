@@ -1,20 +1,74 @@
 Capturing execution frames: apply_animation.json
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Prompt has 4 nodes
+  [ComfyUI]   Node 6: UniRigApplyAnimation
+  [ComfyUI]     Inputs: {"model_fbx_path": ["9", 0], "animation_type": "mixamo", "animation_file": "Breakdance.fbx", "output_name": ""}
+  [ComfyUI]   Node 7: Preview3D
+  [ComfyUI]     Inputs: {"model_file": ["6", 0], "image": "", "camera_info": ["10", 0]}
+  [ComfyUI]   Node 9: UniRigLoadRiggedMesh
   Queuing workflow for execution...
-  Frame 2 saved (frame_001.jpg, t=2.4s)
-  [capture-periodic] freeze=5ms shot=131ms unfreeze=7ms saved=True
-  Frame 3 saved (frame_002.jpg, t=4.6s)
-  [capture-periodic] freeze=4ms shot=137ms unfreeze=7ms saved=True
+  [ComfyUI]     Inputs: {"fbx_file": "3d/mixamo.fbx"}
+  [ComfyUI]   Node 10: CreateLoad3DCamera
+  [ComfyUI]     Inputs: {"pos_x": 0, "pos_y": 20, "pos_z": 20, "target_x": 0, "target_y": 0, "target_z": 0, "zoom": 1, "camera_type": "perspective"}
+  [ComfyUI] Generated prompt_id: b31ecb07-0a6c-4351-9839-c1f8d2beab94
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] got prompt
+  [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
+  [ComfyUI] [comfy-env] SubprocessWorker: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI'}
+  [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
+  [ComfyUI] [ComfyUI-UniRig] python: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI/custom_nodes/ComfyUI-UniRig', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI/custom_nodes/ComfyUI-UniRig']
+  [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_7f_7lmef/persistent_worker.py', 'abstract://comfy_worker_64ae28f2e480']...
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_64ae28f2e480 (abstract, no filesystem path)
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
+  Frame 2 saved (frame_001.jpg, t=2.3s)
+  [capture-periodic] freeze=2ms shot=101ms unfreeze=3ms saved=True
+  [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (3.74s): result: NodeOutput
+  [ComfyUI] [comfy-env] Running UniRigApplyAnimation: model_fbx_path: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., animation_type: 'mixamo', animation_file: 'Breakdance.fbx', output_name: ''
+  [ComfyUI] [SubprocessWorker] call_method: nodes.animation.UniRigApplyAnimation.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
+  [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+  [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7700
+  [ComfyUI] [worker:ComfyUI-UniRig]
+  [ComfyUI] FBX export starting... '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0118/ComfyUI/output/loaded_1778376014_mixamo_Breakdance.fbx'
+  [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
+  [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
+  Frame 3 saved (frame_002.jpg, t=4.4s)
+  [capture-periodic] freeze=2ms shot=101ms unfreeze=4ms saved=True
+  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 0.3698 sec.
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] UniRigApplyAnimation done (0.82s): result: NodeOutput
+  [ComfyUI] Prompt executed in 4.57 seconds
   Node executed (1 total), capturing...
-  Frame 4 saved (frame_003.jpg, t=5.6s)
-  [capture-node] freeze=785ms shot=860ms unfreeze=0ms saved=True
-  Execution complete (t=5.6s)
+  Frame 4 saved (frame_003.jpg, t=5.3s)
+  [capture-node] freeze=687ms shot=877ms unfreeze=0ms saved=True
+  Execution complete (t=5.3s)
   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
   [3d-wait] Phase 2: iframes=0
   [3d-wait] Total 3D wait: 60.0s
-  Captured 4 unique frames over 67.32s
+  Captured 4 unique frames over 66.95s
   [debug] iframes: 0
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: apply_animation_executed.png
