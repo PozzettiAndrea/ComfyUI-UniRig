@@ -1,11 +1,12 @@
 {
-  "timestamp": "2026-05-10T04:39:05.071997+00:00",
+  "timestamp": "2026-05-10T13:41:08.501282+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-11-10.0.26200-SP0",
     "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
   },
-  "commit_hash": "d5dc353223a993d12ed98e6f742c114091b54ec0",
+  "commit_hash": "f65628868e22c1564f5b77ac6c166c658dbd62af",
+  "run_url": null,
   "success": true,
   "summary": {
     "total": 6,
@@ -23,7 +24,7 @@
     {
       "name": "mia_humanoid",
       "status": "pass",
-      "duration_seconds": 114.13,
+      "duration_seconds": 112.49,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -31,11 +32,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 4.48,
-          "avg": 2.81
+          "peak": 4.5,
+          "avg": 2.92
         },
         "total_ram_gb": 31.9,
-        "samples": 113
+        "samples": 111
       }
     },
     {
@@ -55,7 +56,7 @@
     {
       "name": "unirig_bird",
       "status": "pass",
-      "duration_seconds": 172.93,
+      "duration_seconds": 152.31,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -63,17 +64,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 5.54,
-          "avg": 2.81
+          "peak": 6.98,
+          "avg": 5.76
         },
         "total_ram_gb": 31.9,
-        "samples": 171
+        "samples": 151
       }
     },
     {
       "name": "unirig_humanoid",
       "status": "pass",
-      "duration_seconds": 151.93,
+      "duration_seconds": 140.2,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -81,11 +82,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 4.42,
-          "avg": 2.94
+          "peak": 6.93,
+          "avg": 3.22
         },
         "total_ram_gb": 31.9,
-        "samples": 150
+        "samples": 139
       }
     }
   ]
