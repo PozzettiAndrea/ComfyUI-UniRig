@@ -1,12 +1,11 @@
 {
-  "timestamp": "2026-05-09T13:12:57.143366+00:00",
+  "timestamp": "2026-05-10T04:39:05.071997+00:00",
   "platform": "windows",
   "hardware": {
-    "os": "Windows-10-10.0.26200-SP0",
-    "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
-    "gpu": "NVIDIA GeForce RTX 3090"
+    "os": "Windows-11-10.0.26200-SP0",
+    "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
   },
-  "commit_hash": "3572a86be5389ec717dfc1fba2006dc30ccd2cc1",
+  "commit_hash": "d5dc353223a993d12ed98e6f742c114091b54ec0",
   "success": true,
   "summary": {
     "total": 6,
@@ -24,24 +23,19 @@
     {
       "name": "mia_humanoid",
       "status": "pass",
-      "duration_seconds": 104.64,
+      "duration_seconds": 114.13,
       "error": null,
       "hardware": {
-        "os": "Windows-10-10.0.26200-SP0",
-        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
-        "gpu": "NVIDIA GeForce RTX 3090"
+        "os": "Windows-11-10.0.26200-SP0",
+        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 4.59,
-          "avg": 2.86
+          "peak": 4.48,
+          "avg": 2.81
         },
         "total_ram_gb": 31.9,
-        "samples": 92,
-        "vram": {
-          "peak": 3.17,
-          "avg": 1.85
-        }
+        "samples": 113
       }
     },
     {
@@ -61,47 +55,37 @@
     {
       "name": "unirig_bird",
       "status": "pass",
-      "duration_seconds": 165.92,
+      "duration_seconds": 172.93,
       "error": null,
       "hardware": {
-        "os": "Windows-10-10.0.26200-SP0",
-        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
-        "gpu": "NVIDIA GeForce RTX 3090"
+        "os": "Windows-11-10.0.26200-SP0",
+        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 5.63,
-          "avg": 2.89
+          "peak": 5.54,
+          "avg": 2.81
         },
         "total_ram_gb": 31.9,
-        "samples": 146,
-        "vram": {
-          "peak": 4.25,
-          "avg": 1.75
-        }
+        "samples": 171
       }
     },
     {
       "name": "unirig_humanoid",
       "status": "pass",
-      "duration_seconds": 138.58,
+      "duration_seconds": 151.93,
       "error": null,
       "hardware": {
-        "os": "Windows-10-10.0.26200-SP0",
-        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel",
-        "gpu": "NVIDIA GeForce RTX 3090"
+        "os": "Windows-11-10.0.26200-SP0",
+        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 5.14,
-          "avg": 3.07
+          "peak": 4.42,
+          "avg": 2.94
         },
         "total_ram_gb": 31.9,
-        "samples": 122,
-        "vram": {
-          "peak": 4.21,
-          "avg": 2.32
-        }
+        "samples": 150
       }
     }
   ]
