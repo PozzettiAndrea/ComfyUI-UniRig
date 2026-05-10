@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-05-09T16:19:34.925897+00:00",
+  "timestamp": "2026-05-10T03:12:34.976784+00:00",
   "platform": "windows_portable",
   "hardware": {
-    "os": "Windows-2025Server-10.0.26100-SP0",
+    "os": "Windows-10-10.0.26100-SP0",
     "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "d86e4cb0896414f23d629d03f1c1d83a6c430844",
+  "commit_hash": "d5dc353223a993d12ed98e6f742c114091b54ec0",
   "success": true,
   "summary": {
     "total": 6,
@@ -16,19 +16,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 24.74,
+      "duration_seconds": 83.04,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 5.79,
-          "avg": 5.2
+          "peak": 2.13,
+          "avg": 2.0
         },
         "total_ram_gb": 16.0,
-        "samples": 25
+        "samples": 83
       }
     },
     {
@@ -41,34 +41,34 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 10.03,
+      "duration_seconds": 19.45,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 5.88,
-          "avg": 5.78
+          "peak": 2.04,
+          "avg": 1.88
         },
         "total_ram_gb": 16.0,
-        "samples": 11
+        "samples": 20
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 11.23,
+      "duration_seconds": 11.86,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 5.87,
-          "avg": 5.79
+          "peak": 1.98,
+          "avg": 1.97
         },
         "total_ram_gb": 16.0,
         "samples": 12
