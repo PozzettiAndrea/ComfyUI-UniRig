@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-10T22:48:27.649526+00:00",
+  "timestamp": "2026-05-11T01:47:27.510153+00:00",
   "platform": "windows_portable",
   "hardware": {
     "os": "Windows-11-10.0.26200-SP0",
     "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
   },
-  "commit_hash": "730c866082148b2a513df16f27fec81d8fa1685f",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25640817458",
+  "commit_hash": "5c39d901f31c8885f99edfc5ccceb27c7ee20894",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25644111202",
   "success": true,
   "summary": {
     "total": 6,
@@ -24,7 +24,7 @@
     {
       "name": "mia_humanoid",
       "status": "pass",
-      "duration_seconds": 117.27,
+      "duration_seconds": 111.17,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -33,10 +33,10 @@
       "resources": {
         "ram": {
           "peak": 4.44,
-          "avg": 2.9
+          "avg": 2.85
         },
         "total_ram_gb": 31.9,
-        "samples": 116
+        "samples": 110
       }
     },
     {
@@ -56,7 +56,7 @@
     {
       "name": "unirig_bird",
       "status": "pass",
-      "duration_seconds": 118.49,
+      "duration_seconds": 102.92,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -64,17 +64,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 7.31,
-          "avg": 5.9
+          "peak": 7.29,
+          "avg": 5.88
         },
         "total_ram_gb": 31.9,
-        "samples": 117
+        "samples": 102
       }
     },
     {
       "name": "unirig_humanoid",
       "status": "pass",
-      "duration_seconds": 91.22,
+      "duration_seconds": 87.16,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26200-SP0",
@@ -83,10 +83,10 @@
       "resources": {
         "ram": {
           "peak": 6.87,
-          "avg": 2.98
+          "avg": 3.0
         },
         "total_ram_gb": 31.9,
-        "samples": 90
+        "samples": 86
       }
     }
   ]
