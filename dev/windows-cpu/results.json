@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-10T21:42:40.038318+00:00",
+  "timestamp": "2026-05-11T00:37:46.114205+00:00",
   "platform": "windows",
   "hardware": {
-    "os": "Windows-10-10.0.26100-SP0",
-    "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+    "os": "Windows-2025Server-10.0.26100-SP0",
+    "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "730c866082148b2a513df16f27fec81d8fa1685f",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25640426792",
+  "commit_hash": "5c39d901f31c8885f99edfc5ccceb27c7ee20894",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25644109551",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,11 +17,11 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 84.99,
+      "duration_seconds": 86.09,
       "error": null,
       "hardware": {
-        "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
@@ -29,7 +29,7 @@
           "avg": 0.96
         },
         "total_ram_gb": 16.0,
-        "samples": 85
+        "samples": 86
       }
     },
     {
@@ -42,37 +42,37 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 19.38,
+      "duration_seconds": 16.68,
       "error": null,
       "hardware": {
-        "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 1.0,
-          "avg": 0.87
+          "peak": 0.96,
+          "avg": 0.83
         },
         "total_ram_gb": 16.0,
-        "samples": 20
+        "samples": 17
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 11.25,
+      "duration_seconds": 10.16,
       "error": null,
       "hardware": {
-        "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.96,
-          "avg": 0.96
+          "peak": 0.93,
+          "avg": 0.92
         },
         "total_ram_gb": 16.0,
-        "samples": 12
+        "samples": 11
       }
     },
     {
