@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-11T00:34:31.427834+00:00",
+  "timestamp": "2026-05-11T09:23:00.264833+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
     "cpu": "AMD EPYC 7763 64-Core Processor"
   },
-  "commit_hash": "5c39d901f31c8885f99edfc5ccceb27c7ee20894",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25644108616",
+  "commit_hash": "3cfa24a060589e4783c4a515655306a4ee2cb7c0",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25661461018",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 79.37,
+      "duration_seconds": 80.0,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
@@ -26,7 +26,7 @@
       "resources": {
         "ram": {
           "peak": 1.63,
-          "avg": 1.54
+          "avg": 1.53
         },
         "total_ram_gb": 15.6,
         "samples": 80
@@ -42,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 13.66,
+      "duration_seconds": 14.2,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
@@ -51,16 +51,16 @@
       "resources": {
         "ram": {
           "peak": 1.63,
-          "avg": 1.56
+          "avg": 1.55
         },
         "total_ram_gb": 15.6,
-        "samples": 14
+        "samples": 15
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.27,
+      "duration_seconds": 10.46,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
@@ -69,7 +69,7 @@
       "resources": {
         "ram": {
           "peak": 1.63,
-          "avg": 1.63
+          "avg": 1.62
         },
         "total_ram_gb": 15.6,
         "samples": 11
