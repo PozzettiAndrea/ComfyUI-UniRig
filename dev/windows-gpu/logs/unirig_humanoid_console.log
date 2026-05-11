@@ -21,30 +21,30 @@
 [Console-log] [MotionCapture] Loading FBX mesh preview extension...
 [Console-log] [MotionCapture] Detected extension folder: ComfyUI-UniRig
 [Console-log] [MotionCapture] FBX mesh preview extension registered
-[Console-log] [UniRig Compare] Loading compare skeleton widget...
-[Console-log] [UniRig Compare] Detected extension folder: ComfyUI-UniRig
-[Console-log] [UniRig Compare] Compare skeleton widget registered
 [Console-log] [UniRig Debug] Loading FBX mesh preview extension...
 [Console-log] [UniRig Debug] Detected extension folder: ComfyUI-UniRig
 [Console-log] [UniRig Debug] FBX mesh preview extension registered
+[Console-log] [UniRig Compare] Loading compare skeleton widget...
+[Console-log] [UniRig Compare] Detected extension folder: ComfyUI-UniRig
+[Console-log] [UniRig Compare] Compare skeleton widget registered
 [Console-warning] WARNING: Multiple instances of Three.js being imported.
 [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
 [Console-log] [UniRig] Registering Preview Rigged Mesh node
 [Console-log] [UniRig Debug] Registering Preview Rigged Mesh node
 [Console-log] [UniRig Compare] Registering Compare Skeletons node
 [Console-log] [UniRig] Node created, adding FBX viewer widget
-[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778481229382
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778499065618
 [Console-log] [UniRig] Widget created: DOMWidgetImpl
-[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41891/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
+[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41888/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
 [Console-log] [FBX Viewer] Ready
 [Console-log] [UniRig] Viewer iframe is ready!
 [Console-log] [UniRig] Iframe loaded successfully
 [Console-log] [FBX Viewer] Received postMessage: {type: RESIZE, width: 733.319580078125, height: 637.37646484375}
 [Console-log] [UniRig] Node created, adding FBX viewer widget
-[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778481230614
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778499066840
 [Console-log] [UniRig] Widget created: DOMWidgetImpl
-[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41891/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
+[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41888/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
 [Console-log] [FBX Viewer] Ready
 [Console-log] [UniRig] Viewer iframe is ready!
@@ -52,9 +52,9 @@
 [Console-log] [UniRig] Iframe loaded successfully
 [Console-log] [comfy-test] graphToPrompt: 4 nodes, missing class_type: [], sample: {"inputs":{"fbx_output_path":["39",0],"preview":""},"class_type":"UniRigPreviewRiggedMesh","_meta":{"title":"UniRig: Preview Rigged Mesh"}}
 [Console-log] [UniRig] onExecuted called with message: {fbx_file: Array(1), has_skinning: Array(1), has_skeleton: Array(1)}
-[Console-log] [UniRig] Loading FBX: rigged_1778481377_mixamo.fbx
-[Console-log] [UniRig] Sending postMessage to iframe: http://127.0.0.1:41891/view?filename=rigged_1778481377_mixamo.fbx&type=output&subfolder=
-[Console-log] [FBX Viewer] Received postMessage: {type: LOAD_FBX, filepath: http://127.0.0.1:41891/view?filename=rigged_1778481377_mixamo.fbx&type=output&subfolder=, timestamp: 1778481377727, fbxExportApiPath: /unirig/export_posed_fbx}
-[Console-log] [FBX Viewer] Loading: http://127.0.0.1:41891/view?filename=rigged_1778481377_mixamo.fbx&type=output&subfolder=
+[Console-log] [UniRig] Loading FBX: rigged_1778499201_mixamo.fbx
+[Console-log] [UniRig] Sending postMessage to iframe: http://127.0.0.1:41888/view?filename=rigged_1778499201_mixamo.fbx&type=output&subfolder=
+[Console-log] [FBX Viewer] Received postMessage: {type: LOAD_FBX, filepath: http://127.0.0.1:41888/view?filename=rigged_1778499201_mixamo.fbx&type=output&subfolder=, timestamp: 1778499201735, fbxExportApiPath: /unirig/export_posed_fbx}
+[Console-log] [FBX Viewer] Loading: http://127.0.0.1:41888/view?filename=rigged_1778499201_mixamo.fbx&type=output&subfolder=
 [Console-warning] THREE.FBXLoader: Vertex has more than 4 skinning weights assigned to vertex. Deleting additional weights.
 [Console-log] [FBX Viewer] FBX Loaded successfully
