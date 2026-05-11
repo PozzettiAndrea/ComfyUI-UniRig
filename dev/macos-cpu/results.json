@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-05-11T00:34:51.445015+00:00",
+  "timestamp": "2026-05-11T09:22:20.741471+00:00",
   "platform": "macos",
   "hardware": {
     "os": "macOS-15.7.4-arm64-arm-64bit",
     "cpu": "arm"
   },
-  "commit_hash": "5c39d901f31c8885f99edfc5ccceb27c7ee20894",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25644111660",
-  "success": true,
+  "commit_hash": "3cfa24a060589e4783c4a515655306a4ee2cb7c0",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25661469588",
+  "success": false,
   "summary": {
     "total": 6,
-    "passed": 3,
-    "failed": 0
+    "passed": 0,
+    "failed": 3
   },
   "workflows": [
     {
       "name": "apply_animation",
-      "status": "pass",
-      "duration_seconds": 80.47,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 9.63,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"model_fbx_path\":[\"9\",0]},\"_meta\":{}}",
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.05,
-          "avg": 0.94
+          "peak": 0.51,
+          "avg": 0.51
         },
         "total_ram_gb": 7.0,
-        "samples": 74
+        "samples": 10
       }
     },
     {
@@ -41,38 +41,38 @@
     },
     {
       "name": "rigged_manipulator",
-      "status": "pass",
-      "duration_seconds": 19.42,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 5.94,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_output_path\":[\"4\",0]},\"_meta\":{}}",
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.04,
-          "avg": 0.91
+          "peak": 0.51,
+          "avg": 0.51
         },
         "total_ram_gb": 7.0,
-        "samples": 18
+        "samples": 6
       }
     },
     {
       "name": "skeleton_comparison",
-      "status": "pass",
-      "duration_seconds": 11.74,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 5.19,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_path_left\":[\"54\",0],\"fbx_path_right\":[\"55\",0]},\"_meta\":{}}",
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.05,
-          "avg": 1.04
+          "peak": 0.51,
+          "avg": 0.51
         },
         "total_ram_gb": 7.0,
-        "samples": 11
+        "samples": 5
       }
     },
     {
