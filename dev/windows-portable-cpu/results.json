@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-11T10:21:26.668643+00:00",
+  "timestamp": "2026-05-13T08:08:20.866620+00:00",
   "platform": "windows_portable",
   "hardware": {
     "os": "Windows-10-10.0.26100-SP0",
     "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "1a31d89e759c61e7a3d5eadd606fafd73971b9a1",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25663863360",
+  "commit_hash": "91be62efd9c1871a44a1cf7c01a168cf639ae578",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25786202314",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 92.19,
+      "duration_seconds": 89.68,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -25,11 +25,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.16,
-          "avg": 2.0
+          "peak": 2.14,
+          "avg": 1.99
         },
         "total_ram_gb": 16.0,
-        "samples": 92
+        "samples": 90
       }
     },
     {
@@ -42,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 22.95,
+      "duration_seconds": 20.11,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -50,17 +50,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 2.03,
-          "avg": 1.83
+          "peak": 1.98,
+          "avg": 1.75
         },
         "total_ram_gb": 16.0,
-        "samples": 23
+        "samples": 20
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 12.07,
+      "duration_seconds": 12.47,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -68,11 +68,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.94,
-          "avg": 1.93
+          "peak": 1.86,
+          "avg": 1.84
         },
         "total_ram_gb": 16.0,
-        "samples": 12
+        "samples": 13
       }
     },
     {

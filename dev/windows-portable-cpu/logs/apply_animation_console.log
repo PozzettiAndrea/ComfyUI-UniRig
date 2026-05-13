@@ -7,7 +7,6 @@
 [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
 [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
 [Console-error] Failed to load resource: the server responded with a status of 404 (Not Found)
-[Console-warning] WARNING: Multiple instances of Three.js being imported.
 [Console-log] [FBX Preview] Auto-registering for all known FBX preview node types...
 [Console-log] [UniRig] Loading FBX mesh preview extension...
 [Console-log] [UniRig] Detected extension folder: ComfyUI-UniRig
@@ -27,18 +26,19 @@
 [Console-log] [UniRig Debug] Loading FBX mesh preview extension...
 [Console-log] [UniRig Debug] Detected extension folder: ComfyUI-UniRig
 [Console-log] [UniRig Debug] FBX mesh preview extension registered
+[Console-warning] WARNING: Multiple instances of Three.js being imported.
 [Console-warning] [MaskEditor] ComfyApp.open_maskeditor is deprecated. Plugins should migrate to using the command system or direct node context menu integration.
 [Console-log] [UniRig] Registering Preview Rigged Mesh node
 [Console-log] [UniRig Debug] Registering Preview Rigged Mesh node
 [Console-log] [UniRig Compare] Registering Compare Skeletons node
 [Console-error] Failed to load resource: the server responded with a status of 403 (Forbidden)
-[Console-error] Error loading model: HttpError: fetch for "http://127.0.0.1:41885/api/view?type=output&subfolder=%2Fhome%2Fshadeform%2Funirig%2FComfyUI%2Foutput&filename=loaded_1771609421_mixamo_Breakdance.fbx" responded with 403: Forbidden
-    at http://127.0.0.1:41885/assets/vendor-three-Br-dHl2j.js:3824:116006
-[Console-warning] [.WebGL-0x6b6403c44e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Console-error] Error loading model: HttpError: fetch for "http://127.0.0.1:41897/api/view?type=output&subfolder=%2Fhome%2Fshadeform%2Funirig%2FComfyUI%2Foutput&filename=loaded_1771609421_mixamo_Breakdance.fbx" responded with 403: Forbidden
+    at http://127.0.0.1:41897/assets/vendor-three-Br-dHl2j.js:3824:116006
+[Console-warning] [.WebGL-0x4b8c0530d600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
 [Console-error] Failed to load resource: the server responded with a status of 403 (Forbidden)
-[Console-error] Error loading model: HttpError: fetch for "http://127.0.0.1:41885/api/view?type=output&subfolder=%2Fhome%2Fshadeform%2Funirig%2FComfyUI%2Foutput&filename=loaded_1771609421_mixamo_Breakdance.fbx" responded with 403: Forbidden
-    at http://127.0.0.1:41885/assets/vendor-three-Br-dHl2j.js:3824:116006
-[Console-warning] [.WebGL-0x6b6403c44e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Console-warning] [.WebGL-0x6b6403c44e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Console-error] Error loading model: HttpError: fetch for "http://127.0.0.1:41897/api/view?type=output&subfolder=%2Fhome%2Fshadeform%2Funirig%2FComfyUI%2Foutput&filename=loaded_1771609421_mixamo_Breakdance.fbx" responded with 403: Forbidden
+    at http://127.0.0.1:41897/assets/vendor-three-Br-dHl2j.js:3824:116006
+[Console-warning] [.WebGL-0x4b8c0530d600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Console-warning] [.WebGL-0x4b8c0530d600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
 [Console-log] [comfy-test] graphToPrompt: 4 nodes, missing class_type: [], sample: {"inputs":{"model_fbx_path":["9",0],"animation_type":"mixamo","animation_file":"Breakdance.fbx","output_name":""},"class_type":"UniRigApplyAnimation","_meta":{"title":"UniRig: Apply Animation"}}
-[Console-warning] [.WebGL-0x6b6403c44e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[Console-warning] [.WebGL-0x4b8c0530d600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
