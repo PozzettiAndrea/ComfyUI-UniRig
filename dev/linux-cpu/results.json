@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-11T10:13:48.831250+00:00",
+  "timestamp": "2026-05-13T08:00:42.333705+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
     "cpu": "AMD EPYC 7763 64-Core Processor"
   },
-  "commit_hash": "1a31d89e759c61e7a3d5eadd606fafd73971b9a1",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25663856510",
+  "commit_hash": "91be62efd9c1871a44a1cf7c01a168cf639ae578",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25786133043",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 77.64,
+      "duration_seconds": 80.54,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
@@ -25,11 +25,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.73,
-          "avg": 1.63
+          "peak": 1.72,
+          "avg": 1.62
         },
         "total_ram_gb": 15.6,
-        "samples": 78
+        "samples": 81
       }
     },
     {
@@ -42,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 13.63,
+      "duration_seconds": 15.84,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
@@ -50,17 +50,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.73,
-          "avg": 1.65
+          "peak": 1.72,
+          "avg": 1.64
         },
         "total_ram_gb": 15.6,
-        "samples": 14
+        "samples": 16
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.35,
+      "duration_seconds": 10.62,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
