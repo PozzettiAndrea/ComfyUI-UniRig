@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-11T17:50:51.739373+00:00",
+  "timestamp": "2026-05-13T08:01:11.754046+00:00",
   "platform": "macos",
   "hardware": {
-    "os": "macOS-15.7.4-arm64-arm-64bit",
+    "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
     "cpu": "arm"
   },
-  "commit_hash": "1a31d89e759c61e7a3d5eadd606fafd73971b9a1",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25687115342",
+  "commit_hash": "91be62efd9c1871a44a1cf7c01a168cf639ae578",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25786135880",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,19 +17,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 87.99,
+      "duration_seconds": 85.51,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.04,
-          "avg": 0.92
+          "peak": 1.17,
+          "avg": 0.99
         },
         "total_ram_gb": 7.0,
-        "samples": 81
+        "samples": 79
       }
     },
     {
@@ -42,34 +42,34 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 16.88,
+      "duration_seconds": 17.5,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.02,
-          "avg": 0.9
+          "peak": 1.1,
+          "avg": 0.96
         },
         "total_ram_gb": 7.0,
-        "samples": 16
+        "samples": 17
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.19,
+      "duration_seconds": 10.13,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit",
+        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.03,
-          "avg": 1.02
+          "peak": 1.11,
+          "avg": 1.1
         },
         "total_ram_gb": 7.0,
         "samples": 10
