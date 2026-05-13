@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-13T08:03:54.921563+00:00",
+  "timestamp": "2026-05-13T08:05:00.220315+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-10-10.0.26100-SP0",
     "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
   },
   "commit_hash": "91be62efd9c1871a44a1cf7c01a168cf639ae578",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25786133928",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25786200433",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 96.54,
+      "duration_seconds": 90.12,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -26,10 +26,10 @@
       "resources": {
         "ram": {
           "peak": 1.07,
-          "avg": 0.97
+          "avg": 0.95
         },
         "total_ram_gb": 16.0,
-        "samples": 96
+        "samples": 90
       }
     },
     {
@@ -42,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 21.36,
+      "duration_seconds": 22.05,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -50,7 +50,7 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.0,
+          "peak": 0.98,
           "avg": 0.85
         },
         "total_ram_gb": 16.0,
@@ -60,7 +60,7 @@
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 11.07,
+      "duration_seconds": 10.74,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -68,8 +68,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 0.95,
-          "avg": 0.95
+          "peak": 0.94,
+          "avg": 0.94
         },
         "total_ram_gb": 16.0,
         "samples": 11
