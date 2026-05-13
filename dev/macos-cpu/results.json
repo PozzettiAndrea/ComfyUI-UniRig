@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-13T08:01:11.754046+00:00",
+  "timestamp": "2026-05-13T11:12:08.775521+00:00",
   "platform": "macos",
   "hardware": {
-    "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+    "os": "macOS-15.7.4-arm64-arm-64bit",
     "cpu": "arm"
   },
-  "commit_hash": "91be62efd9c1871a44a1cf7c01a168cf639ae578",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25786135880",
+  "commit_hash": "1fd462131fecdfd8e035c4226388ff1d57422e19",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25795139956",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,19 +17,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 85.51,
+      "duration_seconds": 79.52,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.17,
-          "avg": 0.99
+          "peak": 1.07,
+          "avg": 0.97
         },
         "total_ram_gb": 7.0,
-        "samples": 79
+        "samples": 74
       }
     },
     {
@@ -42,37 +42,37 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 17.5,
+      "duration_seconds": 14.0,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.1,
+          "peak": 1.07,
           "avg": 0.96
         },
         "total_ram_gb": 7.0,
-        "samples": 17
+        "samples": 13
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.13,
+      "duration_seconds": 9.4,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.4-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.11,
-          "avg": 1.1
+          "peak": 1.08,
+          "avg": 1.07
         },
         "total_ram_gb": 7.0,
-        "samples": 10
+        "samples": 9
       }
     },
     {
