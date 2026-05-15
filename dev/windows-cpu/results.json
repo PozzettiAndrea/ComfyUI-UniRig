@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-13T11:13:31.551581+00:00",
+  "timestamp": "2026-05-15T05:31:20.225237+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-10-10.0.26100-SP0",
     "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
   },
-  "commit_hash": "1fd462131fecdfd8e035c4226388ff1d57422e19",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25795136699",
+  "commit_hash": "7c4ba24c181d1d84265f96a164a51cfb1dbc28e9",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25901855361",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 95.95,
+      "duration_seconds": 103.89,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -26,10 +26,10 @@
       "resources": {
         "ram": {
           "peak": 1.07,
-          "avg": 0.96
+          "avg": 0.94
         },
         "total_ram_gb": 16.0,
-        "samples": 96
+        "samples": 104
       }
     },
     {
@@ -42,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 23.49,
+      "duration_seconds": 23.43,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -50,8 +50,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.0,
-          "avg": 0.85
+          "peak": 0.98,
+          "avg": 0.84
         },
         "total_ram_gb": 16.0,
         "samples": 24
@@ -60,7 +60,7 @@
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 11.44,
+      "duration_seconds": 11.35,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -68,8 +68,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 0.96,
-          "avg": 0.95
+          "peak": 0.94,
+          "avg": 0.93
         },
         "total_ram_gb": 16.0,
         "samples": 12
