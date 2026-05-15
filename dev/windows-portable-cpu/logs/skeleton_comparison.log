@@ -3,10 +3,10 @@ Capturing execution frames: skeleton_comparison.json
   Validating workflow...
   Queuing workflow for execution...
   Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=3.9s)
-  [capture-node] freeze=45ms shot=299ms unfreeze=0ms saved=True
-  Execution complete (t=3.8s)
-  Captured 2 unique frames over 4.22s
+  Frame 2 saved (frame_001.jpg, t=2.9s)
+  [capture-node] freeze=23ms shot=244ms unfreeze=0ms saved=True
+  Execution complete (t=2.9s)
+  Captured 2 unique frames over 3.19s
   [debug] iframes: 1
   [debug]   iframe[0]: src=http://127.0.0.1:41891/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17788, canvas=387x330, rafFrozen=True
   [timing] trigger_3d_previews: 0.0s
