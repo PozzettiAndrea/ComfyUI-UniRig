@@ -1,5 +1,5 @@
 {
-  "models_dir": "C:\\workspaces\\UniRig-1319\\ComfyUI\\models",
+  "models_dir": "C:\\workspaces\\UniRig-1444\\ComfyUI\\models",
   "summary": {
     "total_files": 11,
     "total_size_bytes": 5228813066,
@@ -63,12 +63,12 @@
           "size_human": "195.0 B"
         },
         {
-          "path": ".cache\\huggingface\\download\\skin.safetensors.metadata",
+          "path": ".cache\\huggingface\\download\\skeleton.safetensors.metadata",
           "size_bytes": 128,
           "size_human": "128.0 B"
         },
         {
-          "path": ".cache\\huggingface\\download\\skeleton.safetensors.metadata",
+          "path": ".cache\\huggingface\\download\\skin.safetensors.metadata",
           "size_bytes": 127,
           "size_human": "127.0 B"
         },
