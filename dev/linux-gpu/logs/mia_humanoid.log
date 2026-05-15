@@ -1,61 +1,61 @@
 Capturing execution frames: mia_humanoid.json
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] === /validate endpoint called ===
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Received JSON with keys: ['prompt']
-  [ComfyUI] Prompt has 4 nodes
-  [ComfyUI] Prompt has 4 nodes
-  [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
-  [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
-  [ComfyUI]     Inputs: {"fbx_output_path": ["42", 0], "preview": ""}
-  [ComfyUI]     Inputs: {"fbx_output_path": ["42", 0], "preview": ""}
-  [ComfyUI]   Node 27: UniRigLoadMesh
-  [ComfyUI]   Node 27: UniRigLoadMesh
-  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
-  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
   Queuing workflow for execution...
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] === /validate endpoint called ===
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Received JSON with keys: ['prompt']
+  [ComfyUI] Prompt has 4 nodes
+  [ComfyUI] Prompt has 4 nodes
+  [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
+  [ComfyUI]   Node 10: UniRigPreviewRiggedMesh
+  [ComfyUI]     Inputs: {"fbx_output_path": ["42", 0], "preview": ""}
+  [ComfyUI]     Inputs: {"fbx_output_path": ["42", 0], "preview": ""}
+  [ComfyUI]   Node 27: UniRigLoadMesh
+  [ComfyUI]   Node 27: UniRigLoadMesh
+  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
+  [ComfyUI]     Inputs: {"source_folder": "input", "file_path": "3d/realistic_male_character.glb"}
   [ComfyUI]   Node 41: MIALoadModel
   [ComfyUI]   Node 41: MIALoadModel
   [ComfyUI]     Inputs: {"precision": "fp32", "attn_backend": "auto"}
   [ComfyUI]     Inputs: {"precision": "fp32", "attn_backend": "auto"}
   [ComfyUI]   Node 42: MIAAutoRig
   [ComfyUI]   Node 42: MIAAutoRig
-  [ComfyUI]     Inputs: {"fbx_name": "rigatoni", "no_fingers": false, "use_normal": false, "reset_to_rest": true, "trimesh": ["27", 0], "model": ["41", 0]}
-  [ComfyUI]     Inputs: {"fbx_name": "rigatoni", "no_fingers": false, "use_normal": false, "reset_to_rest": true, "trimesh": ["27", 0], "model": ["41", 0]}
-  [ComfyUI] Generated prompt_id: 78019378-25c4-4115-95d7-f901795a4e5d
-  [ComfyUI] Generated prompt_id: 78019378-25c4-4115-95d7-f901795a4e5d
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] === Validation PASSED ===
-  [ComfyUI] === Validation PASSED ===
   [ComfyUI] [comfy-env] SubprocessWorker: /root/.ce/.pixi/envs/unirig-nodes/bin/python
   [ComfyUI] [comfy-env] SubprocessWorker: /root/.ce/.pixi/envs/unirig-nodes/bin/python
-  [ComfyUI] got prompt
-  [ComfyUI] got prompt
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/workspaces/UniRig-1026/ComfyUI'}
-  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/workspaces/UniRig-1026/ComfyUI'}
-  [ComfyUI] [comfy-env] Running MIALoadModel: precision: 'fp32', attn_backend: 'auto'
-  [ComfyUI] [comfy-env] Running MIALoadModel: precision: 'fp32', attn_backend: 'auto'
+  [ComfyUI]     Inputs: {"fbx_name": "rigatoni", "no_fingers": false, "use_normal": false, "reset_to_rest": true, "trimesh": ["27", 0], "model": ["41", 0]}
+  [ComfyUI]     Inputs: {"fbx_name": "rigatoni", "no_fingers": false, "use_normal": false, "reset_to_rest": true, "trimesh": ["27", 0], "model": ["41", 0]}
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/workspaces/UniRig-1156/ComfyUI'}
+  [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/workspaces/UniRig-1156/ComfyUI'}
+  [ComfyUI] Generated prompt_id: 7ea6b95e-b652-4483-8345-5bddd647796a
+  [ComfyUI] Generated prompt_id: 7ea6b95e-b652-4483-8345-5bddd647796a
   [ComfyUI] [ComfyUI-UniRig] python: /root/.ce/.pixi/envs/unirig-nodes/bin/python
   [ComfyUI] [ComfyUI-UniRig] python: /root/.ce/.pixi/envs/unirig-nodes/bin/python
-  [ComfyUI] [VRAM] Before MIALoadModel: 152 / 7703 MB
-  [ComfyUI] [VRAM] Before MIALoadModel: 152 / 7703 MB
-  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-1026/ComfyUI', '/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig', '/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages', '/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig']
-  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-1026/ComfyUI', '/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig', '/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages', '/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig']
-  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.MIALoadModel.EXECUTE_NORMALIZED
-  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.MIALoadModel.EXECUTE_NORMALIZED
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-1156/ComfyUI', '/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig', '/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages', '/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig']
+  [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/workspaces/UniRig-1156/ComfyUI', '/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig', '/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages', '/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig']
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] Validation result: valid=True
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/root/.ce/.pixi/envs/unirig-nodes/bin/python
   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/root/.ce/.pixi/envs/unirig-nodes/bin/python
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/root/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py', 'abstract://comfy_worker_b52aba4fda12']...
+  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/root/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py', 'abstract://comfy_worker_b52aba4fda12']...
+  [ComfyUI] got prompt
+  [ComfyUI] got prompt
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_b52aba4fda12 (abstract, no filesystem path)
+  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_b52aba4fda12 (abstract, no filesystem path)
+  [ComfyUI] [comfy-env] Running MIALoadModel: precision: 'fp32', attn_backend: 'auto'
+  [ComfyUI] [comfy-env] Running MIALoadModel: precision: 'fp32', attn_backend: 'auto'
+  [ComfyUI] [VRAM] Before MIALoadModel: 612 / 7672 MB
+  [ComfyUI] [VRAM] Before MIALoadModel: 612 / 7672 MB
+  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.MIALoadModel.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.load_model.MIALoadModel.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/root/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py', 'abstract://comfy_worker_cefc3e1864e6']...
-  [ComfyUI] [SubprocessWorker] launching cmd=['/root/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/root/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py', 'abstract://comfy_worker_cefc3e1864e6']...
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_cefc3e1864e6 (abstract, no filesystem path)
-  [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_cefc3e1864e6 (abstract, no filesystem path)
   [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
   [ComfyUI] [SubprocessWorker] worker started/confirmed
@@ -69,49 +69,50 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
   Frame 2 saved (frame_001.jpg, t=2.4s)
-  [capture-periodic] freeze=1ms shot=113ms unfreeze=3ms saved=True
+  [capture-periodic] freeze=2ms shot=150ms unfreeze=3ms saved=True
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
-  [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] MIALoadModel done (3.62s): result: NodeOutput
-  [ComfyUI] [comfy-env] MIALoadModel done (3.62s): result: NodeOutput
-  [ComfyUI] [VRAM] After MIALoadModel: 269 / 7703 MB
-  [ComfyUI] [VRAM] After MIALoadModel: 269 / 7703 MB
-  [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
-  [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 269 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigLoadMesh: 269 / 7703 MB
-  [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
-  [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
-  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
-  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
-  [ComfyUI] [ComfyUI-UniRig] Health check: ok
-  [ComfyUI] [ComfyUI-UniRig] Health check: ok
-  [ComfyUI] [SubprocessWorker] worker started/confirmed
-  [ComfyUI] [SubprocessWorker] worker started/confirmed
-  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-  [ComfyUI] [SubprocessWorker] created 0 shm blocks
-  [ComfyUI] [SubprocessWorker] created 0 shm blocks
-  [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] sending request via socket...
-  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
-  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
-  [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [SubprocessWorker] got response: ok
   Frame 3 saved (frame_002.jpg, t=4.7s)
-  [capture-periodic] freeze=2ms shot=146ms unfreeze=3ms saved=True
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (1.21s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadMesh done (1.21s): result: NodeOutput
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 269 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigLoadMesh: 269 / 7703 MB
+  [capture-periodic] freeze=2ms shot=134ms unfreeze=5ms saved=True
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [comfy-env] MIALoadModel done (4.72s): result: NodeOutput
+  [ComfyUI] [comfy-env] MIALoadModel done (4.72s): result: NodeOutput
+  [ComfyUI] [VRAM] After MIALoadModel: 729 / 7672 MB
+  [ComfyUI] [VRAM] After MIALoadModel: 729 / 7672 MB
+  [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
+  [ComfyUI] [comfy-env] Running UniRigLoadMesh: source_folder: 'input', file_path: '3d/realistic_male_character.glb'
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 729 / 7672 MB
+  [ComfyUI] [VRAM] Before UniRigLoadMesh: 729 / 7672 MB
+  [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] call_method: nodes.mesh_io.UniRigLoadMesh.EXECUTE_NORMALIZED
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+  [ComfyUI] [ComfyUI-UniRig] Health check: ok
+  [ComfyUI] [ComfyUI-UniRig] Health check: ok
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] worker started/confirmed
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] created 0 shm blocks
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] sending request via socket...
+  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
+  [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [ComfyUI] [SubprocessWorker] got response: ok
+  [capture-loop] iter=50 t=6.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=12 ram=4.7/23.4GB (20%) swap=1.8/32.0GB (6%) cpu=14% browser_rss=0.93GB
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (1.52s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadMesh done (1.52s): result: NodeOutput
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 729 / 7672 MB
+  [ComfyUI] [VRAM] After UniRigLoadMesh: 729 / 7672 MB
   [ComfyUI] [comfy-env] Running MIAAutoRig: fbx_name: 'rigatoni', no_fingers: False, use_normal: False, reset_to_rest: True, trimesh: Trimesh, model: dict
   [ComfyUI] [comfy-env] Running MIAAutoRig: fbx_name: 'rigatoni', no_fingers: False, use_normal: False, reset_to_rest: True, trimesh: Trimesh, model: dict
-  [ComfyUI] [VRAM] Before MIAAutoRig: 269 / 7703 MB
-  [ComfyUI] [VRAM] Before MIAAutoRig: 269 / 7703 MB
+  [ComfyUI] [VRAM] Before MIAAutoRig: 729 / 7672 MB
+  [ComfyUI] [VRAM] Before MIAAutoRig: 729 / 7672 MB
   [ComfyUI] [SubprocessWorker] call_method: nodes.mia_auto_rig.MIAAutoRig.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] call_method: nodes.mia_auto_rig.MIAAutoRig.EXECUTE_NORMALIZED
   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
@@ -130,124 +131,141 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] [SubprocessWorker] sending request via socket...
   [ComfyUI] [SubprocessWorker] call_id=3 sending call_method
   [ComfyUI] [SubprocessWorker] call_id=3 sending call_method
-  [ComfyUI] /root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
-  [ComfyUI] /root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  [ComfyUI] /root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  [ComfyUI] /root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
   [ComfyUI]   warnings.warn(
   [ComfyUI]   warnings.warn(
-  [ComfyUI] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-  [ComfyUI] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-  [ComfyUI] [worker:ComfyUI-UniRig] WARNING: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
   [ComfyUI] 
   [ComfyUI] 
-  [capture-loop] iter=50 t=6.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=11 ram=3.7/31.3GB (12%) swap=0.7/32.0GB (2%) cpu=12% browser_rss=0.92GB
   Frame 4 saved (frame_003.jpg, t=6.9s)
-  [capture-periodic] freeze=2ms shot=136ms unfreeze=4ms saved=True
+  [capture-periodic] freeze=2ms shot=146ms unfreeze=3ms saved=True
   [ComfyUI] output/best/new/bw.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
   [ComfyUI] output/best/new/bw.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/bw.pth:  16%|█▌        | 67.0M/425M [00:03<00:16, 22.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw.pth:  16%|█▌        | 67.0M/425M [00:03<00:16, 22.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw.pth:  79%|███████▉  | 335M/425M [00:04<00:01, 70.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw.pth:  79%|███████▉  | 335M/425M [00:04<00:01, 70.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [capture-loop] iter=100 t=11.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=4.9/23.4GB (21%) swap=1.8/32.0GB (6%) cpu=25% browser_rss=0.93GB
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/bw.pth:  32%|███▏      | 134M/425M [00:03<00:06, 48.2MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw.pth:  32%|███▏      | 134M/425M [00:03<00:06, 48.2MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  Frame 5 saved (frame_004.jpg, t=9.2s)
-  [capture-periodic] freeze=2ms shot=146ms unfreeze=2ms saved=True
+  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 90.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 90.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/bw.pth:  63%|██████▎   | 268M/425M [00:04<00:01, 80.6MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw.pth:  63%|██████▎   | 268M/425M [00:04<00:01, 80.6MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 76.1MB/s]
+  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 76.1MB/s]
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:04<00:00, 130MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:04<00:00, 130MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 84.2MB/s]
-  [ComfyUI] output/best/new/bw.pth: 100%|██████████| 425M/425M [00:05<00:00, 84.2MB/s]
-  [ComfyUI] 
-  [ComfyUI] 
-  Frame 6 saved (frame_005.jpg, t=11.4s)
-  [capture-periodic] freeze=2ms shot=147ms unfreeze=3ms saved=True
-  [capture-loop] iter=100 t=12.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=3.8/31.3GB (12%) swap=0.7/32.0GB (2%) cpu=23% browser_rss=0.92GB
+  Frame 5 saved (frame_004.jpg, t=13.5s)
+  [capture-periodic] freeze=1ms shot=113ms unfreeze=2ms saved=True
   [ComfyUI] output/best/new/bw_normal.pth:   0%|          | 0.00/429M [00:00<?, ?B/s]
   [ComfyUI] output/best/new/bw_normal.pth:   0%|          | 0.00/429M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/bw_normal.pth:  63%|██████▎   | 268M/429M [00:03<00:02, 71.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw_normal.pth:  63%|██████▎   | 268M/429M [00:03<00:02, 71.3MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  16%|█▌        | 67.0M/429M [00:02<00:14, 24.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  16%|█▌        | 67.0M/429M [00:02<00:14, 24.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  Frame 6 saved (frame_005.jpg, t=15.8s)
+  [capture-periodic] freeze=17ms shot=154ms unfreeze=4ms saved=True
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 103MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 103MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  63%|██████▎   | 268M/429M [00:03<00:01, 92.3MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth:  63%|██████▎   | 268M/429M [00:03<00:01, 92.3MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 89.2MB/s]
-  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 89.2MB/s]
+  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 116MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 116MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [capture-loop] iter=150 t=17.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=3.8/31.3GB (12%) swap=0.7/32.0GB (2%) cpu=24% browser_rss=0.93GB
+  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 88.4MB/s]
+  [ComfyUI] output/best/new/bw_normal.pth: 100%|██████████| 429M/429M [00:04<00:00, 88.4MB/s]
+  [capture-loop] iter=150 t=17.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=4.9/23.4GB (21%) swap=1.8/32.0GB (6%) cpu=25% browser_rss=0.94GB
+  [ComfyUI] 
+  [ComfyUI] 
+  Frame 7 saved (frame_006.jpg, t=18.1s)
+  [capture-periodic] freeze=2ms shot=148ms unfreeze=4ms saved=True
   [ComfyUI] output/best/new/joints.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
   [ComfyUI] output/best/new/joints.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/joints.pth:  13%|█▎        | 67.1M/526M [00:03<00:22, 20.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints.pth:  13%|█▎        | 67.1M/526M [00:03<00:22, 20.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints.pth:  13%|█▎        | 67.1M/526M [00:02<00:18, 24.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints.pth:  13%|█▎        | 67.1M/526M [00:02<00:18, 24.2MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/joints.pth:  51%|█████     | 268M/526M [00:03<00:02, 97.8MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints.pth:  51%|█████     | 268M/526M [00:03<00:02, 97.8MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  Frame 7 saved (frame_006.jpg, t=20.3s)
-  [capture-periodic] freeze=2ms shot=155ms unfreeze=4ms saved=True
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 114MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 114MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] 
-  [ComfyUI] 
-  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 88.0MB/s]
-  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 88.0MB/s]
-  [ComfyUI] 
-  [ComfyUI] 
+  [ComfyUI] output/best/new/joints.pth:  51%|█████     | 268M/526M [00:03<00:02, 92.3MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints.pth:  51%|█████     | 268M/526M [00:03<00:02, 92.3MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
   Frame 8 saved (frame_007.jpg, t=22.5s)
-  [capture-periodic] freeze=1ms shot=135ms unfreeze=5ms saved=True
-  [capture-loop] iter=200 t=23.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=3.9/31.3GB (12%) swap=0.7/32.0GB (2%) cpu=24% browser_rss=0.93GB
+  [capture-periodic] freeze=2ms shot=138ms unfreeze=3ms saved=True
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 119MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 119MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 96.9MB/s]
+  [ComfyUI] output/best/new/joints.pth: 100%|██████████| 526M/526M [00:05<00:00, 96.9MB/s]
+  [ComfyUI] 
+  [ComfyUI] 
+  [capture-loop] iter=200 t=23.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=10 ram=5.0/23.4GB (22%) swap=1.8/32.0GB (6%) cpu=26% browser_rss=0.94GB
+  Frame 9 saved (frame_008.jpg, t=24.8s)
+  [capture-periodic] freeze=12ms shot=152ms unfreeze=3ms saved=True
   [ComfyUI] output/best/new/joints_coarse.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
   [ComfyUI] output/best/new/joints_coarse.pth:   0%|          | 0.00/425M [00:00<?, ?B/s]
-  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 99.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 99.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints_coarse.pth:  17%|█▋        | 72.0M/425M [00:03<00:17, 20.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints_coarse.pth:  17%|█▋        | 72.0M/425M [00:03<00:17, 20.5MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 93.5MB/s]
-  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 93.5MB/s]
+  [ComfyUI] output/best/new/joints_coarse.pth:  49%|████▉     | 208M/425M [00:03<00:03, 68.7MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints_coarse.pth:  49%|████▉     | 208M/425M [00:03<00:03, 68.7MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  Frame 10 saved (frame_009.jpg, t=27.1s)
+  [capture-periodic] freeze=1ms shot=115ms unfreeze=2ms saved=True
   [ComfyUI] 
   [ComfyUI] 
-  [capture-loop] iter=250 t=29.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=4.2/31.3GB (13%) swap=0.7/32.0GB (2%) cpu=25% browser_rss=0.85GB
+  [ComfyUI] output/best/new/joints_coarse.pth:  65%|██████▍   | 275M/425M [00:04<00:01, 92.0MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints_coarse.pth:  65%|██████▍   | 275M/425M [00:04<00:01, 92.0MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints_coarse.pth:  81%|████████  | 343M/425M [00:04<00:00, 118MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints_coarse.pth:  81%|████████  | 343M/425M [00:04<00:00, 118MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 153MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 153MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 91.7MB/s]
+  [ComfyUI] output/best/new/joints_coarse.pth: 100%|██████████| 425M/425M [00:04<00:00, 91.7MB/s]
+  [ComfyUI] 
+  [ComfyUI] 
+  Frame 11 saved (frame_010.jpg, t=29.3s)
+  [capture-periodic] freeze=2ms shot=144ms unfreeze=3ms saved=True
+  [capture-loop] iter=250 t=29.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=4.9/23.4GB (21%) swap=1.8/32.0GB (6%) cpu=26% browser_rss=0.86GB
   [ComfyUI] output/best/new/pose.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
   [ComfyUI] output/best/new/pose.pth:   0%|          | 0.00/526M [00:00<?, ?B/s]
   [ComfyUI] output/best/new/pose.pth:  25%|██▌       | 134M/526M [00:03<00:09, 41.0MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] output/best/new/pose.pth:  25%|██▌       | 134M/526M [00:03<00:09, 41.0MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/pose.pth:  64%|██████▎   | 335M/526M [00:04<00:02, 83.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/pose.pth:  64%|██████▎   | 335M/526M [00:04<00:02, 83.4MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
-  Frame 9 saved (frame_008.jpg, t=31.5s)
-  [capture-periodic] freeze=2ms shot=157ms unfreeze=3ms saved=True
+  [ComfyUI] output/best/new/pose.pth:  51%|█████     | 268M/526M [00:03<00:02, 89.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/pose.pth:  51%|█████     | 268M/526M [00:03<00:02, 89.9MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  Frame 12 saved (frame_011.jpg, t=31.6s)
+  [capture-periodic] freeze=2ms shot=131ms unfreeze=2ms saved=True
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 133MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 133MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/pose.pth:  64%|██████▎   | 335M/526M [00:04<00:02, 81.6MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/pose.pth:  64%|██████▎   | 335M/526M [00:04<00:02, 81.6MB/s][SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 102MB/s]
-  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 102MB/s]
-  Frame 10 saved (frame_009.jpg, t=33.7s)
-  [capture-periodic] freeze=2ms shot=151ms unfreeze=4ms saved=True
-  [capture-loop] iter=300 t=35.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=5.1/31.3GB (16%) swap=0.7/32.0GB (2%) cpu=27% browser_rss=0.86GB
-  [ComfyUI] /workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia/model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  [ComfyUI] /workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia/model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 119MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 119MB/s] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] 
+  [ComfyUI] 
+  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 91.2MB/s]
+  [ComfyUI] output/best/new/pose.pth: 100%|██████████| 526M/526M [00:05<00:00, 91.2MB/s]
+  Frame 13 saved (frame_012.jpg, t=33.8s)
+  [capture-periodic] freeze=1ms shot=140ms unfreeze=3ms saved=True
+  [capture-loop] iter=300 t=35.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=4.8/23.4GB (21%) swap=1.8/32.0GB (6%) cpu=26% browser_rss=0.86GB
+  [ComfyUI] /workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia/model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  [ComfyUI] /workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia/model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   [ComfyUI]   self.layers = nn.TransformerEncoder(layer, num_layers=depth)
   [ComfyUI]   self.layers = nn.TransformerEncoder(layer, num_layers=depth)
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING:   joints has 3 dtype mismatches after .to(): [('joints_head.mask_attn', torch.bool), ('joints_head.mask_parent', torch.bool), ('joints_head.tree_levels_mask', torch.bool)]
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING:   joints has 3 dtype mismatches after .to(): [('joints_head.mask_attn', torch.bool), ('joints_head.mask_parent', torch.bool), ('joints_head.tree_levels_mask', torch.bool)]
-  [ComfyUI] /workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia/model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
-  [ComfyUI] /workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia/model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  [ComfyUI] /workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia/model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  [ComfyUI] /workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia/model.py:743: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
   [ComfyUI]   self.layers = nn.TransformerEncoder(layer, num_layers=depth)
   [ComfyUI]   self.layers = nn.TransformerEncoder(layer, num_layers=depth)
   [ComfyUI] [worker:ComfyUI-UniRig] WARNING:   pose has 3 dtype mismatches after .to(): [('pose_head.mask_attn', torch.bool), ('pose_head.mask_parent', torch.bool), ('pose_head.tree_levels_mask', torch.bool)]
@@ -258,234 +276,238 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
-  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 7.80GB
-  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 7.80GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 7.80GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 7.80GB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +404MB (now 404MB) reserved=416MB peak=404MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +404MB (now 404MB) reserved=416MB peak=404MB
-  Frame 11 saved (frame_010.jpg, t=38.2s)
-  [capture-periodic] freeze=2ms shot=110ms unfreeze=2ms saved=True
+  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 7.28GB
+  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 7.28GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.28GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 7.28GB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +264MB (now 264MB) reserved=288MB peak=264MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +264MB (now 264MB) reserved=288MB peak=264MB
+  Frame 14 saved (frame_013.jpg, t=40.4s)
+  [capture-periodic] freeze=1ms shot=185ms unfreeze=3ms saved=True
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
-  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 6.82GB
-  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 6.82GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 6.82GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 6.82GB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +425MB (now 830MB) reserved=1312MB peak=830MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +425MB (now 830MB) reserved=1312MB peak=830MB
+  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 6.31GB
+  [ComfyUI] [comfy-env] VRAM request: 0.42GB, free before eviction: 6.31GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 6.31GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 6.31GB
+  [capture-loop] iter=350 t=41.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=18 ram=7.4/23.4GB (32%) swap=1.8/32.0GB (6%) cpu=31% browser_rss=0.87GB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +229MB (now 494MB) reserved=512MB peak=494MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +229MB (now 494MB) reserved=512MB peak=494MB
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
-  [ComfyUI] [comfy-env] VRAM request: 0.53GB, free before eviction: 6.12GB
-  [ComfyUI] [comfy-env] VRAM request: 0.53GB, free before eviction: 6.12GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 6.12GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 6.12GB
+  [ComfyUI] [comfy-env] VRAM request: 0.53GB, free before eviction: 5.60GB
+  [ComfyUI] [comfy-env] VRAM request: 0.53GB, free before eviction: 5.60GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 5.60GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 5.60GB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +800MB (now 1294MB) reserved=1312MB peak=1294MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +800MB (now 1294MB) reserved=1312MB peak=1294MB
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'request_vram_budget' from call_id=3
-  [ComfyUI] [comfy-env] VRAM request: 0.53GB, free before eviction: 5.88GB
-  [ComfyUI] [comfy-env] VRAM request: 0.53GB, free before eviction: 5.88GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 5.88GB
-  [ComfyUI] [comfy-env] VRAM after eviction: 5.88GB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +502MB (now 1333MB) reserved=1344MB peak=1333MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +502MB (now 1333MB) reserved=1344MB peak=1333MB
+  [ComfyUI] [comfy-env] VRAM request: 0.53GB, free before eviction: 5.37GB
+  [ComfyUI] [comfy-env] VRAM request: 0.53GB, free before eviction: 5.37GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 5.37GB
+  [ComfyUI] [comfy-env] VRAM after eviction: 5.37GB
+  Frame 15 saved (frame_014.jpg, t=42.7s)
+  [capture-periodic] freeze=2ms shot=153ms unfreeze=4ms saved=True
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +527MB (now 1821MB) reserved=2240MB peak=1827MB
+  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +527MB (now 1821MB) reserved=2240MB peak=1827MB
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +488MB (now 1821MB) reserved=2240MB peak=1827MB
-  [ComfyUI] [worker:ComfyUI-UniRig] [VRAM] +488MB (now 1821MB) reserved=2240MB peak=1827MB
-  Frame 12 saved (frame_011.jpg, t=40.5s)
-  [capture-periodic] freeze=2ms shot=168ms unfreeze=3ms saved=True
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Data are loaded, start creating Blender stuff
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Data are loaded, start creating Blender stuff
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Blender create Mesh node geometry_0
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Blender create Mesh node geometry_0
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.32s
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.32s
-  [capture-loop] iter=350 t=41.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=6.7/31.3GB (21%) swap=0.7/32.0GB (2%) cpu=30% browser_rss=0.87GB
-  [capture-loop] iter=400 t=47.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=6.7/31.3GB (21%) swap=0.7/32.0GB (2%) cpu=26% browser_rss=0.87GB
-  [capture-loop] iter=450 t=52.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=6.6/31.3GB (21%) swap=0.7/32.0GB (2%) cpu=25% browser_rss=0.86GB
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.31s
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: glTF import finished in 0.31s
+  Frame 16 saved (frame_015.jpg, t=44.9s)
+  [capture-periodic] freeze=2ms shot=149ms unfreeze=4ms saved=True
+  [capture-loop] iter=400 t=47.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=7.7/23.4GB (33%) swap=1.8/32.0GB (6%) cpu=29% browser_rss=0.87GB
+  [capture-loop] iter=450 t=53.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=7.7/23.4GB (33%) swap=1.8/32.0GB (6%) cpu=27% browser_rss=0.87GB
   [ComfyUI] [worker:ComfyUI-UniRig]
   [ComfyUI] [worker:ComfyUI-UniRig]
-  [ComfyUI] FBX export starting... '/workspaces/UniRig-1026/ComfyUI/output/rigatoni_mia.fbx'
-  [ComfyUI] FBX export starting... '/workspaces/UniRig-1026/ComfyUI/output/rigatoni_mia.fbx'
+  [ComfyUI] FBX export starting... '/workspaces/UniRig-1156/ComfyUI/output/rigatoni_mia.fbx'
+  [ComfyUI] FBX export starting... '/workspaces/UniRig-1156/ComfyUI/output/rigatoni_mia.fbx'
   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
-  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 2.6619 sec.
-  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 2.6619 sec.
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO Draco mesh compression is available, use library at /root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/libextern_draco.so
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO Draco mesh compression is available, use library at /root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 4.7061 sec.
+  [ComfyUI] [worker:ComfyUI-UniRig] export finished in 4.7061 sec.
+  [ComfyUI] [worker:ComfyUI-UniRig] ERROR Draco mesh compression is not available because library could not be found at /workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/4.2/python/lib/python3.11/site-packages/libextern_draco.so
+  [ComfyUI] [worker:ComfyUI-UniRig] ERROR Draco mesh compression is not available because library could not be found at /workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/4.2/python/lib/python3.11/site-packages/libextern_draco.so
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Starting glTF 2.0 export
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Starting glTF 2.0 export
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Extracting primitive: geometry_0
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Extracting primitive: geometry_0
-  [capture-loop] iter=500 t=58.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=1 ram=6.8/31.3GB (22%) swap=0.7/32.0GB (2%) cpu=31% browser_rss=0.85GB
+  [capture-loop] iter=500 t=58.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=7.8/23.4GB (33%) swap=1.8/32.0GB (6%) cpu=31% browser_rss=0.86GB
   [ComfyUI] [worker:ComfyUI-UniRig]
   [ComfyUI] [worker:ComfyUI-UniRig]
   [ComfyUI] === WATCHDOG TICK 1 ===
   [ComfyUI] === WATCHDOG TICK 1 ===
-  [ComfyUI] [worker:ComfyUI-UniRig] Thread 0x000077cac77fe640 (most recent call first):
-  [ComfyUI] [worker:ComfyUI-UniRig] Thread 0x000077cac77fe640 (most recent call first):
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
+  [ComfyUI] [worker:ComfyUI-UniRig] Thread 0x000077aab7fff640 (most recent call first):
+  [ComfyUI] [worker:ComfyUI-UniRig] Thread 0x000077aab7fff640 (most recent call first):
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] Thread 0x000077cac7fff640 (most recent call first):
-  [ComfyUI] Thread 0x000077cac7fff640 (most recent call first):
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
+  [ComfyUI] Thread 0x000077aac49ce640 (most recent call first):
+  [ComfyUI] Thread 0x000077aac49ce640 (most recent call first):
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] Thread 0x000077cadca2c640 (most recent call first):
-  [ComfyUI] Thread 0x000077cadca2c640 (most recent call first):
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
+  [ComfyUI] Thread 0x000077aac51cf640 (most recent call first):
+  [ComfyUI] Thread 0x000077aac51cf640 (most recent call first):
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] Thread 0x000077cadd22d640 (most recent call first):
-  [ComfyUI] Thread 0x000077cadd22d640 (most recent call first):
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
+  [ComfyUI] Thread 0x000077aac59d0640 (most recent call first):
+  [ComfyUI] Thread 0x000077aac59d0640 (most recent call first):
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] Thread 0x000077cb2a25a640 (most recent call first):
-  [ComfyUI] Thread 0x000077cb2a25a640 (most recent call first):
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 363 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 660 in wait
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/tqdm/_monitor.py", line 60 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
+  [ComfyUI] Thread 0x000077ab1327f640 (most recent call first):
+  [ComfyUI] Thread 0x000077ab1327f640 (most recent call first):
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 331 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 629 in wait
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/tqdm/_monitor.py", line 60 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] Thread 0x000077cf4f3f0640 (most recent call first):
-  [ComfyUI] Thread 0x000077cf4f3f0640 (most recent call first):
-  [ComfyUI]   File "/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py", line 106 in _vram_poller
-  [ComfyUI]   File "/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py", line 106 in _vram_poller
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 995 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 995 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
+  [ComfyUI] Thread 0x000077af1fc09640 (most recent call first):
+  [ComfyUI] Thread 0x000077af1fc09640 (most recent call first):
+  [ComfyUI]   File "/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py", line 106 in _vram_poller
+  [ComfyUI]   File "/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py", line 106 in _vram_poller
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 982 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 982 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] Current thread 0x000077cf4fbf5640 (most recent call first):
-  [ComfyUI] Current thread 0x000077cf4fbf5640 (most recent call first):
-  [ComfyUI]   File "/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py", line 52 in _watchdog
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 995 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 995 in run
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1044 in _bootstrap_inner
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/threading.py", line 1015 in _bootstrap
+  [ComfyUI] Current thread 0x000077af2040e640 (most recent call first):
+  [ComfyUI] Current thread 0x000077af2040e640 (most recent call first):
+  [ComfyUI]   File "/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py", line 52 in _watchdog
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 982 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 982 in run
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/threading.py", line 1002 in _bootstrap
   [ComfyUI] 
   [ComfyUI] 
-  [ComfyUI] Thread 0x000077cf50212740 (most recent call first):
-  [ComfyUI] Thread 0x000077cf50212740 (most recent call first):
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/numpy/_core/_methods.py", line 61 in _any
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/numpy/_core/_methods.py", line 61 in _any
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 1473 in __get_normals
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 1473 in __get_normals
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 1486 in __get_normal_attribute
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 1486 in __get_normal_attribute
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 1145 in getting_function
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 1145 in getting_function
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 384 in populate_dots_data
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 384 in populate_dots_data
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 39 in extract_primitives
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitive_extract.py", line 39 in extract_primitives
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitives.py", line 143 in __gather_cache_primitives
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitives.py", line 143 in __gather_cache_primitives
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/cache.py", line 37 in wrapper_cached
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/cache.py", line 37 in wrapper_cached
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitives.py", line 57 in gather_primitives
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/primitives.py", line 57 in gather_primitives
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/cache.py", line 37 in wrapper_cached
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/cache.py", line 37 in wrapper_cached
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/obj_data.py", line 143 in __gather_primitives
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/obj_data.py", line 143 in __gather_primitives
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/obj_data.py", line 65 in gather_mesh
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/obj_data.py", line 65 in gather_mesh
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/cache.py", line 37 in wrapper_cached
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/cache.py", line 37 in wrapper_cached
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/nodes.py", line 368 in __gather_mesh
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/nodes.py", line 368 in __gather_mesh
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/nodes.py", line 45 in gather_node
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/nodes.py", line 45 in gather_node
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/nodes.py", line 114 in __gather_children
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/nodes.py", line 114 in __gather_children
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/nodes.py", line 58 in gather_node
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/nodes.py", line 58 in gather_node
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/gather.py", line 109 in __gather_scene
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/gather.py", line 109 in __gather_scene
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/cache.py", line 37 in wrapper_cached
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/cache.py", line 37 in wrapper_cached
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/gather.py", line 44 in gather_gltf2
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/gather.py", line 44 in gather_gltf2
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/export.py", line 210 in __gather_gltf
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/export.py", line 210 in __gather_gltf
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/export.py", line 55 in __export
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/export.py", line 55 in __export
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/export.py", line 37 in save
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/blender/exp/export.py", line 37 in save
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/__init__.py", line 1371 in execute
-  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.13/site-packages/bpy/5.1/scripts/addons_core/io_scene_gltf2/__init__.py", line 1371 in execute
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 649 in _export_mia_fbx_direct
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 649 in _export_mia_fbx_direct
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 817 in _export_mia_fbx
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 817 in _export_mia_fbx
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 392 in run_mia_inference
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 392 in run_mia_inference
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_auto_rig.py", line 120 in execute
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_auto_rig.py", line 120 in execute
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/comfy_api/latest/_io.py", line 1833 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/workspaces/UniRig-1026/ComfyUI/comfy_api/latest/_io.py", line 1833 in EXECUTE_NORMALIZED
-  [ComfyUI]   File "/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py", line 1762 in main
-  [ComfyUI]   File "/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py", line 1807 in <module>
-  [ComfyUI]   File "/tmp/comfyui_pvenv_y23yfgta/persistent_worker.py", line 1807 in <module>
+  [ComfyUI] Thread 0x000077af20a2e740 (most recent call first):
+  [ComfyUI] Thread 0x000077af20a2e740 (most recent call first):
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 73 in apply_mat_to_all
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 73 in apply_mat_to_all
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 1430 in __get_normals
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 1430 in __get_normals
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 1452 in __get_normal_attribute
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 1452 in __get_normal_attribute
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 1117 in getting_function
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 1117 in getting_function
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 384 in populate_dots_data
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 384 in populate_dots_data
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 39 in extract_primitives
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives_extract.py", line 39 in extract_primitives
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives.py", line 140 in __gather_cache_primitives
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives.py", line 140 in __gather_cache_primitives
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_cache.py", line 37 in wrapper_cached
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_cache.py", line 37 in wrapper_cached
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives.py", line 57 in gather_primitives
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_primitives.py", line 57 in gather_primitives
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_cache.py", line 37 in wrapper_cached
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_cache.py", line 37 in wrapper_cached
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_mesh.py", line 137 in __gather_primitives
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_mesh.py", line 137 in __gather_primitives
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_mesh.py", line 59 in gather_mesh
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_mesh.py", line 59 in gather_mesh
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_cache.py", line 37 in wrapper_cached
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_cache.py", line 37 in wrapper_cached
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_nodes.py", line 345 in __gather_mesh
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_nodes.py", line 345 in __gather_mesh
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_nodes.py", line 42 in gather_node
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_nodes.py", line 42 in gather_node
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_nodes.py", line 104 in __gather_children
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_nodes.py", line 104 in __gather_children
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_nodes.py", line 48 in gather_node
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_nodes.py", line 48 in gather_node
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather.py", line 94 in __gather_scene
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather.py", line 94 in __gather_scene
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_cache.py", line 37 in wrapper_cached
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather_cache.py", line 37 in wrapper_cached
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather.py", line 31 in gather_gltf2
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_gather.py", line 31 in gather_gltf2
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 202 in __gather_gltf
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 202 in __gather_gltf
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 55 in __export
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 55 in __export
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 37 in save
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 37 in save
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/__init__.py", line 1315 in execute
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/addons_core/io_scene_gltf2/__init__.py", line 1315 in execute
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/modules/bpy/ops.py", line 109 in __call__
+  [ComfyUI]   File "/root/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages/bpy/4.2/scripts/modules/bpy/ops.py", line 109 in __call__
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 649 in _export_mia_fbx_direct
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 649 in _export_mia_fbx_direct
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 817 in _export_mia_fbx
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 817 in _export_mia_fbx
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 392 in run_mia_inference
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_inference.py", line 392 in run_mia_inference
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_auto_rig.py", line 120 in execute
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes/mia_auto_rig.py", line 120 in execute
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/comfy_api/latest/_io.py", line 1833 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/workspaces/UniRig-1156/ComfyUI/comfy_api/latest/_io.py", line 1833 in EXECUTE_NORMALIZED
+  [ComfyUI]   File "/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py", line 1762 in main
+  [ComfyUI]   File "/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py", line 1807 in <module>
+  [ComfyUI]   File "/tmp/comfyui_pvenv_v0gj2abk/persistent_worker.py", line 1807 in <module>
   [ComfyUI] 
   [ComfyUI] 
   [ComfyUI] [worker:ComfyUI-UniRig] === END ===
@@ -494,8 +516,8 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] 
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Primitives created: 1
   [ComfyUI] [worker:ComfyUI-UniRig] INFO: Primitives created: 1
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Finished glTF 2.0 export in 4.867486000061035 s
-  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Finished glTF 2.0 export in 4.867486000061035 s
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Finished glTF 2.0 export in 4.907876014709473 s
+  [ComfyUI] [worker:ComfyUI-UniRig] INFO: Finished glTF 2.0 export in 4.907876014709473 s
   [ComfyUI] [worker:ComfyUI-UniRig]
   [ComfyUI] [worker:ComfyUI-UniRig]
   [ComfyUI] [SubprocessWorker] callback 'report_progress' from call_id=3
@@ -506,16 +528,16 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [comfy-env] Created 6 model patchers: ['PCAE_1', 'PCAE_2', 'PCAE_3', 'TransformerEncoder_4', 'PCAE_5', 'TransformerEncoder_6']
   [ComfyUI] [comfy-env] Created 6 model patchers: ['PCAE_1', 'PCAE_2', 'PCAE_3', 'TransformerEncoder_4', 'PCAE_5', 'TransformerEncoder_6']
-  [ComfyUI] [comfy-env] MIAAutoRig done (58.05s): result: NodeOutput
-  [ComfyUI] [comfy-env] MIAAutoRig done (58.05s): result: NodeOutput
-  [ComfyUI] [VRAM] After MIAAutoRig: 2607 / 7703 MB
-  [ComfyUI] [VRAM] After MIAAutoRig: 2607 / 7703 MB
+  [ComfyUI] [comfy-env] MIAAutoRig done (56.79s): result: NodeOutput
+  [ComfyUI] [comfy-env] MIAAutoRig done (56.79s): result: NodeOutput
+  [ComfyUI] [VRAM] After MIAAutoRig: 3067 / 7672 MB
+  [ComfyUI] [VRAM] After MIAAutoRig: 3067 / 7672 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (404 MB), SubprocessModel (404 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (404 MB), SubprocessModel (404 MB)
-  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: '/workspaces/UniRig-1026/ComfyUI/output/rigatoni_mia.fbx'
-  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: '/workspaces/UniRig-1026/ComfyUI/output/rigatoni_mia.fbx'
-  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 2607 / 7703 MB
-  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 2607 / 7703 MB
+  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: '/workspaces/UniRig-1156/ComfyUI/output/rigatoni_mia.fbx'
+  [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: '/workspaces/UniRig-1156/ComfyUI/output/rigatoni_mia.fbx'
+  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3067 / 7672 MB
+  [ComfyUI] [VRAM] Before UniRigPreviewRiggedMesh: 3067 / 7672 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (404 MB), SubprocessModel (404 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (404 MB), SubprocessModel (404 MB)
   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigPreviewRiggedMesh.EXECUTE_NORMALIZED
@@ -540,20 +562,22 @@ Capturing execution frames: mia_humanoid.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.01s): result: NodeOutput
   [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.01s): result: NodeOutput
-  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 2607 / 7703 MB
-  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 2607 / 7703 MB
+  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3067 / 7672 MB
+  [ComfyUI] [VRAM] After UniRigPreviewRiggedMesh: 3067 / 7672 MB
   [ComfyUI] [VRAM] Loaded: SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (404 MB), SubprocessModel (404 MB)
   [ComfyUI] [VRAM] Loaded: SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (96 MB), SubprocessModel (501 MB), SubprocessModel (404 MB), SubprocessModel (404 MB)
-  [ComfyUI] Prompt executed in 62.90 seconds
-  [ComfyUI] Prompt executed in 62.90 seconds
+  [ComfyUI] Prompt executed in 63.05 seconds
+  [ComfyUI] Prompt executed in 63.05 seconds
   Node executed (1 total), capturing...
-  Frame 13 saved (frame_012.jpg, t=63.4s)
-  [capture-node] freeze=2ms shot=198ms unfreeze=0ms saved=True
-  Execution complete (t=63.4s)
-  Captured 13 unique frames over 69.95s
+  Frame 17 saved (frame_016.jpg, t=63.6s)
+  [capture-node] freeze=12ms shot=168ms unfreeze=31ms saved=True
+  Frame 18 saved (frame_017.jpg, t=71.1s)
+  [capture-periodic] freeze=267ms shot=441ms unfreeze=2ms saved=True
+  Execution complete (t=71.1s)
+  Captured 18 unique frames over 72.06s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41880/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778495449489, canvas=817x710, rafFrozen=True
-  [timing] trigger_3d_previews: 0.0s
+  [debug]   iframe[0]: src=http://127.0.0.1:41884/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778846445784, canvas=817x710, rafFrozen=False
+  [timing] trigger_3d_previews: 0.3s
   Saved high-quality screenshot: mia_humanoid_executed.png
   [timing] final_screenshot: 0.3s
-    Captured 14 video frames
+    Captured 19 video frames
