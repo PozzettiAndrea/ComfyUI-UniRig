@@ -1,4 +1,4 @@
-[00:00] Crash dump logging enabled: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-1105/dev/linux-cpu/crash_dump.log
+[00:00] Crash dump logging enabled: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-0523/dev/linux-cpu/crash_dump.log
 [00:00] 
 [00:00] [1/5] SYNTAX
 [00:00] ----------------------------------------
@@ -17,408 +17,416 @@
 [00:00] 
 Setting up ComfyUI...
 [00:00] Creating virtual environment...
-[00:00] Running: uv venv /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/.venv --python 3.11
+[00:00] Running: uv venv /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/.venv --python 3.12
+[00:00] torch_version='2.11.0' -> pinning torch==2.11.0 torchvision==0.26.0 torchaudio==2.11.0
 [00:00] Cloning ComfyUI (latest)...
-[00:00] Running: git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI
-[00:01] Installing ComfyUI requirements...
-[00:01] Running: uv pip install --python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/.venv/bin/python -r /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/requirements.txt
-[00:20] 
+[00:00] Running: git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI
+[00:02] Pinning torch family: torch==2.11.0 torchvision==0.26.0 torchaudio==2.11.0
+[00:02] Running: uv pip install --python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/.venv/bin/python torch==2.11.0 torchvision==0.26.0 torchaudio==2.11.0
+[00:33] Installing ComfyUI requirements...
+[00:34] Running: uv pip install --python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/.venv/bin/python -r /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/requirements.txt
+[00:44] 
 Installing custom node...
-[00:20] Copying ComfyUI-UniRig to custom_nodes/...
-[00:20] Installing node requirements...
-[00:20] Running: uv pip install --python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/.venv/bin/python -r /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig/requirements.txt
-[00:21] 
+[00:44] Copying ComfyUI-UniRig to custom_nodes/...
+[00:44] Installing node requirements...
+[00:44] Running: uv pip install --python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/.venv/bin/python -r /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig/requirements.txt
+[00:47] 
 Running install.py...
-[00:21] Running: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/.venv/bin/python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig/install.py
-[00:21]   
-[00:21]   Installing 1 node dependencies...
-[00:21]     Cloning ComfyUI-CameraPack...
-[00:22]   
-[00:22]   [requirements] Re-installing main package requirements...
-[00:22]     Installing requirements for ComfyUI-UniRig...
-[00:22]   [comfy-env] _discover: scanning /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes
-[00:22]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
-[00:22]   [comfy-env] _discover: ComfyUI-UniRig -> unirig-nodes (custom_nodes/ComfyUI-UniRig/nodes/comfy-env.toml)
-[00:22]   [comfy-env] Workspace: /home/runner/.ce
-[00:22]   [comfy-env] ComfyUI: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI
-[00:22]   [comfy-env] Found 1 node config(s):
-[00:22]     - unirig-nodes <- custom_nodes/ComfyUI-UniRig/nodes/comfy-env.toml (python=host)
-[00:22]   [comfy-env] Bootstrap interpreter has python 3.11 + torch 2.11.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.11/cp311.
-[00:25]   [comfy-env] GPU: No GPU detected
-[00:25]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
-[00:25]   [comfy-env] Root conda deps from ComfyUI-UniRig: ['av', 'ffmpeg']
-[00:25]   [comfy-env] Host glibc 2.39 -> system-requirements
-[00:25]   Generated /home/runner/.ce/pixi.toml
-[00:25]   [comfy-env] Installing 1 environment(s):
-[00:25]     - unirig-nodes (python=host, 17 pypi deps, 5 cuda wheels)
-[00:25]   [comfy-env] Running `pixi install -e unirig-nodes`...
-[00:36]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[00:36]     	- bin/.librsvg-pre-unlink.sh
-[00:36]     To enable them, run:
-[00:36]     	pixi config set --local run-post-link-scripts insecure
-[00:36]     More info:
-[00:36]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[00:46]     ✔ The unirig-nodes environment has been installed.
-[00:46]   [comfy-env] Recorded install hash 277a5b7fce0b -> /home/runner/.ce/install.hash
-[00:46]   [comfy-env] Install log: /home/runner/.ce/install.log
-[00:46]   
-[00:46]   Installation complete!
-[00:46] Installing 1 node dependency(ies)...
-[00:46]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
-[00:46]   ComfyUI-CameraPack already exists, skipping...
-[00:46] Installing validation endpoint...
-[00:46]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
-[00:46] Running: git clone --depth 1 https://github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-validate-endpoint
-[00:46] CUDA packages absent (will mock): torch_scatter, torch_cluster, flash_attn, cumm, spconv
-[00:46] [INSTALL] PASSED
-[00:46] 
-[00:46] [3/5] REGISTRATION
-[00:46] ----------------------------------------
-[00:46] 
+[00:47] Running: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/.venv/bin/python /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig/install.py
+[00:47]   
+[00:47]   Installing 1 node dependencies...
+[00:48]     Cloning ComfyUI-CameraPack...
+[00:48]   
+[00:48]   [requirements] Re-installing main package requirements...
+[00:48]     Installing requirements for ComfyUI-UniRig...
+[00:49]   [comfy-env] _discover: scanning /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes
+[00:49]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
+[00:49]   [comfy-env] _discover: ComfyUI-UniRig -> unirig-nodes (custom_nodes/ComfyUI-UniRig/nodes/comfy-env.toml)
+[00:49]   [comfy-env] Workspace: /home/runner/.ce
+[00:49]   [comfy-env] ComfyUI: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI
+[00:49]   [comfy-env] Found 1 node config(s):
+[00:49]     - unirig-nodes <- custom_nodes/ComfyUI-UniRig/nodes/comfy-env.toml (python=host)
+[00:49]   [comfy-env] Bootstrap interpreter has python 3.12 + torch 2.11.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.11/cp312.
+[00:51]   [comfy-env] GPU: No GPU detected
+[00:51]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
+[00:51]   [comfy-env] Root conda deps from ComfyUI-UniRig: ['av', 'ffmpeg']
+[00:51]   [comfy-env] Host glibc 2.39 -> system-requirements
+[00:51]   Generated /home/runner/.ce/pixi.toml
+[00:51]   [comfy-env] Installing 1 environment(s):
+[00:51]     - unirig-nodes (python=host, 17 pypi deps, 5 cuda wheels)
+[00:51]   [comfy-env] Running `pixi install -e unirig-nodes`...
+[01:23]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[01:23]     	- bin/.librsvg-pre-unlink.sh
+[01:23]     To enable them, run:
+[01:24]     	pixi config set --local run-post-link-scripts insecure
+[01:24]     More info:
+[01:24]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[01:43]     ✔ The unirig-nodes environment has been installed.
+[01:43]   [comfy-env] Recorded install hash 10cada1ec95d -> /home/runner/.ce/install.hash
+[01:43]   [comfy-env] Install log: /home/runner/.ce/install.log
+[01:43]   
+[01:43]   Installation complete!
+[01:43] Installing 1 node dependency(ies)...
+[01:43]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
+[01:43]   ComfyUI-CameraPack already exists, skipping...
+[01:43] Installing validation endpoint...
+[01:43]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[01:43] Running: git clone --depth 1 https://github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-validate-endpoint
+[01:44] CUDA packages absent (will mock): torch_scatter, torch_cluster, flash_attn, cumm, spconv
+[01:44] [INSTALL] PASSED
+[01:44] 
+[01:44] [3/5] REGISTRATION
+[01:44] ----------------------------------------
+[01:44] 
 [DEBUG] server=None, server_url=None, api=None
-[00:46] 
+[01:44] 
 Starting ComfyUI server...
-[00:46] Starting ComfyUI server on port 41895...
-[00:46] CUDA mock packages: torch_scatter, torch_cluster, flash_attn, cumm, spconv
-[00:46] Starting ComfyUI server on port 41895...
-[00:46] Waiting for server to be ready (timeout: 600s)...
-[00:48]   [ComfyUI] setup plugin alembic.autogenerate.schemas
-[00:48]   [ComfyUI] setup plugin alembic.autogenerate.tables
-[00:48]   [ComfyUI] setup plugin alembic.autogenerate.types
-[00:48]   [ComfyUI] setup plugin alembic.autogenerate.constraints
-[00:48]   [ComfyUI] setup plugin alembic.autogenerate.defaults
-[00:48]   [ComfyUI] setup plugin alembic.autogenerate.comments
-[00:48]   [ComfyUI] [comfy-env] ComfyUI-UniRig: 1 isolation env(s):
-[00:48]   [ComfyUI] [comfy-env]   nodes -> /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes
-[00:48]   [ComfyUI] [comfy-env] Workspace: /home/runner/.ce
-[00:48]   [ComfyUI] [comfy-env]     env: /home/runner/.ce/.pixi/envs/unirig-nodes  [OK]
-[00:48]   [ComfyUI] [comfy-env] prestartup complete
-[00:48]   [ComfyUI] 
-[00:48]   [ComfyUI] Prestartup times for custom nodes:
-[00:48]   [ComfyUI]    0.2 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig
-[00:48]   [ComfyUI] 
-[00:54]   [ComfyUI] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
-[00:54]   [ComfyUI] Found comfy_kitchen backend cuda: {'available': False, 'disabled': False, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
-[00:54]   [ComfyUI] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': 'Neither CUDA nor XPU available on this system', 'capabilities': []}
-[00:54]   [ComfyUI] Checkpoint files will always be loaded safely.
-[00:54]   [ComfyUI] Total VRAM 15990 MB, total RAM 15990 MB
-[00:54]   [ComfyUI] pytorch version: 2.11.0+cu130
-[00:54]   [ComfyUI] Set vram state to: DISABLED
-[00:54]   [ComfyUI] Device: cpu
-[00:54]   [ComfyUI] Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
-[00:59]   [ComfyUI] Python version: 3.11.15 (main, Mar  3 2026, 16:10:12) [GCC 13.3.0]
-[00:59]   [ComfyUI] ComfyUI version: 0.21.0
-[00:59]   [ComfyUI] comfy-aimdo version: 0.3.0
-[00:59]   [ComfyUI] comfy-kitchen version: 0.2.8
-[00:59]   [ComfyUI] ****** User settings have been changed to be stored on the server instead of browser storage. ******
-[00:59]   [ComfyUI] ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
-[00:59]   [ComfyUI] ComfyUI frontend version: 1.43.18
-[00:59]   [ComfyUI] [Prompt Server] web root: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/.venv/lib/python3.11/site-packages/comfyui_frontend_package/static
-[00:59]   [ComfyUI] Asset seeder disabled
-[01:02]   [ComfyUI] loading...
-[01:02]   [ComfyUI] calling register_nodes
-[01:02]   [ComfyUI] [comfy-env] Version: 0.3.87
-[01:02]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-UniRig
-[01:02]   [ComfyUI] [comfy-env] ComfyUI source dir: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI
-[01:02]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
-[01:02]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
-[01:02]   [ComfyUI] [comfy-env] Metadata scan: /home/runner/.pixi/bin/pixi run --as-is --manifest-path /home/runner/.ce/pixi.toml -e unirig-nodes python /tmp/comfy_meta_fp5amswd.py /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig nodes /tmp/comfy_meta_out_d6rahsl_.pkl
-[01:02]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
-[01:02]   [ComfyUI] [comfy-env]   [0] /opt/hostedtoolcache/Python/3.11.15/x64/bin
-[01:02]   [ComfyUI] [comfy-env]   [1] /opt/hostedtoolcache/Python/3.11.15/x64
-[01:02]   [ComfyUI] [comfy-env]   [2] /snap/bin
-[01:02]   [ComfyUI] [comfy-env]   [3] /home/runner/.local/bin
-[01:02]   [ComfyUI] [comfy-env]   [4] /opt/pipx_bin
-[01:02]   [ComfyUI] [comfy-env]   [5] /home/runner/.cargo/bin
-[01:02]   [ComfyUI] [comfy-env]   [6] /home/runner/.config/composer/vendor/bin
-[01:02]   [ComfyUI] [comfy-env]   [7] /usr/local/.ghcup/bin
-[01:02]   [ComfyUI] [comfy-env]   [8] /home/runner/.dotnet/tools
-[01:02]   [ComfyUI] [comfy-env]   [9] /usr/local/sbin
-[01:02]   [ComfyUI] [comfy-env]   [10] /usr/local/bin
-[01:02]   [ComfyUI] [comfy-env]   [11] /usr/sbin
-[01:02]   [ComfyUI] [comfy-env]   [12] /usr/bin
-[01:02]   [ComfyUI] [comfy-env]   [13] /sbin
-[01:02]   [ComfyUI] [comfy-env]   [14] /bin
-[01:02]   [ComfyUI] [comfy-env]   [15] /usr/games
-[01:02]   [ComfyUI] [comfy-env]   [16] /usr/local/games
-[01:02]   [ComfyUI] [comfy-env]   [17] /snap/bin
-[01:07]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
-[01:07]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig
-[01:07]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[01:07]   [ComfyUI] [comfy-env]   [meta-scan] import OK
-[01:07]   [ComfyUI] [comfy-env] Scanned nodes: 16 nodes (5.0s)
-[01:07]   [ComfyUI] [comfy-env] Scanned nodes root: 16 nodes (5.0s)
-[01:07]   [ComfyUI] [comfy-env] Imported nodes root: 16 nodes (isolation)
-[01:07]   [ComfyUI] [comfy-env] Registered 16 total nodes
-[01:07]   [ComfyUI] 
-[01:07]   [ComfyUI] Import times for custom nodes:
-[01:07]   [ComfyUI]    0.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/websocket_image_save.py
-[01:07]   [ComfyUI]    0.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-validate-endpoint
-[01:07]   [ComfyUI]    0.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-CameraPack
-[01:07]   [ComfyUI]    5.2 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig
-[01:07]   [ComfyUI] 
-[01:07]   [ComfyUI] Context impl SQLiteImpl.
-[01:07]   [ComfyUI] Will assume non-transactional DDL.
-[01:07]   [ComfyUI] Context impl SQLiteImpl.
-[01:07]   [ComfyUI] Will assume non-transactional DDL.
-[01:07]   [ComfyUI] Running upgrade  -> 0001_assets, Initial assets schema
-[01:07]   [ComfyUI] Revision ID: 0001_assets
-[01:07]   [ComfyUI] Revises: None
-[01:07]   [ComfyUI] Create Date: 2025-12-10 00:00:00
-[01:07]   [ComfyUI] Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
-[01:07]   [ComfyUI] Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
-[01:07]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
-[01:07]   [ComfyUI] Database upgraded from None to 0003_add_metadata_job_id
-[01:07]   [ComfyUI] Starting server
-[01:07]   [ComfyUI] 
-[01:07]   [ComfyUI] To see the GUI go to: http://127.0.0.1:41895
-[01:08] Server responding, waiting for nodes to load...
-[01:28] Server is ready!
-[01:28] Checking for import errors in server logs...
-[01:28] No import errors detected
-[01:29] Found 733 registered nodes
-[01:29] [REGISTRATION] PASSED
-[01:29] 
-[01:29] [4/5] INSTANTIATION
-[01:29] ----------------------------------------
-[01:29] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x7f61bd6af110>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7f61bda37510>
-[01:29] Testing node constructors...
-[01:30] All 16 node(s) instantiated successfully!
-[01:30] [INSTANTIATION] PASSED
-[01:30] 
-[01:30] [5/5] EXECUTION
-[01:30] ----------------------------------------
-[01:30] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x7f61bd6af110>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7f61bda37510>
-[01:30] CPU runner - will execute 3 workflow(s)
-[01:30] Running 6 workflow(s) (all with videos)...
-[01:30] Installing screenshot dependencies (playwright, pillow)...
-[01:31]   Packages installed, downloading chromium browser...
-[01:40]   Screenshot dependencies installed successfully
-[01:41] Starting headless browser...
-[01:41]   Installing Mesa llvmpipe (apt)...
-[01:51]   Mesa install failed: E: Unable to locate package libegl1-mesa
+[01:44] Starting ComfyUI server on port 41881...
+[01:44] CUDA mock packages: torch_scatter, torch_cluster, flash_attn, cumm, spconv
+[01:44] Starting ComfyUI server on port 41881...
+[01:44] Waiting for server to be ready (timeout: 600s)...
+[01:45]   [ComfyUI] setup plugin alembic.autogenerate.schemas
+[01:46]   [ComfyUI] setup plugin alembic.autogenerate.tables
+[01:46]   [ComfyUI] setup plugin alembic.autogenerate.types
+[01:46]   [ComfyUI] setup plugin alembic.autogenerate.constraints
+[01:46]   [ComfyUI] setup plugin alembic.autogenerate.defaults
+[01:46]   [ComfyUI] setup plugin alembic.autogenerate.comments
+[01:46]   [ComfyUI] [comfy-env] ComfyUI-UniRig: 1 isolation env(s):
+[01:46]   [ComfyUI] [comfy-env]   nodes -> /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig/nodes
+[01:47]   [ComfyUI] [comfy-env] Workspace: /home/runner/.ce
+[01:47]   [ComfyUI] [comfy-env]     env: /home/runner/.ce/.pixi/envs/unirig-nodes  [OK]
+[01:47]   [ComfyUI] [comfy-env] prestartup complete
+[01:47]   [ComfyUI] 
+[01:47]   [ComfyUI] Prestartup times for custom nodes:
+[01:47]   [ComfyUI]    0.4 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig
+[01:47]   [ComfyUI] 
+[01:50]   [ComfyUI] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': 'Neither CUDA nor XPU available on this system', 'capabilities': []}
+[01:50]   [ComfyUI] Found comfy_kitchen backend cuda: {'available': False, 'disabled': False, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
+[01:50]   [ComfyUI] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
+[01:50]   [ComfyUI] Checkpoint files will always be loaded safely.
+[01:50]   [ComfyUI] Total VRAM 15990 MB, total RAM 15990 MB
+[01:50]   [ComfyUI] pytorch version: 2.11.0+cu130
+[01:50]   [ComfyUI] Set vram state to: DISABLED
+[01:51]   [ComfyUI] Device: cpu
+[01:51]   [ComfyUI] Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+[01:55]   [ComfyUI] Python version: 3.12.3 (main, Mar  3 2026, 12:15:18) [GCC 13.3.0]
+[01:55]   [ComfyUI] ComfyUI version: 0.21.1
+[01:55]   [ComfyUI] comfy-aimdo version: 0.3.0
+[01:55]   [ComfyUI] comfy-kitchen version: 0.2.8
+[01:55]   [ComfyUI] ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[01:55]   [ComfyUI] ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[01:55]   [ComfyUI] comfyui-frontend-package version: 1.43.18
+[01:55]   [ComfyUI] comfyui-workflow-templates version: 0.9.77
+[01:55]   [ComfyUI] comfyui-embedded-docs version: 0.5.0
+[01:55]   [ComfyUI] comfy-kitchen version: 0.2.8
+[01:55]   [ComfyUI] comfy-aimdo version: 0.3.0
+[01:55]   [ComfyUI] [Prompt Server] web root: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/.venv/lib/python3.12/site-packages/comfyui_frontend_package/static
+[01:55]   [ComfyUI] Asset seeder disabled
+[01:57]   [ComfyUI] loading...
+[01:57]   [ComfyUI] calling register_nodes
+[01:57]   [ComfyUI] [comfy-env] Version: 0.3.88
+[01:57]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-UniRig
+[01:57]   [ComfyUI] [comfy-env] ComfyUI source dir: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI
+[01:57]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[01:57]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[01:57]   [ComfyUI] [comfy-env] Metadata scan: /home/runner/.pixi/bin/pixi run --as-is --manifest-path /home/runner/.ce/pixi.toml -e unirig-nodes python /tmp/comfy_meta_zhnt9ahs.py /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig nodes /tmp/comfy_meta_out_jz13h3ae.pkl
+[01:57]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[01:57]   [ComfyUI] [comfy-env]   [0] /opt/hostedtoolcache/Python/3.10.20/x64/bin
+[01:57]   [ComfyUI] [comfy-env]   [1] /opt/hostedtoolcache/Python/3.10.20/x64
+[01:57]   [ComfyUI] [comfy-env]   [2] /snap/bin
+[01:57]   [ComfyUI] [comfy-env]   [3] /home/runner/.local/bin
+[01:57]   [ComfyUI] [comfy-env]   [4] /opt/pipx_bin
+[01:57]   [ComfyUI] [comfy-env]   [5] /home/runner/.cargo/bin
+[01:57]   [ComfyUI] [comfy-env]   [6] /home/runner/.config/composer/vendor/bin
+[01:57]   [ComfyUI] [comfy-env]   [7] /usr/local/.ghcup/bin
+[01:57]   [ComfyUI] [comfy-env]   [8] /home/runner/.dotnet/tools
+[01:57]   [ComfyUI] [comfy-env]   [9] /usr/local/sbin
+[01:57]   [ComfyUI] [comfy-env]   [10] /usr/local/bin
+[01:57]   [ComfyUI] [comfy-env]   [11] /usr/sbin
+[01:57]   [ComfyUI] [comfy-env]   [12] /usr/bin
+[01:57]   [ComfyUI] [comfy-env]   [13] /sbin
+[01:57]   [ComfyUI] [comfy-env]   [14] /bin
+[01:57]   [ComfyUI] [comfy-env]   [15] /usr/games
+[01:57]   [ComfyUI] [comfy-env]   [16] /usr/local/games
+[01:57]   [ComfyUI] [comfy-env]   [17] /snap/bin
+[02:02]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[02:02]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig
+[02:02]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[02:02]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[02:02]   [ComfyUI] [comfy-env] Scanned nodes: 16 nodes (4.6s)
+[02:02]   [ComfyUI] [comfy-env] Scanned nodes root: 16 nodes (4.6s)
+[02:02]   [ComfyUI] [comfy-env] Imported nodes root: 16 nodes (isolation)
+[02:02]   [ComfyUI] [comfy-env] Registered 16 total nodes
+[02:02]   [ComfyUI] 
+[02:02]   [ComfyUI] Import times for custom nodes:
+[02:02]   [ComfyUI]    0.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/websocket_image_save.py
+[02:02]   [ComfyUI]    0.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-validate-endpoint
+[02:02]   [ComfyUI]    0.0 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-CameraPack
+[02:02]   [ComfyUI]    4.8 seconds: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig
+[02:02]   [ComfyUI] 
+[02:02]   [ComfyUI] Context impl SQLiteImpl.
+[02:02]   [ComfyUI] Will assume non-transactional DDL.
+[02:02]   [ComfyUI] Context impl SQLiteImpl.
+[02:02]   [ComfyUI] Will assume non-transactional DDL.
+[02:02]   [ComfyUI] Running upgrade  -> 0001_assets, Initial assets schema
+[02:02]   [ComfyUI] Revision ID: 0001_assets
+[02:02]   [ComfyUI] Revises: None
+[02:02]   [ComfyUI] Create Date: 2025-12-10 00:00:00
+[02:02]   [ComfyUI] Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[02:02]   [ComfyUI] Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+[02:02]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
+[02:02]   [ComfyUI] Database upgraded from None to 0003_add_metadata_job_id
+[02:02]   [ComfyUI] Starting server
+[02:02]   [ComfyUI] 
+[02:02]   [ComfyUI] To see the GUI go to: http://127.0.0.1:41881
+[02:02] Server responding, waiting for nodes to load...
+[02:22] Server is ready!
+[02:23] Checking for import errors in server logs...
+[02:23] No import errors detected
+[02:23] Found 739 registered nodes
+[02:23] [REGISTRATION] PASSED
+[02:24] 
+[02:24] [4/5] INSTANTIATION
+[02:24] ----------------------------------------
+[02:24] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x7f78b8357040>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7f78b700ce80>
+[02:24] Testing node constructors...
+[02:26] All 16 node(s) instantiated successfully!
+[02:26] [INSTANTIATION] PASSED
+[02:26] 
+[02:26] [5/5] EXECUTION
+[02:26] ----------------------------------------
+[02:26] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x7f78b8357040>, server_url=None, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x7f78b700ce80>
+[02:26] CPU runner - will execute 3 workflow(s)
+[02:26] Running 6 workflow(s) (all with videos)...
+[02:26] Installing screenshot dependencies (playwright, pillow)...
+[02:27]   Packages installed, downloading chromium browser...
+[02:36]   Screenshot dependencies installed successfully
+[02:36] Starting headless browser...
+[02:37]   Installing Mesa llvmpipe (apt)...
+[02:46]   Mesa install failed: E: Unable to locate package libegl1-mesa
 
-[01:51]   No GPU, no Mesa -- using SwiftShader software rendering
-[01:52] Capturing execution frames: apply_animation.json
-[01:59]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[01:59]   Validating workflow...
-[01:59]   [ComfyUI] === /validate endpoint called ===
-[01:59]   [ComfyUI] Received JSON with keys: ['prompt']
-[01:59]   [ComfyUI] Prompt has 4 nodes
-[01:59]   [ComfyUI]   Node 6: UniRigApplyAnimation
-[01:59]   Queuing workflow for execution...
-[01:59]   [ComfyUI]     Inputs: {"model_fbx_path": ["9", 0], "animation_type": "mixamo", "animation_file": "Breakdance.fbx", "output_name": ""}
-[01:59]   [ComfyUI]   Node 7: Preview3D
-[01:59]   [ComfyUI]     Inputs: {"model_file": ["6", 0], "image": "", "camera_info": ["10", 0]}
-[01:59]   [ComfyUI]   Node 9: UniRigLoadRiggedMesh
-[01:59]   [ComfyUI]     Inputs: {"fbx_file": "3d/mixamo.fbx"}
-[01:59]   [ComfyUI]   Node 10: CreateLoad3DCamera
-[01:59]   [ComfyUI]     Inputs: {"pos_x": 0, "pos_y": 20, "pos_z": 20, "target_x": 0, "target_y": 0, "target_z": 0, "zoom": 1, "camera_type": "perspective"}
-[01:59]   [ComfyUI] Generated prompt_id: a59a76f8-7d88-492d-89eb-eae37b32bae6
-[01:59]   [ComfyUI] Calling execution.validate_prompt()...
-[01:59]   [ComfyUI] Validation result: valid=True
-[01:59]   [ComfyUI] === Validation PASSED ===
-[01:59]   [ComfyUI] got prompt
-[01:59]   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
-[01:59]   [ComfyUI] [comfy-env] SubprocessWorker: /home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
-[01:59]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
-[01:59]   [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI'}
-[01:59]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-[01:59]   [ComfyUI] [ComfyUI-UniRig] python: /home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
-[01:59]   [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig', '/home/runner/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig']
-[01:59]   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
-[01:59]   [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_76fqr_93/persistent_worker.py', 'abstract://comfy_worker_7381f3b1e619']...
-[01:59]   [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_7381f3b1e619 (abstract, no filesystem path)
-[02:00]   [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[02:00]   [ComfyUI] [SubprocessWorker] worker started/confirmed
-[02:00]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-[02:00]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
-[02:00]   [ComfyUI] [SubprocessWorker] sending request via socket...
-[02:00]   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
-[02:01]   Frame 2 saved (frame_001.jpg, t=2.3s)
-[02:01]   [capture-periodic] freeze=3ms shot=126ms unfreeze=4ms saved=True
-[02:01]   [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
-[02:03]   Frame 3 saved (frame_002.jpg, t=4.5s)
-[02:03]   [capture-periodic] freeze=3ms shot=133ms unfreeze=6ms saved=True
-[02:04]   [capture-loop] iter=50 t=5.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=2.3/15.6GB (15%) swap=0.0/3.0GB (0%) cpu=32% browser_rss=0.87GB
-[02:06]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
-[02:06]   [ComfyUI] [SubprocessWorker] got response: ok
-[02:06]   [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (7.79s): result: NodeOutput
-[02:06]   [ComfyUI] [comfy-env] Running UniRigApplyAnimation: model_fbx_path: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., animation_type: 'mixamo', animation_file: 'Breakdance.fbx', output_name: ''
-[02:06]   [ComfyUI] [SubprocessWorker] call_method: nodes.animation.UniRigApplyAnimation.EXECUTE_NORMALIZED
-[02:06]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-[02:06]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
-[02:06]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
-[02:06]   [ComfyUI] [SubprocessWorker] worker started/confirmed
-[02:06]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-[02:06]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
-[02:06]   [ComfyUI] [SubprocessWorker] sending request via socket...
-[02:06]   [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
-[02:06]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
-[02:07]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7700
-[02:07]   [ComfyUI] [worker:ComfyUI-UniRig]
-[02:07]   [ComfyUI] FBX export starting... '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/output/loaded_1778670455_mixamo_Breakdance.fbx'
-[02:07]   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
-[02:07]   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
-[02:07]   [ComfyUI] [worker:ComfyUI-UniRig] export finished in 1.3603 sec.
-[02:07]   [ComfyUI] [SubprocessWorker] got response: ok
-[02:07]   [ComfyUI] [comfy-env] UniRigApplyAnimation done (0.93s): result: NodeOutput
-[02:07]   [ComfyUI] Prompt executed in 8.73 seconds
-[02:08]   Frame 4 saved (frame_003.jpg, t=9.0s)
-[02:08]   [capture-periodic] freeze=2ms shot=103ms unfreeze=7ms saved=True
-[02:08]   Node executed (1 total), capturing...
-[02:10]   Frame 5 saved (frame_004.jpg, t=9.5s)
-[02:10]   [capture-node] freeze=864ms shot=980ms unfreeze=0ms saved=True
-[02:10]   Execution complete (t=9.5s)
-[02:10]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
-[03:10]   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
-[03:10]   [3d-wait] Phase 2: iframes=0
-[03:10]   [3d-wait] Total 3D wait: 60.0s
-[03:10]   Captured 5 unique frames over 71.38s
-[03:10]   [debug] iframes: 0
-[03:10]   [timing] trigger_3d_previews: 0.0s
-[03:12]   Saved high-quality screenshot: apply_animation_executed.png
-[03:12]   [timing] final_screenshot: 0.3s
-[03:12]   [2/6] SKIPPED (not in cpu list) mia_humanoid.json
-[03:12] Capturing execution frames: rigged_manipulator.json
-[03:19]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[03:19]   Validating workflow...
-[03:19]   [ComfyUI] === /validate endpoint called ===
-[03:19]   [ComfyUI] Received JSON with keys: ['prompt']
-[03:19]   [ComfyUI] Prompt has 2 nodes
-[03:19]   [ComfyUI]   Node 3: UniRigPreviewRiggedMesh
-[03:19]   [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
-[03:19]   [ComfyUI]   Node 4: UniRigLoadRiggedMesh
-[03:19]   Queuing workflow for execution...
-[03:19]   [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
-[03:19]   [ComfyUI] Generated prompt_id: fe55cbf0-c8d3-44d1-8d7f-9c4d20dcd7e5
-[03:19]   [ComfyUI] Calling execution.validate_prompt()...
-[03:19]   [ComfyUI] Validation result: valid=True
-[03:19]   [ComfyUI] === Validation PASSED ===
-[03:19]   [ComfyUI] got prompt
-[03:19]   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: 'animation_characters/mixamo.fbx'
-[03:19]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
-[03:19]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-[03:19]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
-[03:19]   [ComfyUI] [ComfyUI-UniRig] Health check: failed
-[03:19]   [ComfyUI] [ComfyUI-UniRig] Socket unhealthy, restarting worker...
-[03:19]   [ComfyUI] [ComfyUI-UniRig] python: /home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
-[03:19]   [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig', '/home/runner/.ce/.pixi/envs/unirig-nodes/lib/python3.11/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-1105/ComfyUI/custom_nodes/ComfyUI-UniRig']
-[03:19]   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
-[03:19]   [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_76fqr_93/persistent_worker.py', 'abstract://comfy_worker_81100c1384ea']...
-[03:19]   [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_81100c1384ea (abstract, no filesystem path)
-[03:20]   [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[03:20]   [ComfyUI] [SubprocessWorker] worker started/confirmed
-[03:20]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-[03:20]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
-[03:20]   [ComfyUI] [SubprocessWorker] sending request via socket...
-[03:20]   [ComfyUI] [SubprocessWorker] call_id=3 sending call_method
-[03:21]   Frame 2 saved (frame_001.jpg, t=2.3s)
-[03:21]   [capture-periodic] freeze=4ms shot=117ms unfreeze=3ms saved=True
-[03:22]   [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
-[03:23]   Frame 3 saved (frame_002.jpg, t=4.5s)
-[03:23]   [capture-periodic] freeze=3ms shot=97ms unfreeze=3ms saved=True
-[03:24]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
-[03:24]   [ComfyUI] [SubprocessWorker] got response: ok
-[03:24]   [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (5.53s): result: NodeOutput
-[03:24]   [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
-[03:24]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigPreviewRiggedMesh.EXECUTE_NORMALIZED
-[03:24]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-[03:24]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
-[03:24]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
-[03:24]   [ComfyUI] [SubprocessWorker] worker started/confirmed
-[03:24]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-[03:24]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
-[03:24]   [ComfyUI] [SubprocessWorker] sending request via socket...
-[03:24]   [ComfyUI] [SubprocessWorker] call_id=4 sending call_method
-[03:24]   [ComfyUI] [SubprocessWorker] got response: ok
-[03:24]   [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.01s): result: NodeOutput
-[03:24]   [ComfyUI] Prompt executed in 5.54 seconds
-[03:24]   [capture-loop] iter=50 t=5.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=2.5/15.6GB (16%) swap=0.0/3.0GB (0%) cpu=12% browser_rss=0.97GB
-[03:25]   Node executed (1 total), capturing...
-[03:26]   Frame 4 saved (frame_003.jpg, t=7.0s)
-[03:26]   [capture-node] freeze=56ms shot=159ms unfreeze=0ms saved=True
-[03:26]   Execution complete (t=7.0s)
-[03:26]   Captured 4 unique frames over 7.26s
-[03:26]   [debug] iframes: 1
-[03:26]   [debug]   iframe[0]: src=http://127.0.0.1:41895/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778670524708, canvas=486x710, rafFrozen=True
-[03:26]   [timing] trigger_3d_previews: 0.0s
-[03:28]   Saved high-quality screenshot: rigged_manipulator_executed.png
-[03:28]   [timing] final_screenshot: 0.2s
-[03:28] Capturing execution frames: skeleton_comparison.json
-[03:34]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[03:34]   Validating workflow...
-[03:34]   [ComfyUI] === /validate endpoint called ===
-[03:34]   [ComfyUI] Received JSON with keys: ['prompt']
-[03:34]   [ComfyUI] Prompt has 3 nodes
-[03:34]   [ComfyUI]   Node 49: UniRigCompareSkeletons
-[03:34]   [ComfyUI]     Inputs: {"fbx_path_left": ["54", 0], "fbx_path_right": ["55", 0], "preview": ""}
-[03:34]   [ComfyUI]   Node 54: UniRigLoadRiggedMesh
-[03:34]   [ComfyUI]     Inputs: {"fbx_file": "3d/mixamo.fbx"}
-[03:34]   Queuing workflow for execution...
-[03:34]   [ComfyUI]   Node 55: UniRigLoadRiggedMesh
-[03:34]   [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
-[03:34]   [ComfyUI] Generated prompt_id: 2b686e6a-94ba-464e-ac72-db5f723fd9d2
-[03:34]   [ComfyUI] Calling execution.validate_prompt()...
-[03:34]   [ComfyUI] Validation result: valid=True
-[03:34]   [ComfyUI] === Validation PASSED ===
-[03:34]   [ComfyUI] got prompt
-[03:34]   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: 'animation_characters/mixamo.fbx'
-[03:34]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
-[03:34]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-[03:34]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
-[03:34]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
-[03:34]   [ComfyUI] [SubprocessWorker] worker started/confirmed
-[03:34]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-[03:34]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
-[03:34]   [ComfyUI] [SubprocessWorker] sending request via socket...
-[03:34]   [ComfyUI] [SubprocessWorker] call_id=5 sending call_method
-[03:34]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
-[03:35]   [ComfyUI] [SubprocessWorker] got response: ok
-[03:35]   [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
-[03:35]   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
-[03:35]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
-[03:35]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-[03:35]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
-[03:35]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
-[03:35]   [ComfyUI] [SubprocessWorker] worker started/confirmed
-[03:35]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-[03:35]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
-[03:35]   [ComfyUI] [SubprocessWorker] sending request via socket...
-[03:35]   [ComfyUI] [SubprocessWorker] call_id=6 sending call_method
-[03:35]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
-[03:35]   [ComfyUI] [SubprocessWorker] got response: ok
-[03:35]   [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.21s): result: NodeOutput
-[03:35]   [ComfyUI] [comfy-env] Running UniRigCompareSkeletons: fbx_path_left: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., fbx_path_right: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
-[03:35]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigCompareSkeletons.EXECUTE_NORMALIZED
-[03:35]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
-[03:35]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
-[03:35]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
-[03:35]   [ComfyUI] [SubprocessWorker] worker started/confirmed
-[03:35]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
-[03:35]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
-[03:35]   [ComfyUI] [SubprocessWorker] sending request via socket...
-[03:35]   [ComfyUI] [SubprocessWorker] call_id=7 sending call_method
-[03:35]   [ComfyUI] [SubprocessWorker] got response: ok
-[03:35]   [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.01s): result: NodeOutput
-[03:35]   [ComfyUI] Prompt executed in 0.44 seconds
-[03:36]   Node executed (1 total), capturing...
-[03:37]   Frame 2 saved (frame_001.jpg, t=2.2s)
-[03:37]   [capture-node] freeze=132ms shot=207ms unfreeze=0ms saved=True
-[03:37]   Execution complete (t=2.2s)
-[03:37]   Captured 2 unique frames over 2.59s
-[03:37]   [debug] iframes: 1
-[03:37]   [debug]   iframe[0]: src=http://127.0.0.1:41895/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17786, canvas=387x330, rafFrozen=True
-[03:37]   [timing] trigger_3d_previews: 0.0s
-[03:39]   Saved high-quality screenshot: skeleton_comparison_executed.png
-[03:39]   [timing] final_screenshot: 0.2s
-[03:39]   [5/6] SKIPPED (not in cpu list) unirig_bird.json
-[03:40]   [6/6] SKIPPED (not in cpu list) unirig_humanoid.json
-[03:40] Results saved to /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-1105/dev/linux-cpu/results.json
-[03:40] Saved: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-1105/dev/linux-cpu/index.html
-[03:40] [EXECUTION] PASSED
-[03:40] 
+[02:46]   No GPU, no Mesa -- using SwiftShader software rendering
+[02:47] Capturing execution frames: apply_animation.json
+[02:53]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[02:53]   Validating workflow...
+[02:53]   [ComfyUI] === /validate endpoint called ===
+[02:53]   [ComfyUI] Received JSON with keys: ['prompt']
+[02:53]   [ComfyUI] Prompt has 4 nodes
+[02:53]   [ComfyUI]   Node 6: UniRigApplyAnimation
+[02:53]   [ComfyUI]     Inputs: {"model_fbx_path": ["9", 0], "animation_type": "mixamo", "animation_file": "Breakdance.fbx", "output_name": ""}
+[02:53]   [ComfyUI]   Node 7: Preview3D
+[02:53]   [ComfyUI]     Inputs: {"model_file": ["6", 0], "image": "", "camera_info": ["10", 0]}
+[02:53]   Queuing workflow for execution...
+[02:53]   [ComfyUI]   Node 9: UniRigLoadRiggedMesh
+[02:53]   [ComfyUI]     Inputs: {"fbx_file": "3d/mixamo.fbx"}
+[02:53]   [ComfyUI]   Node 10: CreateLoad3DCamera
+[02:53]   [ComfyUI]     Inputs: {"pos_x": 0, "pos_y": 20, "pos_z": 20, "target_x": 0, "target_y": 0, "target_z": 0, "zoom": 1, "camera_type": "perspective"}
+[02:53]   [ComfyUI] Generated prompt_id: 53505783-40c9-4d85-8376-2df7c1989d8c
+[02:53]   [ComfyUI] Calling execution.validate_prompt()...
+[02:53]   [ComfyUI] Validation result: valid=True
+[02:53]   [ComfyUI] === Validation PASSED ===
+[02:53]   [ComfyUI] got prompt
+[02:53]   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
+[02:53]   [ComfyUI] [comfy-env] SubprocessWorker: /home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
+[02:53]   [ComfyUI] [comfy-env] env_vars: {'COMFYUI_BASE': '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI'}
+[02:53]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
+[02:53]   [ComfyUI] [ComfyUI-UniRig] python: /home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
+[02:53]   [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig', '/home/runner/.ce/.pixi/envs/unirig-nodes/lib/python3.12/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig']
+[02:53]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[02:53]   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
+[02:53]   [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_ugkbztm9/persistent_worker.py', 'abstract://comfy_worker_c1b3c2b864db']...
+[02:53]   [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_c1b3c2b864db (abstract, no filesystem path)
+[02:54]   [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[02:55]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[02:55]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[02:55]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[02:55]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[02:55]   [ComfyUI] [SubprocessWorker] call_id=1 sending call_method
+[02:56]   Frame 2 saved (frame_001.jpg, t=2.3s)
+[02:56]   [capture-periodic] freeze=1ms shot=89ms unfreeze=2ms saved=True
+[02:56]   [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
+[02:58]   Frame 3 saved (frame_002.jpg, t=4.5s)
+[02:58]   [capture-periodic] freeze=1ms shot=82ms unfreeze=2ms saved=True
+[02:59]   [capture-loop] iter=50 t=5.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=2.4/15.6GB (15%) swap=0.0/3.0GB (0%) cpu=25% browser_rss=0.90GB
+[03:03]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+[03:04]   [ComfyUI] [SubprocessWorker] got response: ok
+[03:04]   [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (10.27s): result: NodeOutput
+[03:04]   [ComfyUI] [comfy-env] Running UniRigApplyAnimation: model_fbx_path: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., animation_type: 'mixamo', animation_file: 'Breakdance.fbx', output_name: ''
+[03:04]   [ComfyUI] [SubprocessWorker] call_method: nodes.animation.UniRigApplyAnimation.EXECUTE_NORMALIZED
+[03:04]   Frame 4 saved (frame_003.jpg, t=10.9s)
+[03:04]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[03:04]   [capture-periodic] freeze=1ms shot=102ms unfreeze=2ms saved=True
+[03:04]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+[03:04]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
+[03:04]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[03:04]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[03:04]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[03:04]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[03:04]   [ComfyUI] [SubprocessWorker] call_id=2 sending call_method
+[03:05]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+[03:05]   [capture-loop] iter=100 t=11.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=2.4/15.6GB (15%) swap=0.0/3.0GB (0%) cpu=13% browser_rss=0.90GB
+[03:05]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7700
+[03:05]   [ComfyUI] [worker:ComfyUI-UniRig]
+[03:05]   [ComfyUI] FBX export starting... '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/output/loaded_1778822816_mixamo_Breakdance.fbx'
+[03:05]   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
+[03:05]   [ComfyUI] [worker:ComfyUI-UniRig] (bpy.data.armatures['Armature'], 'POSE')
+[03:05]   [ComfyUI] [worker:ComfyUI-UniRig] export finished in 0.9405 sec.
+[03:05]   [ComfyUI] [SubprocessWorker] got response: ok
+[03:05]   [ComfyUI] [comfy-env] UniRigApplyAnimation done (1.75s): result: NodeOutput
+[03:05]   [ComfyUI] Prompt executed in 12.02 seconds
+[03:06]   Node executed (1 total), capturing...
+[03:07]   Frame 5 saved (frame_004.jpg, t=12.7s)
+[03:07]   [capture-node] freeze=623ms shot=782ms unfreeze=0ms saved=True
+[03:07]   Execution complete (t=12.7s)
+[03:07]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
+[04:07]   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
+[04:08]   [3d-wait] Phase 2: iframes=0
+[04:08]   [3d-wait] Total 3D wait: 60.0s
+[04:08]   Captured 5 unique frames over 74.45s
+[04:08]   [debug] iframes: 0
+[04:08]   [timing] trigger_3d_previews: 0.0s
+[04:10]   Saved high-quality screenshot: apply_animation_executed.png
+[04:10]   [timing] final_screenshot: 0.4s
+[04:11]   [2/6] SKIPPED (not in cpu list) mia_humanoid.json
+[04:11] Capturing execution frames: rigged_manipulator.json
+[04:17]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[04:17]   Validating workflow...
+[04:17]   [ComfyUI] === /validate endpoint called ===
+[04:17]   [ComfyUI] Received JSON with keys: ['prompt']
+[04:17]   [ComfyUI] Prompt has 2 nodes
+[04:17]   [ComfyUI]   Node 3: UniRigPreviewRiggedMesh
+[04:17]   Queuing workflow for execution...
+[04:17]   [ComfyUI]     Inputs: {"fbx_output_path": ["4", 0], "preview": ""}
+[04:17]   [ComfyUI] [ComfyUI-UniRig] python: /home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
+[04:17]   [ComfyUI] [ComfyUI-UniRig] sys_path sent to worker: ['/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig', '/home/runner/.ce/.pixi/envs/unirig-nodes/lib/python3.12/site-packages', '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspaces/UniRig-0523/ComfyUI/custom_nodes/ComfyUI-UniRig']
+[04:17]   [ComfyUI] [SubprocessWorker] is_pixi=True, python=/home/runner/.ce/.pixi/envs/unirig-nodes/bin/python
+[04:17]   [ComfyUI] [SubprocessWorker] launching cmd=['/home/runner/.pixi/bin/pixi', 'run', '--as-is', '--manifest-path', '/home/runner/.ce/pixi.toml', '-e', 'unirig-nodes', 'python', '/tmp/comfyui_pvenv_ugkbztm9/persistent_worker.py', 'abstract://comfy_worker_f24754b59e24']...
+[04:17]   [ComfyUI]   Node 4: UniRigLoadRiggedMesh
+[04:17]   [ComfyUI] [SubprocessWorker] socket_addr=abstract://comfy_worker_f24754b59e24 (abstract, no filesystem path)
+[04:17]   [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
+[04:17]   [ComfyUI] Generated prompt_id: 44070114-61d4-4c89-b198-4fd5d830d887
+[04:17]   [ComfyUI] Calling execution.validate_prompt()...
+[04:17]   [ComfyUI] Validation result: valid=True
+[04:17]   [ComfyUI] === Validation PASSED ===
+[04:17]   [ComfyUI] got prompt
+[04:17]   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: 'animation_characters/mixamo.fbx'
+[04:17]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
+[04:17]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[04:17]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+[04:17]   [ComfyUI] [ComfyUI-UniRig] Health check: failed
+[04:17]   [ComfyUI] [ComfyUI-UniRig] Socket unhealthy, restarting worker...
+[04:18]   [ComfyUI] [worker:ComfyUI-UniRig] ERROR: Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[04:18]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[04:18]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[04:19]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[04:19]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[04:19]   [ComfyUI] [SubprocessWorker] call_id=3 sending call_method
+[04:19]   Frame 2 saved (frame_001.jpg, t=2.2s)
+[04:19]   [capture-periodic] freeze=1ms shot=81ms unfreeze=1ms saved=True
+[04:20]   [ComfyUI] [worker:ComfyUI-UniRig] WARNING: No comfy kitchen, using old apply_rope functions.
+[04:21]   Frame 3 saved (frame_002.jpg, t=4.4s)
+[04:21]   [capture-periodic] freeze=7ms shot=90ms unfreeze=1ms saved=True
+[04:22]   [capture-loop] iter=50 t=5.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=2.5/15.6GB (16%) swap=0.0/3.0GB (0%) cpu=10% browser_rss=0.96GB
+[04:22]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+[04:22]   [ComfyUI] [SubprocessWorker] got response: ok
+[04:22]   [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (5.76s): result: NodeOutput
+[04:22]   [ComfyUI] [comfy-env] Running UniRigPreviewRiggedMesh: fbx_output_path: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
+[04:22]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigPreviewRiggedMesh.EXECUTE_NORMALIZED
+[04:22]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[04:22]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+[04:22]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
+[04:22]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[04:22]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[04:22]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[04:22]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[04:22]   [ComfyUI] [SubprocessWorker] call_id=4 sending call_method
+[04:22]   [ComfyUI] [SubprocessWorker] got response: ok
+[04:22]   [ComfyUI] [comfy-env] UniRigPreviewRiggedMesh done (0.01s): result: NodeOutput
+[04:22]   [ComfyUI] Prompt executed in 5.77 seconds
+[04:22]   Node executed (1 total), capturing...
+[04:23]   Frame 4 saved (frame_003.jpg, t=6.1s)
+[04:23]   [capture-node] freeze=2ms shot=88ms unfreeze=1ms saved=True
+[04:23]   Execution complete (t=6.9s)
+[04:24]   Captured 4 unique frames over 7.07s
+[04:24]   [debug] iframes: 1
+[04:24]   [debug]   iframe[0]: src=http://127.0.0.1:41881/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778822889109, canvas=486x710, rafFrozen=False
+[04:24]   [timing] trigger_3d_previews: 0.1s
+[04:26]   Saved high-quality screenshot: rigged_manipulator_executed.png
+[04:26]   [timing] final_screenshot: 0.2s
+[04:27] Capturing execution frames: skeleton_comparison.json
+[04:32]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[04:32]   Validating workflow...
+[04:32]   [ComfyUI] === /validate endpoint called ===
+[04:32]   Queuing workflow for execution...
+[04:32]   [ComfyUI] Received JSON with keys: ['prompt']
+[04:32]   [ComfyUI] Prompt has 3 nodes
+[04:32]   [ComfyUI]   Node 49: UniRigCompareSkeletons
+[04:32]   [ComfyUI]     Inputs: {"fbx_path_left": ["54", 0], "fbx_path_right": ["55", 0], "preview": ""}
+[04:32]   [ComfyUI]   Node 54: UniRigLoadRiggedMesh
+[04:32]   [ComfyUI]     Inputs: {"fbx_file": "3d/mixamo.fbx"}
+[04:32]   [ComfyUI]   Node 55: UniRigLoadRiggedMesh
+[04:32]   [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
+[04:32]   [ComfyUI] Generated prompt_id: 1263a325-5451-4321-afb8-9903e1c10fab
+[04:32]   [ComfyUI] Calling execution.validate_prompt()...
+[04:32]   [ComfyUI] Validation result: valid=True
+[04:32]   [ComfyUI] === Validation PASSED ===
+[04:32]   [ComfyUI] got prompt
+[04:32]   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: 'animation_characters/mixamo.fbx'
+[04:32]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
+[04:32]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[04:32]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+[04:32]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
+[04:32]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[04:32]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[04:32]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[04:32]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[04:32]   [ComfyUI] [SubprocessWorker] call_id=5 sending call_method
+[04:32]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+[04:33]   [ComfyUI] [SubprocessWorker] got response: ok
+[04:33]   [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.66s): result: NodeOutput
+[04:33]   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
+[04:33]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
+[04:33]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[04:33]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+[04:33]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
+[04:33]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[04:33]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[04:33]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[04:33]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[04:33]   [ComfyUI] [SubprocessWorker] call_id=6 sending call_method
+[04:33]   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
+[04:33]   [ComfyUI] [SubprocessWorker] got response: ok
+[04:33]   [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
+[04:33]   [ComfyUI] [comfy-env] Running UniRigCompareSkeletons: fbx_path_left: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., fbx_path_right: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
+[04:33]   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigCompareSkeletons.EXECUTE_NORMALIZED
+[04:33]   [ComfyUI] [SubprocessWorker] acquired lock, ensuring started...
+[04:33]   [ComfyUI] [ComfyUI-UniRig] Health check: ping (timeout=5.0s)...
+[04:33]   [ComfyUI] [ComfyUI-UniRig] Health check: ok
+[04:33]   [ComfyUI] [SubprocessWorker] worker started/confirmed
+[04:33]   [ComfyUI] [SubprocessWorker] serializing kwargs to shm...
+[04:33]   [ComfyUI] [SubprocessWorker] created 0 shm blocks
+[04:33]   [ComfyUI] [SubprocessWorker] sending request via socket...
+[04:33]   [ComfyUI] [SubprocessWorker] call_id=7 sending call_method
+[04:33]   [ComfyUI] [SubprocessWorker] got response: ok
+[04:33]   [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.01s): result: NodeOutput
+[04:33]   [ComfyUI] Prompt executed in 0.89 seconds
+[04:34]   Node executed (1 total), capturing...
+[04:35]   Frame 2 saved (frame_001.jpg, t=2.8s)
+[04:35]   [capture-node] freeze=56ms shot=184ms unfreeze=0ms saved=True
+[04:35]   Execution complete (t=2.8s)
+[04:35]   Captured 2 unique frames over 3.08s
+[04:35]   [debug] iframes: 1
+[04:35]   [debug]   iframe[0]: src=http://127.0.0.1:41881/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17788, canvas=387x330, rafFrozen=True
+[04:35]   [timing] trigger_3d_previews: 0.0s
+[04:37]   Saved high-quality screenshot: skeleton_comparison_executed.png
+[04:37]   [timing] final_screenshot: 0.2s
+[04:38]   [5/6] SKIPPED (not in cpu list) unirig_bird.json
+[04:38]   [6/6] SKIPPED (not in cpu list) unirig_humanoid.json
+[04:38] Results saved to /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-0523/dev/linux-cpu/results.json
+[04:38] Saved: /home/runner/work/comfy-gpu-ci/comfy-gpu-ci/comfy-test-logs/UniRig-0523/dev/linux-cpu/index.html
+[04:38] [EXECUTION] PASSED
+[04:38] 
 linux: PASSED
-[03:40] Stopping ComfyUI server...
+[04:38] Stopping ComfyUI server...
