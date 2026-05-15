@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-15T05:27:34.194277+00:00",
+  "timestamp": "2026-05-15T07:00:27.763053+00:00",
   "platform": "macos",
   "hardware": {
-    "os": "macOS-15.7.5-arm64-arm-64bit-Mach-O",
+    "os": "macOS-15.7.5-arm64-arm-64bit",
     "cpu": "arm"
   },
-  "commit_hash": "7c4ba24c181d1d84265f96a164a51cfb1dbc28e9",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25901856978",
+  "commit_hash": "5ffcefa629ab07e3880f3432df81e5fe5fe9a3ec",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25904859674",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,19 +17,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 81.06,
+      "duration_seconds": 90.6,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.5-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.5-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.06,
-          "avg": 0.98
+          "peak": 1.04,
+          "avg": 0.9
         },
         "total_ram_gb": 7.0,
-        "samples": 75
+        "samples": 84
       }
     },
     {
@@ -42,37 +42,37 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 15.1,
+      "duration_seconds": 19.28,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.5-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.5-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.08,
-          "avg": 0.99
+          "peak": 1.02,
+          "avg": 0.9
         },
         "total_ram_gb": 7.0,
-        "samples": 14
+        "samples": 18
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 9.24,
+      "duration_seconds": 10.43,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.5-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.5-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.1,
-          "avg": 1.09
+          "peak": 1.03,
+          "avg": 1.02
         },
         "total_ram_gb": 7.0,
-        "samples": 9
+        "samples": 10
       }
     },
     {
