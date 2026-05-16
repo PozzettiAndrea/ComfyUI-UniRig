@@ -15,19 +15,19 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI]   Node 54: UniRigLoadRiggedMesh
   [ComfyUI]     Inputs: {"fbx_file": "3d/mixamo.fbx"}
   [ComfyUI]     Inputs: {"fbx_file": "3d/mixamo.fbx"}
-  [ComfyUI]   Node 55: UniRigLoadRiggedMesh
-  [ComfyUI]   Node 55: UniRigLoadRiggedMesh
-  [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
-  [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
-  [ComfyUI] Generated prompt_id: b8d376ba-3d58-493b-b1dd-601c35eb9805
-  [ComfyUI] Generated prompt_id: b8d376ba-3d58-493b-b1dd-601c35eb9805
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Calling execution.validate_prompt()...
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] Validation result: valid=True
-  [ComfyUI] === Validation PASSED ===
-  [ComfyUI] === Validation PASSED ===
   Queuing workflow for execution...
+  [ComfyUI]   Node 55: UniRigLoadRiggedMesh
+  [ComfyUI]   Node 55: UniRigLoadRiggedMesh
+  [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
+  [ComfyUI]     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
+  [ComfyUI] Generated prompt_id: ec1a52a2-634d-48dd-ae0a-def98714df4a
+  [ComfyUI] Generated prompt_id: ec1a52a2-634d-48dd-ae0a-def98714df4a
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Calling execution.validate_prompt()...
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] Validation result: valid=True
+  [ComfyUI] === Validation PASSED ===
+  [ComfyUI] === Validation PASSED ===
   [ComfyUI] got prompt
   [ComfyUI] got prompt
   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: 'animation_characters/mixamo.fbx'
@@ -54,8 +54,8 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.37s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.37s): result: NodeOutput
   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
@@ -80,8 +80,8 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.35s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.35s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
   [ComfyUI] [comfy-env] Running UniRigCompareSkeletons: fbx_path_left: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., fbx_path_right: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
   [ComfyUI] [comfy-env] Running UniRigCompareSkeletons: fbx_path_left: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., fbx_path_right: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigCompareSkeletons.EXECUTE_NORMALIZED
@@ -104,17 +104,17 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [SubprocessWorker] call_id=7 sending call_method
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.01s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.01s): result: NodeOutput
-  [ComfyUI] Prompt executed in 0.58 seconds
-  [ComfyUI] Prompt executed in 0.58 seconds
+  [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.00s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.00s): result: NodeOutput
+  [ComfyUI] Prompt executed in 0.59 seconds
+  [ComfyUI] Prompt executed in 0.59 seconds
   Node executed (1 total), capturing...
   Frame 2 saved (frame_001.jpg, t=0.9s)
-  [capture-node] freeze=1257ms shot=232ms unfreeze=0ms saved=True
+  [capture-node] freeze=1415ms shot=220ms unfreeze=0ms saved=True
   Execution complete (t=0.9s)
-  Captured 2 unique frames over 2.46s
+  Captured 2 unique frames over 2.61s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41893/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17788, canvas=387x330, rafFrozen=True
+  [debug]   iframe[0]: src=http://127.0.0.1:41882/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17789, canvas=387x330, rafFrozen=True
   [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: skeleton_comparison_executed.png
   [timing] final_screenshot: 0.2s

@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-15T11:28:18.457114+00:00",
+  "timestamp": "2026-05-16T19:45:51.835077+00:00",
   "platform": "linux",
   "hardware": {
-    "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
+    "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
     "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
   },
-  "commit_hash": "3d943560f226c9c28e9e4a36674c7117116f27e9",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25915260379",
+  "commit_hash": "0da41dba0beadc5dbcde953309149f3c0e61076c",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25971128159",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,19 +17,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 78.98,
+      "duration_seconds": 79.45,
       "error": null,
       "hardware": {
-        "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
+        "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
         "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
       },
       "resources": {
         "ram": {
           "peak": 1.44,
-          "avg": 1.33
+          "avg": 1.34
         },
         "total_ram_gb": 15.6,
-        "samples": 79
+        "samples": 80
       }
     },
     {
@@ -42,28 +42,28 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 15.09,
+      "duration_seconds": 14.55,
       "error": null,
       "hardware": {
-        "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
+        "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
         "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
       },
       "resources": {
         "ram": {
-          "peak": 1.43,
+          "peak": 1.44,
           "avg": 1.3
         },
         "total_ram_gb": 15.6,
-        "samples": 16
+        "samples": 15
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 9.91,
+      "duration_seconds": 10.16,
       "error": null,
       "hardware": {
-        "os": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
+        "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
         "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
       },
       "resources": {
@@ -72,7 +72,7 @@
           "avg": 1.4
         },
         "total_ram_gb": 15.6,
-        "samples": 10
+        "samples": 11
       }
     },
     {
