@@ -7,14 +7,14 @@
     },
     {
       "file": "frame_001.jpg",
-      "time": 3.06,
+      "time": 2.87,
       "log": "Capturing execution frames: skeleton_comparison.json\n  Frame 1 saved (frame_000.jpg, t=0.0s)\n  Validating workflow...\n  Queuing workflow for execution..."
     },
     {
       "file": "frame_002.jpg",
-      "time": 5.649068117141724,
+      "time": 6.054702043533325,
       "log": "Final screenshot"
     }
   ],
-  "total_time": 3.45
+  "total_time": 3.87
 }

@@ -2,19 +2,20 @@ Capturing execution frames: rigged_manipulator.json
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
   Queuing workflow for execution...
-  Frame 2 saved (frame_001.jpg, t=2.3s)
-  [capture-periodic] freeze=7ms shot=106ms unfreeze=4ms saved=True
-  Frame 3 saved (frame_002.jpg, t=4.6s)
-  [capture-periodic] freeze=5ms shot=107ms unfreeze=4ms saved=True
-  [capture-loop] iter=50 t=6.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=5.4/16.0GB (34%) swap=0.6/2.9GB (19%) cpu=16% browser_rss=0.69GB
+  Frame 2 saved (frame_001.jpg, t=2.2s)
+  [capture-periodic] freeze=4ms shot=137ms unfreeze=3ms saved=True
+  Frame 3 saved (frame_002.jpg, t=4.5s)
+  [capture-periodic] freeze=3ms shot=126ms unfreeze=3ms saved=True
+  [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=5.5/16.0GB (35%) swap=0.5/2.9GB (18%) cpu=25% browser_rss=0.78GB
+  [capture-loop] iter=100 t=11.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=7 ram=5.7/16.0GB (36%) swap=0.5/2.9GB (18%) cpu=68% browser_rss=0.77GB
   Node executed (1 total), capturing...
-  Frame 4 saved (frame_003.jpg, t=11.7s)
-  [capture-node] freeze=9ms shot=121ms unfreeze=0ms saved=True
-  Execution complete (t=11.7s)
-  Captured 4 unique frames over 11.9s
+  Frame 4 saved (frame_003.jpg, t=13.0s)
+  [capture-node] freeze=3ms shot=104ms unfreeze=0ms saved=True
+  Execution complete (t=13.0s)
+  Captured 4 unique frames over 13.72s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41893/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778844969174, canvas=486x710, rafFrozen=True
-  [timing] trigger_3d_previews: 0.6s
+  [debug]   iframe[0]: src=http://127.0.0.1:41899/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778961172155, canvas=486x710, rafFrozen=True
+  [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: rigged_manipulator_executed.png
   [timing] final_screenshot: 0.2s
     Captured 5 video frames
