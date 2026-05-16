@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-05-15T12:04:36.293472+00:00",
+  "timestamp": "2026-05-16T20:44:34.641579+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
-    "cpu": "AMD Ryzen 5 3600 6-Core Processor",
-    "gpu": "NVIDIA GeForce RTX 5060"
+    "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
+    "gpu": "NVIDIA GeForce RTX 3090"
   },
-  "commit_hash": "3d943560f226c9c28e9e4a36674c7117116f27e9",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25915383610",
+  "commit_hash": "0da41dba0beadc5dbcde953309149f3c0e61076c",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25971128547",
   "success": true,
   "summary": {
     "total": 6,
@@ -25,23 +25,23 @@
     {
       "name": "mia_humanoid",
       "status": "pass",
-      "duration_seconds": 80.79,
+      "duration_seconds": 91.41,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
-        "cpu": "AMD Ryzen 5 3600 6-Core Processor",
-        "gpu": "NVIDIA GeForce RTX 5060"
+        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
+        "gpu": "NVIDIA GeForce RTX 3090"
       },
       "resources": {
         "ram": {
-          "peak": 5.99,
-          "avg": 3.79
+          "peak": 5.79,
+          "avg": 3.77
         },
-        "total_ram_gb": 23.4,
-        "samples": 79,
+        "total_ram_gb": 31.2,
+        "samples": 89,
         "vram": {
-          "peak": 2.5,
-          "avg": 1.16
+          "peak": 2.76,
+          "avg": 1.47
         }
       }
     },
@@ -62,46 +62,46 @@
     {
       "name": "unirig_bird",
       "status": "pass",
-      "duration_seconds": 88.71,
+      "duration_seconds": 85.59,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
-        "cpu": "AMD Ryzen 5 3600 6-Core Processor",
-        "gpu": "NVIDIA GeForce RTX 5060"
+        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
+        "gpu": "NVIDIA GeForce RTX 3090"
       },
       "resources": {
         "ram": {
-          "peak": 6.59,
-          "avg": 3.38
+          "peak": 6.68,
+          "avg": 3.47
         },
-        "total_ram_gb": 23.4,
-        "samples": 86,
+        "total_ram_gb": 31.2,
+        "samples": 83,
         "vram": {
-          "peak": 4.19,
-          "avg": 0.77
+          "peak": 3.95,
+          "avg": 0.99
         }
       }
     },
     {
       "name": "unirig_humanoid",
       "status": "pass",
-      "duration_seconds": 62.94,
+      "duration_seconds": 69.83,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
-        "cpu": "AMD Ryzen 5 3600 6-Core Processor",
-        "gpu": "NVIDIA GeForce RTX 5060"
+        "cpu": "Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz",
+        "gpu": "NVIDIA GeForce RTX 3090"
       },
       "resources": {
         "ram": {
-          "peak": 5.76,
-          "avg": 3.72
+          "peak": 5.48,
+          "avg": 3.52
         },
-        "total_ram_gb": 23.4,
-        "samples": 62,
+        "total_ram_gb": 31.2,
+        "samples": 68,
         "vram": {
-          "peak": 4.04,
-          "avg": 1.56
+          "peak": 3.77,
+          "avg": 1.63
         }
       }
     }
