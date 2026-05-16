@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-15T11:32:23.805235+00:00",
+  "timestamp": "2026-05-16T19:50:02.549938+00:00",
   "platform": "windows",
   "hardware": {
-    "os": "Windows-2025Server-10.0.26100-SP0",
+    "os": "Windows-10-10.0.26100-SP0",
     "cpu": "Intel64 Family 6 Model 106 Stepping 6, GenuineIntel"
   },
-  "commit_hash": "3d943560f226c9c28e9e4a36674c7117116f27e9",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25915261495",
+  "commit_hash": "0da41dba0beadc5dbcde953309149f3c0e61076c",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25971129286",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,19 +17,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 101.96,
+      "duration_seconds": 91.15,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "Intel64 Family 6 Model 106 Stepping 6, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 0.96,
-          "avg": 0.85
+          "peak": 1.05,
+          "avg": 0.94
         },
         "total_ram_gb": 16.0,
-        "samples": 102
+        "samples": 91
       }
     },
     {
@@ -42,16 +42,16 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 21.97,
+      "duration_seconds": 22.02,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "Intel64 Family 6 Model 106 Stepping 6, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 0.88,
-          "avg": 0.75
+          "peak": 0.97,
+          "avg": 0.82
         },
         "total_ram_gb": 16.0,
         "samples": 22
@@ -60,16 +60,16 @@
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 15.03,
+      "duration_seconds": 14.53,
       "error": null,
       "hardware": {
-        "os": "Windows-2025Server-10.0.26100-SP0",
+        "os": "Windows-10-10.0.26100-SP0",
         "cpu": "Intel64 Family 6 Model 106 Stepping 6, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 0.86,
-          "avg": 0.85
+          "peak": 0.93,
+          "avg": 0.92
         },
         "total_ram_gb": 16.0,
         "samples": 15
