@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-15T11:30:12.677625+00:00",
+  "timestamp": "2026-05-16T19:45:59.867899+00:00",
   "platform": "macos",
   "hardware": {
     "os": "macOS-15.7.4-arm64-arm-64bit",
     "cpu": "arm"
   },
-  "commit_hash": "3d943560f226c9c28e9e4a36674c7117116f27e9",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25915263247",
+  "commit_hash": "0da41dba0beadc5dbcde953309149f3c0e61076c",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25971131069",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 92.06,
+      "duration_seconds": 78.4,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
@@ -25,11 +25,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.1,
+          "peak": 1.06,
           "avg": 0.97
         },
         "total_ram_gb": 7.0,
-        "samples": 85
+        "samples": 72
       }
     },
     {
@@ -42,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 24.75,
+      "duration_seconds": 13.14,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
@@ -50,17 +50,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.05,
-          "avg": 0.93
+          "peak": 1.06,
+          "avg": 0.97
         },
         "total_ram_gb": 7.0,
-        "samples": 23
+        "samples": 13
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 11.36,
+      "duration_seconds": 8.25,
       "error": null,
       "hardware": {
         "os": "macOS-15.7.4-arm64-arm-64bit",
@@ -68,11 +68,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.05,
-          "avg": 1.05
+          "peak": 1.07,
+          "avg": 1.06
         },
         "total_ram_gb": 7.0,
-        "samples": 11
+        "samples": 8
       }
     },
     {
