@@ -1,8 +1,8 @@
 {
-  "models_dir": "C:\\workspaces\\UniRig-1447\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\models",
+  "models_dir": "C:\\workspaces\\UniRig-1732\\portable-comfyui\\ComfyUI_windows_portable\\ComfyUI\\models",
   "summary": {
     "total_files": 19,
-    "total_size_bytes": 5248473059,
+    "total_size_bytes": 5248473058,
     "total_size_human": "4.9 GB"
   },
   "folders": {
@@ -41,7 +41,7 @@
       ]
     },
     "unirig": {
-      "total_size_bytes": 2898722440,
+      "total_size_bytes": 2898722439,
       "total_size_human": "2.7 GB",
       "source": {
         "type": "unknown"
@@ -63,14 +63,14 @@
           "size_human": "195.0 B"
         },
         {
-          "path": ".cache\\huggingface\\download\\skeleton.safetensors.metadata",
+          "path": ".cache\\huggingface\\download\\skin.safetensors.metadata",
           "size_bytes": 128,
           "size_human": "128.0 B"
         },
         {
-          "path": ".cache\\huggingface\\download\\skin.safetensors.metadata",
-          "size_bytes": 128,
-          "size_human": "128.0 B"
+          "path": ".cache\\huggingface\\download\\skeleton.safetensors.metadata",
+          "size_bytes": 127,
+          "size_human": "127.0 B"
         },
         {
           "path": ".cache\\huggingface\\.gitignore",

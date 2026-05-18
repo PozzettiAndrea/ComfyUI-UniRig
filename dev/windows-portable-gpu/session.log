@@ -1,4 +1,4 @@
-[00:00] Crash dump logging enabled: C:\logs\UniRig-1447\dev\windows-portable-gpu\crash_dump.log
+[00:00] Crash dump logging enabled: C:\logs\UniRig-1732\dev\windows-portable-gpu\crash_dump.log
 [00:00] 
 [00:00] [1/5] SYNTAX
 [00:00] ----------------------------------------
@@ -19,357 +19,337 @@ Setting up ComfyUI...
 [00:00] Fetching latest release version...
 [00:00] Latest version: v0.21.1
 [00:00] Downloading portable ComfyUI from https://github.com/comfyanonymous/ComfyUI/releases/download/v0.21.1/ComfyUI_windows_portable_nvidia.7z...
-[00:05]   Downloaded: 10%
+[00:04]   Downloaded: 10%
 [00:08]   Downloaded: 20%
-[00:12]   Downloaded: 30%
-[00:15]   Downloaded: 40%
-[00:19]   Downloaded: 50%
-[00:22]   Downloaded: 60%
-[00:26]   Downloaded: 70%
-[00:29]   Downloaded: 80%
-[00:32]   Downloaded: 90%
-[00:35]   Downloaded: 100%
-[00:35] Downloaded to C:\Users\ContainerAdministrator\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1.7z
-[00:35] Extracting to cache: C:\Users\ContainerAdministrator\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
-[00:35] Extracting ComfyUI_portable_v0.21.1.7z...
-[00:35] Using 7z: C:\Program Files\7-Zip\7z.exe
-[02:09] Extracted to C:\Users\ContainerAdministrator\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
-[02:09] Copying from cache to: C:\workspaces\UniRig-1447\portable-comfyui
-[02:25] Installing uv into embedded Python...
-[02:25] Running: C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
-[02:31] Installing ComfyUI requirements...
-[02:31] Running: C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
-[02:32] 
+[00:11]   Downloaded: 30%
+[00:14]   Downloaded: 40%
+[00:17]   Downloaded: 50%
+[00:21]   Downloaded: 60%
+[00:24]   Downloaded: 70%
+[00:27]   Downloaded: 80%
+[00:31]   Downloaded: 90%
+[00:34]   Downloaded: 100%
+[00:34] Downloaded to C:\Users\ContainerUser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1.7z
+[00:34] Extracting to cache: C:\Users\ContainerUser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
+[00:34] Extracting ComfyUI_portable_v0.21.1.7z...
+[00:34] Using 7z: C:\Program Files\7-Zip\7z.exe
+[01:25] Extracted to C:\Users\ContainerUser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
+[01:25] Copying from cache to: C:\workspaces\UniRig-1732\portable-comfyui
+[01:37] Installing uv into embedded Python...
+[01:37] Running: C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
+[01:41] Installing ComfyUI requirements...
+[01:41] Running: C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
+[01:42] 
 Installing custom node...
-[02:32] Copying ComfyUI-UniRig to custom_nodes/...
-[02:32] Installing node requirements...
-[02:32] Running: C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\requirements.txt
-[02:38] 
+[01:42] Copying ComfyUI-UniRig to custom_nodes/...
+[01:42] Installing node requirements...
+[01:42] Running: C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\requirements.txt
+[01:45] 
 Running install.py...
-[02:38] Running: C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\install.py
-[02:39]   
-[02:39]   Installing 1 node dependencies...
-[02:39]     Cloning ComfyUI-CameraPack...
-[02:39]   
-[02:39]   [requirements] Re-installing main package requirements...
-[02:39]     Installing requirements for ComfyUI-UniRig...
-[02:42]   [comfy-env] _discover: scanning C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
-[02:42]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
-[02:42]   [comfy-env] _discover: ComfyUI-UniRig -> unirig-nodes (custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml)
-[02:42]   [comfy-env] Workspace: C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env
-[02:42]   [comfy-env] ComfyUI: C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[02:42]   [comfy-env] Found 1 node config(s):
-[02:42]     - unirig-nodes <- custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml (python=host)
-[02:43]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
-[03:08]   [comfy-env] GPU: Detection: torch
-[03:08]   Recommended: CUDA 13.0
-[03:08]   
-[03:08]     GPU 0: NVIDIA GeForce RTX 3060 (sm_86) [Ampere] 12287MB
-[03:08]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
-[03:08]   [comfy-env] cuda-wheels: 5 package(s) need a matched (cuda, torch, python) combo: ['torch-scatter', 'torch-cluster', 'flash-attn', 'cumm', 'spconv']
-[03:08]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
-[03:08]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
-[03:09]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:09]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
-[03:10]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:10]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
-[03:11]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:11]   [cuda-wheels] Looking up cumm: cu130 torch2.11 cp313 win_amd64
-[03:11]   [cuda-wheels]   Found: cumm-0.8.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[03:11]   [cuda-wheels] Looking up spconv: cu130 torch2.11 cp313 win_amd64
-[03:12]   [cuda-wheels]   GH Pages index unreachable, falling back to GitHub Releases API...
-[03:16]   [cuda-wheels]   No wheel found via index or API. If your network blocks
-[03:16]   [cuda-wheels]   *.github.io / fastly, set HTTPS_PROXY to a working proxy.
-[03:16]   [comfy-env] cuda-wheels tier 1 incomplete: `spconv` not built for cu13.0+torch2.11; falling back
-[03:16]   [comfy-env] cuda-wheels tier 2 (fallback): probing cu12.8/torch2.8/cp313
-[03:16]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
-[03:16]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:16]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
-[03:17]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:17]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
-[03:18]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:18]   [cuda-wheels] Looking up cumm: cu128 torch2.8 cp313 win_amd64
-[03:18]   [cuda-wheels]   Found: cumm-0.8.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:18]   [cuda-wheels] Looking up spconv: cu128 torch2.8 cp313 win_amd64
-[03:18]   [cuda-wheels]   Found: spconv-2.3.8+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:18]   [comfy-env] cuda-wheels combo: cu12.8/torch2.8 (fallback; per-node cuda envs will override torch to this combo while comfyui keeps bootstrap torch)
-[03:18]   [comfy-env] Root conda deps from ComfyUI-UniRig: ['av', 'ffmpeg']
-[03:18]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
-[03:19]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:19]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
-[03:20]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:20]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
-[03:20]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:20]   [cuda-wheels] Looking up cumm: cu128 torch2.8 cp313 win_amd64
-[03:21]   [cuda-wheels]   Found: cumm-0.8.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:21]   [cuda-wheels] Looking up spconv: cu128 torch2.8 cp313 win_amd64
-[03:21]   [cuda-wheels]   Found: spconv-2.3.8+cu128torch2.8-cp313-cp313-win_amd64.whl
-[03:21]   [comfy-env] unirig-nodes: cuda-wheels deferred for post-pixi install (torch-scatter, torch-cluster, flash-attn, cumm, spconv)
-[03:21]   Generated C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env\pixi.toml
-[03:21]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:21]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:21]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:21]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:21]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:21]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:21]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:21]   [comfy-env] Patched C:\Users\ContainerAdministrator\AppData\Roaming\uv\python\cpython-3.13.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
-[03:21]   [comfy-env] Installing 1 environment(s):
-[03:21]     - unirig-nodes (python=host, 17 pypi deps, 5 cuda wheels)
-[03:21]   [comfy-env] Running `pixi install -e unirig-nodes`...
-[03:41]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[03:41]     	- Scripts/.librsvg-pre-unlink.bat
-[03:41]     To enable them, run:
-[03:41]     	pixi config set --local run-post-link-scripts insecure
-[03:41]     More info:
-[03:41]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[05:00]     The unirig-nodes environment has been installed.
-[05:00]   [comfy-env] unirig-nodes: installing cuda-wheels with --no-deps (torch-scatter, torch-cluster, flash-attn, cumm, spconv)
-[05:00]     Using Python 3.13.13 environment at: .pixi\envs\unirig-nodes
-[05:03]     Resolved 5 packages in 2.62s
-[05:03]     Downloading flash-attn (239.2MiB)
-[05:03]     Downloading torch-scatter (9.7MiB)
-[05:03]     Downloading spconv (69.3MiB)
-[05:03]     Downloading cumm (5.3MiB)
-[05:03]     Downloading torch-cluster (2.8MiB)
-[05:03]      Downloaded torch-cluster
-[05:03]      Downloaded torch-scatter
-[05:05]      Downloaded cumm
-[05:06]      Downloaded spconv
-[05:10]      Downloaded flash-attn
-[05:10]     Prepared 5 packages in 7.36s
-[05:11]     Installed 5 packages in 428ms
-[05:11]      + cumm==0.8.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/cumm-latest/cumm-0.8.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[05:11]      + flash-attn==2.8.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[05:11]      + spconv==2.3.8+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/spconv-latest/spconv-2.3.8%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[05:11]      + torch-cluster==1.6.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_cluster-latest/torch_cluster-1.6.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[05:11]      + torch-scatter==2.1.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_scatter-latest/torch_scatter-2.1.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[05:11]   [comfy-env] Recorded install hash d3c453a8558b -> C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env\install.hash
-[05:11]   [comfy-env] Install log: C:\Users\ContainerAdministrator\AppData\Local\Programs\comfy-env\install.log
-[05:11]   
-[05:11]   Installation complete!
-[05:11] Installing 1 node dependency(ies)...
-[05:11]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
-[05:11]   ComfyUI-CameraPack already exists, skipping...
-[05:11] Installing validation endpoint...
-[05:11]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
-[05:11] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git C:\workspaces\UniRig-1447\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[05:13] CUDA packages absent (will mock): torch_scatter, torch_cluster, flash_attn, cumm, spconv
-[05:13] [INSTALL] PASSED
-[05:13] 
-[05:13] [3/5] REGISTRATION
-[05:13] ----------------------------------------
-[05:13] 
+[01:45] Running: C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\install.py
+[01:46]   
+[01:46]   Installing 1 node dependencies...
+[01:46]     Cloning ComfyUI-CameraPack...
+[01:46]   
+[01:46]   [requirements] Re-installing main package requirements...
+[01:46]     Installing requirements for ComfyUI-UniRig...
+[01:48]   [comfy-env] _discover: scanning C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[01:48]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
+[01:48]   [comfy-env] _discover: ComfyUI-UniRig -> unirig-nodes (custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml)
+[01:48]   [comfy-env] Workspace: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env
+[01:48]   [comfy-env] ComfyUI: C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[01:48]   [comfy-env] Found 1 node config(s):
+[01:48]     - unirig-nodes <- custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml (python=host)
+[01:49]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
+[01:59]   [comfy-env] GPU: Detection: torch
+[01:59]   Recommended: CUDA 13.1
+[01:59]   
+[01:59]     GPU 0: NVIDIA GeForce RTX 4060 Ti (sm_89) [Ada] 16379MB
+[01:59]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
+[01:59]   [comfy-env] cuda-wheels: 5 package(s) need a matched (cuda, torch, python) combo: ['torch-scatter', 'torch-cluster', 'flash-attn', 'cumm', 'spconv']
+[01:59]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
+[01:59]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[02:00]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:00]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[02:01]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:01]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[02:01]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:01]   [cuda-wheels] Looking up cumm: cu130 torch2.11 cp313 win_amd64
+[02:02]   [cuda-wheels]   Found: cumm-0.8.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:02]   [cuda-wheels] Looking up spconv: cu130 torch2.11 cp313 win_amd64
+[02:02]   [cuda-wheels]   GH Pages index unreachable, falling back to GitHub Releases API...
+[02:06]   [cuda-wheels]   No wheel found via index or API. If your network blocks
+[02:06]   [cuda-wheels]   *.github.io / fastly, set HTTPS_PROXY to a working proxy.
+[02:06]   [comfy-env] cuda-wheels tier 1 incomplete: `spconv` not built for cu13.0+torch2.11; falling back
+[02:06]   [comfy-env] cuda-wheels tier 2 (fallback): probing cu12.8/torch2.8/cp313
+[02:06]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
+[02:06]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:06]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
+[02:07]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:07]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
+[02:07]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:07]   [cuda-wheels] Looking up cumm: cu128 torch2.8 cp313 win_amd64
+[02:08]   [cuda-wheels]   Found: cumm-0.8.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:08]   [cuda-wheels] Looking up spconv: cu128 torch2.8 cp313 win_amd64
+[02:08]   [cuda-wheels]   Found: spconv-2.3.8+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:08]   [comfy-env] cuda-wheels combo: cu12.8/torch2.8 (fallback; per-node cuda envs will override torch to this combo while comfyui keeps bootstrap torch)
+[02:08]   [comfy-env] Root conda deps from ComfyUI-UniRig: ['av', 'ffmpeg']
+[02:08]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
+[02:08]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:08]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
+[02:09]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:09]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
+[02:09]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:09]   [cuda-wheels] Looking up cumm: cu128 torch2.8 cp313 win_amd64
+[02:10]   [cuda-wheels]   Found: cumm-0.8.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:10]   [cuda-wheels] Looking up spconv: cu128 torch2.8 cp313 win_amd64
+[02:10]   [cuda-wheels]   Found: spconv-2.3.8+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:10]   [comfy-env] unirig-nodes: cuda-wheels deferred for post-pixi install (torch-scatter, torch-cluster, flash-attn, cumm, spconv)
+[02:10]   Generated C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\pixi.toml
+[02:10]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:10]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.10.20-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:10]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:10]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:10]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:10]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:10]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:10]   [comfy-env] Patched C:\Users\ContainerUser\AppData\Roaming\uv\python\cpython-3.13.13-windows-x86_64-none\Lib\platform.py for conda-forge compat
+[02:10]   [comfy-env] Installing 1 environment(s):
+[02:10]     - unirig-nodes (python=host, 17 pypi deps, 5 cuda wheels)
+[02:10]   [comfy-env] Running `pixi install -e unirig-nodes`...
+[02:39]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[02:39]     	- Scripts/.librsvg-pre-unlink.bat
+[02:39]     To enable them, run:
+[02:39]     	pixi config set --local run-post-link-scripts insecure
+[02:39]     More info:
+[02:39]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[03:50]     The unirig-nodes environment has been installed.
+[03:50]   [comfy-env] unirig-nodes: installing cuda-wheels with --no-deps (torch-scatter, torch-cluster, flash-attn, cumm, spconv)
+[03:50]     Using Python 3.13.13 environment at: .pixi\envs\unirig-nodes
+[03:53]     Resolved 5 packages in 2.47s
+[03:53]     Downloading spconv (69.3MiB)
+[03:53]     Downloading torch-scatter (9.7MiB)
+[03:53]     Downloading cumm (5.3MiB)
+[03:53]     Downloading flash-attn (239.2MiB)
+[03:53]     Downloading torch-cluster (2.8MiB)
+[03:53]      Downloaded torch-cluster
+[03:53]      Downloaded cumm
+[03:53]      Downloaded torch-scatter
+[03:55]      Downloaded spconv
+[03:58]      Downloaded flash-attn
+[03:58]     Prepared 5 packages in 5.42s
+[03:58]     Installed 5 packages in 268ms
+[03:58]      + cumm==0.8.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/cumm-latest/cumm-0.8.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[03:58]      + flash-attn==2.8.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[03:58]      + spconv==2.3.8+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/spconv-latest/spconv-2.3.8%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[03:58]      + torch-cluster==1.6.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_cluster-latest/torch_cluster-1.6.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[03:58]      + torch-scatter==2.1.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_scatter-latest/torch_scatter-2.1.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[03:59]   [comfy-env] Recorded install hash d3c453a8558b -> C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\install.hash
+[03:59]   [comfy-env] Install log: C:\Users\ContainerUser\AppData\Local\Programs\comfy-env\install.log
+[03:59]   
+[03:59]   Installation complete!
+[03:59] Installing 1 node dependency(ies)...
+[03:59]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
+[03:59]   ComfyUI-CameraPack already exists, skipping...
+[03:59] Installing validation endpoint...
+[03:59]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[03:59] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git C:\workspaces\UniRig-1732\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[04:00] CUDA packages absent (will mock): torch_scatter, torch_cluster, flash_attn, cumm, spconv
+[04:00] [INSTALL] PASSED
+[04:00] 
+[04:00] [3/5] REGISTRATION
+[04:00] ----------------------------------------
+[04:00] 
 [DEBUG] server=None, api=None
-[05:13] 
+[04:00] 
 Starting ComfyUI server...
-[05:13] Starting ComfyUI server on port 41890...
-[05:13] CUDA mock packages: torch_scatter, torch_cluster, flash_attn, cumm, spconv
-[05:13] Starting ComfyUI server on port 41890...
-[05:13] Server stdout/stderr -> C:\workspaces\UniRig-1447\server.log
-[05:13] Waiting for server to be ready (timeout: 600s)...
-[05:13]   [ComfyUI:stdout] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
-[05:13]   [ComfyUI:stderr] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
-[07:26] Server responding, waiting for nodes to load...
-[07:46] Server is ready!
-[07:46] Checking for import errors in server logs...
-[07:46] No import errors detected
-[07:46] Found 734 registered nodes
-[07:46] [REGISTRATION] PASSED
-[07:46] 
-[07:46] [4/5] INSTANTIATION
-[07:46] ----------------------------------------
-[07:46] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x00000168A69C5940>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x00000168A69C6660>
-[07:46] Testing node constructors...
-[07:47] All 16 node(s) instantiated successfully!
-[07:47] [INSTANTIATION] PASSED
-[07:47] 
-[07:47] [5/5] EXECUTION
-[07:47] ----------------------------------------
-[07:47] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x00000168A69C5940>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x00000168A69C6660>
-[07:47] GPU runner - will execute 3 workflow(s)
-[07:47] Running 6 workflow(s) (all with videos)...
-[07:47] Installing screenshot dependencies (playwright, pillow)...
-[07:49]   Packages installed, downloading chromium browser...
-[08:07]   Screenshot dependencies installed successfully
-[08:07] Starting headless browser...
-[08:08]   Downloading Mesa llvmpipe for Windows...
-[08:09]   Mesa download error: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>
-[08:09]   Mesa unavailable -- falling back to SwiftShader
-[08:13]   [1/6] SKIPPED (not in gpu list) apply_animation.json
-[08:14] Capturing execution frames: mia_humanoid.json
-[08:21]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[08:21]   Validating workflow...
-[08:21]   Queuing workflow for execution...
-[08:24]   Frame 2 saved (frame_001.jpg, t=2.4s)
-[08:24]   [capture-periodic] freeze=4ms shot=128ms unfreeze=4ms saved=True
-[08:26]   Frame 3 saved (frame_002.jpg, t=4.6s)
-[08:26]   [capture-periodic] freeze=4ms shot=135ms unfreeze=5ms saved=True
-[08:28]   [capture-loop] iter=50 t=6.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=8.4/31.9GB (26%) swap=0.4/5.0GB (9%) cpu=8% browser_rss=0.75GB
-[08:34]   [capture-loop] iter=100 t=13.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=10 ram=8.9/31.9GB (28%) swap=0.4/5.0GB (9%) cpu=15% browser_rss=0.76GB
-[08:35]   Frame 4 saved (frame_003.jpg, t=13.5s)
-[08:35]   [capture-periodic] freeze=4ms shot=130ms unfreeze=5ms saved=True
-[08:41]   [capture-loop] iter=150 t=19.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=9.0/31.9GB (28%) swap=0.4/5.0GB (9%) cpu=19% browser_rss=0.77GB
-[08:41]   Frame 5 saved (frame_004.jpg, t=20.1s)
-[08:41]   [capture-periodic] freeze=5ms shot=185ms unfreeze=5ms saved=True
-[08:44]   Frame 6 saved (frame_005.jpg, t=22.4s)
-[08:44]   [capture-periodic] freeze=16ms shot=160ms unfreeze=6ms saved=True
-[08:46]   Frame 7 saved (frame_006.jpg, t=24.6s)
-[08:46]   [capture-periodic] freeze=4ms shot=148ms unfreeze=5ms saved=True
-[08:47]   [capture-loop] iter=200 t=26.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=7 ram=9.2/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=23% browser_rss=0.71GB
-[08:48]   Frame 8 saved (frame_007.jpg, t=26.9s)
-[08:48]   [capture-periodic] freeze=5ms shot=155ms unfreeze=6ms saved=True
-[08:50]   Frame 9 saved (frame_008.jpg, t=29.2s)
-[08:50]   [capture-periodic] freeze=11ms shot=130ms unfreeze=6ms saved=True
-[08:54]   [capture-loop] iter=250 t=33.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=9.4/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=23% browser_rss=0.71GB
-[08:59]   Frame 10 saved (frame_009.jpg, t=38.0s)
-[08:59]   [capture-periodic] freeze=5ms shot=140ms unfreeze=4ms saved=True
-[09:01]   [capture-loop] iter=300 t=39.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=9.3/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=21% browser_rss=0.71GB
-[09:01]   Frame 11 saved (frame_010.jpg, t=40.2s)
-[09:01]   [capture-periodic] freeze=4ms shot=129ms unfreeze=4ms saved=True
-[09:07]   [capture-loop] iter=350 t=46.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=13 ram=11.2/31.9GB (35%) swap=0.4/5.0GB (9%) cpu=26% browser_rss=0.71GB
-[09:08]   Frame 12 saved (frame_011.jpg, t=47.0s)
-[09:08]   [capture-periodic] freeze=16ms shot=193ms unfreeze=6ms saved=True
-[09:11]   Frame 13 saved (frame_012.jpg, t=49.3s)
-[09:11]   [capture-periodic] freeze=5ms shot=182ms unfreeze=6ms saved=True
-[09:13]   Frame 14 saved (frame_013.jpg, t=51.6s)
-[09:13]   [capture-periodic] freeze=4ms shot=136ms unfreeze=6ms saved=True
-[09:14]   [capture-loop] iter=400 t=52.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=21 ram=10.2/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=34% browser_rss=0.70GB
-[09:15]   Frame 15 saved (frame_014.jpg, t=53.8s)
-[09:15]   [capture-periodic] freeze=4ms shot=130ms unfreeze=4ms saved=True
-[09:20]   [capture-loop] iter=450 t=59.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=10.3/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=18% browser_rss=0.69GB
-[09:26]   [capture-loop] iter=500 t=65.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=10.2/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=12% browser_rss=0.69GB
-[09:32]   [capture-loop] iter=550 t=71.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=10.2/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=12% browser_rss=0.70GB
-[09:39]   [capture-loop] iter=600 t=77.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=10.2/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=12% browser_rss=0.69GB
-[09:45]   [capture-loop] iter=650 t=84.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=10.3/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=15% browser_rss=0.69GB
-[09:51]   [capture-loop] iter=700 t=90.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=10.7/31.9GB (34%) swap=0.4/5.0GB (9%) cpu=16% browser_rss=0.69GB
-[09:55]   Frame 16 saved (frame_015.jpg, t=93.5s)
-[09:55]   [capture-periodic] freeze=5ms shot=150ms unfreeze=8ms saved=True
-[09:55]   Node executed (1 total), capturing...
-[10:04]   Frame 17 saved (frame_016.jpg, t=94.0s)
-[10:04]   [capture-node] freeze=26ms shot=8967ms unfreeze=0ms saved=True
-[10:04]   Execution complete (t=94.0s)
-[10:04]   Captured 17 unique frames over 103.05s
-[10:04]   [debug] iframes: 1
-[10:04]   [debug]   iframe[0]: src=http://127.0.0.1:41890/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778849758061, canvas=817x710, rafFrozen=True
-[10:04]   [timing] trigger_3d_previews: 0.0s
-[10:06]   Saved high-quality screenshot: mia_humanoid_executed.png
-[10:06]   [timing] final_screenshot: 0.4s
-[10:07]   [3/6] SKIPPED (not in gpu list) rigged_manipulator.json
-[10:07]   [4/6] SKIPPED (not in gpu list) skeleton_comparison.json
-[10:07] Capturing execution frames: unirig_bird.json
-[10:13]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[10:13]   Validating workflow...
-[10:13]   Queuing workflow for execution...
-[10:15]   Frame 2 saved (frame_001.jpg, t=2.4s)
-[10:15]   [capture-periodic] freeze=4ms shot=122ms unfreeze=4ms saved=True
-[10:17]   Frame 3 saved (frame_002.jpg, t=4.6s)
-[10:17]   [capture-periodic] freeze=4ms shot=125ms unfreeze=4ms saved=True
-[10:19]   [capture-loop] iter=50 t=6.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=8.5/31.9GB (27%) swap=0.4/5.0GB (9%) cpu=9% browser_rss=0.94GB
-[10:25]   [capture-loop] iter=100 t=12.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=7 ram=8.4/31.9GB (26%) swap=0.4/5.0GB (9%) cpu=13% browser_rss=0.71GB
-[10:29]   Frame 4 saved (frame_003.jpg, t=15.8s)
-[10:29]   [capture-periodic] freeze=15ms shot=138ms unfreeze=6ms saved=True
-[10:31]   Frame 5 saved (frame_004.jpg, t=18.1s)
-[10:31]   [capture-periodic] freeze=12ms shot=137ms unfreeze=8ms saved=True
-[10:32]   [capture-loop] iter=150 t=19.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=15 ram=8.9/31.9GB (28%) swap=0.4/5.0GB (9%) cpu=19% browser_rss=0.72GB
-[10:33]   Frame 6 saved (frame_005.jpg, t=20.3s)
-[10:33]   [capture-periodic] freeze=15ms shot=127ms unfreeze=4ms saved=True
-[10:35]   Frame 7 saved (frame_006.jpg, t=22.5s)
-[10:35]   [capture-periodic] freeze=16ms shot=146ms unfreeze=4ms saved=True
-[10:38]   Frame 8 saved (frame_007.jpg, t=24.8s)
-[10:38]   [capture-periodic] freeze=18ms shot=172ms unfreeze=4ms saved=True
-[10:38]   [capture-loop] iter=200 t=25.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=16 ram=9.3/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=21% browser_rss=0.72GB
-[10:40]   Frame 9 saved (frame_008.jpg, t=27.1s)
-[10:40]   [capture-periodic] freeze=5ms shot=148ms unfreeze=15ms saved=True
-[10:42]   Frame 10 saved (frame_009.jpg, t=29.4s)
-[10:42]   [capture-periodic] freeze=5ms shot=121ms unfreeze=4ms saved=True
-[10:44]   Frame 11 saved (frame_010.jpg, t=31.6s)
-[10:44]   [capture-periodic] freeze=4ms shot=172ms unfreeze=4ms saved=True
-[10:45]   [capture-loop] iter=250 t=32.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=16 ram=9.6/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=21% browser_rss=0.72GB
-[10:47]   Frame 12 saved (frame_011.jpg, t=33.8s)
-[10:47]   [capture-periodic] freeze=5ms shot=141ms unfreeze=4ms saved=True
-[10:49]   Frame 13 saved (frame_012.jpg, t=36.0s)
-[10:49]   [capture-periodic] freeze=5ms shot=153ms unfreeze=5ms saved=True
-[10:52]   [capture-loop] iter=300 t=38.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=11 ram=9.9/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=24% browser_rss=0.72GB
-[10:53]   Frame 14 saved (frame_013.jpg, t=40.5s)
-[10:53]   [capture-periodic] freeze=14ms shot=146ms unfreeze=5ms saved=True
-[10:56]   Frame 15 saved (frame_014.jpg, t=42.7s)
-[10:56]   [capture-periodic] freeze=14ms shot=139ms unfreeze=6ms saved=True
-[10:58]   Frame 16 saved (frame_015.jpg, t=45.0s)
-[10:58]   [capture-periodic] freeze=11ms shot=129ms unfreeze=5ms saved=True
-[10:58]   [capture-loop] iter=350 t=45.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=13 ram=10.1/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=20% browser_rss=0.72GB
-[11:04]   [capture-loop] iter=400 t=51.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=9.9/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=13% browser_rss=0.72GB
-[11:11]   [capture-loop] iter=450 t=58.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=9.6/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=13% browser_rss=0.72GB
-[11:17]   [capture-loop] iter=500 t=64.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=9.4/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=12% browser_rss=0.71GB
-[11:18]   Frame 17 saved (frame_016.jpg, t=64.8s)
-[11:18]   [capture-periodic] freeze=4ms shot=113ms unfreeze=5ms saved=True
-[11:23]   [capture-loop] iter=550 t=70.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=9.8/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=11% browser_rss=0.72GB
-[11:29]   [capture-loop] iter=600 t=76.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=9.2/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=12% browser_rss=0.71GB
-[11:36]   [capture-loop] iter=650 t=83.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=9.3/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=16% browser_rss=0.71GB
-[11:42]   [capture-loop] iter=700 t=89.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=9.9/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=13% browser_rss=0.71GB
-[11:48]   [capture-loop] iter=750 t=95.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=7 ram=9.8/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=12% browser_rss=0.72GB
-[11:55]   [capture-loop] iter=800 t=101.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=9.8/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=13% browser_rss=0.71GB
-[12:01]   [capture-loop] iter=850 t=108.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=11.1/31.9GB (35%) swap=0.4/5.0GB (9%) cpu=18% browser_rss=0.72GB
-[12:02]   Frame 18 saved (frame_017.jpg, t=108.9s)
-[12:02]   [capture-periodic] freeze=4ms shot=126ms unfreeze=5ms saved=True
-[12:07]   [capture-loop] iter=900 t=114.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=10.0/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=14% browser_rss=0.71GB
-[12:08]   Frame 19 saved (frame_018.jpg, t=115.4s)
-[12:08]   [capture-periodic] freeze=4ms shot=129ms unfreeze=4ms saved=True
-[12:13]   [capture-loop] iter=950 t=120.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=10.1/31.9GB (32%) swap=0.4/5.0GB (9%) cpu=12% browser_rss=0.71GB
-[12:14]   Node executed (1 total), capturing...
-[12:15]   Frame 20 saved (frame_019.jpg, t=121.7s)
-[12:15]   [capture-node] freeze=850ms shot=145ms unfreeze=0ms saved=True
-[12:15]   Execution complete (t=121.7s)
-[12:15]   Captured 20 unique frames over 122.71s
-[12:15]   [debug] iframes: 1
-[12:15]   [debug]   iframe[0]: src=http://127.0.0.1:41890/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778849869728, canvas=817x710, rafFrozen=True
-[12:15]   [timing] trigger_3d_previews: 0.0s
-[12:18]   Saved high-quality screenshot: unirig_bird_executed.png
-[12:18]   [timing] final_screenshot: 0.2s
-[12:18] Capturing execution frames: unirig_humanoid.json
-[12:24]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[12:24]   Validating workflow...
-[12:24]   Queuing workflow for execution...
-[12:26]   Frame 2 saved (frame_001.jpg, t=2.4s)
-[12:26]   [capture-periodic] freeze=13ms shot=127ms unfreeze=5ms saved=True
-[12:29]   Frame 3 saved (frame_002.jpg, t=4.6s)
-[12:29]   [capture-periodic] freeze=4ms shot=124ms unfreeze=4ms saved=True
-[12:30]   [capture-loop] iter=50 t=6.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=13 ram=8.4/31.9GB (26%) swap=0.4/5.0GB (9%) cpu=8% browser_rss=0.80GB
-[12:37]   [capture-loop] iter=100 t=12.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=9 ram=8.8/31.9GB (28%) swap=0.4/5.0GB (9%) cpu=12% browser_rss=0.73GB
-[12:37]   Frame 4 saved (frame_003.jpg, t=13.5s)
-[12:38]   [capture-periodic] freeze=5ms shot=125ms unfreeze=7ms saved=True
-[12:43]   [capture-loop] iter=150 t=19.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=10 ram=9.3/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=14% browser_rss=0.72GB
-[12:49]   [capture-loop] iter=200 t=25.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=11 ram=9.3/31.9GB (29%) swap=0.4/5.0GB (9%) cpu=9% browser_rss=0.72GB
-[12:55]   [capture-loop] iter=250 t=31.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=10 ram=8.8/31.9GB (28%) swap=0.4/5.0GB (9%) cpu=10% browser_rss=0.72GB
-[12:57]   Frame 5 saved (frame_004.jpg, t=33.4s)
-[12:57]   [capture-periodic] freeze=4ms shot=117ms unfreeze=6ms saved=True
-[13:02]   [capture-loop] iter=300 t=37.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=8.7/31.9GB (27%) swap=0.4/5.0GB (9%) cpu=9% browser_rss=0.72GB
-[13:08]   [capture-loop] iter=350 t=44.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=9.6/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=13% browser_rss=0.73GB
-[13:14]   [capture-loop] iter=400 t=50.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=9.6/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=11% browser_rss=0.73GB
-[13:17]   Frame 6 saved (frame_005.jpg, t=53.2s)
-[13:17]   [capture-periodic] freeze=12ms shot=180ms unfreeze=6ms saved=True
-[13:21]   [capture-loop] iter=450 t=56.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=12 ram=9.6/31.9GB (30%) swap=0.4/5.0GB (9%) cpu=14% browser_rss=0.73GB
-[13:27]   [capture-loop] iter=500 t=63.1s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=11 ram=9.8/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=10% browser_rss=0.73GB
-[13:31]   Frame 7 saved (frame_006.jpg, t=66.7s)
-[13:31]   [capture-periodic] freeze=4ms shot=108ms unfreeze=5ms saved=True
-[13:33]   [capture-loop] iter=550 t=69.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=11 ram=9.8/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=10% browser_rss=0.73GB
-[13:39]   [capture-loop] iter=600 t=75.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=9.8/31.9GB (31%) swap=0.4/5.0GB (9%) cpu=8% browser_rss=0.73GB
-[13:45]   Node executed (1 total), capturing...
-[13:45]   Frame 8 saved (frame_007.jpg, t=81.0s)
-[13:45]   [capture-node] freeze=6ms shot=163ms unfreeze=0ms saved=True
-[13:45]   Execution complete (t=81.0s)
-[13:46]   Captured 8 unique frames over 82.64s
-[13:47]   [debug] iframes: 1
-[13:47]   [debug]   iframe[0]: src=http://127.0.0.1:41890/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778850001050, canvas=817x710, rafFrozen=True
-[13:47]   [timing] trigger_3d_previews: 0.0s
-[13:49]   Saved high-quality screenshot: unirig_humanoid_executed.png
-[13:49]   [timing] final_screenshot: 0.2s
-[13:49] Results saved to C:\logs\UniRig-1447\dev\windows-portable-gpu\results.json
-[13:49] Model report: 19 files, 4.9 GB -> C:\logs\UniRig-1447\dev\windows-portable-gpu\models.json
-[13:49] Saved: C:\logs\UniRig-1447\dev\windows-portable-gpu\index.html
-[13:49] [EXECUTION] PASSED
-[13:49] 
+[04:00] Starting ComfyUI server on port 41895...
+[04:00] CUDA mock packages: torch_scatter, torch_cluster, flash_attn, cumm, spconv
+[04:00] Starting ComfyUI server on port 41895...
+[04:00] Server stdout/stderr -> C:\workspaces\UniRig-1732\server.log
+[04:00] Waiting for server to be ready (timeout: 600s)...
+[04:00]   [ComfyUI:stdout] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
+[04:00]   [ComfyUI:stderr] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
+[05:16] Server responding, waiting for nodes to load...
+[05:36] Server is ready!
+[05:36] Checking for import errors in server logs...
+[05:36] No import errors detected
+[05:36] Found 734 registered nodes
+[05:36] [REGISTRATION] PASSED
+[05:36] 
+[05:36] [4/5] INSTANTIATION
+[05:36] ----------------------------------------
+[05:36] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002D497905A90>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002D4979067B0>
+[05:36] Testing node constructors...
+[05:36] All 16 node(s) instantiated successfully!
+[05:36] [INSTANTIATION] PASSED
+[05:37] 
+[05:37] [5/5] EXECUTION
+[05:37] ----------------------------------------
+[05:37] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002D497905A90>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002D4979067B0>
+[05:37] GPU runner - will execute 3 workflow(s)
+[05:37] Running 6 workflow(s) (all with videos)...
+[05:37] Installing screenshot dependencies (playwright, pillow)...
+[05:38]   Packages installed, downloading chromium browser...
+[05:53]   Screenshot dependencies installed successfully
+[05:53] Starting headless browser...
+[05:54]   Downloading Mesa llvmpipe for Windows...
+[05:54]   Mesa download error: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>
+[05:54]   Mesa unavailable -- falling back to SwiftShader
+[05:56]   [1/6] SKIPPED (not in gpu list) apply_animation.json
+[05:56] Capturing execution frames: mia_humanoid.json
+[06:03]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[06:03]   Validating workflow...
+[06:03]   Queuing workflow for execution...
+[06:05]   Frame 2 saved (frame_001.jpg, t=2.2s)
+[06:05]   [capture-periodic] freeze=2ms shot=80ms unfreeze=2ms saved=True
+[06:07]   Frame 3 saved (frame_002.jpg, t=4.4s)
+[06:07]   [capture-periodic] freeze=2ms shot=71ms unfreeze=2ms saved=True
+[06:09]   [capture-loop] iter=50 t=5.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=9.9/31.9GB (31%) swap=0.0/5.0GB (0%) cpu=14% browser_rss=0.74GB
+[06:11]   Frame 4 saved (frame_003.jpg, t=8.7s)
+[06:11]   [capture-periodic] freeze=2ms shot=70ms unfreeze=2ms saved=True
+[06:14]   [capture-loop] iter=100 t=11.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=10.4/31.9GB (33%) swap=0.0/5.0GB (0%) cpu=27% browser_rss=0.78GB
+[06:16]   Frame 5 saved (frame_004.jpg, t=12.9s)
+[06:16]   [capture-periodic] freeze=2ms shot=72ms unfreeze=2ms saved=True
+[06:20]   [capture-loop] iter=150 t=17.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.4/31.9GB (33%) swap=0.0/5.0GB (0%) cpu=21% browser_rss=0.78GB
+[06:24]   Frame 6 saved (frame_005.jpg, t=21.6s)
+[06:24]   [capture-periodic] freeze=3ms shot=74ms unfreeze=2ms saved=True
+[06:26]   [capture-loop] iter=200 t=23.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=10.5/31.9GB (33%) swap=0.0/5.0GB (0%) cpu=22% browser_rss=0.78GB
+[06:26]   Frame 7 saved (frame_006.jpg, t=23.8s)
+[06:26]   [capture-periodic] freeze=3ms shot=73ms unfreeze=3ms saved=True
+[06:32]   [capture-loop] iter=250 t=29.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.8/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=25% browser_rss=0.71GB
+[06:33]   Frame 8 saved (frame_007.jpg, t=30.2s)
+[06:33]   [capture-periodic] freeze=3ms shot=76ms unfreeze=3ms saved=True
+[06:35]   Frame 9 saved (frame_008.jpg, t=32.4s)
+[06:35]   [capture-periodic] freeze=2ms shot=67ms unfreeze=2ms saved=True
+[06:38]   [capture-loop] iter=300 t=35.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=7 ram=10.9/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=24% browser_rss=0.72GB
+[06:42]   Frame 10 saved (frame_009.jpg, t=38.9s)
+[06:42]   [capture-periodic] freeze=6ms shot=78ms unfreeze=5ms saved=True
+[06:43]   [capture-loop] iter=350 t=40.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=11.6/31.9GB (36%) swap=0.0/5.0GB (0%) cpu=45% browser_rss=0.72GB
+[06:44]   Frame 11 saved (frame_010.jpg, t=41.1s)
+[06:44]   [capture-periodic] freeze=3ms shot=109ms unfreeze=3ms saved=True
+[06:46]   Frame 12 saved (frame_011.jpg, t=43.3s)
+[06:46]   [capture-periodic] freeze=2ms shot=76ms unfreeze=2ms saved=True
+[06:49]   [capture-loop] iter=400 t=46.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=11.8/31.9GB (37%) swap=0.0/5.0GB (0%) cpu=29% browser_rss=0.72GB
+[06:55]   [capture-loop] iter=450 t=52.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=11.7/31.9GB (36%) swap=0.0/5.0GB (0%) cpu=22% browser_rss=0.72GB
+[07:01]   [capture-loop] iter=500 t=58.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=11.8/31.9GB (37%) swap=0.0/5.0GB (0%) cpu=27% browser_rss=0.70GB
+[07:06]   [capture-loop] iter=550 t=63.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=12.3/31.9GB (38%) swap=0.0/5.0GB (0%) cpu=27% browser_rss=0.70GB
+[07:07]   Node executed (1 total), capturing...
+[07:11]   Frame 13 saved (frame_012.jpg, t=64.5s)
+[07:11]   [capture-node] freeze=12ms shot=4368ms unfreeze=0ms saved=True
+[07:11]   Execution complete (t=64.5s)
+[07:11]   Captured 13 unique frames over 68.89s
+[07:11]   [debug] iframes: 1
+[07:11]   [debug]   iframe[0]: src=http://127.0.0.1:41895/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1779118716908, canvas=817x710, rafFrozen=True
+[07:11]   [timing] trigger_3d_previews: 0.0s
+[07:14]   Saved high-quality screenshot: mia_humanoid_executed.png
+[07:14]   [timing] final_screenshot: 0.2s
+[07:14]   [3/6] SKIPPED (not in gpu list) rigged_manipulator.json
+[07:14]   [4/6] SKIPPED (not in gpu list) skeleton_comparison.json
+[07:14] Capturing execution frames: unirig_bird.json
+[07:18]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[07:18]   Validating workflow...
+[07:19]   Queuing workflow for execution...
+[07:21]   Frame 2 saved (frame_001.jpg, t=2.2s)
+[07:21]   [capture-periodic] freeze=2ms shot=75ms unfreeze=2ms saved=True
+[07:23]   Frame 3 saved (frame_002.jpg, t=4.4s)
+[07:23]   [capture-periodic] freeze=3ms shot=67ms unfreeze=2ms saved=True
+[07:24]   [capture-loop] iter=50 t=5.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=9.6/31.9GB (30%) swap=0.0/5.0GB (0%) cpu=18% browser_rss=0.70GB
+[07:30]   Frame 4 saved (frame_003.jpg, t=11.1s)
+[07:30]   [capture-periodic] freeze=2ms shot=69ms unfreeze=3ms saved=True
+[07:30]   [capture-loop] iter=100 t=11.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=9.9/31.9GB (31%) swap=0.0/5.0GB (0%) cpu=22% browser_rss=0.70GB
+[07:32]   Frame 5 saved (frame_004.jpg, t=13.2s)
+[07:32]   [capture-periodic] freeze=2ms shot=67ms unfreeze=2ms saved=True
+[07:34]   Frame 6 saved (frame_005.jpg, t=15.3s)
+[07:34]   [capture-periodic] freeze=2ms shot=85ms unfreeze=3ms saved=True
+[07:36]   Frame 7 saved (frame_006.jpg, t=17.5s)
+[07:36]   [capture-periodic] freeze=2ms shot=74ms unfreeze=4ms saved=True
+[07:36]   [capture-loop] iter=150 t=17.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=10.4/31.9GB (33%) swap=0.0/5.0GB (0%) cpu=30% browser_rss=0.70GB
+[07:38]   Frame 8 saved (frame_007.jpg, t=19.6s)
+[07:38]   [capture-periodic] freeze=3ms shot=82ms unfreeze=3ms saved=True
+[07:40]   Frame 9 saved (frame_008.jpg, t=21.8s)
+[07:40]   [capture-periodic] freeze=2ms shot=66ms unfreeze=2ms saved=True
+[07:42]   [capture-loop] iter=200 t=23.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.7/31.9GB (33%) swap=0.0/5.0GB (0%) cpu=28% browser_rss=0.70GB
+[07:42]   Frame 10 saved (frame_009.jpg, t=24.0s)
+[07:42]   [capture-periodic] freeze=3ms shot=79ms unfreeze=3ms saved=True
+[07:45]   Frame 11 saved (frame_010.jpg, t=26.2s)
+[07:45]   [capture-periodic] freeze=2ms shot=64ms unfreeze=2ms saved=True
+[07:47]   Frame 12 saved (frame_011.jpg, t=28.3s)
+[07:47]   [capture-periodic] freeze=2ms shot=65ms unfreeze=3ms saved=True
+[07:48]   [capture-loop] iter=250 t=29.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=10.9/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=23% browser_rss=0.70GB
+[07:49]   Frame 13 saved (frame_012.jpg, t=30.4s)
+[07:49]   [capture-periodic] freeze=3ms shot=81ms unfreeze=3ms saved=True
+[07:51]   Frame 14 saved (frame_013.jpg, t=32.6s)
+[07:51]   [capture-periodic] freeze=11ms shot=98ms unfreeze=3ms saved=True
+[07:53]   Frame 15 saved (frame_014.jpg, t=34.8s)
+[07:53]   [capture-periodic] freeze=3ms shot=71ms unfreeze=4ms saved=True
+[07:54]   [capture-loop] iter=300 t=35.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=8 ram=11.1/31.9GB (35%) swap=0.0/5.0GB (0%) cpu=30% browser_rss=0.70GB
+[07:55]   Frame 16 saved (frame_015.jpg, t=37.0s)
+[07:55]   [capture-periodic] freeze=2ms shot=65ms unfreeze=2ms saved=True
+[07:58]   Frame 17 saved (frame_016.jpg, t=39.1s)
+[07:58]   [capture-periodic] freeze=2ms shot=68ms unfreeze=2ms saved=True
+[07:59]   [capture-loop] iter=350 t=40.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=11.2/31.9GB (35%) swap=0.0/5.0GB (0%) cpu=23% browser_rss=0.70GB
+[08:05]   [capture-loop] iter=400 t=46.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.9/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=26% browser_rss=0.70GB
+[08:08]   Frame 18 saved (frame_017.jpg, t=49.8s)
+[08:08]   [capture-periodic] freeze=2ms shot=66ms unfreeze=2ms saved=True
+[08:11]   [capture-loop] iter=450 t=52.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=11.3/31.9GB (36%) swap=0.0/5.0GB (0%) cpu=22% browser_rss=0.70GB
+[08:16]   [capture-loop] iter=500 t=58.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=5 ram=11.0/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=21% browser_rss=0.70GB
+[08:22]   [capture-loop] iter=550 t=63.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=11.2/31.9GB (35%) swap=0.0/5.0GB (0%) cpu=29% browser_rss=0.70GB
+[08:28]   Frame 19 saved (frame_018.jpg, t=69.3s)
+[08:28]   [capture-periodic] freeze=2ms shot=67ms unfreeze=3ms saved=True
+[08:28]   [capture-loop] iter=600 t=69.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=11.6/31.9GB (36%) swap=0.0/5.0GB (0%) cpu=29% browser_rss=0.70GB
+[08:32]   Frame 20 saved (frame_019.jpg, t=73.7s)
+[08:32]   [capture-periodic] freeze=2ms shot=338ms unfreeze=3ms saved=True
+[08:33]   Node executed (1 total), capturing...
+[08:33]   Frame 21 saved (frame_020.jpg, t=74.5s)
+[08:33]   [capture-node] freeze=6ms shot=77ms unfreeze=0ms saved=True
+[08:33]   Execution complete (t=74.5s)
+[08:33]   Captured 21 unique frames over 74.58s
+[08:33]   [debug] iframes: 1
+[08:33]   [debug]   iframe[0]: src=http://127.0.0.1:41895/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1779118792768, canvas=817x710, rafFrozen=True
+[08:33]   [timing] trigger_3d_previews: 0.0s
+[08:35]   Saved high-quality screenshot: unirig_bird_executed.png
+[08:35]   [timing] final_screenshot: 0.1s
+[08:35] Capturing execution frames: unirig_humanoid.json
+[08:40]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[08:40]   Validating workflow...
+[08:40]   Queuing workflow for execution...
+[08:42]   Frame 2 saved (frame_001.jpg, t=2.2s)
+[08:42]   [capture-periodic] freeze=6ms shot=80ms unfreeze=2ms saved=True
+[08:45]   Frame 3 saved (frame_002.jpg, t=4.3s)
+[08:45]   [capture-periodic] freeze=2ms shot=73ms unfreeze=2ms saved=True
+[08:46]   [capture-loop] iter=50 t=5.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=6 ram=9.8/31.9GB (31%) swap=0.0/5.0GB (0%) cpu=21% browser_rss=0.79GB
+[08:49]   Frame 4 saved (frame_003.jpg, t=8.6s)
+[08:49]   [capture-periodic] freeze=2ms shot=81ms unfreeze=2ms saved=True
+[08:52]   [capture-loop] iter=100 t=11.6s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.6/31.9GB (33%) swap=0.0/5.0GB (0%) cpu=28% browser_rss=0.75GB
+[08:57]   [capture-loop] iter=150 t=17.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.1/31.9GB (32%) swap=0.0/5.0GB (0%) cpu=22% browser_rss=0.75GB
+[09:00]   Frame 5 saved (frame_004.jpg, t=19.4s)
+[09:00]   [capture-periodic] freeze=5ms shot=71ms unfreeze=2ms saved=True
+[09:03]   [capture-loop] iter=200 t=23.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.1/31.9GB (32%) swap=0.0/5.0GB (0%) cpu=20% browser_rss=0.75GB
+[09:09]   [capture-loop] iter=250 t=28.7s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.8/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=27% browser_rss=0.75GB
+[09:13]   Frame 6 saved (frame_005.jpg, t=32.5s)
+[09:13]   [capture-periodic] freeze=3ms shot=77ms unfreeze=3ms saved=True
+[09:15]   [capture-loop] iter=300 t=34.4s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=10.9/31.9GB (34%) swap=0.0/5.0GB (0%) cpu=26% browser_rss=0.75GB
+[09:19]   Frame 7 saved (frame_006.jpg, t=39.0s)
+[09:19]   [capture-periodic] freeze=2ms shot=73ms unfreeze=2ms saved=True
+[09:20]   [capture-loop] iter=350 t=40.2s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=11.1/31.9GB (35%) swap=0.0/5.0GB (0%) cpu=26% browser_rss=0.75GB
+[09:26]   [capture-loop] iter=400 t=45.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=11.2/31.9GB (35%) swap=0.0/5.0GB (0%) cpu=22% browser_rss=0.75GB
+[09:27]   Node executed (1 total), capturing...
+[09:28]   Frame 8 saved (frame_007.jpg, t=46.7s)
+[09:28]   [capture-node] freeze=3ms shot=83ms unfreeze=682ms saved=True
+[09:28]   Execution complete (t=47.7s)
+[09:28]   Captured 8 unique frames over 47.67s
+[09:28]   [debug] iframes: 1
+[09:28]   [debug]   iframe[0]: src=http://127.0.0.1:41895/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1779118874612, canvas=817x710, rafFrozen=False
+[09:28]   [timing] trigger_3d_previews: 0.0s
+[09:30]   Saved high-quality screenshot: unirig_humanoid_executed.png
+[09:30]   [timing] final_screenshot: 0.1s
+[09:30] Results saved to C:\logs\UniRig-1732\dev\windows-portable-gpu\results.json
+[09:30] Model report: 19 files, 4.9 GB -> C:\logs\UniRig-1732\dev\windows-portable-gpu\models.json
+[09:30] Saved: C:\logs\UniRig-1732\dev\windows-portable-gpu\index.html
+[09:30] [EXECUTION] PASSED
+[09:30] 
 windows_portable: PASSED
-[13:49] Stopping ComfyUI server...
+[09:30] Stopping ComfyUI server...
