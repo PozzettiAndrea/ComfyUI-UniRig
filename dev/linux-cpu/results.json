@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-16T19:45:51.835077+00:00",
+  "timestamp": "2026-05-19T16:49:28.274400+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
-    "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+    "cpu": "AMD EPYC 9V74 80-Core Processor"
   },
-  "commit_hash": "0da41dba0beadc5dbcde953309149f3c0e61076c",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25971128159",
+  "commit_hash": "89334f9707ef7114b14c5b0119ebd9a7106cec65",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26108865371",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,15 +17,15 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 79.45,
+      "duration_seconds": 80.26,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 1.44,
+          "peak": 1.45,
           "avg": 1.34
         },
         "total_ram_gb": 15.6,
@@ -42,16 +42,16 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 14.55,
+      "duration_seconds": 14.91,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 1.44,
-          "avg": 1.3
+          "peak": 1.45,
+          "avg": 1.31
         },
         "total_ram_gb": 15.6,
         "samples": 15
@@ -60,16 +60,16 @@
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.16,
+      "duration_seconds": 10.46,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
-        "cpu": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz"
+        "cpu": "AMD EPYC 9V74 80-Core Processor"
       },
       "resources": {
         "ram": {
-          "peak": 1.41,
-          "avg": 1.4
+          "peak": 1.42,
+          "avg": 1.41
         },
         "total_ram_gb": 15.6,
         "samples": 11
