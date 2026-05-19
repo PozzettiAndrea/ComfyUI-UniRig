@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-11T09:25:53.374097+00:00",
+  "timestamp": "2026-05-16T19:50:02.549938+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-10-10.0.26100-SP0",
     "cpu": "Intel64 Family 6 Model 106 Stepping 6, GenuineIntel"
   },
-  "commit_hash": "3cfa24a060589e4783c4a515655306a4ee2cb7c0",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25661463498",
+  "commit_hash": "0da41dba0beadc5dbcde953309149f3c0e61076c",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25971129286",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 97.05,
+      "duration_seconds": 91.15,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -25,11 +25,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.04,
-          "avg": 0.93
+          "peak": 1.05,
+          "avg": 0.94
         },
         "total_ram_gb": 16.0,
-        "samples": 97
+        "samples": 91
       }
     },
     {
@@ -42,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 19.26,
+      "duration_seconds": 22.02,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -50,17 +50,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 0.98,
-          "avg": 0.83
+          "peak": 0.97,
+          "avg": 0.82
         },
         "total_ram_gb": 16.0,
-        "samples": 20
+        "samples": 22
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 11.0,
+      "duration_seconds": 14.53,
       "error": null,
       "hardware": {
         "os": "Windows-10-10.0.26100-SP0",
@@ -69,10 +69,10 @@
       "resources": {
         "ram": {
           "peak": 0.93,
-          "avg": 0.93
+          "avg": 0.92
         },
         "total_ram_gb": 16.0,
-        "samples": 11
+        "samples": 15
       }
     },
     {

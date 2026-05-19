@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-11T06:36:22.229503+00:00",
+  "timestamp": "2026-05-18T16:05:16.268279+00:00",
   "platform": "windows",
   "hardware": {
-    "os": "Windows-11-10.0.26200-SP0",
+    "os": "Windows-11-10.0.26100-SP0",
     "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
   },
-  "commit_hash": "5c39d901f31c8885f99edfc5ccceb27c7ee20894",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/25653243264",
+  "commit_hash": "0da41dba0beadc5dbcde953309149f3c0e61076c",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26042392662",
   "success": true,
   "summary": {
     "total": 6,
@@ -24,19 +24,19 @@
     {
       "name": "mia_humanoid",
       "status": "pass",
-      "duration_seconds": 116.35,
+      "duration_seconds": 117.68,
       "error": null,
       "hardware": {
-        "os": "Windows-11-10.0.26200-SP0",
+        "os": "Windows-11-10.0.26100-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
           "peak": 4.43,
-          "avg": 2.83
+          "avg": 2.78
         },
         "total_ram_gb": 31.9,
-        "samples": 115
+        "samples": 116
       }
     },
     {
@@ -56,37 +56,37 @@
     {
       "name": "unirig_bird",
       "status": "pass",
-      "duration_seconds": 174.15,
+      "duration_seconds": 113.75,
       "error": null,
       "hardware": {
-        "os": "Windows-11-10.0.26200-SP0",
+        "os": "Windows-11-10.0.26100-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 5.81,
-          "avg": 2.79
+          "peak": 7.38,
+          "avg": 5.85
         },
         "total_ram_gb": 31.9,
-        "samples": 172
+        "samples": 112
       }
     },
     {
       "name": "unirig_humanoid",
       "status": "pass",
-      "duration_seconds": 154.3,
+      "duration_seconds": 103.64,
       "error": null,
       "hardware": {
-        "os": "Windows-11-10.0.26200-SP0",
+        "os": "Windows-11-10.0.26100-SP0",
         "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
       },
       "resources": {
         "ram": {
-          "peak": 4.99,
-          "avg": 2.92
+          "peak": 6.91,
+          "avg": 2.87
         },
         "total_ram_gb": 31.9,
-        "samples": 153
+        "samples": 103
       }
     }
   ]
