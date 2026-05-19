@@ -1,4 +1,4 @@
-[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1629\dev\windows-cpu\crash_dump.log
+[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-2219\dev\windows-cpu\crash_dump.log
 [00:00] 
 [00:00] [1/5] SYNTAX
 [00:00] ----------------------------------------
@@ -16,251 +16,261 @@
 [DEBUG] server=None, api=None
 [00:00] 
 Setting up ComfyUI...
-[00:00] Creating virtual environment at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\.venv...
-[00:00] Running: uv venv D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\.venv --python 3.13
+[00:00] Creating virtual environment at D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\.venv...
+[00:00] Running: uv venv D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\.venv --python 3.13
 [00:02] torch_version='2.10.0' -> pinning torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
-[00:02] Cloning ComfyUI (latest) to D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI...
-[00:02] Running: git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI
-[00:05] Pinning torch family from https://download.pytorch.org/whl/cpu: torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
-[00:05] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
-[00:35] Installing ComfyUI requirements into D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\.venv...
-[00:35]     comfyui-frontend-package==1.43.18
-[00:35]     comfyui-workflow-templates==0.9.77
-[00:35]     comfyui-embedded-docs==0.5.0
-[00:35]     torch
-[00:35]     torchsde
-[00:35]     torchvision
-[00:35]     torchaudio
-[00:35]     numpy>=1.25.0
-[00:35]     einops
-[00:35]     transformers>=4.50.3
-[00:35]     tokenizers>=0.13.3
-[00:35]     sentencepiece
-[00:35]     safetensors>=0.4.2
-[00:35]     aiohttp>=3.11.8
-[00:35]     yarl>=1.18.0
-[00:35]     pyyaml
-[00:35]     Pillow
-[00:35]     scipy
-[00:35]     tqdm
-[00:35]     psutil
-[00:35]     alembic
-[00:35]     SQLAlchemy>=2.0.0
-[00:35]     filelock
-[00:35]     av>=14.2.0
-[00:35]     comfy-kitchen>=0.2.8
-[00:35]     comfy-aimdo==0.3.0
-[00:35]     requests
-[00:35]     simpleeval>=1.0.0
-[00:35]     blake3
-[00:35]     
-[00:35]     #non essential dependencies:
-[00:35]     kornia>=0.7.1
-[00:35]     spandrel
-[00:35]     pydantic~=2.0
-[00:35]     pydantic-settings~=2.0
-[00:35]     PyOpenGL
-[00:35]     glfw
-[00:35] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\requirements.txt
-[01:09] 
+[00:02] Cloning ComfyUI (latest) to D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI...
+[00:02] Running: git clone --depth 1 https://github.com/comfyanonymous/ComfyUI.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI
+[00:04] Pinning torch family from https://download.pytorch.org/whl/cpu: torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
+[00:04] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
+[00:26] Installing ComfyUI requirements into D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\.venv...
+[00:26]     comfyui-frontend-package==1.43.18
+[00:26]     comfyui-workflow-templates==0.9.77
+[00:26]     comfyui-embedded-docs==0.5.0
+[00:26]     torch
+[00:26]     torchsde
+[00:26]     torchvision
+[00:26]     torchaudio
+[00:26]     numpy>=1.25.0
+[00:26]     einops
+[00:26]     transformers>=4.50.3
+[00:26]     tokenizers>=0.13.3
+[00:26]     sentencepiece
+[00:26]     safetensors>=0.4.2
+[00:26]     aiohttp>=3.11.8
+[00:26]     yarl>=1.18.0
+[00:26]     pyyaml
+[00:26]     Pillow
+[00:26]     scipy
+[00:26]     tqdm
+[00:26]     psutil
+[00:26]     alembic
+[00:26]     SQLAlchemy>=2.0.0
+[00:26]     filelock
+[00:26]     av>=14.2.0
+[00:26]     comfy-kitchen>=0.2.8
+[00:26]     comfy-aimdo==0.3.0
+[00:26]     requests
+[00:26]     simpleeval>=1.0.0
+[00:26]     blake3
+[00:26]     
+[00:26]     #non essential dependencies:
+[00:26]     kornia>=0.7.1
+[00:26]     spandrel
+[00:26]     pydantic~=2.0
+[00:26]     pydantic-settings~=2.0
+[00:26]     PyOpenGL
+[00:26]     glfw
+[00:26] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\requirements.txt
+[00:56] 
 Installing custom node...
-[01:09] Copying ComfyUI-UniRig to D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-UniRig...
-[01:09] Installing node requirements...
-[01:09]     comfy-env==0.4.1
-[01:09]     comfy-3d-viewers==0.2.44
-[01:09]     trimesh
-[01:09] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-UniRig\requirements.txt
-[01:12] 
+[00:56] Copying ComfyUI-UniRig to D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-UniRig...
+[00:56] Installing node requirements...
+[00:56]     comfy-env==0.4.1
+[00:56]     comfy-3d-viewers==0.2.44
+[00:56]     trimesh
+[00:56] Running: uv pip install --python D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\.venv\Scripts\python.exe --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-UniRig\requirements.txt
+[00:58] 
 Running install.py...
-[01:12] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\.venv\Scripts\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-UniRig\install.py
-[01:14]   
-[01:14]   Installing 1 node dependencies...
-[01:14]     Cloning ComfyUI-CameraPack...
-[01:14]   
-[01:14]   [requirements] Re-installing main package requirements...
-[01:14]     Installing requirements for ComfyUI-UniRig...
-[01:15]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes
-[01:15]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
-[01:15]   [comfy-env] _discover: ComfyUI-UniRig -> unirig-nodes (custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml)
-[01:15]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[01:15]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI
-[01:15]   [comfy-env] Found 1 node config(s):
-[01:15]     - unirig-nodes <- custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml (python=host)
-[01:15]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp313.
-[01:20]   [comfy-env] GPU: No GPU detected
-[01:20]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
-[01:20]   [comfy-env] Writing 1 per-env manifest(s):
-[01:20]     - unirig-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml
-[01:20]   [comfy-env] Installing 1 environment(s):
-[01:20]     - unirig-nodes (python=host, 17 pypi deps, 5 cuda wheels)
-[01:20]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml` ...
-[02:21]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[02:21]     	- Scripts/.librsvg-pre-unlink.bat
-[02:21]     To enable them, run:
-[02:21]     	pixi config set --local run-post-link-scripts insecure
-[02:21]     More info:
-[02:21]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[03:34]     The default environment has been installed.
-[03:34]   [comfy-env] Recorded install hash 3fc91edad0ee -> C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash
-[03:34]   [comfy-env] Install log: C:\Users\stduser\AppData\Local\Programs\comfy-env\install.log
-[03:34]   
-[03:34]   Installation complete!
-[03:35] Installing 1 node dependency(ies)...
-[03:35]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
-[03:35]   ComfyUI-CameraPack already exists, skipping...
-[03:35] Installing validation endpoint...
-[03:35]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
-[03:35] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[03:35] CUDA packages absent (will mock): torch_scatter, torch_cluster, flash_attn, cumm, spconv
-[03:35] [INSTALL] PASSED
-[03:35] 
-[03:35] [3/5] REGISTRATION
-[03:35] ----------------------------------------
-[03:35] 
+[00:58] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\.venv\Scripts\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-UniRig\install.py
+[01:00]   
+[01:00]   Installing 1 node dependencies...
+[01:00]     Cloning ComfyUI-CameraPack...
+[01:00]   
+[01:00]   [requirements] Re-installing main package requirements...
+[01:00]     Installing requirements for ComfyUI-UniRig...
+[01:02]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes
+[01:02]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
+[01:02]   [comfy-env] _discover: ComfyUI-UniRig -> unirig-nodes (custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml)
+[01:02]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[01:02]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI
+[01:02]   [comfy-env] Found 1 node config(s):
+[01:02]     - unirig-nodes <- custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml (python=host)
+[01:02]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.10.0 (cpu). Looking for cuda-only wheels matching cpu/torch2.10/cp313.
+[01:06]   [comfy-env] GPU: No GPU detected
+[01:06]   [comfy-env] No CUDA detected -- pinning comfyui torch to CPU index
+[01:06]   [comfy-env] Writing 1 per-env manifest(s):
+[01:06]     - unirig-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml
+[01:06]   [comfy-env] Installing 1 environment(s):
+[01:06]     - unirig-nodes (python=host, 17 pypi deps, 5 cuda wheels)
+[01:06]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml` ...
+[03:36]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[03:36]     	- Scripts/.librsvg-pre-unlink.bat
+[03:36]     To enable them, run:
+[03:36]     	pixi config set --local run-post-link-scripts insecure
+[03:36]     More info:
+[03:36]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[04:50]     The default environment has been installed.
+[04:50]   [comfy-env] Recorded install hash 3fc91edad0ee -> C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash
+[04:50]   [comfy-env] Install log: C:\Users\stduser\AppData\Local\Programs\comfy-env\install.log
+[04:50]   
+[04:50]   Installation complete!
+[04:50] Installing 1 node dependency(ies)...
+[04:50]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
+[04:50]   ComfyUI-CameraPack already exists, skipping...
+[04:50] Installing validation endpoint...
+[04:50]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[04:50] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[04:51] CUDA packages absent (will mock): torch_scatter, torch_cluster, flash_attn, cumm, spconv
+[04:51] [INSTALL] PASSED
+[04:51] 
+[04:51] [3/5] REGISTRATION
+[04:51] ----------------------------------------
+[04:51] 
 [DEBUG] server=None, api=None
-[03:35] 
+[04:51] 
 Starting ComfyUI server...
-[03:35] Starting ComfyUI server on port 41882...
-[03:35] CUDA mock packages: torch_scatter, torch_cluster, flash_attn, cumm, spconv
-[03:35] Starting ComfyUI server on port 41882...
-[03:35] Waiting for server to be ready (timeout: 600s)...
-[03:37]   [ComfyUI] setup plugin alembic.autogenerate.schemas
-[03:37]   [ComfyUI] setup plugin alembic.autogenerate.tables
-[03:37]   [ComfyUI] setup plugin alembic.autogenerate.types
-[03:37]   [ComfyUI] setup plugin alembic.autogenerate.constraints
-[03:37]   [ComfyUI] setup plugin alembic.autogenerate.defaults
-[03:37]   [ComfyUI] setup plugin alembic.autogenerate.comments
-[03:38]   [ComfyUI] [comfy-env] ComfyUI-UniRig: 1 isolation env(s):
-[03:38]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes
-[03:38]   [ComfyUI] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[03:38]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default  [OK]
-[03:38]   [ComfyUI] [comfy-env] prestartup complete
-[03:38]   [ComfyUI] 
-[03:38]   [ComfyUI] Prestartup times for custom nodes:
-[03:38]   [ComfyUI]    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-UniRig
-[03:38]   [ComfyUI] 
-[03:43]   [ComfyUI] Found comfy_kitchen backend cuda: {'available': False, 'disabled': True, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
-[03:43]   [ComfyUI] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
-[03:43]   [ComfyUI] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
-[03:43]   [ComfyUI] Checkpoint files will always be loaded safely.
-[03:43]   [ComfyUI] Total VRAM 16379 MB, total RAM 16379 MB
-[03:43]   [ComfyUI] pytorch version: 2.10.0+cpu
-[03:43]   [ComfyUI] Set vram state to: DISABLED
-[03:43]   [ComfyUI] Device: cpu
-[03:44]   [ComfyUI] Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
-[03:51]   [ComfyUI] Python version: 3.13.13 (tags/v3.13.13:01104ce, Apr  7 2026, 19:25:48) [MSC v.1944 64 bit (AMD64)]
-[03:51]   [ComfyUI] ComfyUI version: 0.21.1
-[03:51]   [ComfyUI] comfy-aimdo version: 0.3.0
-[03:51]   [ComfyUI] comfy-kitchen version: 0.2.8
-[03:51]   [ComfyUI] ****** User settings have been changed to be stored on the server instead of browser storage. ******
-[03:51]   [ComfyUI] ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
-[03:51]   [ComfyUI] comfyui-frontend-package version: 1.43.18
-[03:51]   [ComfyUI] comfyui-workflow-templates version: 0.9.77
-[03:51]   [ComfyUI] comfyui-embedded-docs version: 0.5.0
-[03:51]   [ComfyUI] comfy-kitchen version: 0.2.8
-[03:51]   [ComfyUI] comfy-aimdo version: 0.3.0
-[03:51]   [ComfyUI] [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\.venv\Lib\site-packages\comfyui_frontend_package\static
-[03:51]   [ComfyUI] Asset seeder disabled
-[03:55]   [ComfyUI] loading...
-[03:55]   [ComfyUI] calling register_nodes
-[03:55]   [ComfyUI] [comfy-env] Version: 0.4.1
-[03:55]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-UniRig
-[03:55]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI
-[03:55]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
-[03:55]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
-[03:55]   [ComfyUI] [comfy-env] default: Library/bin has 237 DLLs
-[03:55]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_j5o39a2z.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-UniRig nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_s802kvqx.pkl
-[03:55]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
-[03:55]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default
-[03:55]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Library\bin
-[03:55]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Scripts
-[03:55]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Lib\site-packages\bpy
-[03:55]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
-[03:55]   [ComfyUI] [comfy-env]   [5] C:\Windows
-[03:55]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
-[04:08]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
-[04:08]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-UniRig
-[04:08]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[04:08]   [ComfyUI] [comfy-env]   [meta-scan] import OK
-[04:08]   [ComfyUI] [comfy-env] Metadata scan failed for nodes (exit 3221225477, 12.8s):
-[04:08]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-UniRig
-[04:08]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
-[04:08]   [ComfyUI] [comfy-env]   [meta-scan] import OK
-[04:08]   [ComfyUI] [comfy-env] Scanned nodes root: 0 nodes (12.8s)
-[04:08]   [ComfyUI] [comfy-env] Imported nodes root: 0 nodes (isolation)
-[04:08]   [ComfyUI] [comfy-env] Registered 0 total nodes
-[04:08]   [ComfyUI] 
-[04:08]   [ComfyUI] Import times for custom nodes:
-[04:08]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\websocket_image_save.py
-[04:08]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[04:08]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-CameraPack
-[04:08]   [ComfyUI]   13.5 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1629\ComfyUI\custom_nodes\ComfyUI-UniRig
-[04:08]   [ComfyUI] 
-[04:08]   [ComfyUI] Context impl SQLiteImpl.
-[04:08]   [ComfyUI] Will assume non-transactional DDL.
-[04:08]   [ComfyUI] Context impl SQLiteImpl.
-[04:08]   [ComfyUI] Will assume non-transactional DDL.
-[04:08]   [ComfyUI] Running upgrade  -> 0001_assets, Initial assets schema
-[04:08]   [ComfyUI] Revision ID: 0001_assets
-[04:08]   [ComfyUI] Revises: None
-[04:08]   [ComfyUI] Create Date: 2025-12-10 00:00:00
-[04:08]   [ComfyUI] Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
-[04:08]   [ComfyUI] Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
-[04:08]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
-[04:08]   [ComfyUI] Database upgraded from None to 0003_add_metadata_job_id
-[04:09]   [ComfyUI] Starting server
-[04:09]   [ComfyUI] 
-[04:09]   [ComfyUI] To see the GUI go to: http://127.0.0.1:41882
-[04:09] Server responding, waiting for nodes to load...
-[04:29] Server is ready!
-[04:29] Checking for import errors in server logs...
-[04:29] No import errors detected
-[04:29] Found 725 registered nodes
-[04:29] [REGISTRATION] PASSED
-[04:29] 
-[04:29] [4/5] INSTANTIATION
-[04:29] ----------------------------------------
-[04:29] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001AF79F5F250>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001AF79F7EF90>
-[04:29] Testing node constructors...
-[04:36] All 0 node(s) instantiated successfully!
-[04:36] [INSTANTIATION] PASSED
-[04:36] 
-[04:36] [5/5] EXECUTION
-[04:36] ----------------------------------------
-[04:36] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001AF79F5F250>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001AF79F7EF90>
-[04:36] CPU runner - will execute 3 workflow(s)
-[04:36] Running 6 workflow(s) (all with videos)...
-[04:36] Installing screenshot dependencies (playwright, pillow)...
-[04:37]   Packages installed, downloading chromium browser...
-[04:55]   Screenshot dependencies installed successfully
-[04:55] Starting headless browser...
-[04:56]   Downloading Mesa llvmpipe for Windows...
-[05:00]   Copied opengl32.dll to Chromium dir
-[05:00]   Copied libgallium_wgl.dll to Chromium dir
-[05:00]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
-[05:00] Capturing execution frames: apply_animation.json
-[05:09]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[05:09]   Validating workflow...
-[05:09]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {"inputs":{"UNKNOWN":"","model_fbx_path":["9",0]},"_meta":{}}
-[05:10]   [2/6] SKIPPED (not in cpu list) mia_humanoid.json
-[05:10] Capturing execution frames: rigged_manipulator.json
-[05:16]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[05:16]   Validating workflow...
-[05:16]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {"inputs":{"UNKNOWN":"","fbx_output_path":["4",0]},"_meta":{}}
-[05:16] Capturing execution frames: skeleton_comparison.json
-[05:22]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[05:22]   Validating workflow...
-[05:22]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {"inputs":{"UNKNOWN":"","fbx_path_left":["54",0],"fbx_path_right":["55",0]},"_meta":{}}
-[05:22]   [5/6] SKIPPED (not in cpu list) unirig_bird.json
-[05:22]   [6/6] SKIPPED (not in cpu list) unirig_humanoid.json
-[05:23] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1629\dev\windows-cpu\results.json
-[05:23] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1629\dev\windows-cpu\index.html
-[05:23] 
+[04:51] Starting ComfyUI server on port 41885...
+[04:51] CUDA mock packages: torch_scatter, torch_cluster, flash_attn, cumm, spconv
+[04:51] Starting ComfyUI server on port 41885...
+[04:51] Waiting for server to be ready (timeout: 600s)...
+[04:53]   [ComfyUI] setup plugin alembic.autogenerate.schemas
+[04:53]   [ComfyUI] setup plugin alembic.autogenerate.tables
+[04:53]   [ComfyUI] setup plugin alembic.autogenerate.types
+[04:53]   [ComfyUI] setup plugin alembic.autogenerate.constraints
+[04:53]   [ComfyUI] setup plugin alembic.autogenerate.defaults
+[04:53]   [ComfyUI] setup plugin alembic.autogenerate.comments
+[04:54]   [ComfyUI] [comfy-env] ComfyUI-UniRig: 1 isolation env(s):
+[04:54]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes
+[04:54]   [ComfyUI] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[04:54]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default  [OK]
+[04:54]   [ComfyUI] [comfy-env] prestartup complete
+[04:54]   [ComfyUI] 
+[04:54]   [ComfyUI] Prestartup times for custom nodes:
+[04:54]   [ComfyUI]    0.2 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-UniRig
+[04:54]   [ComfyUI] 
+[04:59]   [ComfyUI] Found comfy_kitchen backend cuda: {'available': False, 'disabled': True, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
+[04:59]   [ComfyUI] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
+[04:59]   [ComfyUI] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[04:59]   [ComfyUI] Checkpoint files will always be loaded safely.
+[04:59]   [ComfyUI] Total VRAM 16379 MB, total RAM 16379 MB
+[04:59]   [ComfyUI] pytorch version: 2.10.0+cpu
+[04:59]   [ComfyUI] Set vram state to: DISABLED
+[04:59]   [ComfyUI] Device: cpu
+[05:00]   [ComfyUI] Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+[05:07]   [ComfyUI] Python version: 3.13.13 (tags/v3.13.13:01104ce, Apr  7 2026, 19:25:48) [MSC v.1944 64 bit (AMD64)]
+[05:07]   [ComfyUI] ComfyUI version: 0.21.1
+[05:07]   [ComfyUI] comfy-aimdo version: 0.3.0
+[05:07]   [ComfyUI] comfy-kitchen version: 0.2.8
+[05:07]   [ComfyUI] ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[05:07]   [ComfyUI] ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[05:07]   [ComfyUI] comfyui-frontend-package version: 1.43.18
+[05:07]   [ComfyUI] comfyui-workflow-templates version: 0.9.77
+[05:07]   [ComfyUI] comfyui-embedded-docs version: 0.5.0
+[05:07]   [ComfyUI] comfy-kitchen version: 0.2.8
+[05:07]   [ComfyUI] comfy-aimdo version: 0.3.0
+[05:07]   [ComfyUI] [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\.venv\Lib\site-packages\comfyui_frontend_package\static
+[05:07]   [ComfyUI] Asset seeder disabled
+[05:11]   [ComfyUI] loading...
+[05:11]   [ComfyUI] calling register_nodes
+[05:11]   [ComfyUI] [comfy-env] Version: 0.4.1
+[05:11]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-UniRig
+[05:11]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI
+[05:11]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[05:11]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[05:11]   [ComfyUI] [comfy-env] default: Library/bin has 237 DLLs
+[05:11]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_kwdxe5od.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-UniRig nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_idbuvx9o.pkl
+[05:11]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[05:11]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default
+[05:11]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Library\bin
+[05:11]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Scripts
+[05:11]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[05:11]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
+[05:11]   [ComfyUI] [comfy-env]   [5] C:\Windows
+[05:11]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
+[05:23]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[05:23]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-UniRig
+[05:23]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[05:23]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[05:23]   [ComfyUI] [comfy-env] Metadata scan failed for nodes (exit 3221225477, 12.1s):
+[05:23]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-UniRig
+[05:23]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[05:23]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[05:23]   [ComfyUI] [comfy-env] Scanned nodes root: 0 nodes (12.1s)
+[05:23]   [ComfyUI] [comfy-env] Imported nodes root: 0 nodes (isolation)
+[05:23]   [ComfyUI] [comfy-env] Registered 0 total nodes
+[05:23]   [ComfyUI] 
+[05:23]   [ComfyUI] Import times for custom nodes:
+[05:23]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\websocket_image_save.py
+[05:23]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[05:23]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-CameraPack
+[05:23]   [ComfyUI]   12.7 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2219\ComfyUI\custom_nodes\ComfyUI-UniRig
+[05:23]   [ComfyUI] 
+[05:24]   [ComfyUI] Context impl SQLiteImpl.
+[05:24]   [ComfyUI] Will assume non-transactional DDL.
+[05:24]   [ComfyUI] Context impl SQLiteImpl.
+[05:24]   [ComfyUI] Will assume non-transactional DDL.
+[05:24]   [ComfyUI] Running upgrade  -> 0001_assets, Initial assets schema
+[05:24]   [ComfyUI] Revision ID: 0001_assets
+[05:24]   [ComfyUI] Revises: None
+[05:24]   [ComfyUI] Create Date: 2025-12-10 00:00:00
+[05:24]   [ComfyUI] Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[05:24]   [ComfyUI] Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+[05:24]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
+[05:24]   [ComfyUI] Database upgraded from None to 0003_add_metadata_job_id
+[05:24]   [ComfyUI] Starting server
+[05:24]   [ComfyUI] 
+[05:24]   [ComfyUI] To see the GUI go to: http://127.0.0.1:41885
+[05:24] Server responding, waiting for nodes to load...
+[05:44] Server is ready!
+[05:44] Checking for import errors in server logs...
+[05:44] No import errors detected
+[05:44] Found 725 registered nodes
+[05:44] [REGISTRATION] PASSED
+[05:44] 
+[05:44] [4/5] INSTANTIATION
+[05:44] ----------------------------------------
+[05:44] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x0000020137E14310>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x0000020137E3ECD0>
+[05:44] Testing node constructors...
+[05:51] All 0 node(s) instantiated successfully!
+[05:51] [INSTANTIATION] PASSED
+[05:51] 
+[05:51] [5/5] EXECUTION
+[05:51] ----------------------------------------
+[05:51] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x0000020137E14310>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x0000020137E3ECD0>
+[05:51] CPU runner - will execute 3 workflow(s)
+[05:51] Running 6 workflow(s) (all with videos)...
+[05:52] Installing screenshot dependencies (playwright, pillow)...
+[05:53]   Packages installed, downloading chromium browser...
+[06:09]   Screenshot dependencies installed successfully
+[06:09] Starting headless browser...
+[06:10]   Downloading Mesa llvmpipe for Windows...
+[06:14]   Copied opengl32.dll to Chromium dir
+[06:14]   Copied libgallium_wgl.dll to Chromium dir
+[06:14]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
+[06:15] Capturing execution frames: apply_animation.json
+[06:24]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[06:24]   Validating workflow...
+[06:24]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {"inputs":{"UNKNOWN":"","model_fbx_path":["9",0]},"_meta":{}}
+[06:24]   [2/6] SKIPPED (not in cpu list) mia_humanoid.json
+[06:25] Capturing execution frames: rigged_manipulator.json
+[06:25]   [ComfyUI] Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+[06:25]   [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+[06:25]   [ComfyUI] Traceback (most recent call last):
+[06:25]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.13.13\x64\Lib\asyncio\events.py", line 89, in _run
+[06:25]   [ComfyUI]     self._context.run(self._callback, *self._args)
+[06:25]   [ComfyUI]     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[06:25]   [ComfyUI]   File "C:\hostedtoolcache\windows\Python\3.13.13\x64\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+[06:25]   [ComfyUI]     self._sock.shutdown(socket.SHUT_RDWR)
+[06:25]   [ComfyUI]     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+[06:25]   [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+[06:31]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[06:31]   Validating workflow...
+[06:31]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {"inputs":{"UNKNOWN":"","fbx_output_path":["4",0]},"_meta":{}}
+[06:31] Capturing execution frames: skeleton_comparison.json
+[06:37]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[06:37]   Validating workflow...
+[06:37]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {"inputs":{"UNKNOWN":"","fbx_path_left":["54",0],"fbx_path_right":["55",0]},"_meta":{}}
+[06:37]   [5/6] SKIPPED (not in cpu list) unirig_bird.json
+[06:37]   [6/6] SKIPPED (not in cpu list) unirig_humanoid.json
+[06:37] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-2219\dev\windows-cpu\results.json
+[06:38] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-2219\dev\windows-cpu\index.html
+[06:38] 
 windows: FAILED
-[05:23] Error: Workflow execution failed (3 error(s))
-[05:23] Details: apply_animation.json: Workflow validation failed
+[06:38] Error: Workflow execution failed (3 error(s))
+[06:38] Details: apply_animation.json: Workflow validation failed
 
 Details:
 graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {"inputs":{"UNKNOWN":"","model_fbx_path":["9",0]},"_meta":{}}
@@ -272,4 +282,4 @@ skeleton_comparison.json: Workflow validation failed
 
 Details:
 graphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {"inputs":{"UNKNOWN":"","fbx_path_left":["54",0],"fbx_path_right":["55",0]},"_meta":{}}
-[05:23] Stopping ComfyUI server...
+[06:38] Stopping ComfyUI server...
