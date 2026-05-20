@@ -1,15 +1,19 @@
 Capturing execution frames: skeleton_comparison.json
+  [ComfyUI] Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+  [ComfyUI] Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+  [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI] Traceback (most recent call last):
+  [ComfyUI]   File "asyncio\events.py", line 89, in _run
+  [ComfyUI]   File "asyncio\events.py", line 89, in _run
+  [ComfyUI]   File "asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI]   File "asyncio\proactor_events.py", line 165, in _call_connection_lost
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
-  Queuing workflow for execution...
-  Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=2.9s)
-  [capture-node] freeze=734ms shot=237ms unfreeze=0ms saved=True
-  Execution complete (t=2.9s)
-  Captured 2 unique frames over 3.87s
-  [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41899/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17789, canvas=387x330, rafFrozen=True
-  [timing] trigger_3d_previews: 0.0s
-  Saved high-quality screenshot: skeleton_comparison_executed.png
-  [timing] final_screenshot: 0.2s
-    Captured 3 video frames
+  Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {"inputs":{"UNKNOWN":"","fbx_path_left":["54",0],"fbx_path_right":["55",0]},"_meta":{}}
+    Status: FAILED
+    Error: Workflow validation failed
+    Details: graphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {"inputs":{"UNKNOWN":"","fbx_path_left":["54",0],"fbx_path_right":["55",0]},"_meta":{}}

@@ -1,4 +1,4 @@
-[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1943\dev\windows-portable-cpu\crash_dump.log
+[00:00] Crash dump logging enabled: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-2222\dev\windows-portable-cpu\crash_dump.log
 [00:00] 
 [00:00] [1/5] SYNTAX
 [00:00] ----------------------------------------
@@ -17,247 +17,297 @@
 [00:00] 
 Setting up ComfyUI...
 [00:00] Fetching latest release version...
-[00:00] Latest version: v0.21.1
-[00:00] Downloading portable ComfyUI from https://github.com/comfyanonymous/ComfyUI/releases/download/v0.21.1/ComfyUI_windows_portable_nvidia.7z...
-[00:01]   Downloaded: 10%
-[00:02]   Downloaded: 20%
-[00:03]   Downloaded: 30%
-[00:04]   Downloaded: 40%
-[00:04]   Downloaded: 50%
-[00:05]   Downloaded: 60%
-[00:06]   Downloaded: 70%
+[00:01] Latest version: v0.21.1
+[00:01] Downloading portable ComfyUI from https://github.com/comfyanonymous/ComfyUI/releases/download/v0.21.1/ComfyUI_windows_portable_nvidia.7z...
+[00:03]   Downloaded: 10%
+[00:04]   Downloaded: 20%
+[00:05]   Downloaded: 30%
+[00:06]   Downloaded: 40%
+[00:07]   Downloaded: 50%
+[00:08]   Downloaded: 60%
+[00:09]   Downloaded: 70%
 [00:10]   Downloaded: 80%
 [00:11]   Downloaded: 90%
 [00:12]   Downloaded: 100%
 [00:12] Downloaded to C:\Users\stduser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1.7z
 [00:12] Extracting to cache: C:\Users\stduser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
 [00:12] Extracting ComfyUI_portable_v0.21.1.7z...
-[00:12] Using 7z: 7z
-[02:19] Extracted to C:\Users\stduser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
-[02:19] Copying from cache to: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui
-[02:38] Installing uv into embedded Python...
-[02:38] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
-[02:42] Installing ComfyUI requirements...
-[02:42] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
-[02:42] 
+[00:13] Using 7z: 7z
+[02:12] Extracted to C:\Users\stduser\.comfy-test\cache\portable\ComfyUI_portable_v0.21.1
+[02:12] Copying from cache to: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui
+[02:34] Installing uv into embedded Python...
+[02:34] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install uv
+[02:36] Installing ComfyUI requirements...
+[02:36] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m uv pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\requirements.txt
+[02:37] 
 Installing custom node...
-[02:42] Copying ComfyUI-UniRig to custom_nodes/...
-[02:42] Installing node requirements...
-[02:42] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\requirements.txt
-[02:46] 
+[02:37] Copying ComfyUI-UniRig to custom_nodes/...
+[02:37] Installing node requirements...
+[02:37] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe -m pip install -r D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\requirements.txt
+[02:41] 
 Running install.py...
-[02:46] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\install.py
-[02:46]   
-[02:46]   Installing 1 node dependencies...
-[02:46]     Cloning ComfyUI-CameraPack...
-[02:47]   
-[02:47]   [requirements] Re-installing main package requirements...
-[02:47]     Installing requirements for ComfyUI-UniRig...
-[02:49]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
-[02:49]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
-[02:49]   [comfy-env] _discover: ComfyUI-UniRig -> unirig-nodes (custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml)
-[02:49]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
-[02:49]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\ComfyUI
-[02:49]   [comfy-env] Found 1 node config(s):
-[02:49]     - unirig-nodes <- custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml (python=host)
-[02:49]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
-[02:51]   [comfy-env] GPU: No GPU detected
-[02:51]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
-[02:51]   [comfy-env] cuda-wheels: 5 package(s) need a matched (cuda, torch, python) combo: ['torch-scatter', 'torch-cluster', 'flash-attn', 'cumm', 'spconv']
-[02:51]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
-[02:51]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
-[02:52]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[02:52]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
-[02:52]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[02:52]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
-[02:52]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
-[02:52]   [cuda-wheels] Looking up cumm: cu130 torch2.11 cp313 win_amd64
-[02:53]   [cuda-wheels]   Found: cumm-0.8.2+cu130torch2.11-cp313-cp313-win_amd64.whl
-[02:53]   [cuda-wheels] Looking up spconv: cu130 torch2.11 cp313 win_amd64
-[02:53]   [cuda-wheels]   GH Pages index unreachable, falling back to GitHub Releases API...
-[02:56]   [cuda-wheels]   No wheel found via index or API. If your network blocks
-[02:56]   [cuda-wheels]   *.github.io / fastly, set HTTPS_PROXY to a working proxy.
-[02:56]   [comfy-env] cuda-wheels tier 1 incomplete: `spconv` not built for cu13.0+torch2.11; falling back
-[02:56]   [comfy-env] cuda-wheels tier 2 (fallback): probing cu12.8/torch2.8/cp313
-[02:56]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
-[02:56]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:56]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
-[02:56]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:56]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
-[02:57]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:57]   [cuda-wheels] Looking up cumm: cu128 torch2.8 cp313 win_amd64
-[02:57]   [cuda-wheels]   Found: cumm-0.8.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:57]   [cuda-wheels] Looking up spconv: cu128 torch2.8 cp313 win_amd64
-[02:57]   [cuda-wheels]   Found: spconv-2.3.8+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:57]   [comfy-env] cuda-wheels combo: cu12.8/torch2.8 (fallback; per-node cuda envs will override torch to this combo while comfyui keeps bootstrap torch)
-[02:57]   [comfy-env] Root conda deps from ComfyUI-UniRig: ['av', 'ffmpeg']
-[02:57]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
-[02:58]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:58]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
-[02:58]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:58]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
-[02:58]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:58]   [cuda-wheels] Looking up cumm: cu128 torch2.8 cp313 win_amd64
-[02:59]   [cuda-wheels]   Found: cumm-0.8.2+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:59]   [cuda-wheels] Looking up spconv: cu128 torch2.8 cp313 win_amd64
-[02:59]   [cuda-wheels]   Found: spconv-2.3.8+cu128torch2.8-cp313-cp313-win_amd64.whl
-[02:59]   [comfy-env] unirig-nodes: cuda-wheels deferred for post-pixi install (torch-scatter, torch-cluster, flash-attn, cumm, spconv)
-[02:59]   Generated C:\Users\stduser\AppData\Local\Programs\comfy-env\pixi.toml
-[02:59]   [comfy-env] Installing 1 environment(s):
-[02:59]     - unirig-nodes (python=host, 17 pypi deps, 5 cuda wheels)
-[02:59]   [comfy-env] Running `pixi install -e unirig-nodes`...
-[03:52]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
-[03:52]     	- Scripts/.librsvg-pre-unlink.bat
-[03:52]     To enable them, run:
-[03:52]     	pixi config set --local run-post-link-scripts insecure
-[03:52]     More info:
-[03:52]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
-[05:46]     The unirig-nodes environment has been installed.
-[05:46]   [comfy-env] unirig-nodes: installing cuda-wheels with --no-deps (torch-scatter, torch-cluster, flash-attn, cumm, spconv)
-[05:47]     Using Python 3.13.13 environment at: .pixi\envs\unirig-nodes
-[05:48]     Resolved 5 packages in 1.22s
-[05:48]     Downloading spconv (69.3MiB)
-[05:48]     Downloading flash-attn (239.2MiB)
-[05:48]     Downloading torch-scatter (9.7MiB)
-[05:48]     Downloading torch-cluster (2.8MiB)
-[05:48]     Downloading cumm (5.3MiB)
-[05:49]      Downloaded torch-cluster
-[05:49]      Downloaded torch-scatter
-[05:50]      Downloaded spconv
-[05:53]      Downloaded flash-attn
-[05:59]      Downloaded cumm
-[05:59]     Prepared 5 packages in 10.54s
-[06:00]     Installed 5 packages in 1.05s
-[06:00]      + cumm==0.8.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/cumm-latest/cumm-0.8.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[06:00]      + flash-attn==2.8.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[06:00]      + spconv==2.3.8+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/spconv-latest/spconv-2.3.8%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[06:00]      + torch-cluster==1.6.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_cluster-latest/torch_cluster-1.6.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[06:00]      + torch-scatter==2.1.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_scatter-latest/torch_scatter-2.1.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
-[06:00]   [comfy-env] Recorded install hash d3c453a8558b -> C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash
-[06:00]   [comfy-env] Install log: C:\Users\stduser\AppData\Local\Programs\comfy-env\install.log
-[06:00]   
-[06:00]   Installation complete!
-[06:01] Installing 1 node dependency(ies)...
-[06:01]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
-[06:01]   ComfyUI-CameraPack already exists, skipping...
-[06:01] Installing validation endpoint...
-[06:01]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
-[06:01] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-[06:02] CUDA packages absent (will mock): torch_scatter, torch_cluster, flash_attn, cumm, spconv
-[06:02] [INSTALL] PASSED
-[06:02] 
-[06:02] [3/5] REGISTRATION
-[06:02] ----------------------------------------
-[06:02] 
+[02:41] Running: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\python_embeded\python.exe D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\install.py
+[02:42]   
+[02:42]   Installing 1 node dependencies...
+[02:42]     Cloning ComfyUI-CameraPack...
+[02:42]   
+[02:42]   [requirements] Re-installing main package requirements...
+[02:42]     Installing requirements for ComfyUI-UniRig...
+[02:45]   [comfy-env] _discover: scanning D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes
+[02:45]   [comfy-env] _discover: ComfyUI-CameraPack: no comfy-env.toml found
+[02:45]   [comfy-env] _discover: ComfyUI-UniRig -> unirig-nodes (custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml)
+[02:45]   [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[02:45]   [comfy-env] ComfyUI: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[02:45]   [comfy-env] Found 1 node config(s):
+[02:45]     - unirig-nodes <- custom_nodes\ComfyUI-UniRig\nodes\comfy-env.toml (python=host)
+[02:45]   [comfy-env] Bootstrap interpreter has python 3.13 + torch 2.11.0 (cu130). Looking for cuda-only wheels matching cu130/torch2.11/cp313.
+[02:47]   [comfy-env] GPU: No GPU detected
+[02:47]   [comfy-env] Comfyui feature -> torch 2.11.0 from https://download.pytorch.org/whl/cu130 (CUDA 13.0 via bootstrap torch)
+[02:47]   [comfy-env] cuda-wheels: 5 package(s) need a matched (cuda, torch, python) combo: ['torch-scatter', 'torch-cluster', 'flash-attn', 'cumm', 'spconv']
+[02:47]   [comfy-env] cuda-wheels tier 1 (bootstrap): probing cu13.0/torch2.11/cp313
+[02:47]   [cuda-wheels] Looking up torch-scatter: cu130 torch2.11 cp313 win_amd64
+[02:47]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:47]   [cuda-wheels] Looking up torch-cluster: cu130 torch2.11 cp313 win_amd64
+[02:48]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:48]   [cuda-wheels] Looking up flash-attn: cu130 torch2.11 cp313 win_amd64
+[02:49]   [cuda-wheels]   Found: flash_attn-2.8.3+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:49]   [cuda-wheels] Looking up cumm: cu130 torch2.11 cp313 win_amd64
+[02:49]   [cuda-wheels]   Found: cumm-0.8.2+cu130torch2.11-cp313-cp313-win_amd64.whl
+[02:49]   [cuda-wheels] Looking up spconv: cu130 torch2.11 cp313 win_amd64
+[02:49]   [cuda-wheels]   GH Pages index unreachable, falling back to GitHub Releases API...
+[02:52]   [cuda-wheels]   No wheel found via index or API. If your network blocks
+[02:52]   [cuda-wheels]   *.github.io / fastly, set HTTPS_PROXY to a working proxy.
+[02:52]   [comfy-env] cuda-wheels tier 1 incomplete: `spconv` not built for cu13.0+torch2.11; falling back
+[02:52]   [comfy-env] cuda-wheels tier 2 (fallback): probing cu12.8/torch2.8/cp313
+[02:52]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
+[02:53]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:53]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
+[02:53]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:53]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
+[02:54]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:54]   [cuda-wheels] Looking up cumm: cu128 torch2.8 cp313 win_amd64
+[02:54]   [cuda-wheels]   Found: cumm-0.8.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:54]   [cuda-wheels] Looking up spconv: cu128 torch2.8 cp313 win_amd64
+[02:54]   [cuda-wheels]   Found: spconv-2.3.8+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:54]   [comfy-env] cuda-wheels combo: cu12.8/torch2.8 (fallback; per-node cuda envs will override torch to this combo while comfyui keeps bootstrap torch)
+[02:54]   [comfy-env] Writing 1 per-env manifest(s):
+[02:54]     - unirig-nodes: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml
+[02:54]   [cuda-wheels] Looking up torch-scatter: cu128 torch2.8 cp313 win_amd64
+[02:55]   [cuda-wheels]   Found: torch_scatter-2.1.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:55]   [cuda-wheels] Looking up torch-cluster: cu128 torch2.8 cp313 win_amd64
+[02:55]   [cuda-wheels]   Found: torch_cluster-1.6.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:55]   [cuda-wheels] Looking up flash-attn: cu128 torch2.8 cp313 win_amd64
+[02:55]   [cuda-wheels]   Found: flash_attn-2.8.3+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:55]   [cuda-wheels] Looking up cumm: cu128 torch2.8 cp313 win_amd64
+[02:56]   [cuda-wheels]   Found: cumm-0.8.2+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:56]   [cuda-wheels] Looking up spconv: cu128 torch2.8 cp313 win_amd64
+[02:56]   [cuda-wheels]   Found: spconv-2.3.8+cu128torch2.8-cp313-cp313-win_amd64.whl
+[02:56]   [comfy-env] unirig-nodes: cuda-wheels deferred for post-pixi install (torch-scatter, torch-cluster, flash-attn, cumm, spconv)
+[02:56]   [comfy-env] Installing 1 environment(s):
+[02:56]     - unirig-nodes (python=host, 17 pypi deps, 5 cuda wheels)
+[02:56]   [comfy-env] Running `pixi install --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml` ...
+[05:11]      WARN Skipped running the post-link scripts because `run-post-link-scripts` = `false`
+[05:11]     	- Scripts/.librsvg-pre-unlink.bat
+[05:11]     To enable them, run:
+[05:11]     	pixi config set --local run-post-link-scripts insecure
+[05:11]     More info:
+[05:11]     	https://pixi.sh/latest/reference/pixi_configuration/#run-post-link-scripts
+[07:31]     The default environment has been installed.
+[07:31]   [comfy-env] unirig-nodes: installing cuda-wheels with --no-deps (torch-scatter, torch-cluster, flash-attn, cumm, spconv)
+[07:31]     Using Python 3.13.13 environment at: envs\unirig-nodes\.pixi\envs\default
+[07:33]     Resolved 5 packages in 2.30s
+[07:33]     Downloading cumm (5.3MiB)
+[07:33]     Downloading torch-scatter (9.7MiB)
+[07:33]     Downloading spconv (69.3MiB)
+[07:33]     Downloading flash-attn (239.2MiB)
+[07:33]     Downloading torch-cluster (2.8MiB)
+[07:34]      Downloaded torch-cluster
+[07:34]      Downloaded torch-scatter
+[07:35]      Downloaded spconv
+[07:37]      Downloaded cumm
+[07:41]      Downloaded flash-attn
+[07:42]     Prepared 5 packages in 8.34s
+[07:46]     Installed 5 packages in 4.55s
+[07:46]      + cumm==0.8.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/cumm-latest/cumm-0.8.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[07:46]      + flash-attn==2.8.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/flash_attn-latest/flash_attn-2.8.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[07:46]      + spconv==2.3.8+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/spconv-latest/spconv-2.3.8%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[07:46]      + torch-cluster==1.6.3+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_cluster-latest/torch_cluster-1.6.3%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[07:46]      + torch-scatter==2.1.2+cu128torch2.8 (from https://github.com/PozzettiAndrea/cuda-wheels/releases/download/torch_scatter-latest/torch_scatter-2.1.2%2Bcu128torch2.8-cp313-cp313-win_amd64.whl)
+[07:47]   [comfy-env] Recorded install hash 3fc91edad0ee -> C:\Users\stduser\AppData\Local\Programs\comfy-env\install.hash
+[07:47]   [comfy-env] Install log: C:\Users\stduser\AppData\Local\Programs\comfy-env\install.log
+[07:47]   
+[07:47]   Installation complete!
+[07:48] Installing 1 node dependency(ies)...
+[07:48]   ComfyUI-CameraPack from PozzettiAndrea/ComfyUI-CameraPack
+[07:48]   ComfyUI-CameraPack already exists, skipping...
+[07:48] Installing validation endpoint...
+[07:48]   Cloning PozzettiAndrea/ComfyUI-validate-endpoint...
+[07:48] Running: git clone --depth 1 https://x-access-token:***@github.com/PozzettiAndrea/ComfyUI-validate-endpoint.git D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[07:49] CUDA packages absent (will mock): torch_scatter, torch_cluster, flash_attn, cumm, spconv
+[07:49] [INSTALL] PASSED
+[07:49] 
+[07:49] [3/5] REGISTRATION
+[07:49] ----------------------------------------
+[07:49] 
 [DEBUG] server=None, api=None
-[06:02] 
+[07:49] 
 Starting ComfyUI server...
-[06:02] Starting ComfyUI server on port 41899...
-[06:02] CUDA mock packages: torch_scatter, torch_cluster, flash_attn, cumm, spconv
-[06:02] Starting ComfyUI server on port 41899...
-[06:02] Server stdout/stderr -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1943\server.log
-[06:02] Waiting for server to be ready (timeout: 600s)...
-[06:02]   [ComfyUI:stdout] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
-[06:02]   [ComfyUI:stderr] reader thread died: AttributeError("'NoneType' object has no attribute 'readline'")
-[06:48] Server responding, waiting for nodes to load...
-[07:08] Server is ready!
-[07:08] Checking for import errors in server logs...
-[07:08] No import errors detected
-[07:09] Found 734 registered nodes
-[07:09] [REGISTRATION] PASSED
-[07:09] 
-[07:09] [4/5] INSTANTIATION
-[07:09] ----------------------------------------
-[07:09] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001A535AC20B0>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001A535ADF850>
-[07:09] Testing node constructors...
-[07:11] All 16 node(s) instantiated successfully!
-[07:11] [INSTANTIATION] PASSED
-[07:11] 
-[07:11] [5/5] EXECUTION
-[07:11] ----------------------------------------
-[07:11] 
-[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000001A535AC20B0>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000001A535ADF850>
-[07:11] CPU runner - will execute 3 workflow(s)
-[07:11] Running 6 workflow(s) (all with videos)...
-[07:11] Installing screenshot dependencies (playwright, pillow)...
-[07:15]   Packages installed, downloading chromium browser...
-[07:34]   Screenshot dependencies installed successfully
-[07:35] Starting headless browser...
-[07:35]   Downloading Mesa llvmpipe for Windows...
-[07:40]   Copied opengl32.dll to Chromium dir
-[07:40]   Copied libgallium_wgl.dll to Chromium dir
-[07:40]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
-[07:41] Capturing execution frames: apply_animation.json
-[07:50]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[07:50]   Validating workflow...
-[07:50]   Queuing workflow for execution...
-[07:52]   Frame 2 saved (frame_001.jpg, t=2.4s)
-[07:52]   [capture-periodic] freeze=3ms shot=118ms unfreeze=4ms saved=True
-[07:54]   Frame 3 saved (frame_002.jpg, t=4.5s)
-[07:54]   [capture-periodic] freeze=2ms shot=104ms unfreeze=2ms saved=True
-[07:56]   [capture-loop] iter=50 t=5.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=5.6/16.0GB (35%) swap=0.4/2.9GB (12%) cpu=36% browser_rss=0.71GB
-[08:01]   [capture-loop] iter=100 t=11.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=5.7/16.0GB (36%) swap=0.4/2.9GB (12%) cpu=28% browser_rss=0.70GB
-[08:07]   [capture-loop] iter=150 t=17.3s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=5.7/16.0GB (36%) swap=0.4/2.9GB (12%) cpu=19% browser_rss=0.70GB
-[08:12]   [capture-loop] iter=200 t=22.9s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=5.7/16.0GB (36%) swap=0.4/2.9GB (12%) cpu=28% browser_rss=0.64GB
-[08:18]   [capture-loop] iter=250 t=28.5s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=3 ram=5.7/16.0GB (36%) swap=0.4/2.9GB (12%) cpu=21% browser_rss=0.64GB
-[08:23]   [capture-loop] iter=300 t=34.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=2 ram=5.8/16.0GB (36%) swap=0.4/2.9GB (12%) cpu=17% browser_rss=0.64GB
-[08:24]   Frame 4 saved (frame_003.jpg, t=34.2s)
-[08:24]   [capture-periodic] freeze=3ms shot=119ms unfreeze=10ms saved=True
-[08:25]   Node executed (1 total), capturing...
-[08:26]   Frame 5 saved (frame_004.jpg, t=35.7s)
-[08:26]   [capture-node] freeze=4ms shot=879ms unfreeze=0ms saved=True
-[08:26]   Execution complete (t=35.7s)
-[08:27]   [3d-wait] Phase 1: Waiting for 'Loading 3D Model' text to disappear...
-[09:27]   [3d-wait] Phase 1 exception after 60.0s: Page.wait_for_function: Timeout 60000ms exceeded.
-[09:27]   [3d-wait] Phase 2: iframes=0
-[09:27]   [3d-wait] Total 3D wait: 60.0s
-[09:27]   Captured 5 unique frames over 97.44s
-[09:27]   [debug] iframes: 0
-[09:27]   [timing] trigger_3d_previews: 0.0s
-[09:29]   Saved high-quality screenshot: apply_animation_executed.png
-[09:29]   [timing] final_screenshot: 0.2s
-[09:29]   [2/6] SKIPPED (not in cpu list) mia_humanoid.json
-[09:30] Capturing execution frames: rigged_manipulator.json
-[09:36]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[09:36]   Validating workflow...
-[09:36]   Queuing workflow for execution...
-[09:39]   Frame 2 saved (frame_001.jpg, t=2.2s)
-[09:39]   [capture-periodic] freeze=4ms shot=137ms unfreeze=3ms saved=True
-[09:41]   Frame 3 saved (frame_002.jpg, t=4.5s)
-[09:41]   [capture-periodic] freeze=3ms shot=126ms unfreeze=3ms saved=True
-[09:42]   [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=5.5/16.0GB (35%) swap=0.5/2.9GB (18%) cpu=25% browser_rss=0.78GB
-[09:48]   [capture-loop] iter=100 t=11.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=7 ram=5.7/16.0GB (36%) swap=0.5/2.9GB (18%) cpu=68% browser_rss=0.77GB
-[09:49]   Node executed (1 total), capturing...
-[09:49]   Frame 4 saved (frame_003.jpg, t=13.0s)
-[09:49]   [capture-node] freeze=3ms shot=104ms unfreeze=0ms saved=True
-[09:49]   Execution complete (t=13.0s)
-[09:50]   Captured 4 unique frames over 13.72s
-[09:50]   [debug] iframes: 1
-[09:50]   [debug]   iframe[0]: src=http://127.0.0.1:41899/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778961172155, canvas=486x710, rafFrozen=True
-[09:50]   [timing] trigger_3d_previews: 0.0s
-[09:52]   Saved high-quality screenshot: rigged_manipulator_executed.png
-[09:52]   [timing] final_screenshot: 0.2s
-[09:52] Capturing execution frames: skeleton_comparison.json
-[09:58]   Frame 1 saved (frame_000.jpg, t=0.0s)
-[09:58]   Validating workflow...
-[09:58]   Queuing workflow for execution...
-[10:01]   Node executed (1 total), capturing...
-[10:02]   Frame 2 saved (frame_001.jpg, t=2.9s)
-[10:02]   [capture-node] freeze=734ms shot=237ms unfreeze=0ms saved=True
-[10:02]   Execution complete (t=2.9s)
-[10:02]   Captured 2 unique frames over 3.87s
-[10:02]   [debug] iframes: 1
-[10:02]   [debug]   iframe[0]: src=http://127.0.0.1:41899/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17789, canvas=387x330, rafFrozen=True
-[10:02]   [timing] trigger_3d_previews: 0.0s
-[10:04]   Saved high-quality screenshot: skeleton_comparison_executed.png
-[10:04]   [timing] final_screenshot: 0.2s
-[10:05]   [5/6] SKIPPED (not in cpu list) unirig_bird.json
-[10:05]   [6/6] SKIPPED (not in cpu list) unirig_humanoid.json
-[10:05] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1943\dev\windows-portable-cpu\results.json
-[10:05] Model report: 8 files, 18.7 MB -> D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1943\dev\windows-portable-cpu\models.json
-[10:05] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-1943\dev\windows-portable-cpu\index.html
-[10:05] [EXECUTION] PASSED
-[10:05] 
-windows_portable: PASSED
-[10:05] Stopping ComfyUI server...
+[07:49] Starting ComfyUI server on port 41895...
+[07:49] CUDA mock packages: torch_scatter, torch_cluster, flash_attn, cumm, spconv
+[07:49] Starting ComfyUI server on port 41895...
+[07:49] Server stdout/stderr -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\server.log
+[07:49] Waiting for server to be ready (timeout: 600s)...
+[07:50]   [ComfyUI] setup plugin alembic.autogenerate.schemas
+[07:50]   [ComfyUI] setup plugin alembic.autogenerate.tables
+[07:50]   [ComfyUI] setup plugin alembic.autogenerate.types
+[07:50]   [ComfyUI] setup plugin alembic.autogenerate.constraints
+[07:50]   [ComfyUI] setup plugin alembic.autogenerate.defaults
+[07:50]   [ComfyUI] setup plugin alembic.autogenerate.comments
+[07:50]   [ComfyUI] [comfy-env] ComfyUI-UniRig: 1 isolation env(s):
+[07:50]   [ComfyUI] [comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes
+[07:50]   [ComfyUI] [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
+[07:50]   [ComfyUI] [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default  [OK]
+[07:50]   [ComfyUI] [comfy-env] prestartup complete
+[07:50]   [ComfyUI] 
+[07:50]   [ComfyUI] Prestartup times for custom nodes:
+[07:50]   [ComfyUI]    0.4 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
+[07:50]   [ComfyUI] 
+[07:52]   [ComfyUI] D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py:180: UserWarning: cudaGetDeviceCount() returned cudaErrorNotSupported, likely using older driver or on CPU machine (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10\cuda\CUDAFunctions.cpp:88.)
+[07:52]   [ComfyUI]   return torch._C._cuda_getDeviceCount() > 0
+[07:53]   [ComfyUI] Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
+[07:53]   [ComfyUI] Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[07:53]   [ComfyUI] Found comfy_kitchen backend cuda: {'available': False, 'disabled': False, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
+[07:54]   [ComfyUI] Checkpoint files will always be loaded safely.
+[07:54]   [ComfyUI] Total VRAM 16379 MB, total RAM 16379 MB
+[07:54]   [ComfyUI] pytorch version: 2.11.0+cu130
+[07:54]   [ComfyUI] Set vram state to: DISABLED
+[07:54]   [ComfyUI] Device: cpu
+[07:54]   [ComfyUI] Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+[07:59]   [ComfyUI] Python version: 3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]
+[07:59]   [ComfyUI] ComfyUI version: 0.21.1
+[07:59]   [ComfyUI] comfy-aimdo version: 0.3.0
+[07:59]   [ComfyUI] comfy-kitchen version: 0.2.8
+[07:59]   [ComfyUI] ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[07:59]   [ComfyUI] ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[07:59]   [ComfyUI] ComfyUI frontend version: 1.43.18
+[07:59]   [ComfyUI] [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfyui_frontend_package\static
+[07:59]   [ComfyUI] Asset seeder disabled
+[08:02]   [ComfyUI] loading...
+[08:02]   [ComfyUI] calling register_nodes
+[08:02]   [ComfyUI] [comfy-env] Version: 0.4.1
+[08:02]   [ComfyUI] [comfy-env] register_nodes: ComfyUI-UniRig
+[08:02]   [ComfyUI] [comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[08:02]   [ComfyUI] [comfy-env] Found 1 isolation env(s)
+[08:02]   [ComfyUI] [comfy-env] Scanning nodes metadata (isolation root)...
+[08:02]   [ComfyUI] [comfy-env] default: Library/bin has 237 DLLs
+[08:02]   [ComfyUI] [comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_03s0ii47.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_8jlj0eo5.pkl
+[08:02]   [ComfyUI] [comfy-env] Scan env PATH for nodes:
+[08:02]   [ComfyUI] [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default
+[08:02]   [ComfyUI] [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Library\bin
+[08:02]   [ComfyUI] [comfy-env]   [2] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Scripts
+[08:02]   [ComfyUI] [comfy-env]   [3] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Lib\site-packages\bpy
+[08:02]   [ComfyUI] [comfy-env]   [4] C:\Windows\System32
+[08:02]   [ComfyUI] [comfy-env]   [5] C:\Windows
+[08:02]   [ComfyUI] [comfy-env]   [6] C:\Windows\System32\Wbem
+[08:54]   [ComfyUI] [comfy-env] Metadata scan stderr for nodes:
+[08:54]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
+[08:54]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[08:54]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[08:54]   [ComfyUI] [comfy-env] Metadata scan failed for nodes (exit 3221225477, 51.6s):
+[08:54]   [ComfyUI] [comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
+[08:54]   [ComfyUI] [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[08:54]   [ComfyUI] [comfy-env]   [meta-scan] import OK
+[08:54]   [ComfyUI] [comfy-env] Scanned nodes root: 0 nodes (51.6s)
+[08:54]   [ComfyUI] [comfy-env] Imported nodes root: 0 nodes (isolation)
+[08:54]   [ComfyUI] [comfy-env] Registered 0 total nodes
+[08:54]   [ComfyUI] 
+[08:54]   [ComfyUI] Import times for custom nodes:
+[08:54]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\websocket_image_save.py
+[08:54]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[08:54]   [ComfyUI]    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-CameraPack
+[08:54]   [ComfyUI]   52.4 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2222\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
+[08:54]   [ComfyUI] 
+[08:54]   [ComfyUI] Context impl SQLiteImpl.
+[08:54]   [ComfyUI] Will assume non-transactional DDL.
+[08:54]   [ComfyUI] Context impl SQLiteImpl.
+[08:54]   [ComfyUI] Will assume non-transactional DDL.
+[08:54]   [ComfyUI] Running upgrade  -> 0001_assets, Initial assets schema
+[08:54]   [ComfyUI] Revision ID: 0001_assets
+[08:54]   [ComfyUI] Revises: None
+[08:54]   [ComfyUI] Create Date: 2025-12-10 00:00:00
+[08:54]   [ComfyUI] Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[08:54]   [ComfyUI] Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+[08:54]   [ComfyUI] Change preview_id FK from assets.id to asset_references.id.
+[08:54]   [ComfyUI] Database upgraded from None to 0003_add_metadata_job_id
+[08:54]   [ComfyUI] Starting server
+[08:54]   [ComfyUI] 
+[08:54]   [ComfyUI] To see the GUI go to: http://127.0.0.1:41895
+[08:55] Server responding, waiting for nodes to load...
+[09:15] Server is ready!
+[09:15] Checking for import errors in server logs...
+[09:15] No import errors detected
+[09:15] Found 718 registered nodes
+[09:15] [REGISTRATION] PASSED
+[09:15] 
+[09:15] [4/5] INSTANTIATION
+[09:15] ----------------------------------------
+[09:15] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002B9397FD940>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002B9397FE900>
+[09:15] Testing node constructors...
+[09:23] All 0 node(s) instantiated successfully!
+[09:23] [INSTANTIATION] PASSED
+[09:23] 
+[09:23] [5/5] EXECUTION
+[09:23] ----------------------------------------
+[09:23] 
+[DEBUG] server=<comfy_test.comfyui.server.ComfyUIServer object at 0x000002B9397FD940>, api=<comfy_test.comfyui.api.ComfyUIAPI object at 0x000002B9397FE900>
+[09:23] CPU runner - will execute 3 workflow(s)
+[09:23] Running 6 workflow(s) (all with videos)...
+[09:23] Installing screenshot dependencies (playwright, pillow)...
+[09:29]   Packages installed, downloading chromium browser...
+[09:46]   Screenshot dependencies installed successfully
+[09:46] Starting headless browser...
+[09:47]   Downloading Mesa llvmpipe for Windows...
+[09:52]   Copied opengl32.dll to Chromium dir
+[09:52]   Copied libgallium_wgl.dll to Chromium dir
+[09:52]   Using Mesa llvmpipe (desktop GL) -- multithreaded CPU rendering
+[09:53] Capturing execution frames: apply_animation.json
+[10:02]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[10:02]   Validating workflow...
+[10:02]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {"inputs":{"UNKNOWN":"","model_fbx_path":["9",0]},"_meta":{}}
+[10:02]   [2/6] SKIPPED (not in cpu list) mia_humanoid.json
+[10:02] Capturing execution frames: rigged_manipulator.json
+[10:08]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[10:08]   Validating workflow...
+[10:08]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {"inputs":{"UNKNOWN":"","fbx_output_path":["4",0]},"_meta":{}}
+[10:09] Capturing execution frames: skeleton_comparison.json
+[10:09]   [ComfyUI] Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+[10:09]   [ComfyUI] handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+[10:09]   [ComfyUI] Traceback (most recent call last):
+[10:09]   [ComfyUI]   File "asyncio\events.py", line 89, in _run
+[10:09]   [ComfyUI]   File "asyncio\proactor_events.py", line 165, in _call_connection_lost
+[10:09]   [ComfyUI] ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+[10:14]   Frame 1 saved (frame_000.jpg, t=0.0s)
+[10:14]   Validating workflow...
+[10:14]   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {"inputs":{"UNKNOWN":"","fbx_path_left":["54",0],"fbx_path_right":["55",0]},"_meta":{}}
+[10:14]   [5/6] SKIPPED (not in cpu list) unirig_bird.json
+[10:15]   [6/6] SKIPPED (not in cpu list) unirig_humanoid.json
+[10:15] Results saved to D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-2222\dev\windows-portable-cpu\results.json
+[10:15] Model report: 8 files, 18.7 MB -> D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-2222\dev\windows-portable-cpu\models.json
+[10:15] Saved: D:\a\comfy-gpu-ci\comfy-gpu-ci\comfy-test-logs\UniRig-2222\dev\windows-portable-cpu\index.html
+[10:15] 
+windows_portable: FAILED
+[10:15] Error: Workflow execution failed (3 error(s))
+[10:15] Details: apply_animation.json: Workflow validation failed
+
+Details:
+graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {"inputs":{"UNKNOWN":"","model_fbx_path":["9",0]},"_meta":{}}
+rigged_manipulator.json: Workflow validation failed
+
+Details:
+graphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {"inputs":{"UNKNOWN":"","fbx_output_path":["4",0]},"_meta":{}}
+skeleton_comparison.json: Workflow validation failed
+
+Details:
+graphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {"inputs":{"UNKNOWN":"","fbx_path_left":["54",0],"fbx_path_right":["55",0]},"_meta":{}}
+[10:15] Stopping ComfyUI server...

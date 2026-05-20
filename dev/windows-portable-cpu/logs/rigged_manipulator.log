@@ -1,21 +1,7 @@
 Capturing execution frames: rigged_manipulator.json
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
-  Queuing workflow for execution...
-  Frame 2 saved (frame_001.jpg, t=2.2s)
-  [capture-periodic] freeze=4ms shot=137ms unfreeze=3ms saved=True
-  Frame 3 saved (frame_002.jpg, t=4.5s)
-  [capture-periodic] freeze=3ms shot=126ms unfreeze=3ms saved=True
-  [capture-loop] iter=50 t=6.0s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=4 ram=5.5/16.0GB (35%) swap=0.5/2.9GB (18%) cpu=25% browser_rss=0.78GB
-  [capture-loop] iter=100 t=11.8s state={'complete': False, 'error': None, 'executedCount': 0, 'wsState': 1} eval_ms=7 ram=5.7/16.0GB (36%) swap=0.5/2.9GB (18%) cpu=68% browser_rss=0.77GB
-  Node executed (1 total), capturing...
-  Frame 4 saved (frame_003.jpg, t=13.0s)
-  [capture-node] freeze=3ms shot=104ms unfreeze=0ms saved=True
-  Execution complete (t=13.0s)
-  Captured 4 unique frames over 13.72s
-  [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41899/extensions/ComfyUI-UniRig/viewer_fbx.html?v=1778961172155, canvas=486x710, rafFrozen=True
-  [timing] trigger_3d_previews: 0.0s
-  Saved high-quality screenshot: rigged_manipulator_executed.png
-  [timing] final_screenshot: 0.2s
-    Captured 5 video frames
+  Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {"inputs":{"UNKNOWN":"","fbx_output_path":["4",0]},"_meta":{}}
+    Status: FAILED
+    Error: Workflow validation failed
+    Details: graphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {"inputs":{"UNKNOWN":"","fbx_output_path":["4",0]},"_meta":{}}
