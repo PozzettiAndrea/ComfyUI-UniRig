@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-19T22:33:02.982030+00:00",
+  "timestamp": "2026-05-19T23:05:12.741215+00:00",
   "platform": "windows_portable",
   "hardware": {
     "os": "Windows-2025Server-10.0.26100-SP0",
     "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
   },
   "commit_hash": "89334f9707ef7114b14c5b0119ebd9a7106cec65",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26126334200",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26129323589",
   "success": false,
   "summary": {
     "total": 6,
@@ -17,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "fail",
-      "duration_seconds": 9.03,
+      "duration_seconds": 9.0,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"model_fbx_path\":[\"9\",0]},\"_meta\":{}}",
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
@@ -26,7 +26,7 @@
       "resources": {
         "ram": {
           "peak": 1.41,
-          "avg": 1.4
+          "avg": 1.41
         },
         "total_ram_gb": 16.0,
         "samples": 9
@@ -42,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "fail",
-      "duration_seconds": 5.85,
+      "duration_seconds": 6.15,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_output_path\":[\"4\",0]},\"_meta\":{}}",
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
@@ -50,17 +50,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.42,
-          "avg": 1.42
+          "peak": 1.41,
+          "avg": 1.41
         },
         "total_ram_gb": 16.0,
-        "samples": 6
+        "samples": 7
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "fail",
-      "duration_seconds": 5.47,
+      "duration_seconds": 5.8,
       "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_path_left\":[\"54\",0],\"fbx_path_right\":[\"55\",0]},\"_meta\":{}}",
       "hardware": {
         "os": "Windows-2025Server-10.0.26100-SP0",
@@ -68,8 +68,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.42,
-          "avg": 1.42
+          "peak": 1.41,
+          "avg": 1.41
         },
         "total_ram_gb": 16.0,
         "samples": 6
