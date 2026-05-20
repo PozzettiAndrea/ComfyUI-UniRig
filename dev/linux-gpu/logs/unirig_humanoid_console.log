@@ -33,7 +33,7 @@
 [Console-log] [UniRig Debug] Registering Preview Rigged Mesh node
 [Console-log] [UniRig Compare] Registering Compare Skeletons node
 [Console-log] [UniRig] Node created, adding FBX viewer widget
-[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1779233297366
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1779243164922
 [Console-log] [UniRig] Widget created: DOMWidgetImpl
 [Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41892/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
@@ -42,7 +42,7 @@
 [Console-log] [UniRig] Iframe loaded successfully
 [Console-log] [FBX Viewer] Received postMessage: {type: RESIZE, width: 733.319580078125, height: 637.37646484375}
 [Console-log] [UniRig] Node created, adding FBX viewer widget
-[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1779233298821
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1779243166391
 [Console-log] [UniRig] Widget created: DOMWidgetImpl
 [Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41892/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
@@ -52,9 +52,9 @@
 [Console-log] [UniRig] Iframe loaded successfully
 [Console-log] [comfy-test] graphToPrompt: 4 nodes, missing class_type: [], sample: {"inputs":{"fbx_output_path":["39",0],"preview":""},"class_type":"UniRigPreviewRiggedMesh","_meta":{"title":"UniRig: Preview Rigged Mesh"}}
 [Console-log] [UniRig] onExecuted called with message: {fbx_file: Array(1), has_skinning: Array(1), has_skeleton: Array(1)}
-[Console-log] [UniRig] Loading FBX: rigged_1779233358_mixamo.fbx
-[Console-log] [UniRig] Sending postMessage to iframe: http://127.0.0.1:41892/view?filename=rigged_1779233358_mixamo.fbx&type=output&subfolder=
-[Console-log] [FBX Viewer] Received postMessage: {type: LOAD_FBX, filepath: http://127.0.0.1:41892/view?filename=rigged_1779233358_mixamo.fbx&type=output&subfolder=, timestamp: 1779233359048, fbxExportApiPath: /unirig/export_posed_fbx}
-[Console-log] [FBX Viewer] Loading: http://127.0.0.1:41892/view?filename=rigged_1779233358_mixamo.fbx&type=output&subfolder=
+[Console-log] [UniRig] Loading FBX: rigged_1779243224_mixamo.fbx
+[Console-log] [UniRig] Sending postMessage to iframe: http://127.0.0.1:41892/view?filename=rigged_1779243224_mixamo.fbx&type=output&subfolder=
+[Console-log] [FBX Viewer] Received postMessage: {type: LOAD_FBX, filepath: http://127.0.0.1:41892/view?filename=rigged_1779243224_mixamo.fbx&type=output&subfolder=, timestamp: 1779243225105, fbxExportApiPath: /unirig/export_posed_fbx}
+[Console-log] [FBX Viewer] Loading: http://127.0.0.1:41892/view?filename=rigged_1779243224_mixamo.fbx&type=output&subfolder=
 [Console-warning] THREE.FBXLoader: Vertex has more than 4 skinning weights assigned to vertex. Deleting additional weights.
 [Console-log] [FBX Viewer] FBX Loaded successfully

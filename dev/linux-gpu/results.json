@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-19T23:29:24.417376+00:00",
+  "timestamp": "2026-05-20T02:13:50.552479+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -7,7 +7,7 @@
     "gpu": "NVIDIA GeForce RTX 3090"
   },
   "commit_hash": "89334f9707ef7114b14c5b0119ebd9a7106cec65",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26126332141",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26129321770",
   "success": true,
   "summary": {
     "total": 6,
@@ -25,7 +25,7 @@
     {
       "name": "mia_humanoid",
       "status": "pass",
-      "duration_seconds": 92.5,
+      "duration_seconds": 92.2,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -34,8 +34,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 5.83,
-          "avg": 3.75
+          "peak": 5.77,
+          "avg": 3.69
         },
         "total_ram_gb": 31.2,
         "samples": 90,
@@ -62,7 +62,7 @@
     {
       "name": "unirig_bird",
       "status": "pass",
-      "duration_seconds": 94.01,
+      "duration_seconds": 89.32,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -71,21 +71,21 @@
       },
       "resources": {
         "ram": {
-          "peak": 6.68,
-          "avg": 3.6
+          "peak": 6.48,
+          "avg": 3.53
         },
         "total_ram_gb": 31.2,
-        "samples": 92,
+        "samples": 87,
         "vram": {
-          "peak": 4.08,
-          "avg": 1.14
+          "peak": 3.86,
+          "avg": 0.97
         }
       }
     },
     {
       "name": "unirig_humanoid",
       "status": "pass",
-      "duration_seconds": 69.25,
+      "duration_seconds": 67.78,
       "error": null,
       "hardware": {
         "os": "Linux-6.8.0-107-generic-x86_64-with-glibc2.35",
@@ -94,14 +94,14 @@
       },
       "resources": {
         "ram": {
-          "peak": 5.48,
-          "avg": 3.65
+          "peak": 5.62,
+          "avg": 3.55
         },
         "total_ram_gb": 31.2,
-        "samples": 68,
+        "samples": 66,
         "vram": {
-          "peak": 3.67,
-          "avg": 1.6
+          "peak": 3.77,
+          "avg": 1.61
         }
       }
     }
