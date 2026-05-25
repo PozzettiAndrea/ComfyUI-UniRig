@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-19T16:44:31.524891+00:00",
+  "timestamp": "2026-05-25T19:26:58.900461+00:00",
   "platform": "macos",
   "hardware": {
-    "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+    "os": "macOS-15.7.7-arm64-arm-64bit",
     "cpu": "arm"
   },
   "commit_hash": "89334f9707ef7114b14c5b0119ebd9a7106cec65",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26108877106",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26416312979",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,19 +17,19 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 23.42,
+      "duration_seconds": 86.07,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.7-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.17,
-          "avg": 0.83
+          "peak": 1.03,
+          "avg": 0.93
         },
         "total_ram_gb": 7.0,
-        "samples": 22
+        "samples": 79
       }
     },
     {
@@ -42,37 +42,37 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 9.46,
+      "duration_seconds": 18.0,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.7-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.1,
-          "avg": 1.06
+          "peak": 1.0,
+          "avg": 0.89
         },
         "total_ram_gb": 7.0,
-        "samples": 9
+        "samples": 17
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 9.32,
+      "duration_seconds": 11.42,
       "error": null,
       "hardware": {
-        "os": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+        "os": "macOS-15.7.7-arm64-arm-64bit",
         "cpu": "arm"
       },
       "resources": {
         "ram": {
-          "peak": 1.05,
-          "avg": 1.03
+          "peak": 0.99,
+          "avg": 0.97
         },
         "total_ram_gb": 7.0,
-        "samples": 9
+        "samples": 11
       }
     },
     {
