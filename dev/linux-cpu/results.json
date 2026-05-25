@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-19T16:49:28.274400+00:00",
+  "timestamp": "2026-05-25T19:24:36.493757+00:00",
   "platform": "linux",
   "hardware": {
     "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
     "cpu": "AMD EPYC 9V74 80-Core Processor"
   },
   "commit_hash": "89334f9707ef7114b14c5b0119ebd9a7106cec65",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26108865371",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26416309365",
   "success": true,
   "summary": {
     "total": 6,
@@ -17,7 +17,7 @@
     {
       "name": "apply_animation",
       "status": "pass",
-      "duration_seconds": 80.26,
+      "duration_seconds": 19.51,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
@@ -25,11 +25,11 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.45,
-          "avg": 1.34
+          "peak": 1.46,
+          "avg": 1.05
         },
         "total_ram_gb": 15.6,
-        "samples": 80
+        "samples": 20
       }
     },
     {
@@ -42,7 +42,7 @@
     {
       "name": "rigged_manipulator",
       "status": "pass",
-      "duration_seconds": 14.91,
+      "duration_seconds": 9.79,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
@@ -50,17 +50,17 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.45,
-          "avg": 1.31
+          "peak": 1.46,
+          "avg": 1.46
         },
         "total_ram_gb": 15.6,
-        "samples": 15
+        "samples": 10
       }
     },
     {
       "name": "skeleton_comparison",
       "status": "pass",
-      "duration_seconds": 10.46,
+      "duration_seconds": 10.5,
       "error": null,
       "hardware": {
         "os": "Linux-6.17.0-1013-azure-x86_64-with-glibc2.39",
@@ -68,8 +68,8 @@
       },
       "resources": {
         "ram": {
-          "peak": 1.42,
-          "avg": 1.41
+          "peak": 1.46,
+          "avg": 1.46
         },
         "total_ram_gb": 15.6,
         "samples": 11
