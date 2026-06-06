@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-06-06T23:41:09.246504+00:00",
+  "timestamp": "2026-06-06T23:43:27.231178+00:00",
   "platform": "windows",
   "hardware": {
-    "os": "Windows-10-10.0.26100-SP0",
-    "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+    "os": "Windows-2025Server-10.0.26100-SP0",
+    "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
   },
   "commit_hash": "89334f9707ef7114b14c5b0119ebd9a7106cec65",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27076955580",
-  "success": true,
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/27076988391",
+  "success": false,
   "summary": {
     "total": 6,
-    "passed": 3,
-    "failed": 0
+    "passed": 0,
+    "failed": 3
   },
   "workflows": [
     {
       "name": "apply_animation",
-      "status": "pass",
-      "duration_seconds": 90.43,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 10.0,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"model_fbx_path\":[\"9\",0]},\"_meta\":{}}",
       "hardware": {
-        "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 1.08,
-          "avg": 0.99
+          "peak": 0.52,
+          "avg": 0.52
         },
         "total_ram_gb": 16.0,
-        "samples": 90
+        "samples": 10
       }
     },
     {
@@ -41,38 +41,38 @@
     },
     {
       "name": "rigged_manipulator",
-      "status": "pass",
-      "duration_seconds": 20.53,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 6.81,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 2 nodes, missing class_type: [3,4], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_output_path\":[\"4\",0]},\"_meta\":{}}",
       "hardware": {
-        "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 1.03,
-          "avg": 0.89
+          "peak": 0.52,
+          "avg": 0.52
         },
         "total_ram_gb": 16.0,
-        "samples": 21
+        "samples": 7
       }
     },
     {
       "name": "skeleton_comparison",
-      "status": "pass",
-      "duration_seconds": 11.77,
-      "error": null,
+      "status": "fail",
+      "duration_seconds": 6.01,
+      "error": "Workflow validation failed\n\nDetails:\ngraphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {\"inputs\":{\"UNKNOWN\":\"\",\"fbx_path_left\":[\"54\",0],\"fbx_path_right\":[\"55\",0]},\"_meta\":{}}",
       "hardware": {
-        "os": "Windows-10-10.0.26100-SP0",
-        "cpu": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD"
+        "os": "Windows-2025Server-10.0.26100-SP0",
+        "cpu": "AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 0.98,
-          "avg": 0.98
+          "peak": 0.52,
+          "avg": 0.52
         },
         "total_ram_gb": 16.0,
-        "samples": 12
+        "samples": 6
       }
     },
     {
