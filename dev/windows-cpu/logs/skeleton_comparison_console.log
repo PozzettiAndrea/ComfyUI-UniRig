@@ -33,16 +33,16 @@
 [Console-log] [UniRig Debug] Registering Preview Rigged Mesh node
 [Console-log] [UniRig Compare] Registering Compare Skeletons node
 [Console-log] [UniRig] Node created, adding FBX viewer widget
-[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1779737403624
+[Console-log] [UniRig] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx.html?v=1780789258492
 [Console-log] [UniRig] Widget created: DOMWidgetImpl
-[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41884/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
+[Console-log] [FBX Viewer] Three.js bundle loaded from: http://127.0.0.1:41886/extensions/ComfyUI-UniRig/js/viewer-bundle-three.js
 [Console-log] [FBX Viewer] Initializing...
 [Console-log] [FBX Viewer] Ready
 [Console-log] [UniRig] Viewer iframe is ready!
 [Console-log] [UniRig] Iframe loaded successfully
 [Console-log] [FBX Viewer] Received postMessage: {type: RESIZE, width: 478.69683837890625, height: 699.3309936523438}
 [Console-log] [UniRig Compare] Node created, adding compare viewer widget
-[Console-log] [UniRig Compare] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=1779737404599
+[Console-log] [UniRig Compare] Setting iframe src to: /extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=1780789259413
 [Console-log] [UniRig Compare] Widget created: DOMWidgetImpl
 [Console-log] [UniRig Compare] Three.js bundle loaded
 [Console-log] [UniRig Compare] Initializing dual viewer...
@@ -52,11 +52,11 @@
 [Console-log] [UniRig Compare] Iframe loaded successfully
 [Console-log] [comfy-test] graphToPrompt: 3 nodes, missing class_type: [], sample: {"inputs":{"fbx_path_left":["54",0],"fbx_path_right":["55",0],"preview":""},"class_type":"UniRigCompareSkeletons","_meta":{"title":"UniRig: Compare Skeletons"}}
 [Console-log] [UniRig Compare] onExecuted called with message: {fbx_file_left: Array(1), fbx_file_right: Array(1)}
-[Console-log] [UniRig Compare] Loading FBX files - Left: loaded_1779737408_mixamo.fbx Right: loaded_1779737407_mixamo.fbx
+[Console-log] [UniRig Compare] Loading FBX files - Left: loaded_1780789263_mixamo.fbx Right: loaded_1780789262_mixamo.fbx
 [Console-log] [UniRig Compare] Sending postMessage to iframe
-[Console-log] [UniRig Compare] Received message: {type: LOAD_FBX_COMPARE, filepathLeft: http://127.0.0.1:41884/view?filename=loaded_1779737408_mixamo.fbx&type=output&subfolder=, filepathRight: http://127.0.0.1:41884/view?filename=loaded_1779737407_mixamo.fbx&type=output&subfolder=, timestamp: 1779737409409}
-[Console-log] [UniRig Compare] Loading: http://127.0.0.1:41884/view?filename=loaded_1779737408_mixamo.fbx&type=output&subfolder=
-[Console-log] [UniRig Compare] Loading: http://127.0.0.1:41884/view?filename=loaded_1779737407_mixamo.fbx&type=output&subfolder=
+[Console-log] [UniRig Compare] Received message: {type: LOAD_FBX_COMPARE, filepathLeft: http://127.0.0.1:41886/view?filename=loaded_1780789263_mixamo.fbx&type=output&subfolder=, filepathRight: http://127.0.0.1:41886/view?filename=loaded_1780789262_mixamo.fbx&type=output&subfolder=, timestamp: 1780789263671}
+[Console-log] [UniRig Compare] Loading: http://127.0.0.1:41886/view?filename=loaded_1780789263_mixamo.fbx&type=output&subfolder=
+[Console-log] [UniRig Compare] Loading: http://127.0.0.1:41886/view?filename=loaded_1780789262_mixamo.fbx&type=output&subfolder=
 [Console-log] [UniRig Compare] FBX loaded for labelRight
 [Console-log] [UniRig Compare] Loaded successfully
 [Console-log] [UniRig Compare] FBX loaded for labelLeft
