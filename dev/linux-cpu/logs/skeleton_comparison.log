@@ -1,6 +1,8 @@
 Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
   [ComfyUI] [32m[INFO][0m === /validate endpoint called ===
@@ -17,17 +19,17 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [32m[INFO][0m   Node 54: UniRigLoadRiggedMesh
   [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_file": "3d/mixamo.fbx"}
   [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_file": "3d/mixamo.fbx"}
+  [ComfyUI] [32m[INFO][0m   Node 55: UniRigLoadRiggedMesh
+  [ComfyUI] [32m[INFO][0m   Node 55: UniRigLoadRiggedMesh
+  [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
+  [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 89c1eded-202d-43bf-b439-73ceff8f585e
+  [ComfyUI] [32m[INFO][0m Generated prompt_id: 89c1eded-202d-43bf-b439-73ceff8f585e
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
+  [ComfyUI] [32m[INFO][0m Validation result: valid=True
   Queuing workflow for execution...
-  [ComfyUI] [32m[INFO][0m   Node 55: UniRigLoadRiggedMesh
-  [ComfyUI] [32m[INFO][0m   Node 55: UniRigLoadRiggedMesh
-  [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
-  [ComfyUI] [32m[INFO][0m     Inputs: {"fbx_file": "animation_characters/mixamo.fbx"}
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c11d773c-a5ea-488a-9e09-08797fbd0d55
-  [ComfyUI] [32m[INFO][0m Generated prompt_id: c11d773c-a5ea-488a-9e09-08797fbd0d55
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Calling execution.validate_prompt()...
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
-  [ComfyUI] [32m[INFO][0m Validation result: valid=True
   [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   [ComfyUI] [32m[INFO][0m === Validation PASSED ===
   [ComfyUI] [32m[INFO][0m got prompt
@@ -56,8 +58,8 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.47s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.47s): result: NodeOutput
   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
   [ComfyUI] [comfy-env] Running UniRigLoadRiggedMesh: fbx_file: '3d/mixamo.fbx'
   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigLoadRiggedMesh.EXECUTE_NORMALIZED
@@ -82,8 +84,8 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [worker:ComfyUI-UniRig] FBX version: 7400
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [SubprocessWorker] got response: ok
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.23s): result: NodeOutput
-  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.23s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
+  [ComfyUI] [comfy-env] UniRigLoadRiggedMesh done (0.22s): result: NodeOutput
   [ComfyUI] [comfy-env] Running UniRigCompareSkeletons: fbx_path_left: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., fbx_path_right: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
   [ComfyUI] [comfy-env] Running UniRigCompareSkeletons: fbx_path_left: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa..., fbx_path_right: '/home/runner/work/comfy-gpu-ci/comfy-gpu-ci/test_workspa...
   [ComfyUI] [SubprocessWorker] call_method: nodes.skeleton_io.UniRigCompareSkeletons.EXECUTE_NORMALIZED
@@ -108,16 +110,16 @@ Capturing execution frames: skeleton_comparison.json
   [ComfyUI] [SubprocessWorker] got response: ok
   [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.01s): result: NodeOutput
   [ComfyUI] [comfy-env] UniRigCompareSkeletons done (0.01s): result: NodeOutput
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.47 seconds[0m
-  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.47 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.69 seconds[0m
+  [ComfyUI] [32m[INFO][0m [32mPrompt executed in 0.69 seconds[0m
   Node executed (1 total), capturing...
-  Frame 2 saved (frame_001.jpg, t=0.8s)
-  [capture-node] freeze=1278ms shot=220ms unfreeze=3ms saved=True
-  Execution complete (t=2.6s)
-  Captured 2 unique frames over 2.68s
+  Frame 2 saved (frame_001.jpg, t=1.0s)
+  [capture-node] freeze=1289ms shot=222ms unfreeze=0ms saved=True
+  Execution complete (t=1.0s)
+  Captured 2 unique frames over 2.58s
   [debug] iframes: 1
-  [debug]   iframe[0]: src=http://127.0.0.1:41889/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17807, canvas=387x330, rafFrozen=False
-  [timing] trigger_3d_previews: 0.1s
+  [debug]   iframe[0]: src=http://127.0.0.1:41888/extensions/ComfyUI-UniRig/viewer_fbx_compare.html?v=17807, canvas=387x330, rafFrozen=True
+  [timing] trigger_3d_previews: 0.0s
   Saved high-quality screenshot: skeleton_comparison_executed.png
   [timing] final_screenshot: 0.2s
     Captured 3 video frames
