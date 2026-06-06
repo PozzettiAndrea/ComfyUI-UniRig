@@ -1,51 +1,51 @@
-setup plugin alembic.autogenerate.schemas
-setup plugin alembic.autogenerate.tables
-setup plugin alembic.autogenerate.types
-setup plugin alembic.autogenerate.constraints
-setup plugin alembic.autogenerate.defaults
-setup plugin alembic.autogenerate.comments
+[32m[INFO][0m setup plugin alembic.autogenerate.schemas
+[32m[INFO][0m setup plugin alembic.autogenerate.tables
+[32m[INFO][0m setup plugin alembic.autogenerate.types
+[32m[INFO][0m setup plugin alembic.autogenerate.constraints
+[32m[INFO][0m setup plugin alembic.autogenerate.defaults
+[32m[INFO][0m setup plugin alembic.autogenerate.comments
 [comfy-env] ComfyUI-UniRig: 1 isolation env(s):
-[comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes
+[comfy-env]   nodes -> D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig\nodes
 [comfy-env] Workspace: C:\Users\stduser\AppData\Local\Programs\comfy-env
 [comfy-env]     env: C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default  [OK]
 [comfy-env] prestartup complete
-
+[32m[INFO][0m 
 Prestartup times for custom nodes:
-   0.3 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
-
-D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py:180: UserWarning: cudaGetDeviceCount() returned cudaErrorNotSupported, likely using older driver or on CPU machine (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10\cuda\CUDAFunctions.cpp:88.)
+[32m[INFO][0m    0.3 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
+[32m[INFO][0m 
+D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\torch\cuda\__init__.py:187: UserWarning: cudaGetDeviceCount() returned cudaErrorNotSupported, likely using older driver or on CPU machine (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\c10\cuda\CUDAFunctions.cpp:88.)
   return torch._C._cuda_getDeviceCount() > 0
-Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4']}
-Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
-Found comfy_kitchen backend cuda: {'available': False, 'disabled': False, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
-Checkpoint files will always be loaded safely.
-Total VRAM 16379 MB, total RAM 16379 MB
-pytorch version: 2.11.0+cu130
-Set vram state to: DISABLED
-Device: cpu
-Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
-Python version: 3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]
-ComfyUI version: 0.22.0
-comfy-aimdo version: 0.3.0
-comfy-kitchen version: 0.2.8
-****** User settings have been changed to be stored on the server instead of browser storage. ******
-****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
-comfyui-frontend-package version: 1.43.18
-comfyui-workflow-templates version: 0.9.79
-comfyui-embedded-docs version: 0.5.0
-comfy-kitchen version: 0.2.8
-comfy-aimdo version: 0.3.0
-[Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfyui_frontend_package\static
-Asset seeder disabled
-loading...
-calling register_nodes
+[32m[INFO][0m Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'apply_rope_split_half', 'apply_rope_split_half1', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'gemv_awq_w4a16', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8']}
+[32m[INFO][0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+[32m[INFO][0m Found comfy_kitchen backend cuda: {'available': False, 'disabled': False, 'unavailable_reason': 'CUDA not available on this system', 'capabilities': []}
+[32m[INFO][0m Checkpoint files will always be loaded safely.
+[32m[INFO][0m Total VRAM 16379 MB, total RAM 16379 MB
+[32m[INFO][0m pytorch version: 2.12.0+cu130
+[32m[INFO][0m Set vram state to: DISABLED
+[32m[INFO][0m Device: cpu
+[32m[INFO][0m Using sub quadratic optimization for attention, if you have memory or speed issues try using: --use-split-cross-attention
+[32m[INFO][0m Python version: 3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]
+[32m[INFO][0m ComfyUI version: 0.24.0
+[32m[INFO][0m comfy-aimdo version: 0.4.8
+[32m[INFO][0m comfy-kitchen version: 0.2.10
+[1m[33m[WARNING][0m ****** User settings have been changed to be stored on the server instead of browser storage. ******
+[1m[33m[WARNING][0m ****** For multi-user setups add the --multi-user CLI argument to enable multiple user profiles. ******
+[32m[INFO][0m comfyui-frontend-package version: 1.44.19
+[32m[INFO][0m comfyui-workflow-templates version: 0.9.94
+[32m[INFO][0m comfyui-embedded-docs version: 0.5.2
+[32m[INFO][0m comfy-kitchen version: 0.2.10
+[32m[INFO][0m comfy-aimdo version: 0.4.8
+[32m[INFO][0m [Prompt Server] web root: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\python_embeded\Lib\site-packages\comfyui_frontend_package\static
+[32m[INFO][0m Asset seeder disabled
+[32m[INFO][0m loading...
+[32m[INFO][0m calling register_nodes
 [comfy-env] Version: 0.4.1
 [comfy-env] register_nodes: ComfyUI-UniRig
-[comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI
+[comfy-env] ComfyUI source dir: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI
 [comfy-env] Found 1 isolation env(s)
 [comfy-env] Scanning nodes metadata (isolation root)...
 [comfy-env] default: Library/bin has 237 DLLs
-[comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_tdci7es_.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_usewwv8s.pkl
+[comfy-env] Metadata scan: C:\Users\stduser\.pixi\bin\pixi.exe run --as-is --manifest-path C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\pixi.toml -e default python C:\Users\stduser\AppData\Local\Temp\comfy_meta_bct1edz1.py D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig nodes C:\Users\stduser\AppData\Local\Temp\comfy_meta_out_kvo575w9.pkl
 [comfy-env] Scan env PATH for nodes:
 [comfy-env]   [0] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default
 [comfy-env]   [1] C:\Users\stduser\AppData\Local\Programs\comfy-env\envs\unirig-nodes\.pixi\envs\default\Library\bin
@@ -55,35 +55,50 @@ calling register_nodes
 [comfy-env]   [5] C:\Windows
 [comfy-env]   [6] C:\Windows\System32\Wbem
 [comfy-env] Metadata scan stderr for nodes:
-[comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
+[comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
 [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
 [comfy-env]   [meta-scan] import OK
-[comfy-env] Metadata scan failed for nodes (exit 3221225477, 60.1s):
-[comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
+[comfy-env] Metadata scan failed for nodes (exit 3221225477, 39.7s):
+[comfy-env]   [meta-scan] importing nodes from D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
 [comfy-env]   ERROR:root:Failed to import comfy_kitchen, Error: No module named 'comfy_kitchen', fp8 and fp4 support will not be available.
+[comfy-env]   WARNING:root:comfy_kitchen does not support stochastic FP8 rounding, please update comfy_kitchen.
 [comfy-env]   [meta-scan] import OK
-[comfy-env] Scanned nodes root: 0 nodes (60.4s)
+[comfy-env] Scanned nodes root: 0 nodes (39.7s)
 [comfy-env] Imported nodes root: 0 nodes (isolation)
 [comfy-env] Registered 0 total nodes
-
+[32m[INFO][0m 
 Import times for custom nodes:
-   0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\websocket_image_save.py
-   0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
-   0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-CameraPack
-  61.1 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-1923\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
-
-Context impl SQLiteImpl.
-Will assume non-transactional DDL.
-Context impl SQLiteImpl.
-Will assume non-transactional DDL.
-Running upgrade  -> 0001_assets, Initial assets schema
+[32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\websocket_image_save.py
+[32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-validate-endpoint
+[32m[INFO][0m    0.0 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-CameraPack
+[32m[INFO][0m   40.4 seconds: D:\a\comfy-gpu-ci\comfy-gpu-ci\test_workspaces\UniRig-2335\portable-comfyui\ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI-UniRig
+[32m[INFO][0m 
+[32m[INFO][0m Context impl SQLiteImpl.
+[32m[INFO][0m Will assume non-transactional DDL.
+[32m[INFO][0m Context impl SQLiteImpl.
+[32m[INFO][0m Will assume non-transactional DDL.
+[32m[INFO][0m Running upgrade  -> 0001_assets, Initial assets schema
 Revision ID: 0001_assets
 Revises: None
 Create Date: 2025-12-10 00:00:00
-Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
-Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
+[32m[INFO][0m Running upgrade 0001_assets -> 0002_merge_to_asset_references, Merge AssetInfo and AssetCacheState into unified asset_references table.
+[32m[INFO][0m Running upgrade 0002_merge_to_asset_references -> 0003_add_metadata_job_id, Add system_metadata and job_id columns to asset_references.
 Change preview_id FK from assets.id to asset_references.id.
-Database upgraded from None to 0003_add_metadata_job_id
-Starting server
+[32m[INFO][0m Database upgraded from None to 0003_add_metadata_job_id
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Starting server
 
-To see the GUI go to: http://127.0.0.1:41895
+[32m[INFO][0m To see the GUI go to: http://127.0.0.1:41890
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.
+[32m[INFO][0m Using RAM pressure cache.

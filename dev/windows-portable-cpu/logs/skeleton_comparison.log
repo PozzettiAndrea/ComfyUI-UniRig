@@ -1,4 +1,8 @@
 Capturing execution frames: skeleton_comparison.json
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 3 nodes, missing class_type: [49,54,55], sample: {"inputs":{"UNKNOWN":"","fbx_path_left":["54",0],"fbx_path_right":["55",0]},"_meta":{}}

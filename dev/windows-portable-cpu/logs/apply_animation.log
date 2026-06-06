@@ -1,4 +1,6 @@
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
 Capturing execution frames: apply_animation.json
+  [ComfyUI] [32m[INFO][0m Using RAM pressure cache.
   Frame 1 saved (frame_000.jpg, t=0.0s)
   Validating workflow...
   Validation failed: graphToPrompt produced nodes without class_type: graphToPrompt: 4 nodes, missing class_type: [6,9], sample: {"inputs":{"UNKNOWN":"","model_fbx_path":["9",0]},"_meta":{}}
