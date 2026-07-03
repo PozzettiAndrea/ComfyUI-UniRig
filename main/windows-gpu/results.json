@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-18T16:05:16.268279+00:00",
+  "timestamp": "2026-05-19T17:14:57.928108+00:00",
   "platform": "windows",
   "hardware": {
     "os": "Windows-11-10.0.26100-SP0",
-    "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
+    "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD"
   },
-  "commit_hash": "0da41dba0beadc5dbcde953309149f3c0e61076c",
-  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26042392662",
+  "commit_hash": "89334f9707ef7114b14c5b0119ebd9a7106cec65",
+  "run_url": "https://github.com/PozzettiAndrea/comfy-gpu-ci/actions/runs/26108870020",
   "success": true,
   "summary": {
     "total": 6,
@@ -24,19 +24,19 @@
     {
       "name": "mia_humanoid",
       "status": "pass",
-      "duration_seconds": 117.68,
+      "duration_seconds": 93.85,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
-        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 4.43,
-          "avg": 2.78
+          "peak": 4.63,
+          "avg": 2.84
         },
-        "total_ram_gb": 31.9,
-        "samples": 116
+        "total_ram_gb": 23.9,
+        "samples": 93
       }
     },
     {
@@ -56,37 +56,37 @@
     {
       "name": "unirig_bird",
       "status": "pass",
-      "duration_seconds": 113.75,
+      "duration_seconds": 102.67,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
-        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 7.38,
-          "avg": 5.85
+          "peak": 6.07,
+          "avg": 2.67
         },
-        "total_ram_gb": 31.9,
-        "samples": 112
+        "total_ram_gb": 23.9,
+        "samples": 102
       }
     },
     {
       "name": "unirig_humanoid",
       "status": "pass",
-      "duration_seconds": 103.64,
+      "duration_seconds": 78.78,
       "error": null,
       "hardware": {
         "os": "Windows-11-10.0.26100-SP0",
-        "cpu": "Intel64 Family 6 Model 79 Stepping 1, GenuineIntel"
+        "cpu": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD"
       },
       "resources": {
         "ram": {
-          "peak": 6.91,
-          "avg": 2.87
+          "peak": 4.67,
+          "avg": 2.95
         },
-        "total_ram_gb": 31.9,
-        "samples": 103
+        "total_ram_gb": 23.9,
+        "samples": 78
       }
     }
   ]
