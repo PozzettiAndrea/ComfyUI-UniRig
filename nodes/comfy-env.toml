@@ -22,6 +22,7 @@ cuda-cccl = "*"
 packages = ["torch-scatter", "torch-cluster", "flash-attn", "cumm", "spconv"]
 
 [pypi-dependencies]
+comfy-kitchen = "*"
 # Blender
 trimesh = { version = "*", extras = ["easy"] }
 psutil = "*"
