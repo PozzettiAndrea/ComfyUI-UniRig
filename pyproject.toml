@@ -10,4 +10,5 @@ Repository = "https://github.com/PozzettiAndrea/ComfyUI-UniRig"
 [tool.comfy]
 PublisherId = "pznodes"
 DisplayName = "UniRig"
+web = "javascript"
 Icon = "https://raw.githubusercontent.com/PozzettiAndrea/ComfyUI-UniRig/main/assets/icon.png"

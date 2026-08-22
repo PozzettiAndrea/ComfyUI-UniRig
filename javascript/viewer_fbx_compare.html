@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FBX Compare Viewer - Side-by-Side Skeleton Comparison</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #2a2a2a;
+            font-family: monospace;
+            width: 100%;
+            height: 100vh;
+        }
+        .compare-container {
+            display: flex;
+            width: 100%;
+            height: calc(100% - 200px);
+        }
+        .viewer-panel {
+            flex: 1;
+            position: relative;
+            border-right: 1px solid #444;
+        }
+        .viewer-panel:last-child {
+            border-right: none;
+        }
+        .viewer-panel canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .viewer-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #00ffff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            z-index: 10;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Bone Info Panel - Below Canvas */
+        #boneInfoPanel {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 80px;
+            height: 80px;
+            background: rgba(26, 26, 26, 0.95);
+            border-top: 1px solid #444;
+            border-bottom: 1px solid #444;
+            padding: 8px 15px;
+            color: white;
+            font-size: 11px;
+            overflow-x: auto;
+            z-index: 100;
+            display: none;
+        }
+        #boneInfoPanel.visible {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        #boneInfoPanel h3 {
+            margin: 0;
+            font-size: 12px;
+            color: #00ffff;
+            white-space: nowrap;
+        }
+        #boneInfoPanel .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        #boneInfoPanel .info-row {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        #boneInfoPanel .info-label {
+            color: #888;
+            font-size: 10px;
+        }
+        #boneInfoPanel .info-value {
+            color: #fff;
+            font-family: monospace;
+            font-size: 11px;
+        }
+        #boneInfoPanel .match-status {
+            padding: 6px 12px;
+            border-radius: 3px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        #boneInfoPanel .match-status.found {
+            background: rgba(0, 255, 0, 0.2);
+            color: #44ff44;
+        }
+        #boneInfoPanel .match-status.not-found {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff4444;
+        }
+
+        /* Controls Panel - Bottom */
+        #controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            border-top: 1px solid #444;
+            padding: 10px;
+            color: white;
+            font-size: 11px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+        #controls button {
+            background: #4a4a4a;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+        #controls button:hover {
+            background: #5a5a5a;
+        }
+        #controls button.active {
+            background: #007acc;
+        }
+        .control-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 2px 0;
+        }
+        .checkbox-label input[type="checkbox"] {
+            cursor: pointer;
+        }
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .slider-group label {
+            min-width: 60px;
+            font-size: 10px;
+            color: #aaa;
+        }
+        .slider-group input[type="range"] {
+            width: 80px;
+            cursor: pointer;
+        }
+        .slider-group .slider-value {
+            min-width: 30px;
+            font-size: 10px;
+            color: #fff;
+        }
+        #status {
+            color: #888;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <div class="compare-container">
+        <div class="viewer-panel" id="viewerLeft">
+            <div class="viewer-label" id="labelLeft">Left Skeleton</div>
+            <canvas id="canvasLeft"></canvas>
+            <div id="loading">Ready to load skeletons</div>
+        </div>
+        <div class="viewer-panel" id="viewerRight">
+            <div class="viewer-label" id="labelRight">Right Skeleton</div>
+            <canvas id="canvasRight"></canvas>
+        </div>
+    </div>
+
+    <!-- Bone Info Panel - Below Canvas -->
+    <div id="boneInfoPanel">
+        <h3>Bone Comparison</h3>
+        <div class="info-section">
+            <div class="info-label">Bone</div>
+            <div class="info-value" id="boneName">-</div>
+        </div>
+        <div class="info-section">
+            <div class="info-label">Source</div>
+            <div class="info-value" id="boneSource">-</div>
+        </div>
+        <div class="info-section">
+            <div class="info-label">Left Position</div>
+            <div class="info-value" id="leftPos">-</div>
+        </div>
+        <div class="info-section">
+            <div class="info-label">Right Position</div>
+            <div class="info-value" id="rightPos">-</div>
+        </div>
+        <div class="info-section">
+            <div class="info-label">Left Rotation</div>
+            <div class="info-value" id="leftRot">-</div>
+        </div>
+        <div class="info-section">
+            <div class="info-label">Right Rotation</div>
+            <div class="info-value" id="rightRot">-</div>
+        </div>
+        <div class="match-status" id="matchStatus">-</div>
+    </div>
+
+    <div id="controls">
+        <div><strong>FBX Compare Viewer</strong> - Side-by-Side Skeleton Comparison</div>
+
+        <div class="control-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="showSkeleton" checked>
+                <span>Skeleton</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="showMesh" checked>
+                <span>Mesh</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="xraySkeleton" checked>
+                <span>X-Ray</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="showBoneAxes" checked>
+                <span>Axes</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="showBoneNames">
+                <span>Names</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="syncCameras" checked>
+                <span>Sync Cameras</span>
+            </label>
+        </div>
+
+        <div class="control-group">
+            <div class="slider-group">
+                <label>Bone Size:</label>
+                <input type="range" id="boneSizeSlider" min="0.5" max="3" value="1" step="0.1">
+                <span class="slider-value" id="boneSizeValue">1.0x</span>
+            </div>
+            <div class="slider-group">
+                <label>Axis Size:</label>
+                <input type="range" id="axisSizeSlider" min="0.5" max="5" value="1" step="0.1">
+                <span class="slider-value" id="axisSizeValue">1.0x</span>
+            </div>
+            <button id="resetCamera">Reset Camera</button>
+        </div>
+
+        <div id="status">No skeletons loaded</div>
+    </div>
+
+    <script>
+        // Dynamically load Three.js bundle
+        (function() {
+            var docUrl = window.location.href;
+            var baseUrl = '';
+            if (docUrl.indexOf('/extensions/') !== -1) {
+                var match = docUrl.match(/\/extensions\/[^\/]+\//);
+                if (match) {
+                    baseUrl = match[0];
+                }
+            }
+
+            var bundleScript = document.createElement('script');
+            bundleScript.src = baseUrl + 'js/viewer-bundle-three.js';
+            bundleScript.onload = function() {
+                console.log('[UniRig Compare] Three.js bundle loaded');
+                initViewer();
+            };
+            bundleScript.onerror = function() {
+                console.error('[UniRig Compare] Failed to load bundle');
+                document.getElementById('loading').textContent = 'Error: Failed to load 3D library';
+                document.getElementById('loading').style.color = '#ff6666';
+            };
+            document.head.appendChild(bundleScript);
+        })();
+
+        function initViewer() {
+            const THREE = window.THREE;
+            const OrbitControls = window.OrbitControls;
+            const FBXLoader = window.FBXLoader;
+
+            console.log('[UniRig Compare] Initializing dual viewer...');
+
+            const loading = document.getElementById('loading');
+            const statusEl = document.getElementById('status');
+            const boneInfoPanel = document.getElementById('boneInfoPanel');
+
+            // Create two viewer contexts
+            function createViewerContext(canvasId) {
+                const canvas = document.getElementById(canvasId);
+                const container = canvas.parentElement;
+
+                const scene = new THREE.Scene();
+                scene.background = new THREE.Color(0x2a2a2a);
+
+                const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+                camera.position.set(2, 2, 2);
+
+                const renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    antialias: true,
+                    powerPreference: 'high-performance'
+                });
+
+                const controls = new OrbitControls(camera, canvas);
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.05;
+                controls.zoomSpeed = 3.0;
+                controls.minDistance = 0.1;
+
+                // Lighting
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+                scene.add(ambientLight);
+                const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+                dirLight.position.set(5, 10, 7);
+                scene.add(dirLight);
+
+                // Grid
+                const grid = new THREE.GridHelper(10, 10, 0x444444, 0x222222);
+                scene.add(grid);
+
+                // Axes
+                const axes = new THREE.AxesHelper(1);
+                scene.add(axes);
+
+                return {
+                    canvas,
+                    container,
+                    scene,
+                    camera,
+                    renderer,
+                    controls,
+                    grid,
+                    axes,
+                    model: null,
+                    bones: [],
+                    boneGizmos: [],
+                    boneAxesHelpers: [],
+                    boneLabels: [],
+                    boneLines: [],
+                    skeletonHelper: null,
+                    meshBounds: null,
+                    boneGizmoSize: 0.03,
+                    filename: null
+                };
+            }
+
+            const viewerLeft = createViewerContext('canvasLeft');
+            const viewerRight = createViewerContext('canvasRight');
+
+            // State
+            let selectedBone = null;
+            let selectedViewer = null;
+            let syncCameras = true;
+            let boneAxesSize = 1.0;
+            let boneLabelSize = 1.0;
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            // Sync camera controls
+            let isSyncing = false;
+
+            function setupCameraSync(source, target) {
+                source.controls.addEventListener('change', () => {
+                    if (!syncCameras || isSyncing) return;
+                    isSyncing = true;
+                    target.camera.position.copy(source.camera.position);
+                    target.camera.quaternion.copy(source.camera.quaternion);
+                    target.controls.target.copy(source.controls.target);
+                    target.controls.update();
+                    isSyncing = false;
+                });
+            }
+
+            setupCameraSync(viewerLeft, viewerRight);
+            setupCameraSync(viewerRight, viewerLeft);
+
+            // Format number
+            function formatNum(num, decimals = 3) {
+                return num.toFixed(decimals);
+            }
+
+            function radToDeg(rad) {
+                return (rad * 180 / Math.PI).toFixed(1);
+            }
+
+            // Create bone axes helper
+            function createBoneAxes(bone, size, xray) {
+                const group = new THREE.Group();
+                group.userData.bone = bone;
+
+                const arrowLength = size;
+                const arrowHeadLength = size * 0.3;
+                const arrowHeadWidth = size * 0.15;
+
+                const xArrow = new THREE.ArrowHelper(
+                    new THREE.Vector3(1, 0, 0), new THREE.Vector3(),
+                    arrowLength, 0xff4444, arrowHeadLength, arrowHeadWidth
+                );
+                xArrow.line.material.depthTest = !xray;
+                xArrow.cone.material.depthTest = !xray;
+                group.add(xArrow);
+
+                const yArrow = new THREE.ArrowHelper(
+                    new THREE.Vector3(0, 1, 0), new THREE.Vector3(),
+                    arrowLength, 0x44ff44, arrowHeadLength, arrowHeadWidth
+                );
+                yArrow.line.material.depthTest = !xray;
+                yArrow.cone.material.depthTest = !xray;
+                group.add(yArrow);
+
+                const zArrow = new THREE.ArrowHelper(
+                    new THREE.Vector3(0, 0, 1), new THREE.Vector3(),
+                    arrowLength, 0x4444ff, arrowHeadLength, arrowHeadWidth
+                );
+                zArrow.line.material.depthTest = !xray;
+                zArrow.cone.material.depthTest = !xray;
+                group.add(zArrow);
+
+                return group;
+            }
+
+            // Create bone label sprite
+            function createBoneLabel(bone, name, size) {
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 256;
+                canvas.height = 64;
+
+                context.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                context.font = '24px monospace';
+                context.fillStyle = '#ffffff';
+                context.textAlign = 'center';
+                context.textBaseline = 'middle';
+
+                let displayName = name;
+                if (displayName.length > 20) {
+                    displayName = displayName.substring(0, 17) + '...';
+                }
+                context.fillText(displayName, canvas.width / 2, canvas.height / 2);
+
+                const texture = new THREE.CanvasTexture(canvas);
+                texture.minFilter = THREE.LinearFilter;
+
+                const material = new THREE.SpriteMaterial({
+                    map: texture,
+                    depthTest: false,
+                    transparent: true
+                });
+
+                const sprite = new THREE.Sprite(material);
+                sprite.userData.bone = bone;
+                sprite.scale.set(0.5 * size, 0.125 * size, 1);
+
+                return sprite;
+            }
+
+            // Create visuals for a viewer
+            function createBoneVisuals(viewer) {
+                const xray = document.getElementById('xraySkeleton').checked;
+                const showAxes = document.getElementById('showBoneAxes').checked;
+                const showNames = document.getElementById('showBoneNames').checked;
+
+                // Cleanup existing
+                viewer.boneGizmos.forEach(g => { viewer.scene.remove(g); });
+                viewer.boneAxesHelpers.forEach(h => { viewer.scene.remove(h); });
+                viewer.boneLabels.forEach(l => { viewer.scene.remove(l); });
+                viewer.boneLines.forEach(l => { viewer.scene.remove(l); });
+                viewer.boneGizmos = [];
+                viewer.boneAxesHelpers = [];
+                viewer.boneLabels = [];
+                viewer.boneLines = [];
+
+                if (viewer.bones.length === 0) return;
+
+                // Compute sizes
+                let maxDim = 2;
+                if (viewer.meshBounds) {
+                    const size = viewer.meshBounds.getSize(new THREE.Vector3());
+                    maxDim = Math.max(size.x, size.y, size.z);
+                }
+                viewer.boneGizmoSize = maxDim * 0.02;
+                const axisSize = viewer.boneGizmoSize * 2 * boneAxesSize;
+                const labelSize = maxDim * 0.15 * boneLabelSize;
+
+                viewer.bones.forEach((bone, index) => {
+                    // Gizmo sphere
+                    const geometry = new THREE.SphereGeometry(viewer.boneGizmoSize, 16, 16);
+                    const material = new THREE.MeshBasicMaterial({
+                        color: 0xffaa00,
+                        depthTest: !xray,
+                        transparent: true,
+                        opacity: 0.9
+                    });
+                    const sphere = new THREE.Mesh(geometry, material);
+                    sphere.userData.boneIndex = index;
+                    sphere.userData.bone = bone;
+
+                    const worldPos = new THREE.Vector3();
+                    bone.getWorldPosition(worldPos);
+                    sphere.position.copy(worldPos);
+
+                    viewer.scene.add(sphere);
+                    viewer.boneGizmos.push(sphere);
+
+                    // Axes
+                    if (showAxes) {
+                        const axesGroup = createBoneAxes(bone, axisSize, xray);
+                        axesGroup.userData.boneIndex = index;
+                        viewer.scene.add(axesGroup);
+                        viewer.boneAxesHelpers.push(axesGroup);
+
+                        const worldQuat = new THREE.Quaternion();
+                        bone.getWorldQuaternion(worldQuat);
+                        axesGroup.position.copy(worldPos);
+                        axesGroup.quaternion.copy(worldQuat);
+                    }
+
+                    // Labels
+                    if (showNames) {
+                        const label = createBoneLabel(bone, bone.name || `Bone_${index}`, labelSize);
+                        label.userData.boneIndex = index;
+                        label.position.set(worldPos.x, worldPos.y + viewer.boneGizmoSize * 2, worldPos.z);
+                        viewer.scene.add(label);
+                        viewer.boneLabels.push(label);
+                    }
+
+                    // Lines to parent
+                    if (bone.parent && bone.parent.isBone) {
+                        const parentPos = new THREE.Vector3();
+                        bone.parent.getWorldPosition(parentPos);
+
+                        const lineGeometry = new THREE.BufferGeometry().setFromPoints([parentPos, worldPos]);
+                        const lineMaterial = new THREE.LineBasicMaterial({
+                            color: 0x00ffaa,
+                            depthTest: !xray,
+                            transparent: true,
+                            opacity: 0.7
+                        });
+                        const line = new THREE.Line(lineGeometry, lineMaterial);
+                        line.userData.boneIndex = index;
+                        line.userData.bone = bone;
+                        viewer.scene.add(line);
+                        viewer.boneLines.push(line);
+                    }
+                });
+            }
+
+            // Update bone positions
+            function updateBoneVisuals(viewer) {
+                const xray = document.getElementById('xraySkeleton').checked;
+
+                viewer.boneGizmos.forEach((gizmo, index) => {
+                    const bone = viewer.bones[index];
+                    const worldPos = new THREE.Vector3();
+                    bone.getWorldPosition(worldPos);
+                    gizmo.position.copy(worldPos);
+                    gizmo.material.depthTest = !xray;
+                });
+
+                viewer.boneAxesHelpers.forEach((axesGroup, index) => {
+                    const bone = axesGroup.userData.bone;
+                    if (bone) {
+                        const worldPos = new THREE.Vector3();
+                        const worldQuat = new THREE.Quaternion();
+                        bone.getWorldPosition(worldPos);
+                        bone.getWorldQuaternion(worldQuat);
+                        axesGroup.position.copy(worldPos);
+                        axesGroup.quaternion.copy(worldQuat);
+                    }
+                });
+
+                viewer.boneLabels.forEach((label, index) => {
+                    const bone = label.userData.bone;
+                    if (bone) {
+                        const worldPos = new THREE.Vector3();
+                        bone.getWorldPosition(worldPos);
+                        label.position.set(worldPos.x, worldPos.y + viewer.boneGizmoSize * 2, worldPos.z);
+                    }
+                });
+
+                viewer.boneLines.forEach(line => {
+                    const bone = line.userData.bone;
+                    if (bone && bone.parent && bone.parent.isBone) {
+                        const parentPos = new THREE.Vector3();
+                        const childPos = new THREE.Vector3();
+                        bone.parent.getWorldPosition(parentPos);
+                        bone.getWorldPosition(childPos);
+
+                        const positions = line.geometry.attributes.position;
+                        positions.setXYZ(0, parentPos.x, parentPos.y, parentPos.z);
+                        positions.setXYZ(1, childPos.x, childPos.y, childPos.z);
+                        positions.needsUpdate = true;
+                        line.material.depthTest = !xray;
+                    }
+                });
+            }
+
+            // Find matching bone by name in other viewer
+            function findMatchingBone(boneName, viewer) {
+                return viewer.bones.find(b => b.name === boneName);
+            }
+
+            // Highlight bone
+            function highlightBone(bone, viewer, color = 0x00ffff) {
+                const index = viewer.bones.indexOf(bone);
+                if (index >= 0 && viewer.boneGizmos[index]) {
+                    viewer.boneGizmos[index].material.color.setHex(color);
+                    viewer.boneGizmos[index].material.opacity = 1.0;
+                }
+            }
+
+            // Reset bone highlights
+            function resetBoneHighlights(viewer) {
+                viewer.boneGizmos.forEach(g => {
+                    g.material.color.setHex(0xffaa00);
+                    g.material.opacity = 0.9;
+                });
+            }
+
+            // Update bone info panel for comparison
+            function updateBoneInfoPanel(bone, sourceViewer) {
+                if (!bone) {
+                    boneInfoPanel.classList.remove('visible');
+                    return;
+                }
+
+                boneInfoPanel.classList.add('visible');
+
+                document.getElementById('boneName').textContent = bone.name || 'Unnamed';
+                document.getElementById('boneSource').textContent = sourceViewer === viewerLeft ? 'Left' : 'Right';
+
+                // Get left bone data
+                const leftBone = sourceViewer === viewerLeft ? bone : findMatchingBone(bone.name, viewerLeft);
+                const rightBone = sourceViewer === viewerRight ? bone : findMatchingBone(bone.name, viewerRight);
+
+                if (leftBone) {
+                    const pos = new THREE.Vector3();
+                    const euler = new THREE.Euler();
+                    leftBone.getWorldPosition(pos);
+                    const quat = new THREE.Quaternion();
+                    leftBone.getWorldQuaternion(quat);
+                    euler.setFromQuaternion(quat, 'XYZ');
+
+                    document.getElementById('leftPos').textContent =
+                        `(${formatNum(pos.x)}, ${formatNum(pos.y)}, ${formatNum(pos.z)})`;
+                    document.getElementById('leftRot').textContent =
+                        `(${radToDeg(euler.x)}, ${radToDeg(euler.y)}, ${radToDeg(euler.z)})`;
+                } else {
+                    document.getElementById('leftPos').textContent = 'N/A';
+                    document.getElementById('leftRot').textContent = 'N/A';
+                }
+
+                if (rightBone) {
+                    const pos = new THREE.Vector3();
+                    const euler = new THREE.Euler();
+                    rightBone.getWorldPosition(pos);
+                    const quat = new THREE.Quaternion();
+                    rightBone.getWorldQuaternion(quat);
+                    euler.setFromQuaternion(quat, 'XYZ');
+
+                    document.getElementById('rightPos').textContent =
+                        `(${formatNum(pos.x)}, ${formatNum(pos.y)}, ${formatNum(pos.z)})`;
+                    document.getElementById('rightRot').textContent =
+                        `(${radToDeg(euler.x)}, ${radToDeg(euler.y)}, ${radToDeg(euler.z)})`;
+                } else {
+                    document.getElementById('rightPos').textContent = 'N/A';
+                    document.getElementById('rightRot').textContent = 'N/A';
+                }
+
+                // Match status
+                const matchStatus = document.getElementById('matchStatus');
+                const otherViewer = sourceViewer === viewerLeft ? viewerRight : viewerLeft;
+                const matchingBone = findMatchingBone(bone.name, otherViewer);
+
+                if (matchingBone) {
+                    matchStatus.className = 'match-status found';
+                    matchStatus.textContent = 'Matching bone found in other skeleton';
+                } else {
+                    matchStatus.className = 'match-status not-found';
+                    matchStatus.textContent = 'No matching bone in other skeleton';
+                }
+            }
+
+            // Handle bone click
+            function handleBoneClick(event, viewer) {
+                if (viewer.bones.length === 0) return;
+
+                const rect = viewer.canvas.getBoundingClientRect();
+                mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+                raycaster.setFromCamera(mouse, viewer.camera);
+                const intersects = raycaster.intersectObjects(viewer.boneGizmos);
+
+                // Reset all highlights
+                resetBoneHighlights(viewerLeft);
+                resetBoneHighlights(viewerRight);
+
+                if (intersects.length > 0) {
+                    const clickedGizmo = intersects[0].object;
+                    const bone = clickedGizmo.userData.bone;
+
+                    selectedBone = bone;
+                    selectedViewer = viewer;
+
+                    // Highlight clicked bone
+                    highlightBone(bone, viewer, 0x00ffff);
+
+                    // Find and highlight matching bone in other viewer
+                    const otherViewer = viewer === viewerLeft ? viewerRight : viewerLeft;
+                    const matchingBone = findMatchingBone(bone.name, otherViewer);
+                    if (matchingBone) {
+                        highlightBone(matchingBone, otherViewer, 0xff00ff);
+                    }
+
+                    updateBoneInfoPanel(bone, viewer);
+                    statusEl.textContent = `Selected: ${bone.name || 'Unnamed'}`;
+                } else {
+                    selectedBone = null;
+                    selectedViewer = null;
+                    boneInfoPanel.classList.remove('visible');
+                    statusEl.textContent = `Left: ${viewerLeft.bones.length} bones | Right: ${viewerRight.bones.length} bones`;
+                }
+            }
+
+            viewerLeft.canvas.addEventListener('click', (e) => handleBoneClick(e, viewerLeft));
+            viewerRight.canvas.addEventListener('click', (e) => handleBoneClick(e, viewerRight));
+
+            // Load FBX into viewer
+            function loadFBX(viewer, filepath, labelId) {
+                console.log('[UniRig Compare] Loading:', filepath);
+
+                const loader = new FBXLoader();
+                loader.load(
+                    filepath,
+                    (fbx) => {
+                        console.log('[UniRig Compare] FBX loaded for', labelId);
+                        console.log('[UniRig Compare] Loaded successfully');
+
+                        // Remove old model
+                        if (viewer.model) {
+                            viewer.scene.remove(viewer.model);
+                        }
+                        if (viewer.skeletonHelper) {
+                            viewer.scene.remove(viewer.skeletonHelper);
+                        }
+
+                        viewer.model = fbx;
+                        viewer.bones = [];
+
+                        // Center model
+                        const box = new THREE.Box3().setFromObject(fbx);
+                        if (!box.isEmpty()) {
+                            const center = box.getCenter(new THREE.Vector3());
+                            fbx.position.sub(center);
+                            viewer.meshBounds = box;
+                        }
+
+                        // Extract bones - handle both skinned mesh and armature-only FBX
+                        let rootBone = null;
+                        fbx.traverse((child) => {
+                            // Method 1: From SkinnedMesh (Mixamo-style with mesh)
+                            if (child.isSkinnedMesh && child.skeleton) {
+                                viewer.skeletonHelper = new THREE.SkeletonHelper(child);
+                                viewer.skeletonHelper.material = new THREE.LineBasicMaterial({
+                                    color: 0x00ff00,
+                                    linewidth: 2,
+                                    depthTest: !document.getElementById('xraySkeleton').checked
+                                });
+                                viewer.model.add(viewer.skeletonHelper);
+                                viewer.bones = child.skeleton.bones;
+                            }
+                            // Method 2: Find root bone for armature-only FBX
+                            if (child.isBone && !rootBone) {
+                                // Find the topmost bone (one with no bone parent)
+                                let current = child;
+                                while (current.parent && current.parent.isBone) {
+                                    current = current.parent;
+                                }
+                                rootBone = current;
+                            }
+                        });
+
+                        // If no bones from skinned mesh, collect from armature hierarchy
+                        if (viewer.bones.length === 0 && rootBone) {
+                            const collectBones = (bone) => {
+                                viewer.bones.push(bone);
+                                bone.children.forEach(child => {
+                                    if (child.isBone) collectBones(child);
+                                });
+                            };
+                            collectBones(rootBone);
+
+                            // Create skeleton helper from root bone
+                            viewer.skeletonHelper = new THREE.SkeletonHelper(rootBone);
+                            viewer.skeletonHelper.material = new THREE.LineBasicMaterial({
+                                color: 0x00ff00,
+                                linewidth: 2,
+                                depthTest: !document.getElementById('xraySkeleton').checked
+                            });
+                            viewer.model.add(viewer.skeletonHelper);
+                        }
+
+                        viewer.scene.add(viewer.model);
+
+                        // Position camera
+                        const maxDim = viewer.meshBounds ?
+                            Math.max(...viewer.meshBounds.getSize(new THREE.Vector3()).toArray()) : 2;
+                        const distance = maxDim * 2.5;
+
+                        viewer.camera.position.set(distance, distance, distance);
+                        viewer.camera.lookAt(0, 0, 0);
+                        viewer.controls.target.set(0, 0, 0);
+                        viewer.controls.update();
+
+                        // Update grid
+                        viewer.scene.remove(viewer.grid);
+                        const gridSize = Math.max(10, Math.ceil(maxDim * 1.5));
+                        viewer.grid = new THREE.GridHelper(gridSize, Math.max(10, gridSize), 0x444444, 0x222222);
+                        viewer.scene.add(viewer.grid);
+
+                        createBoneVisuals(viewer);
+
+                        // Update label
+                        const match = filepath.match(/filename=([^&]+)/);
+                        if (match) {
+                            viewer.filename = decodeURIComponent(match[1]);
+                            document.getElementById(labelId).textContent = viewer.filename;
+                        }
+
+                        loading.style.display = 'none';
+                        updateStatus();
+                    },
+                    (progress) => {
+                        if (progress.lengthComputable) {
+                            const percent = (progress.loaded / progress.total * 100).toFixed(0);
+                            loading.textContent = `Loading... ${percent}%`;
+                        }
+                    },
+                    (error) => {
+                        console.error('[UniRig Compare] Load error:', error);
+                        loading.textContent = 'Error loading FBX';
+                        loading.style.color = '#ff6666';
+                    }
+                );
+            }
+
+            function updateStatus() {
+                statusEl.textContent = `Left: ${viewerLeft.bones.length} bones | Right: ${viewerRight.bones.length} bones`;
+            }
+
+            // Handle resize
+            function handleResize() {
+                [viewerLeft, viewerRight].forEach(viewer => {
+                    const rect = viewer.container.getBoundingClientRect();
+                    viewer.camera.aspect = rect.width / rect.height;
+                    viewer.camera.updateProjectionMatrix();
+                    viewer.renderer.setSize(rect.width, rect.height);
+                });
+            }
+
+            window.addEventListener('resize', handleResize);
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                viewerLeft.controls.update();
+                viewerRight.controls.update();
+
+                viewerLeft.renderer.render(viewerLeft.scene, viewerLeft.camera);
+                viewerRight.renderer.render(viewerRight.scene, viewerRight.camera);
+            }
+
+            // Initial resize
+            handleResize();
+            animate();
+
+            // UI Controls
+            document.getElementById('syncCameras').addEventListener('change', (e) => {
+                syncCameras = e.target.checked;
+            });
+
+            document.getElementById('showSkeleton').addEventListener('change', (e) => {
+                [viewerLeft, viewerRight].forEach(v => {
+                    if (v.skeletonHelper) v.skeletonHelper.visible = e.target.checked;
+                    v.boneGizmos.forEach(g => g.visible = e.target.checked);
+                    v.boneLines.forEach(l => l.visible = e.target.checked);
+                });
+            });
+
+            document.getElementById('showMesh').addEventListener('change', (e) => {
+                [viewerLeft, viewerRight].forEach(v => {
+                    if (v.model) {
+                        v.model.traverse((child) => {
+                            if (child.isMesh) child.visible = e.target.checked;
+                        });
+                    }
+                });
+            });
+
+            document.getElementById('xraySkeleton').addEventListener('change', () => {
+                [viewerLeft, viewerRight].forEach(v => {
+                    createBoneVisuals(v);
+                });
+            });
+
+            document.getElementById('showBoneAxes').addEventListener('change', () => {
+                [viewerLeft, viewerRight].forEach(v => {
+                    createBoneVisuals(v);
+                });
+            });
+
+            document.getElementById('showBoneNames').addEventListener('change', () => {
+                [viewerLeft, viewerRight].forEach(v => {
+                    createBoneVisuals(v);
+                });
+            });
+
+            document.getElementById('boneSizeSlider').addEventListener('input', (e) => {
+                const scale = parseFloat(e.target.value);
+                document.getElementById('boneSizeValue').textContent = scale.toFixed(1) + 'x';
+                [viewerLeft, viewerRight].forEach(v => {
+                    v.boneGizmos.forEach(g => g.scale.setScalar(scale));
+                });
+            });
+
+            document.getElementById('axisSizeSlider').addEventListener('input', (e) => {
+                boneAxesSize = parseFloat(e.target.value);
+                document.getElementById('axisSizeValue').textContent = boneAxesSize.toFixed(1) + 'x';
+                [viewerLeft, viewerRight].forEach(v => {
+                    createBoneVisuals(v);
+                });
+            });
+
+            document.getElementById('resetCamera').addEventListener('click', () => {
+                const defaultPos = new THREE.Vector3(2, 2, 2);
+                [viewerLeft, viewerRight].forEach(v => {
+                    v.camera.position.copy(defaultPos);
+                    v.camera.lookAt(0, 0, 0);
+                    v.controls.target.set(0, 0, 0);
+                    v.controls.update();
+                });
+            });
+
+            // Listen for messages from parent window
+            window.addEventListener('message', (event) => {
+                console.log('[UniRig Compare] Received message:', event.data);
+
+                if (event.data.type === 'LOAD_FBX_COMPARE') {
+                    loading.textContent = 'Loading skeletons...';
+                    loading.style.display = 'block';
+                    loading.style.color = 'white';
+
+                    if (event.data.filepathLeft) {
+                        loadFBX(viewerLeft, event.data.filepathLeft, 'labelLeft');
+                    }
+                    if (event.data.filepathRight) {
+                        loadFBX(viewerRight, event.data.filepathRight, 'labelRight');
+                    }
+                }
+            });
+
+            // Notify parent that viewer is ready
+            console.log('[UniRig Compare] Ready');
+            if (window.parent) {
+                window.parent.postMessage({ type: 'VIEWER_READY' }, '*');
+            }
+        }
+    </script>
+</body>
+</html>

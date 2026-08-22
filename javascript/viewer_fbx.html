@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FBX Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #2a2a2a;
+            font-family: monospace;
+            width: 100%;
+            height: 100vh;
+        }
+        #viewerContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        #canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            z-index: 10;
+        }
+        #controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            border-top: 1px solid #444;
+            padding: 10px;
+            color: white;
+            font-size: 11px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+            max-height: 40%;
+            overflow-y: auto;
+        }
+        #controls button {
+            background: #4a4a4a;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        #controls button:hover {
+            background: #5a5a5a;
+        }
+        #controls button:active {
+            background: #3a3a3a;
+        }
+        .control-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+        .checkbox-label input[type="checkbox"] {
+            cursor: pointer;
+        }
+        #status {
+            color: #888;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="viewerContainer">
+        <canvas id="canvas"></canvas>
+        <div id="loading">Ready to load rigged mesh</div>
+    </div>
+
+    <div id="controls">
+        <div><strong>FBX Viewer</strong></div>
+
+        <div class="control-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="showSkeleton" checked>
+                <span>Show Skeleton</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="showMesh" checked>
+                <span>Show Mesh</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="xraySkeleton" checked>
+                <span>X-Ray Skeleton</span>
+            </label>
+        </div>
+
+        <div class="control-group">
+            <button id="resetPose">Reset to Rest Pose</button>
+            <button id="resetCamera">Reset Camera</button>
+        </div>
+
+        <div class="control-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="showGrid" checked>
+                <span>Show Grid</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="showAxes" checked>
+                <span>Show Axes</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="wireframeMode">
+                <span>Wireframe Mode</span>
+            </label>
+        </div>
+
+        <div class="control-group">
+            <button id="takeScreenshot">Take Screenshot</button>
+            <button id="exportGLB">Export GLB (Current Pose)</button>
+            <button id="exportFBX">Export FBX (Current Pose)</button>
+        </div>
+
+        <div id="status">No mesh loaded</div>
+    </div>
+
+    <!--
+    Load bundled Three.js and all dependencies.
+    The bundle is expected at ../js/viewer-bundle-three.js relative to this HTML file.
+    When copied by prestartup_script.py, the directory structure should be:
+      web/viewer_fbx.html
+      web/js/viewer-bundle-three.js
+    -->
+    <script>
+        // Dynamically determine the bundle path based on how this HTML is loaded
+        (function() {
+            // Get the current script's base URL
+            var scripts = document.getElementsByTagName('script');
+            var currentScript = scripts[scripts.length - 1];
+            var baseUrl = '';
+
+            // Try to get base URL from document location
+            var docUrl = window.location.href;
+            if (docUrl.indexOf('/extensions/') !== -1) {
+                // Extract extension path: /extensions/ExtensionName/
+                var match = docUrl.match(/\/extensions\/[^\/]+\//);
+                if (match) {
+                    baseUrl = match[0];
+                }
+            }
+
+            // Create script element to load the bundle
+            var bundleScript = document.createElement('script');
+            bundleScript.src = baseUrl + 'js/viewer-bundle-three.js';
+            bundleScript.onload = function() {
+                console.log('[FBX Viewer] Three.js bundle loaded from:', bundleScript.src);
+                initViewer();
+            };
+            bundleScript.onerror = function() {
+                console.error('[FBX Viewer] Failed to load bundle from:', bundleScript.src);
+                document.getElementById('loading').textContent = 'Error: Failed to load 3D library';
+                document.getElementById('loading').style.color = '#ff6666';
+            };
+            document.head.appendChild(bundleScript);
+        })();
+
+        function initViewer() {
+            // All dependencies are now available from the bundle via window object
+            const THREE = window.THREE;
+            const OrbitControls = window.OrbitControls;
+            const FBXLoader = window.FBXLoader;
+            const TransformControls = window.TransformControls;
+            const GLTFExporter = window.GLTFExporter;
+
+            console.log('[FBX Viewer] Initializing...');
+
+            const canvas = document.getElementById('canvas');
+            const loading = document.getElementById('loading');
+            const statusEl = document.getElementById('status');
+
+            // Scene
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x2a2a2a);
+
+            // Camera
+            const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(2, 2, 2);
+
+            // Renderer with context loss handling
+            const renderer = new THREE.WebGLRenderer({
+                canvas,
+                antialias: true,
+                powerPreference: 'high-performance',
+                preserveDrawingBuffer: true  // Required for screenshots
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Cap at 2x to save GPU memory
+
+            // WebGL context loss handling
+            canvas.addEventListener('webglcontextlost', (event) => {
+                console.error('[FBX Viewer] WebGL context lost!');
+                event.preventDefault();
+                loading.textContent = 'WebGL context lost. Attempting to restore...';
+                loading.style.display = 'block';
+                loading.style.color = 'orange';
+            }, false);
+
+            canvas.addEventListener('webglcontextrestored', () => {
+                console.log('[FBX Viewer] WebGL context restored');
+                loading.textContent = 'WebGL context restored. Please reload the model.';
+                loading.style.color = 'green';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 3000);
+            }, false);
+
+            // Controls
+            const controls = new OrbitControls(camera, canvas);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.zoomSpeed = 3.0;
+            controls.minDistance = 0.1;
+            controls.zoomToCursor = true;
+
+            // Transform controls for bone manipulation
+            const transformControls = new TransformControls(camera, canvas);
+            transformControls.setMode('rotate');
+            transformControls.setSpace('local');
+            transformControls.addEventListener('dragging-changed', (event) => {
+                controls.enabled = !event.value;
+            });
+            scene.add(transformControls);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+            dirLight1.position.set(5, 10, 7);
+            scene.add(dirLight1);
+
+            const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+            dirLight2.position.set(-5, -5, -7);
+            scene.add(dirLight2);
+
+            // Grid (will be resized based on mesh)
+            let grid = new THREE.GridHelper(10, 10, 0x444444, 0x222222);
+            scene.add(grid);
+
+            // Axes (will be resized based on mesh)
+            let axes = new THREE.AxesHelper(1);
+            scene.add(axes);
+
+            // State
+            let currentModel = null;
+            let skeletonHelper = null;
+            let bones = [];
+            let boneGizmos = [];
+            let boneLines = [];
+            let pivotIndicator = null;
+            let selectedBone = null;
+            let restPoseData = [];
+            let defaultCameraPosition = new THREE.Vector3(2, 2, 2);
+            let meshBounds = null;
+            let boneGizmoSize = 0.03;
+            let currentFBXFilename = null;
+            let parentOrigin = null;
+            let fbxExportApiPath = '/unirig/export_posed_fbx';  // Can be overridden by message
+
+            // Raycaster for bone picking
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            // Helper function to validate bounding box
+            function isValidBounds(box) {
+                if (!box || box.isEmpty()) return false;
+                const size = box.getSize(new THREE.Vector3());
+                return isFinite(size.x) && isFinite(size.y) && isFinite(size.z) &&
+                       size.x > 0 && size.y > 0 && size.z > 0;
+            }
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // Cleanup on page unload to prevent memory leaks
+            window.addEventListener('beforeunload', () => {
+                console.log('[FBX Viewer] Cleaning up resources before unload');
+                if (currentModel) {
+                    disposeObject(currentModel);
+                }
+                if (skeletonHelper) {
+                    disposeObject(skeletonHelper);
+                }
+                boneGizmos.forEach(gizmo => disposeObject(gizmo));
+                boneLines.forEach(line => disposeObject(line));
+                if (pivotIndicator) {
+                    disposeObject(pivotIndicator);
+                }
+                renderer.dispose();
+                controls.dispose();
+                transformControls.dispose();
+            });
+
+            // Create rotation pivot indicator
+            function createPivotIndicator() {
+                if (pivotIndicator) {
+                    scene.remove(pivotIndicator);
+                    disposeObject(pivotIndicator);
+                }
+
+                pivotIndicator = new THREE.Group();
+
+                const ringGeometry = new THREE.TorusGeometry(boneGizmoSize * 2, boneGizmoSize * 0.15, 8, 32);
+
+                const xRing = new THREE.Mesh(ringGeometry, new THREE.MeshBasicMaterial({
+                    color: 0xff4444,
+                    transparent: true,
+                    opacity: 0.8,
+                    depthTest: false
+                }));
+                xRing.rotation.y = Math.PI / 2;
+                pivotIndicator.add(xRing);
+
+                const yRing = new THREE.Mesh(ringGeometry, new THREE.MeshBasicMaterial({
+                    color: 0x44ff44,
+                    transparent: true,
+                    opacity: 0.8,
+                    depthTest: false
+                }));
+                yRing.rotation.x = Math.PI / 2;
+                pivotIndicator.add(yRing);
+
+                const zRing = new THREE.Mesh(ringGeometry, new THREE.MeshBasicMaterial({
+                    color: 0x4444ff,
+                    transparent: true,
+                    opacity: 0.8,
+                    depthTest: false
+                }));
+                pivotIndicator.add(zRing);
+
+                const centerGeometry = new THREE.SphereGeometry(boneGizmoSize * 0.4, 12, 12);
+                const centerSphere = new THREE.Mesh(centerGeometry, new THREE.MeshBasicMaterial({
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 0.9,
+                    depthTest: false
+                }));
+                pivotIndicator.add(centerSphere);
+
+                pivotIndicator.visible = false;
+                scene.add(pivotIndicator);
+            }
+
+            function updatePivotIndicator() {
+                if (!pivotIndicator || !selectedBone) {
+                    if (pivotIndicator) pivotIndicator.visible = false;
+                    return;
+                }
+
+                const worldPos = new THREE.Vector3();
+                selectedBone.getWorldPosition(worldPos);
+                pivotIndicator.position.copy(worldPos);
+                pivotIndicator.visible = document.getElementById('showSkeleton').checked;
+            }
+
+            function createBoneLines() {
+                boneLines.forEach(line => {
+                    scene.remove(line);
+                    disposeObject(line);
+                });
+                boneLines = [];
+
+                if (bones.length === 0) return;
+
+                const lineMaterial = new THREE.LineBasicMaterial({
+                    color: 0x00ffaa,
+                    linewidth: 2,
+                    depthTest: document.getElementById('xraySkeleton').checked ? false : true,
+                    transparent: true,
+                    opacity: 0.7
+                });
+
+                bones.forEach((bone, index) => {
+                    if (bone.parent && bone.parent.isBone) {
+                        const parentPos = new THREE.Vector3();
+                        const childPos = new THREE.Vector3();
+
+                        bone.parent.getWorldPosition(parentPos);
+                        bone.getWorldPosition(childPos);
+
+                        const points = [parentPos, childPos];
+                        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                        const line = new THREE.Line(geometry, lineMaterial.clone());
+
+                        line.userData.boneIndex = index;
+                        line.userData.bone = bone;
+
+                        scene.add(line);
+                        boneLines.push(line);
+                    }
+                });
+            }
+
+            function updateBoneLines() {
+                boneLines.forEach((line) => {
+                    const bone = line.userData.bone;
+                    if (bone && bone.parent && bone.parent.isBone) {
+                        const parentPos = new THREE.Vector3();
+                        const childPos = new THREE.Vector3();
+
+                        bone.parent.getWorldPosition(parentPos);
+                        bone.getWorldPosition(childPos);
+
+                        const positions = line.geometry.attributes.position;
+                        positions.setXYZ(0, parentPos.x, parentPos.y, parentPos.z);
+                        positions.setXYZ(1, childPos.x, childPos.y, childPos.z);
+                        positions.needsUpdate = true;
+
+                        const xray = document.getElementById('xraySkeleton').checked;
+                        line.material.depthTest = !xray;
+                    }
+                });
+            }
+
+            function createBoneGizmos() {
+                boneGizmos.forEach(gizmo => scene.remove(gizmo));
+                boneGizmos = [];
+
+                if (meshBounds && isValidBounds(meshBounds)) {
+                    const size = meshBounds.getSize(new THREE.Vector3());
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    boneGizmoSize = maxDim * 0.02;
+                } else {
+                    if (bones.length > 1) {
+                        let totalDist = 0;
+                        let count = 0;
+                        const tempPos = new THREE.Vector3();
+                        bones.forEach(bone => {
+                            bone.getWorldPosition(tempPos);
+                            if (isFinite(tempPos.x) && isFinite(tempPos.y) && isFinite(tempPos.z)) {
+                                totalDist += tempPos.length();
+                                count++;
+                            }
+                        });
+                        if (count > 0) {
+                            const avgDist = totalDist / count;
+                            boneGizmoSize = Math.max(0.02, avgDist * 0.03);
+                        }
+                    }
+                }
+
+                bones.forEach((bone, index) => {
+                    const geometry = new THREE.SphereGeometry(boneGizmoSize, 16, 16);
+                    const material = new THREE.MeshBasicMaterial({
+                        color: 0xffaa00,
+                        depthTest: document.getElementById('xraySkeleton').checked ? false : true,
+                        transparent: true,
+                        opacity: 0.9
+                    });
+                    const sphere = new THREE.Mesh(geometry, material);
+
+                    const worldPos = new THREE.Vector3();
+                    bone.getWorldPosition(worldPos);
+                    sphere.position.copy(worldPos);
+
+                    sphere.userData.boneIndex = index;
+                    sphere.userData.bone = bone;
+
+                    scene.add(sphere);
+                    boneGizmos.push(sphere);
+                });
+
+                createPivotIndicator();
+                createBoneLines();
+            }
+
+            function updateBoneGizmos() {
+                boneGizmos.forEach((gizmo, index) => {
+                    const bone = bones[index];
+                    const worldPos = new THREE.Vector3();
+                    bone.getWorldPosition(worldPos);
+                    gizmo.position.copy(worldPos);
+
+                    const xray = document.getElementById('xraySkeleton').checked;
+                    gizmo.material.depthTest = !xray;
+                });
+
+                updateBoneLines();
+                updatePivotIndicator();
+            }
+
+            function saveRestPose() {
+                restPoseData = bones.map(bone => ({
+                    position: bone.position.clone(),
+                    quaternion: bone.quaternion.clone(),
+                    scale: bone.scale.clone()
+                }));
+            }
+
+            function resetToRestPose() {
+                if (restPoseData.length === 0) {
+                    return;
+                }
+
+                bones.forEach((bone, index) => {
+                    if (restPoseData[index]) {
+                        bone.position.copy(restPoseData[index].position);
+                        bone.quaternion.copy(restPoseData[index].quaternion);
+                        bone.scale.copy(restPoseData[index].scale);
+                    }
+                });
+
+                if (selectedBone) {
+                    transformControls.detach();
+                    selectedBone = null;
+                }
+
+                updateBoneGizmos();
+                statusEl.textContent = 'Pose reset';
+            }
+
+            function resetCamera() {
+                camera.position.copy(defaultCameraPosition);
+                camera.lookAt(0, 0, 0);
+                controls.target.set(0, 0, 0);
+                controls.update();
+                statusEl.textContent = 'Camera reset';
+            }
+
+            function disposeObject(obj) {
+                if (!obj) return;
+
+                if (obj.geometry) {
+                    obj.geometry.dispose();
+                }
+
+                if (obj.material) {
+                    if (Array.isArray(obj.material)) {
+                        obj.material.forEach(mat => {
+                            if (mat.map) mat.map.dispose();
+                            if (mat.normalMap) mat.normalMap.dispose();
+                            if (mat.roughnessMap) mat.roughnessMap.dispose();
+                            if (mat.metalnessMap) mat.metalnessMap.dispose();
+                            mat.dispose();
+                        });
+                    } else {
+                        if (obj.material.map) obj.material.map.dispose();
+                        if (obj.material.normalMap) obj.material.normalMap.dispose();
+                        if (obj.material.roughnessMap) obj.material.roughnessMap.dispose();
+                        if (obj.material.metalnessMap) obj.material.metalnessMap.dispose();
+                        obj.material.dispose();
+                    }
+                }
+
+                if (obj.children) {
+                    obj.children.forEach(child => disposeObject(child));
+                }
+            }
+
+            function loadFBX(filepath) {
+                console.log('[FBX Viewer] Loading:', filepath);
+                loading.textContent = 'Loading rigged mesh...';
+                loading.style.display = 'block';
+                loading.style.color = 'white';
+
+                if (currentModel) {
+                    scene.remove(currentModel);
+                    disposeObject(currentModel);
+                    currentModel = null;
+                }
+                if (skeletonHelper) {
+                    scene.remove(skeletonHelper);
+                    disposeObject(skeletonHelper);
+                    skeletonHelper = null;
+                }
+                boneGizmos.forEach(gizmo => {
+                    scene.remove(gizmo);
+                    disposeObject(gizmo);
+                });
+                boneGizmos = [];
+                boneLines.forEach(line => {
+                    scene.remove(line);
+                    disposeObject(line);
+                });
+                boneLines = [];
+                if (pivotIndicator) {
+                    scene.remove(pivotIndicator);
+                    disposeObject(pivotIndicator);
+                    pivotIndicator = null;
+                }
+                bones = [];
+                restPoseData = [];
+                transformControls.detach();
+                selectedBone = null;
+
+                const loader = new FBXLoader();
+                loader.load(
+                    filepath,
+                    (fbx) => {
+                        console.log('[FBX Viewer] FBX Loaded successfully');
+                        currentModel = fbx;
+
+                        const box = new THREE.Box3().setFromObject(currentModel);
+                        let maxDim = 2;
+
+                        if (isValidBounds(box)) {
+                            const center = box.getCenter(new THREE.Vector3());
+                            currentModel.position.sub(center);
+                            meshBounds = box;
+                            const size = box.getSize(new THREE.Vector3());
+                            maxDim = Math.max(size.x, size.y, size.z);
+                        } else {
+                            meshBounds = null;
+                            currentModel.traverse((child) => {
+                                if (child.isMesh || child.isSkinnedMesh) {
+                                    let geomBox = null;
+                                    if (child.geometry) {
+                                        child.geometry.computeBoundingBox();
+                                        geomBox = child.geometry.boundingBox;
+                                    }
+                                    if (geomBox && isValidBounds(geomBox)) {
+                                        const geomSize = geomBox.getSize(new THREE.Vector3());
+                                        const geomMaxDim = Math.max(geomSize.x, geomSize.y, geomSize.z);
+                                        maxDim = geomMaxDim;
+                                        meshBounds = geomBox.clone();
+                                        const geomCenter = geomBox.getCenter(new THREE.Vector3());
+                                        currentModel.position.sub(geomCenter);
+                                    }
+                                }
+                            });
+                        }
+
+                        let foundSkeleton = false;
+                        currentModel.traverse((child) => {
+                            if (child.isSkinnedMesh) {
+                                if (!child.material) {
+                                    child.material = new THREE.MeshStandardMaterial({
+                                        color: 0x88aacc,
+                                        metalness: 0.3,
+                                        roughness: 0.7,
+                                        skinning: true
+                                    });
+                                } else if (Array.isArray(child.material)) {
+                                    child.material.forEach(mat => {
+                                        mat.skinning = true;
+                                    });
+                                } else {
+                                    child.material.skinning = true;
+                                }
+
+                                if (child.skeleton) {
+                                    foundSkeleton = true;
+                                    skeletonHelper = new THREE.SkeletonHelper(child);
+                                    skeletonHelper.material = new THREE.LineBasicMaterial({
+                                        color: 0x00ff00,
+                                        linewidth: 3,
+                                        depthTest: document.getElementById('xraySkeleton').checked ? false : true
+                                    });
+                                    currentModel.add(skeletonHelper);
+                                    bones = child.skeleton.bones;
+
+                                    if (restPoseData.length === 0) {
+                                        saveRestPose();
+                                    }
+                                    createBoneGizmos();
+                                }
+                            }
+                        });
+
+                        scene.add(currentModel);
+
+                        const distance = maxDim * 2.5;
+
+                        scene.remove(grid);
+                        scene.remove(axes);
+                        const gridSize = Math.max(10, Math.ceil(maxDim * 1.5));
+                        const gridDivisions = Math.max(10, Math.ceil(gridSize / 10));
+                        grid = new THREE.GridHelper(gridSize, gridDivisions, 0x444444, 0x222222);
+                        scene.add(grid);
+
+                        const axesSize = maxDim * 0.3;
+                        axes = new THREE.AxesHelper(axesSize);
+                        scene.add(axes);
+
+                        defaultCameraPosition.set(distance, distance, distance);
+                        camera.position.copy(defaultCameraPosition);
+                        camera.lookAt(0, 0, 0);
+                        controls.target.set(0, 0, 0);
+                        controls.update();
+                        controls.maxDistance = maxDim * 10;
+
+                        loading.style.display = 'none';
+
+                        if (foundSkeleton) {
+                            statusEl.textContent = `Loaded: ${bones.length} bones`;
+                        } else {
+                            statusEl.textContent = 'Loaded (no skeleton found)';
+                        }
+                    },
+                    (progress) => {
+                        if (progress.lengthComputable) {
+                            const percent = (progress.loaded / progress.total * 100).toFixed(0);
+                            loading.textContent = `Loading... ${percent}%`;
+                        }
+                    },
+                    (error) => {
+                        console.error('[FBX Viewer] Error loading FBX:', error);
+                        let errorMsg = 'Error loading FBX';
+                        if (error?.message?.includes('404')) {
+                            errorMsg = 'File not found (404)';
+                        } else if (error?.message?.includes('Failed to fetch')) {
+                            errorMsg = 'Network error - check URL';
+                        }
+                        loading.textContent = errorMsg + ' - check console';
+                        loading.style.color = '#ff6666';
+                        statusEl.textContent = 'Load failed: ' + errorMsg;
+                    }
+                );
+            }
+
+            // Mouse click for bone selection
+            canvas.addEventListener('click', (event) => {
+                if (bones.length === 0) return;
+
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+                raycaster.setFromCamera(mouse, camera);
+                const intersects = raycaster.intersectObjects(boneGizmos);
+
+                if (intersects.length > 0) {
+                    const clickedGizmo = intersects[0].object;
+                    const bone = clickedGizmo.userData.bone;
+
+                    boneGizmos.forEach(g => {
+                        g.material.color.setHex(0xffaa00);
+                        g.material.opacity = 0.8;
+                    });
+                    clickedGizmo.material.color.setHex(0x00ffff);
+                    clickedGizmo.material.opacity = 1.0;
+
+                    transformControls.attach(bone);
+                    selectedBone = bone;
+                    updatePivotIndicator();
+
+                    statusEl.textContent = `Selected: ${bone.name || 'Bone ' + clickedGizmo.userData.boneIndex}`;
+                } else {
+                    if (selectedBone) {
+                        transformControls.detach();
+                        selectedBone = null;
+                        boneGizmos.forEach(g => {
+                            g.material.color.setHex(0xffaa00);
+                            g.material.opacity = 0.8;
+                        });
+                        if (pivotIndicator) pivotIndicator.visible = false;
+                        statusEl.textContent = `${bones.length} bones`;
+                    }
+                }
+            });
+
+            transformControls.addEventListener('change', () => {
+                updateBoneGizmos();
+            });
+
+            // UI Controls
+            document.getElementById('showSkeleton').addEventListener('change', (e) => {
+                if (skeletonHelper) {
+                    skeletonHelper.visible = e.target.checked;
+                }
+                boneGizmos.forEach(gizmo => {
+                    gizmo.visible = e.target.checked;
+                });
+                boneLines.forEach(line => {
+                    line.visible = e.target.checked;
+                });
+                if (pivotIndicator && selectedBone) {
+                    pivotIndicator.visible = e.target.checked;
+                }
+            });
+
+            document.getElementById('showMesh').addEventListener('change', (e) => {
+                if (currentModel) {
+                    currentModel.traverse((child) => {
+                        if (child.isMesh) {
+                            child.visible = e.target.checked;
+                        }
+                    });
+                }
+            });
+
+            document.getElementById('xraySkeleton').addEventListener('change', (e) => {
+                if (skeletonHelper) {
+                    skeletonHelper.material.depthTest = !e.target.checked;
+                }
+                boneGizmos.forEach(gizmo => {
+                    gizmo.material.depthTest = !e.target.checked;
+                });
+            });
+
+            document.getElementById('resetPose').addEventListener('click', resetToRestPose);
+            document.getElementById('resetCamera').addEventListener('click', resetCamera);
+
+            document.getElementById('showGrid').addEventListener('change', (e) => {
+                if (grid) {
+                    grid.visible = e.target.checked;
+                }
+            });
+
+            document.getElementById('showAxes').addEventListener('change', (e) => {
+                if (axes) {
+                    axes.visible = e.target.checked;
+                }
+            });
+
+            document.getElementById('wireframeMode').addEventListener('change', (e) => {
+                if (currentModel) {
+                    currentModel.traverse((child) => {
+                        if (child.isMesh) {
+                            if (Array.isArray(child.material)) {
+                                child.material.forEach(mat => mat.wireframe = e.target.checked);
+                            } else {
+                                child.material.wireframe = e.target.checked;
+                            }
+                        }
+                    });
+                }
+            });
+
+            // Screenshot button
+            document.getElementById('takeScreenshot').addEventListener('click', async () => {
+                try {
+                    statusEl.textContent = 'Taking screenshot...';
+                    const dataURL = canvas.toDataURL('image/png');
+                    const blob = await (await fetch(dataURL)).blob();
+                    const filename = `fbx_screenshot_${Date.now()}.png`;
+
+                    const formData = new FormData();
+                    formData.append('image', blob, filename);
+                    formData.append('type', 'output');
+                    formData.append('subfolder', '');
+
+                    const uploadUrl = parentOrigin ? `${parentOrigin}/upload/image` : '/upload/image';
+                    const response = await fetch(uploadUrl, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        statusEl.textContent = `Screenshot saved: ${filename}`;
+                    } else {
+                        statusEl.textContent = 'Screenshot failed';
+                    }
+                } catch (error) {
+                    statusEl.textContent = 'Screenshot error';
+                    console.error('[FBX Viewer] Screenshot error:', error);
+                }
+            });
+
+            // Export GLB button
+            document.getElementById('exportGLB').addEventListener('click', async () => {
+                try {
+                    if (!currentModel) {
+                        statusEl.textContent = 'No model to export';
+                        return;
+                    }
+
+                    const defaultFilename = `fbx_export_${Date.now()}`;
+                    let filename = prompt('Enter filename for GLB export (without extension):', defaultFilename);
+
+                    if (filename === null) {
+                        statusEl.textContent = 'Export cancelled';
+                        return;
+                    }
+
+                    filename = filename.trim();
+                    if (filename === '') {
+                        filename = defaultFilename;
+                    }
+                    if (!filename.toLowerCase().endsWith('.glb')) {
+                        filename = filename + '.glb';
+                    }
+
+                    statusEl.textContent = 'Exporting GLB...';
+
+                    const exportScene = new THREE.Scene();
+
+                    let skinnedMesh = null;
+                    currentModel.traverse((child) => {
+                        if (child.isSkinnedMesh) {
+                            skinnedMesh = child;
+                        }
+                    });
+
+                    if (!skinnedMesh) {
+                        statusEl.textContent = 'No mesh to export';
+                        return;
+                    }
+
+                    const bakedGeometry = skinnedMesh.geometry.clone();
+                    skinnedMesh.updateMatrixWorld(true);
+                    const position = bakedGeometry.attributes.position;
+                    const vertex = new THREE.Vector3();
+                    const skinIndex = bakedGeometry.attributes.skinIndex;
+                    const skinWeight = bakedGeometry.attributes.skinWeight;
+                    const boneMatrices = skinnedMesh.skeleton.boneMatrices;
+
+                    for (let i = 0; i < position.count; i++) {
+                        vertex.fromBufferAttribute(position, i);
+                        const finalVertex = new THREE.Vector3();
+                        for (let j = 0; j < 4; j++) {
+                            const weight = skinWeight.getComponent(i, j);
+                            if (weight > 0) {
+                                const boneIndex = skinIndex.getComponent(i, j);
+                                const boneMatrix = new THREE.Matrix4();
+                                boneMatrix.fromArray(boneMatrices, boneIndex * 16);
+                                const tempVertex = vertex.clone();
+                                tempVertex.applyMatrix4(boneMatrix);
+                                tempVertex.multiplyScalar(weight);
+                                finalVertex.add(tempVertex);
+                            }
+                        }
+                        position.setXYZ(i, finalVertex.x, finalVertex.y, finalVertex.z);
+                    }
+
+                    position.needsUpdate = true;
+                    bakedGeometry.computeVertexNormals();
+
+                    const oldMat = skinnedMesh.material;
+                    const newMat = new THREE.MeshStandardMaterial({
+                        name: oldMat.name,
+                        map: oldMat.map,
+                        metalness: 0.0,
+                        roughness: 0.8,
+                        transparent: oldMat.transparent,
+                        opacity: oldMat.opacity,
+                        side: oldMat.side
+                    });
+
+                    const bakedMesh = new THREE.Mesh(bakedGeometry, newMat);
+                    bakedMesh.name = skinnedMesh.name;
+                    exportScene.add(bakedMesh);
+
+                    const exporter = new GLTFExporter();
+                    exporter.parse(
+                        exportScene,
+                        async (gltf) => {
+                            const blob = new Blob([gltf], { type: 'application/octet-stream' });
+                            const formData = new FormData();
+                            formData.append('image', blob, filename);
+                            formData.append('type', 'output');
+                            formData.append('subfolder', '');
+
+                            const uploadUrl = parentOrigin ? `${parentOrigin}/upload/image` : '/upload/image';
+                            const response = await fetch(uploadUrl, {
+                                method: 'POST',
+                                body: formData
+                            });
+
+                            if (response.ok) {
+                                statusEl.textContent = `GLB saved: ${filename}`;
+                            } else {
+                                statusEl.textContent = 'GLB export failed';
+                            }
+                        },
+                        (error) => {
+                            console.error('[FBX Viewer] GLB export error:', error);
+                            statusEl.textContent = 'GLB export error';
+                        },
+                        {
+                            binary: true,
+                            embedImages: true,
+                            maxTextureSize: 4096
+                        }
+                    );
+                } catch (error) {
+                    statusEl.textContent = 'GLB export error';
+                    console.error('[FBX Viewer] GLB export error:', error);
+                }
+            });
+
+            // Export FBX button
+            document.getElementById('exportFBX').addEventListener('click', async () => {
+                try {
+                    if (!currentModel) {
+                        statusEl.textContent = 'No model to export';
+                        return;
+                    }
+
+                    if (!currentFBXFilename) {
+                        statusEl.textContent = 'FBX filename not available';
+                        return;
+                    }
+
+                    const defaultFilename = `posed_export_${Date.now()}`;
+                    let filename = prompt('Enter filename for FBX export (without extension):', defaultFilename);
+
+                    if (filename === null) {
+                        statusEl.textContent = 'Export cancelled';
+                        return;
+                    }
+
+                    filename = filename.trim();
+                    if (filename === '') {
+                        filename = defaultFilename;
+                    }
+                    if (!filename.toLowerCase().endsWith('.fbx')) {
+                        filename = filename + '.fbx';
+                    }
+
+                    statusEl.textContent = 'Exporting FBX...';
+
+                    const boneTransforms = {};
+                    currentModel.updateMatrixWorld(true);
+
+                    bones.forEach((bone, boneIndex) => {
+                        if (!restPoseData[boneIndex]) {
+                            return;
+                        }
+
+                        const rest = restPoseData[boneIndex];
+                        const posDelta = new THREE.Vector3().subVectors(bone.position, rest.position);
+                        const quatDelta = rest.quaternion.clone().invert().multiply(bone.quaternion.clone());
+                        const scaleDelta = new THREE.Vector3(
+                            bone.scale.x / rest.scale.x,
+                            bone.scale.y / rest.scale.y,
+                            bone.scale.z / rest.scale.z
+                        );
+
+                        boneTransforms[bone.name] = {
+                            position: { x: posDelta.x, y: posDelta.y, z: posDelta.z },
+                            quaternion: { x: quatDelta.x, y: quatDelta.y, z: quatDelta.z, w: quatDelta.w },
+                            scale: { x: scaleDelta.x, y: scaleDelta.y, z: scaleDelta.z }
+                        };
+                    });
+
+                    const exportUrl = parentOrigin ? `${parentOrigin}${fbxExportApiPath}` : fbxExportApiPath;
+                    const response = await fetch(exportUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            fbx_filename: currentFBXFilename,
+                            bone_transforms: boneTransforms,
+                            output_filename: filename
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        statusEl.textContent = `FBX saved: ${result.filename}`;
+                    } else {
+                        statusEl.textContent = `FBX export failed: ${result.error || 'Unknown error'}`;
+                    }
+                } catch (error) {
+                    statusEl.textContent = 'FBX export error';
+                    console.error('[FBX Viewer] FBX export error:', error);
+                }
+            });
+
+            // Listen for messages from parent window
+            window.addEventListener('message', (event) => {
+                console.log('[FBX Viewer] Received postMessage:', event.data);
+
+                if (!parentOrigin && event.origin) {
+                    parentOrigin = event.origin;
+                }
+
+                if (event.data.type === 'LOAD_FBX') {
+                    const filepathStr = event.data.filepath;
+                    const match = filepathStr.match(/filename=([^&]+)/);
+                    if (match) {
+                        currentFBXFilename = decodeURIComponent(match[1]);
+                    }
+                    // Allow custom FBX export API path
+                    if (event.data.fbxExportApiPath) {
+                        fbxExportApiPath = event.data.fbxExportApiPath;
+                    }
+                    loadFBX(event.data.filepath);
+                }
+            });
+
+            // Notify parent that viewer is ready
+            console.log('[FBX Viewer] Ready');
+            if (window.parent) {
+                window.parent.postMessage({ type: 'VIEWER_READY' }, '*');
+            }
+        }
+    </script>
+</body>
+</html>
