@@ -184,8 +184,10 @@ class InputAttention(nn.Module):
         self.norm = operations.LayerNorm(feat_dim)
         self.norm_context = operations.LayerNorm(feat_dim)
         self.attn = Attention(query_dim=feat_dim, heads=heads, dim_head=dim_head, operations=operations, *args, **xargs)
-        nn.init.zeros_(self.attn.to_out.weight)
-        nn.init.zeros_(self.attn.to_out.bias)
+        if self.attn.to_out.weight is not None:
+            nn.init.zeros_(self.attn.to_out.weight)
+        if self.attn.to_out.bias is not None:
+            nn.init.zeros_(self.attn.to_out.bias)
 
     def forward(self, feat: torch.Tensor, context: torch.Tensor, return_score=False):
         """
@@ -255,8 +257,10 @@ class PCAE(nn.Module):
         if self.input_normal:
             self.input_dims.append(3)
             self.normal_embed = JointsEmbedder(out_dim=embed_dim, operations=operations)
-            nn.init.zeros_(self.normal_embed.mlp.weight)
-            nn.init.zeros_(self.normal_embed.mlp.bias)
+            if self.normal_embed.mlp.weight is not None:
+                nn.init.zeros_(self.normal_embed.mlp.weight)
+            if self.normal_embed.mlp.bias is not None:
+                nn.init.zeros_(self.normal_embed.mlp.bias)
         else:
             self.input_dims.append(0)
         self.input_dim = sum(self.input_dims)
@@ -382,6 +386,10 @@ class PCAE(nn.Module):
             if k in ckpt:
                 ckpt_param = ckpt[k]
                 model_param = access_attr(self, k)
+                if model_param is None:
+                    # AIMDO lazily initializes parameters during load_state_dict().
+                    # Keep checkpoint parameters unchanged for deferred loading.
+                    continue
                 if ckpt_param.shape != model_param.shape:
                     log.info("Size mismatch for %s: %s from checkpoint vs %s from model. Ignoring it.", k, ckpt_param.shape, model_param.shape)
                     ckpt[k] = model_param.to(ckpt_param)
@@ -844,8 +852,10 @@ class JointsAttentionCausal(nn.Module):
         elif self.out_type == "pose":
             self.encoder = operations.Linear(self.out_dim, feat_dim)
             if zero_init:
-                nn.init.zeros_(self.encoder.weight)
-                nn.init.zeros_(self.encoder.bias)
+                if self.encoder.weight is not None:
+                    nn.init.zeros_(self.encoder.weight)
+                if self.encoder.bias is not None:
+                    nn.init.zeros_(self.encoder.bias)
             self.decoder = TransformMLP(
                 feat_dim, transl_dim=self.out_dim - rotation_dim, rotation_dim=rotation_dim, scaling_dim=0, operations=operations
             )
